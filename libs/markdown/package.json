@@ -1,0 +1,18 @@
+{
+  "name": "@gewd/markdown",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^9.0.0-rc.5",
+    "@angular/core": "^9.0.0-rc.5",
+    "comlink": "^4.2.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/negue/gewd.git"
+  },
+  "author": "Eugen Bolz",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

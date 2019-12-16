@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "projects": {
+    "demo": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/demo",
+      "sourceRoot": "apps/demo/src",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/demo",
+            "index": "apps/demo/src/index.html",
+            "main": "apps/demo/src/main.ts",
+            "polyfills": "apps/demo/src/polyfills.ts",
+            "tsConfig": "apps/demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/demo/src/favicon.ico",
+              "apps/demo/src/assets",
+              {
+                "glob": "mermaid.min.js",
+                "input": "node_modules/mermaid/dist/",
+                "output": "./"
+              },
+              {
+                "glob": "prism-@(c|csharp|typescript).js",
+                "input": "./node_modules/prismjs/components",
+                "output": "/assets/prism/"
+              }
+            ],
+            "styles": [
+              "apps/demo/src/styles.scss",
+              "node_modules/prismjs/themes/prism-okaidia.css"
+            ],
+            "scripts": [],
+            "webWorkerTsConfig": "apps/demo/tsconfig.worker.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/demo/src/environments/environment.ts",
+                  "with": "apps/demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": true,
+              "statsJson": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/demo/tsconfig.app.json",
+              "apps/demo/tsconfig.spec.json",
+              "apps/demo/tsconfig.worker.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/demo/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/demo/jest.config.js",
+            "tsConfig": "apps/demo/tsconfig.spec.json",
+            "setupFile": "apps/demo/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "markdown": {
+      "projectType": "library",
+      "root": "libs/markdown",
+      "sourceRoot": "libs/markdown/src",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/markdown/tsconfig.lib.json",
+            "project": "libs/markdown/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/markdown/tsconfig.lib.json",
+              "libs/markdown/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/markdown/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/markdown/jest.config.js",
+            "tsConfig": "libs/markdown/tsconfig.spec.json",
+            "setupFile": "libs/markdown/src/test-setup.ts"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "defaultProject": "demo"
+}
