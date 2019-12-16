@@ -46,7 +46,7 @@ Only loads the worker, prism or additional languages once used inside the markdo
 |Worker|Description|Requirements|
 |----|----|-----|
 |`markdown-it.worker.ts`| If you prefer markdown-it and its plugins |`npm install markdown-it --save`|
-|`marked.prism.worker.ts`|Marked, needs xss-package to sanitize the generated HTML |`npm install marked xss prism --save`|
+|`marked.prism.worker.ts`|Marked, needs xss-package to sanitize the generated HTML |`npm install marked xss prismjs --save`|
 |`marked.worker.ts`|Marked, needs xss-package to sanitize the generated HTML |`npm install marked xss --save`|
 
 ## mermaid.js support (using marked)
