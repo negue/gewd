@@ -1,24 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { emojiExampleList } from './example-emoji-list';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'gewd-utils-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'demo';
+export class AppComponent implements OnInit, OnDestroy {
+  private markdown$ = new Subject();
+  private subscription: Subscription;
+
   emojiList = emojiExampleList;
+
+  @ViewChild('markdown', {static: true})
+  markdown: any;
 
   constructor () {
   }
 
-  textChanged ($event: Event, str: string) {
-    console.info($event, str);
+  changeIt (textarea: HTMLTextAreaElement, markdown: any) {
+    this.markdown$.next(textarea.value);
   }
 
-  changeIt (textarea: HTMLTextAreaElement, markdown: any) {
-    markdown.markdown = textarea.value;
-    console.info(textarea.value, markdown.markdown);
+  ngOnDestroy (): void {
+    this.subscription.unsubscribe();
+  }
+
+  ngOnInit (): void {
+    this.subscription = this.markdown$
+      .pipe(
+        debounceTime(350)
+      )
+      .subscribe(value => {
+        this.markdown.markdown = value;
+      })
   }
 }

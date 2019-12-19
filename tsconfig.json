@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@gewd/markdown": ["libs/markdown/src/index.ts"],
+      "@gewd/markdown": ["libs/markdown/module/index.ts"],
       "@gewd/markdown/*.worker": ["libs/markdown/*.worker.ts"],
       "@gewd/markdown/*": [
         "libs/markdown/*",

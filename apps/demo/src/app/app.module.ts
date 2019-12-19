@@ -13,8 +13,6 @@ import { GetWorkerPayload, LoadMarkdownWorkerInjectorToken, LoadMermaidInjectorT
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
-console.info(LoadMarkdownWorkerInjectorToken, LoadMermaidInjectorToken);
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

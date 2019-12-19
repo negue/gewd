@@ -1,6 +1,6 @@
 Open Dev-Tools to see the network calls.
 
-<mat-expansion-panel>
+<mat-expansion-panel (opened)="changeIt(textarea, markdown)">
   <mat-expansion-panel-header>
     Markdown
   </mat-expansion-panel-header>
@@ -10,21 +10,24 @@ Open Dev-Tools to see the network calls.
 
 <textarea #textarea
           (keyup)="changeIt(textarea, markdown)">
+TypeScript Example Code
 ```ts
-  var hi = "";
+  var hi = "@gewd/markdown";
 
   class Test implements MyInterface {
-    constructor (private prop: string) { }
+  constructor (private prop: string) { }
   }
 ```
 
-  Mermaid example :)
+
+Mermaid example :grin:
 ```graph TD
 A[Hard] -->|Text| B(Round)
 B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
+
 </textarea>
 
       <gewd-markdown #markdown></gewd-markdown>
