@@ -36,6 +36,8 @@
     "@angular/forms": "^9.0.0-rc.5",
     "@angular/platform-browser": "^9.0.0-rc.5",
     "@angular/platform-browser-dynamic": "^9.0.0-rc.5",
+    "@angular/material": "9.0.0-rc.5",
+    "@angular/cdk": "9.0.0-rc.5",
     "@angular/router": "^9.0.0-rc.5",
     "@nrwl/angular": "8.9.0",
     "@types/markdown-it": "0.0.9",

@@ -1,14 +1,12 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 
 import { Remote, wrap } from 'comlink';
-import { MarkdownWorker } from './contracts/worker.interface';
-
-export interface GetWorkerPayload {
-  getWorker: () => Worker;
-}
-
-export const LoadMarkdownWorkerInjectorToken = new InjectionToken<GetWorkerPayload>('LoadMarkdownWorkerInjectorToken');
-export const LoadMermaidInjectorToken = new InjectionToken<string>('LoadMermaidInjectorToken');
+import {
+  GetWorkerPayload,
+  LoadMarkdownWorkerInjectorToken,
+  LoadMermaidInjectorToken,
+  MarkdownWorker
+} from '@gewd/markdown/contracts';
 
 @Injectable({
   providedIn: 'root'

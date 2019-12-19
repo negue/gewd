@@ -1,7 +1,7 @@
 import { expose } from 'comlink';
 import * as marked from 'marked';
 import * as xss from 'xss';
-import {Lazy} from '@gewd/markdown/utils';
+import { Lazy } from '@gewd/markdown/utils';
 
 // web-worker importScripts
 declare function importScripts(...urls: string[]): void;
@@ -44,11 +44,15 @@ function loadLanguage(prismInstance, lang) {
   return prismInstance.languages[lang];
 }
 
+const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
+const emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
+
 // apply changes to marked
 marked.setOptions({
   renderer, // needed for mermaid
   // highlight override for prismjs
   highlight: function(code, lang, callback): any {
+    // if it is a mermaid tag, don't need to go through prism it
     if (mermaidRegex.test(lang)) {
       callback(undefined, code);
       return;
@@ -69,15 +73,40 @@ const workerMethods = {
   compile: input => new Promise<string>((resolve, reject) => {
     if (input) {
       marked(input, {
-        // aditional marked config
+        // aditional marked config, also enables highlight callback
       }, (err, result) => {
-        resolve(xss.filterXSS(result, {
-          whiteList: {
-            ...xss.whiteList,
-            div: ['class'],  // mermaid class
-            span: ['class'],  // prism colors
-          }
-        }));
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        // extract?^^
+        function resolveCleanMarkup (generatedHTML) {
+          const sanatizedHTML = xss.filterXSS(generatedHTML, {
+            whiteList: {
+              ...xss.whiteList,
+              div: ['class'],  // mermaid class
+              span: ['class'],  // prism colors
+            }
+          });
+
+          resolve(sanatizedHTML);
+        }
+
+        if (emojiRegex.test(result)) {
+          // load emoji-map
+          lazyEmoji.getValue().then(({EMOJI_MAP, colonToUnicode}) => {
+            const replaced = result.replace(emojiRegex, (_, colonValue) =>  {
+              const emojiUnicodeStr = EMOJI_MAP[colonValue];
+
+              return colonToUnicode(emojiUnicodeStr);
+            });
+
+            resolveCleanMarkup(replaced);
+          });
+        } else {
+          resolveCleanMarkup(result);
+        }
       });
 
       return;

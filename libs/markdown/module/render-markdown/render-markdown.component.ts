@@ -3,8 +3,8 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import { WorkerService } from '../worker.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { WorkerService } from '@gewd/markdown/service';
 
 @Component({
   selector: 'gewd-markdown',

@@ -10,6 +10,6 @@
   },
   "include": [
     "src/**/*.worker.ts",
-    "../../libs/markdown/marked.ts"
+    "../../libs/markdown/marked.prism.worker.ts"
   ]
 }

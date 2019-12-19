@@ -1,17 +1,40 @@
+Open Dev-Tools to see the network calls.
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Markdown
+  </mat-expansion-panel-header>
+
+  <mat-tab-group>
+    <mat-tab label="Try out">
+
 <textarea #textarea
-  (keyup)="changeIt(textarea, markdown)">
+          (keyup)="changeIt(textarea, markdown)">
 ```ts
-var hi = "";
+  var hi = "";
+
+  class Test implements MyInterface {
+    constructor (private prop: string) { }
+  }
 ```
 
+  Mermaid example :)
 ```graph TD
 A[Hard] -->|Text| B(Round)
 B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
 ```
-  </textarea>
+</textarea>
 
-  <button (click)="changeIt(textarea, markdown)">Change!</button>
+      <gewd-markdown #markdown></gewd-markdown>
 
-  <gewd-markdown #markdown></gewd-markdown>
+    </mat-tab>
+
+    <mat-tab label="Emoji Overview" #tab>
+      <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>
+      <gewd-markdown [markdown]="tab.isActive ? emojiList : ''"></gewd-markdown>
+    </mat-tab>
+  </mat-tab-group>
+</mat-expansion-panel>
+

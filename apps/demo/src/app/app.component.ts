@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { emojiExampleList } from './example-emoji-list';
 
 @Component({
   selector: 'gewd-utils-root',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo';
+  emojiList = emojiExampleList;
 
   constructor () {
   }
