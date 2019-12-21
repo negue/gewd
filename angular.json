@@ -141,7 +141,7 @@
           "options": {
             "jestConfig": "libs/markdown/jest.config.js",
             "tsConfig": "libs/markdown/tsconfig.spec.json",
-            "setupFile": "libs/markdown/src/test-setup.ts"
+            "setupFile": "libs/markdown/test-setup.ts"
           }
         }
       }
