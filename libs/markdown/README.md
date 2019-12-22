@@ -125,6 +125,8 @@ in `angular.json` in your app's `assets: [` array
   "output": "/assets/prism/"
 }
 ```
+if you want to use the minified prism-files use `.min.js` in the `glob`-part and inside your PrismOptions (see `LoadMarkdownWorkerInjectorToken`-Example at the top)
+
 in your app's `styles: [` (or any other prismjs theme)
 ```
   "node_modules/prismjs/themes/prism-okaidia.css"

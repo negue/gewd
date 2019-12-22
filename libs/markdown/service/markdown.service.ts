@@ -22,6 +22,9 @@ export class MarkdownService {
                private readonly loadMermaidUrl: string
   ) {
     this.workerProxy = wrap<MarkdownWorker>( workerPayload.getWorker());
+    if (workerPayload.options) {
+      this.workerProxy.init(workerPayload.options);
+    }
 
     if (loadMermaidUrl) {
       this.canTriggerMermaidLoad = true;

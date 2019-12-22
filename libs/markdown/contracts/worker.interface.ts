@@ -18,7 +18,7 @@ export interface MarkdownWorker {
 
 export interface GetWorkerPayload {
   getWorker: () => Worker;
-  options: WorkerOptions;
+  options?: WorkerOptions;
 }
 
 export const DEFAULT_PRISM_OPTIONS: PrismOptions = {
