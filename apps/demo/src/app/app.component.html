@@ -1,17 +1,26 @@
+Open Dev-Tools to see the network calls.
+
+<mat-expansion-panel (opened)="changeIt(textarea, markdown)">
+  <mat-expansion-panel-header>
+    Markdown
+  </mat-expansion-panel-header>
+
+  <mat-tab-group>
+    <mat-tab label="Try out">
+
 <textarea #textarea
-  (keyup)="changeIt(textarea, markdown)">
-```ts
-var hi = "";
-```
+          (keyup)="changeIt(textarea, markdown)">
+{{exampleMD|async}}
+</textarea>
 
-```graph TD
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-  </textarea>
+      <gewd-markdown #markdown></gewd-markdown>
 
-  <button (click)="changeIt(textarea, markdown)">Change!</button>
+    </mat-tab>
 
-  <gewd-markdown #markdown></gewd-markdown>
+    <mat-tab label="Emoji Overview" #tab>
+      <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>
+      <gewd-markdown [markdown]="tab.isActive ? emojiList : ''"></gewd-markdown>
+    </mat-tab>
+  </mat-tab-group>
+</mat-expansion-panel>
+

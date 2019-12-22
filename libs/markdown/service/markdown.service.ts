@@ -1,19 +1,17 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 
 import { Remote, wrap } from 'comlink';
-import { MarkdownWorker } from './contracts/worker.interface';
-
-export interface GetWorkerPayload {
-  getWorker: () => Worker;
-}
-
-export const LoadMarkdownWorkerInjectorToken = new InjectionToken<GetWorkerPayload>('LoadMarkdownWorkerInjectorToken');
-export const LoadMermaidInjectorToken = new InjectionToken<string>('LoadMermaidInjectorToken');
+import {
+  GetWorkerPayload,
+  LoadMarkdownWorkerInjectorToken,
+  LoadMermaidInjectorToken,
+  MarkdownWorker
+} from '@gewd/markdown/contracts';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WorkerService {
+export class MarkdownService {
 
   private canTriggerMermaidLoad = false;
   private mermaidAddedToPage = false;
@@ -24,16 +22,19 @@ export class WorkerService {
                private readonly loadMermaidUrl: string
   ) {
     this.workerProxy = wrap<MarkdownWorker>( workerPayload.getWorker());
+    if (workerPayload.options) {
+      this.workerProxy.init(workerPayload.options);
+    }
 
     if (loadMermaidUrl) {
       this.canTriggerMermaidLoad = true;
     }
   }
 
-  public async compileMarkdown (str: string): Promise<string> {
+  public async compileMarkdown (str: string, triggerMermaid = false): Promise<string> {
     const parsedMarkdown = await this.workerProxy.compile(str);
 
-    if (parsedMarkdown.match(/class="mermaid"/)) {
+    if (triggerMermaid && parsedMarkdown.match(/class="mermaid"/)) {
       this.triggerMermaidLoadScript();
     }
 
@@ -61,8 +62,8 @@ export class WorkerService {
         mermaid.init();
 
 
-        mermaid.parseError = function(err,hash){
-          console.info(err);
+        mermaid.parseError = function(err){
+          console.error("MarkdownService, Mermaid: ", err);
         };
       };
 

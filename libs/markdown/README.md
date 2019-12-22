@@ -1,15 +1,22 @@
-# @gewd/markdown
-
-[![NPM Version][client-npm-img]][client-npm-url]
-[![Package Size][client-size-img]][client-size-url]
-
-[client-npm-img]: https://img.shields.io/npm/v/@gewd/markdown.svg?
-[client-npm-url]: https://www.npmjs.com/package/@gewd/markdown
-[client-size-img]: https://img.shields.io/bundlephobia/minzip/@gewd/markdown.svg
-[client-size-url]: https://bundlephobia.com/result?p=@gewd/markdown
+# `@gewd/markdown`
 
 Angular Markdown render component, which uses a worker-process.
 Only loads the worker, prism or additional languages once used inside the markdown.
+
+[![NPM Version][npm-img]][npm-url]
+[![Package Size][size-img]][size-url]
+
+[npm-img]: https://img.shields.io/npm/v/@gewd/markdown.svg?
+[npm-url]: https://www.npmjs.com/package/@gewd/markdown
+[size-img]: https://img.shields.io/bundlephobia/minzip/@gewd/markdown.svg
+[size-url]: https://bundlephobia.com/result?p=@gewd/markdown
+
+## Example
+[![Visual Example of example.md][example_md_img]][example_md_url]
+
+[example_md_img]: ../../example-images/example_md.png
+[example_md_url]: ../../apps/demo/src/assets/example.md
+
 
 ## Install
 
@@ -23,23 +30,54 @@ Only loads the worker, prism or additional languages once used inside the markdo
    });
 
    /* in your app module */
-   
+   @NgModule({
+     declarations: [AppComponent],
+     imports: [
+       /* ...*/,
+       MarkdownModule
+     ],
      providers: [
        {
          provide: LoadMarkdownWorkerInjectorToken,
          useValue: {
-           getWorker: markdownWorker
-         }
-       }
+           getWorker: marked,
+           options: {
+             prism: {
+               ...DEFAULT_PRISM_OPTIONS,
+   
+               /** if needed **/
+               languageFileType: 'min.js',  // if you want to use the minified assets
+               languageMap: {               // alias to load the real file
+                 ts: 'typescript',          // default
+                 cs: 'csharp'               // additional
+               }
+             }
+           }
+         } as GetWorkerPayload
+       },
      ]
+   })
    ```
 5. copy the content of one the included workers into your created one
 
 ## Usage
 
+.. as component
 ```html 
 <gewd-markdown [markdown]="'your markdown or var'">
 </gewd-markdown>
+```
+
+.. as Service, add `MarkdownService` to your needed component and call:
+```ts 
+
+  constructor (private service: MarkdownService) {
+
+  }
+
+  async someMethod () {
+     const result = await this.service.compileMarkdown('some **markdown**');
+  }
 ```
 
 ## Included Workers
@@ -87,6 +125,8 @@ in `angular.json` in your app's `assets: [` array
   "output": "/assets/prism/"
 }
 ```
+if you want to use the minified prism-files use `.min.js` in the `glob`-part and inside your PrismOptions (see `LoadMarkdownWorkerInjectorToken`-Example at the top)
+
 in your app's `styles: [` (or any other prismjs theme)
 ```
   "node_modules/prismjs/themes/prism-okaidia.css"
