@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 
 import { Remote, wrap } from 'comlink';
 import {
@@ -11,7 +11,7 @@ import {
 @Injectable({
   providedIn: 'root'
 })
-export class WorkerService {
+export class MarkdownService {
 
   private canTriggerMermaidLoad = false;
   private mermaidAddedToPage = false;
@@ -28,10 +28,10 @@ export class WorkerService {
     }
   }
 
-  public async compileMarkdown (str: string): Promise<string> {
+  public async compileMarkdown (str: string, triggerMermaid = false): Promise<string> {
     const parsedMarkdown = await this.workerProxy.compile(str);
 
-    if (parsedMarkdown.match(/class="mermaid"/)) {
+    if (triggerMermaid && parsedMarkdown.match(/class="mermaid"/)) {
       this.triggerMermaidLoadScript();
     }
 
@@ -59,8 +59,8 @@ export class WorkerService {
         mermaid.init();
 
 
-        mermaid.parseError = function(err,hash){
-          console.info(err);
+        mermaid.parseError = function(err){
+          console.error("MarkdownService, Mermaid: ", err);
         };
       };
 

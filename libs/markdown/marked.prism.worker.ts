@@ -3,7 +3,7 @@ import * as marked from 'marked';
 import * as xss from 'xss';
 import { Lazy } from '@gewd/markdown/utils';
 import { checkAndReplaceToUnicodeChar, emojiRegex } from '@gewd/markdown/worker-functions';
-import { WorkerOptions } from '@gewd/markdown/contracts';
+import { DEFAULT_PRISM_OPTIONS, WorkerOptions } from '@gewd/markdown/contracts';
 
 // web-worker importScripts
 declare function importScripts (...urls: string[]): void;
@@ -21,13 +21,7 @@ renderer.code = function(code, language, isEscaped) {
 };
 
 let currentConfigObject: WorkerOptions = {
-  prism: {
-    assetPath: '/assets/prism/',
-    languageFileType: 'js',
-    languageMap: {
-      ts: 'typescript'
-    }
-  }
+  prism: DEFAULT_PRISM_OPTIONS
 };
 
 /* Prism Config/Importer */
@@ -59,7 +53,8 @@ marked.setOptions({
   // highlight override for prismjs
   highlight: function(code, lang, callback): any {
     // if it is a mermaid tag, don't need to go through prism it
-    if (mermaidRegex.test(lang)) {
+    // also for code blocks without a language
+    if (!lang ||  mermaidRegex.test(lang)) {
       callback(undefined, code);
       return;
     }

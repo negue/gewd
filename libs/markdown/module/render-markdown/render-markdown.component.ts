@@ -4,7 +4,7 @@ import {
   OnInit
 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { WorkerService } from '@gewd/markdown/service';
+import { MarkdownService } from '@gewd/markdown/service';
 
 @Component({
   selector: 'gewd-markdown',
@@ -30,7 +30,7 @@ export class RenderMarkdownComponent implements OnInit {
 
   public parsedHtml$: Observable<string>;
 
-  constructor(private worker: WorkerService) {
+  constructor (private service: MarkdownService) {
     this.parsedHtml$ = this._htmlToShow$;
   }
 
@@ -39,7 +39,7 @@ export class RenderMarkdownComponent implements OnInit {
   }
 
   private async compile() {
-    const parsedHtml = await this.worker.compileMarkdown(this._markdown);
+    const parsedHtml = await this.service.compileMarkdown(this._markdown, true);
     this._htmlToShow$.next(parsedHtml);
   }
 }
