@@ -16,6 +16,10 @@ import {
   LoadMermaidInjectorToken
 } from '@gewd/markdown/contracts';
 
+import './lazy.registration';
+import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
+import { MatButtonModule } from '@angular/material/button';
+
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
 @NgModule({
@@ -24,7 +28,8 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     BrowserModule,
     MarkdownModule, FormsModule,
     MatExpansionModule, MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GewdLazyLoaderModule, MatButtonModule
   ],
   providers: [
     {

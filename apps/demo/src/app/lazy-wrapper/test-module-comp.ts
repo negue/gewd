@@ -1,0 +1,69 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  NgModule,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { LazyModule, LazyModuleComponent } from '@gewd/lazy/registry';
+
+@Component({
+  selector: 'test-comp',
+  template: `
+    My Card Content: {{testProp}}
+
+    <button mat-raised-button (click)="outputTest.emit('Button Clicked')">Test</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MyModuleComp implements OnInit, OnChanges, OnDestroy {
+  @Input()
+  public testProp: any;
+
+  @Input()
+  public outputTest = new EventEmitter();
+
+  constructor() {
+  }
+
+  ngOnChanges (changes: SimpleChanges): void {
+
+    console.info('onChanges', changes);
+  }
+
+  ngOnDestroy (): void {
+    alert('destroy');
+  }
+
+  ngOnInit (): void {
+    this.outputTest.next('lazy component ngOnInit');
+  }
+}
+
+@NgModule({
+  declarations: [
+    MyModuleComp
+  ],
+  imports: [
+    CommonModule,
+    MatButtonModule
+  ]
+})
+export class TestModule implements LazyModule {
+  getComponents (): LazyModuleComponent[] {
+    return [
+      {
+        name: 'MyModuleComp',
+        componentType: MyModuleComp
+      }
+    ];
+  }
+
+
+}

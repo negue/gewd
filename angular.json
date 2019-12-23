@@ -145,6 +145,37 @@
           }
         }
       }
+    },
+    "lazy": {
+      "projectType": "library",
+      "root": "libs/lazy",
+      "sourceRoot": "libs/lazy/src",
+      "prefix": "gewd",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/lazy/tsconfig.lib.json",
+              "libs/lazy/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/lazy/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lazy/jest.config.js",
+            "tsConfig": "libs/lazy/tsconfig.spec.json",
+            "setupFile": "libs/lazy/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
