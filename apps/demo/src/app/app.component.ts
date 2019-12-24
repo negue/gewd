@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { emojiExampleList } from './example-emoji-list';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 
 const exampleMD = () => fetch('./assets/example.md').then(r => r.text());
 
@@ -20,7 +21,12 @@ export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('markdown', {static: true})
   markdown: any;
 
-  constructor () {
+  public outputLog = [];
+  public outputBinding = {
+    outputTest: (e) => this.addLogEntry(e)
+  };
+
+  constructor (private cd: ChangeDetectorRef) {
   }
 
   changeIt (textarea: HTMLTextAreaElement, markdown: any) {
@@ -39,5 +45,22 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(value => {
         this.markdown.markdown = value;
       })
+  }
+
+  setLazyComp (lazyComponent: LazyComponent) {
+    lazyComponent.component = 'test-comp';
+    lazyComponent.setComponent();
+    this.cd.markForCheck();
+  }
+
+  setLazyModuleComp (lazyModuleComponent: LazyModuleComponent) {
+    lazyModuleComponent.moduleAlias = 'test-module';
+    lazyModuleComponent.component = 'MyModuleComp';
+    lazyModuleComponent.setComponent();
+  }
+
+
+  addLogEntry (e) {
+    this.outputLog.push(e);
   }
 }

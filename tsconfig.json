@@ -18,7 +18,8 @@
     "paths": {
       "@gewd/markdown": ["libs/markdown/module/index.ts"],
       "@gewd/markdown/*.worker": ["libs/markdown/*.worker.ts"],
-      "@gewd/markdown/*": ["libs/markdown/*", "dist/libs/markdown/*"]
+      "@gewd/markdown/*": ["libs/markdown/*", "dist/libs/markdown/*"],
+      "@gewd/lazy/*": ["libs/lazy/*", "dist/libs/lazy/*"]
     }
   },
   "exclude": ["node_modules", "tmp"],

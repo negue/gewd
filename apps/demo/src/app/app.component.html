@@ -1,4 +1,4 @@
-Open Dev-Tools to see the network calls.
+<h2>Open Dev-Tools to see the network calls.</h2>
 
 <mat-expansion-panel (opened)="changeIt(textarea, markdown)">
   <mat-expansion-panel-header>
@@ -23,4 +23,37 @@ Open Dev-Tools to see the network calls.
     </mat-tab>
   </mat-tab-group>
 </mat-expansion-panel>
+<br/>
 
+<mat-expansion-panel #lazyPanel>
+  <mat-expansion-panel-header>
+    Lazy Component
+  </mat-expansion-panel-header>
+
+  <gewd-lazy-component #lazyComponent
+                       [componentInputs]="{ testProp: 'Component Binding from outside' }">
+    <button mat-raised-button color="primary"
+            (click)="setLazyComp(lazyComponent)">
+      Load Lazy Component: Test-Comp <br/> (this button as content will be replaced)
+    </button>
+  </gewd-lazy-component>
+
+  <br/>
+  <br/>
+
+  <gewd-lazy-module-component
+    #lazyModuleComponent
+    [componentInputs]="{ testProp: 'Module Component Example' }"
+    [componentOutputs]="outputBinding">
+    <button mat-raised-button color="primary"
+            (click)="setLazyModuleComp(lazyModuleComponent)">
+      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
+    </button>
+  </gewd-lazy-module-component>
+
+  <div>
+    Container of Output-Events:
+
+    <pre>{{outputLog | json}}</pre>
+  </div>
+</mat-expansion-panel>

@@ -116,7 +116,7 @@
     "markdown": {
       "projectType": "library",
       "root": "libs/markdown",
-      "sourceRoot": "libs/markdown/src",
+      "sourceRoot": "libs/markdown",
       "prefix": "gewd",
       "architect": {
         "build": {
@@ -143,6 +143,44 @@
             "tsConfig": "libs/markdown/tsconfig.spec.json",
             "setupFile": "libs/markdown/test-setup.ts"
           }
+        }
+      }
+    },
+    "lazy": {
+      "projectType": "library",
+      "root": "libs/lazy",
+      "sourceRoot": "libs/lazy",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/lazy/tsconfig.lib.json",
+            "project": "libs/lazy/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/lazy/tsconfig.lib.json",
+              "libs/lazy/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/lazy/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lazy/jest.config.js",
+            "tsConfig": "libs/lazy/tsconfig.spec.json",
+            "setupFile": "libs/lazy/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
