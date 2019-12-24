@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LazyComponent } from '@gewd/lazy/loader/lazy.component';
-import { LazyModuleComponent } from '@gewd/lazy/loader/lazy-module.component';
-
-const LOADERS = [
-  LazyComponent,
-  LazyModuleComponent
-];
+import { LazyComponent } from './lazy.component';
+import { LazyModuleComponent } from './lazy-module.component';
 
 @NgModule({
-  declarations: [...LOADERS],
+  declarations: [
+    LazyComponent,
+    LazyModuleComponent
+  ],
   exports: [
-    ...LOADERS
+    LazyComponent,
+    LazyModuleComponent
   ],
   imports: [
     CommonModule
