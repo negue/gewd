@@ -11,15 +11,7 @@ import {
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
-
-interface InputMap {
-  [key: string]: any;
-}
-
-interface OutputMap {
-  [key: string]: (value: any) => void;
-}
-
+import { InputMap, OutputMap } from '@gewd/lazy/contracts';
 
 @Component({
   selector: 'gewd-lazy-module-component',

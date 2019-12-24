@@ -1,15 +1,6 @@
 import { ComponentFactory, NgModuleRef, Type } from '@angular/core';
 import { Lazy } from '@gewd/lazy/utils';
-import { ComponentType } from '@angular/cdk/overlay';
-
-export interface LazyModuleComponent {
-  name: string,
-  componentType: ComponentType<any>
-}
-
-export interface LazyModule {
-  getComponents(): LazyModuleComponent[];
-}
+import { LazyModule } from '@gewd/lazy/contracts';
 
 interface LoadedModule {
   ngModule: NgModuleRef<any>;

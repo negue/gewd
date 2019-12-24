@@ -10,14 +10,7 @@ import {
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
-
-interface InputMap {
-  [key: string]: any;
-}
-
-interface OutputMap {
-  [key: string]: (value: any) => void;
-}
+import { InputMap, OutputMap } from '@gewd/lazy/contracts';
 
 @Component({
   selector: 'gewd-lazy-component',
@@ -65,7 +58,7 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
 
     this.componentLoading.emit(true);
     this.cd.detectChanges();
-console.info('load' , this.component);
+
     // cached promise
     const importComponent = DynamicLoaderRegistry.LazyComponents[this.component].getValue();
 
@@ -92,7 +85,6 @@ console.info('load' , this.component);
   }
 
   ngOnChanges (changes: SimpleChanges): void {
-    console.info(changes);
     if (changes['component']) {
       this.setComponent();
     }

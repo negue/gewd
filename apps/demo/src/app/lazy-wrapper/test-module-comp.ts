@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { LazyModule, LazyModuleComponent } from '@gewd/lazy/registry';
+import { LazyModule, LazyModuleComponentInfo } from '@gewd/lazy/contracts';
 
 @Component({
-  selector: 'test-comp',
+  selector: 'test-module-comp',
   template: `
     My Card Content: {{testProp}}
 
@@ -56,7 +56,7 @@ export class MyModuleComp implements OnInit, OnChanges, OnDestroy {
   ]
 })
 export class TestModule implements LazyModule {
-  getComponents (): LazyModuleComponent[] {
+  getComponents (): LazyModuleComponentInfo[] {
     return [
       {
         name: 'MyModuleComp',
