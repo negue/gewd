@@ -12,4 +12,10 @@ DynamicLoaderRegistry.LazyModuleComponents = {
       .then(({TestModule}) => TestModule)
     )
   },
+  'portal-module': {
+    load: new Lazy<any>(
+      () => import(/* webpackChunkName: "lazy-portal-module" */ './lazy-wrapper/lazy-portal-source')
+        .then(({PortalModule}) => PortalModule)
+    )
+  },
 };

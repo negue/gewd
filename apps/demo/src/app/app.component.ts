@@ -60,6 +60,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
 
+  setLazyPortalModuleComp (lazyModuleComponent: LazyModuleComponent) {
+    lazyModuleComponent.moduleAlias = 'portal-module';
+    lazyModuleComponent.component = 'PortalModuleComp';
+    lazyModuleComponent.setComponent();
+  }
+
   addLogEntry (e) {
     this.outputLog.push(e);
   }

@@ -25,7 +25,7 @@
 </mat-expansion-panel>
 <br/>
 
-<mat-expansion-panel #lazyPanel>
+<mat-expansion-panel>
   <mat-expansion-panel-header>
     Lazy Component
   </mat-expansion-panel-header>
@@ -56,4 +56,29 @@
 
     <pre>{{outputLog | json}}</pre>
   </div>
+</mat-expansion-panel>
+
+
+<br/>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    Dynamic Portal Component
+  </mat-expansion-panel-header>
+
+  <dynamic-portal key="portalKey" class="dynamic-portal-border">
+    Dynamic Portal Placeholder
+  </dynamic-portal>
+
+  <br />
+
+  <gewd-lazy-module-component
+    #lazyPortalModuleComponent
+    [componentInputs]="{ testProp: 'Binding value', portalKey: 'portalKey' }"
+   >
+    <button mat-raised-button color="primary"
+            (click)="setLazyPortalModuleComp(lazyPortalModuleComponent)">
+      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
+    </button>
+  </gewd-lazy-module-component>
 </mat-expansion-panel>

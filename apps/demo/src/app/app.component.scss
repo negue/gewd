@@ -13,3 +13,11 @@ textarea {
   width: calc(100% - 2px); // 1px textarea border
   min-height: 120px;
 }
+
+.dynamic-portal-border {
+  background: darkgreen;
+  padding: 5px;
+  margin: 15px 0;
+  border: 2px dashed green;
+  display: block;
+}

@@ -16,6 +16,9 @@
     },
     "lazy": {
       "tags": []
+    },
+    "ng-utils": {
+      "tags": []
     }
   }
 }
