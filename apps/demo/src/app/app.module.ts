@@ -19,6 +19,7 @@ import {
 import './lazy.registration';
 import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
 import { MatButtonModule } from '@angular/material/button';
+import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -29,7 +30,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MarkdownModule, FormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
-    GewdLazyLoaderModule, MatButtonModule
+    GewdLazyLoaderModule, MatButtonModule, DynamicPortalModule
   ],
   providers: [
     {

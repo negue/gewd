@@ -1,0 +1,6 @@
+<ng-container *ngIf="templateToShow$ | async as templateRef"
+              [ngTemplateOutlet]="templateRef">
+</ng-container>
+<ng-container *ngIf="!(templateToShow$ | async)">
+  <ng-content></ng-content>
+</ng-container>
