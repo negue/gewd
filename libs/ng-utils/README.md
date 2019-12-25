@@ -25,3 +25,5 @@ Create a dynamic portal, e.g. in your header, and fill it with a template conten
   Dynamic Portal Placeholder, until the template for `yourPortalKey` not been set
 </dynamic-portal>
 ```
+
+![dynamic portal example](https://user-images.githubusercontent.com/842273/71450280-25562380-275f-11ea-9c33-62bc8d282270.gif)
