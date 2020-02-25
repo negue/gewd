@@ -2,10 +2,20 @@
 
 <mat-expansion-panel (opened)="changeIt(textarea, markdown)">
   <mat-expansion-panel-header>
-    Markdown
+    <a href="https://www.npmjs.com/package/@gewd/markdown" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/markdown.svg?"
+      alt="Markdown NPM Version">
+    </a>&nbsp;-  Markdown
   </mat-expansion-panel-header>
 
   <mat-tab-group>
+    <mat-tab label="README.MD" #readmeTab>
+      <i>Note: This shows the README.md of this repo, and don't mind the styling of links :P</i>
+
+      <gewd-markdown *ngIf="readmeTab.isActive"
+                     [markdown]="loadReadme() | async"></gewd-markdown>
+    </mat-tab>
     <mat-tab label="Try out">
 
 <textarea #textarea
@@ -13,7 +23,7 @@
 {{exampleMD|async}}
 </textarea>
 
-      <gewd-markdown #markdown></gewd-markdown>
+      <gewd-markdown #markdown [useCache]="true"></gewd-markdown>
 
     </mat-tab>
 
@@ -27,7 +37,11 @@
 
 <mat-expansion-panel>
   <mat-expansion-panel-header>
-    Lazy Component
+    <a href="https://www.npmjs.com/package/@gewd/lazy" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/lazy.svg?"
+           alt="Gewd Lazy NPM Version">
+    </a>&nbsp;-  Lazy Component
   </mat-expansion-panel-header>
 
   <gewd-lazy-component #lazyComponent
@@ -36,6 +50,8 @@
             (click)="setLazyComp(lazyComponent)">
       Load Lazy Component: Test-Comp <br/> (this button as content will be replaced)
     </button>
+
+    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
   </gewd-lazy-component>
 
   <br/>
@@ -49,6 +65,9 @@
             (click)="setLazyModuleComp(lazyModuleComponent)">
       Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
     </button>
+
+
+    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
   </gewd-lazy-module-component>
 
   <div>
@@ -63,19 +82,24 @@
 
 <mat-expansion-panel>
   <mat-expansion-panel-header>
-    Dynamic Portal Component
+    <a href="https://www.npmjs.com/package/@gewd/ng-utils" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/ng-utils.svg?"
+           alt="Gewd NG-Utils NPM Version">
+    </a>
+    &nbsp;- Dynamic Portal Component
   </mat-expansion-panel-header>
 
   <dynamic-portal key="portalKey" class="dynamic-portal-border">
     Dynamic Portal Placeholder
   </dynamic-portal>
 
-  <br />
+  <br/>
 
   <gewd-lazy-module-component
     #lazyPortalModuleComponent
     [componentInputs]="{ testProp: 'Binding value', portalKey: 'portalKey' }"
-   >
+  >
     <button mat-raised-button color="primary"
             (click)="setLazyPortalModuleComp(lazyPortalModuleComponent)">
       Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)

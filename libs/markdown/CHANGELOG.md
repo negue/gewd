@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.3.0] - 2020-02-25
+
+#### Optimized
+- `mermaid.js` calls
+
+### [`<gewd-markdown>`]
+
+#### Added
+- `[useCache]="true"` this will use methods `getCached` and `saveCached` of `MarkdownCacheService` 
+  
+  You can provide your own implementation of `MarkdownCacheService`:
+    - to either cache the whole markdown
+    - or the markdown parts (currently only mermaidjs)
+- `[showRawMd]="false"` shows the raw markdown first before showing the rendered text
+- `[allowMermaid]="false"`
+
+### [`@gewd/markdown/utils`]
+
+#### Added
+- `simpleHash(text)`
+
 ## [0.2.0] - 2019-12-23
 
 - :sparkles: Emoji Support inside Markdown-Worker

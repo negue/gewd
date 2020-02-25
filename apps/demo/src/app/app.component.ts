@@ -14,6 +14,7 @@ const exampleMD = () => fetch('./assets/example.md').then(r => r.text());
 export class AppComponent implements OnInit, OnDestroy {
   private markdown$ = new Subject();
   private subscription: Subscription;
+  private cachedReadmePromise:Promise<string> = null;
 
   exampleMD = exampleMD();
   emojiList = emojiExampleList;
@@ -68,5 +69,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   addLogEntry (e) {
     this.outputLog.push(e);
+  }
+
+  loadReadme () {
+    return this.cachedReadmePromise
+      ? this.cachedReadmePromise
+      : (this.cachedReadmePromise = fetch('README.md').then(r => r.text()))
   }
 }
