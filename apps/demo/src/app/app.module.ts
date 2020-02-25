@@ -20,6 +20,9 @@ import './lazy.registration';
 import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
 import { MatButtonModule } from '@angular/material/button';
 import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MarkdownCacheService } from '@gewd/markdown/service/markdown-cache.service';
+import { MdCacheExampleService } from './md-cache-example.service';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -30,7 +33,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MarkdownModule, FormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
-    GewdLazyLoaderModule, MatButtonModule, DynamicPortalModule
+    GewdLazyLoaderModule, MatButtonModule, DynamicPortalModule, MatProgressBarModule
   ],
   providers: [
     {
@@ -54,6 +57,11 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     {
       provide: LoadMermaidInjectorToken,
       useValue: 'mermaid.min.js'
+    },
+    MdCacheExampleService,
+    {
+      provide: MarkdownCacheService,
+      useExisting: MdCacheExampleService
     }
   ],
   bootstrap: [AppComponent]

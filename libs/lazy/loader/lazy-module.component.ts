@@ -18,7 +18,9 @@ import { InputMap, OutputMap } from '@gewd/lazy/contracts';
   template: `
     <ng-container #targetContainer></ng-container>
     <ng-content *ngIf="!component || !moduleAlias"></ng-content>
-    <span *ngIf="error" class="error">{{error}}</span>
+    <ng-content *ngIf="componentLoading | async"
+                select="[isLoading]"></ng-content>
+    <span *ngIf="showError && error" class="error">{{error}}</span>
   `,
   styles: [`
     .error {
@@ -47,6 +49,12 @@ export class LazyModuleComponent implements OnChanges, OnDestroy {
   @Output()
   public componentCreated = new EventEmitter();
 
+  @Output()
+  public componentLoading = new EventEmitter();
+
+  @Input()
+  public showError = true;
+
   public error: string;
   private componentInstance = null;
 
@@ -71,6 +79,15 @@ export class LazyModuleComponent implements OnChanges, OnDestroy {
     this.alreadySettingComponent = true;
 
     const moduleInDictionary = DynamicLoaderRegistry.LazyModuleComponents[this.moduleAlias];
+
+    if (!moduleInDictionary) {
+      this.error = `Module ${this.moduleAlias} not registered`;
+      this.cd.markForCheck();
+      return;
+    }
+
+
+    this.componentLoading.emit(true);
 
     if (!moduleInDictionary.loadedModule) {
       // load and cache
@@ -115,6 +132,7 @@ export class LazyModuleComponent implements OnChanges, OnDestroy {
     const componentRef = this.targetContainer.createComponent(componentFactory, 0, this.injector);
     componentRef.changeDetectorRef.markForCheck();
 
+    this.componentLoading.emit(false);
     this.componentCreated.emit(componentRef.instance);
     this.componentInstance = componentRef.instance;
     this.setInputs();

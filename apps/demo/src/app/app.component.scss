@@ -10,7 +10,7 @@
 }
 
 textarea {
-  width: calc(100% - 2px); // 1px textarea border
+  width: calc(100% - 10px);
   min-height: 120px;
 }
 
@@ -20,4 +20,8 @@ textarea {
   margin: 15px 0;
   border: 2px dashed green;
   display: block;
+}
+
+.npm-link {
+  height: 20px;
 }

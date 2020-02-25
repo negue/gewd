@@ -33,6 +33,11 @@
                 "glob": "prism-@(c|csharp|typescript).min.js",
                 "input": "./node_modules/prismjs/components",
                 "output": "/assets/prism/"
+              },
+              {
+                "glob": "README.md",
+                "input": "./",
+                "output": "./"
               }
             ],
             "styles": [

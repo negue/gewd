@@ -80,7 +80,7 @@ Only loads the worker, prism or additional languages once used inside the markdo
   }
 ```
 
-## Included Workers
+## Included Worker (examples)
 |Worker|Description|Requirements|
 |----|----|-----|
 |`markdown-it.worker.ts`| If you prefer markdown-it and its plugins |`npm install markdown-it --save`|
@@ -135,4 +135,24 @@ in your app's `styles: [` (or any other prismjs theme)
 
 add the languages you want by changing `@(c|csharp)`, if you just want to copy all languages use `*`
 
- 
+## MarkdownCacheService
+You can inject your own version of `MarkdownCacheService` by using the providers:
+
+```ts
+providers: [
+  MdCacheExampleService,
+  {
+    provide: MarkdownCacheService,
+    useExisting: MdCacheExampleService
+  }
+],
+```
+
+ |Method|Description|
+ |----|----|
+ |`getCached(raw)`| Loads the cached version of `raw`|
+ |`saveCached(raw, rendered)`|Saves the `rendered` version of `raw`|
+ |`getCachedPart`|same as `getCached` just for parts|
+ |`saveCachedPart`|same as `saveCached` |
+
+A hash is generated of `raw` to use as key to save/load the cached version. 
