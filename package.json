@@ -82,7 +82,7 @@
     "ng-packagr": "9.0.0",
     "prettier": "1.18.2",
     "ts-jest": "24.0.0",
-    "ts-node": "~7.0.0",
+    "ts-node": "~8.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.11.0",
     "typescript": "3.6.4"
