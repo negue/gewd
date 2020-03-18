@@ -2,9 +2,9 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@ang
 import { emojiExampleList } from './example-emoji-list';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+// todo fix nx enforce module boundaries
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
-
-const exampleMD = () => fetch('./assets/example.md').then(r => r.text());
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'gewd-utils-root',
@@ -14,9 +14,14 @@ const exampleMD = () => fetch('./assets/example.md').then(r => r.text());
 export class AppComponent implements OnInit, OnDestroy {
   private markdown$ = new Subject();
   private subscription: Subscription;
-  private cachedReadmePromise:Promise<string> = null;
 
-  exampleMD = exampleMD();
+  readmeMD$ = this.http.get('README.md', {
+    responseType: 'text'
+  });
+  exampleMD$ = this.http.get('./assets/example.md', {
+    responseType: 'text'
+  });
+
   emojiList = emojiExampleList;
 
   @ViewChild('markdown', {static: true})
@@ -27,7 +32,8 @@ export class AppComponent implements OnInit, OnDestroy {
     outputTest: (e) => this.addLogEntry(e)
   };
 
-  constructor (private cd: ChangeDetectorRef) {
+  constructor (private cd: ChangeDetectorRef,
+               private http: HttpClient) {
   }
 
   changeIt (textarea: HTMLTextAreaElement, markdown: any) {
@@ -69,11 +75,5 @@ export class AppComponent implements OnInit, OnDestroy {
 
   addLogEntry (e) {
     this.outputLog.push(e);
-  }
-
-  loadReadme () {
-    return this.cachedReadmePromise
-      ? this.cachedReadmePromise
-      : (this.cachedReadmePromise = fetch('README.md').then(r => r.text()))
   }
 }

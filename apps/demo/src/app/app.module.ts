@@ -11,9 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   DEFAULT_PRISM_OPTIONS,
-  GetWorkerPayload,
-  LoadMarkdownWorkerInjectorToken,
-  LoadMermaidInjectorToken
+  MarkdownOptions,
 } from '@gewd/markdown/contracts';
 
 import './lazy.registration';
@@ -23,13 +21,19 @@ import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MarkdownCacheService } from '@gewd/markdown/service/markdown-cache.service';
 import { MdCacheExampleService } from './md-cache-example.service';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
+import { MarkdownToolbarComponent } from './markdown-toolbar.component';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MarkdownToolbarComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    RouterModule.forRoot([]),
+    HttpClientModule,
     MarkdownModule, FormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
@@ -37,7 +41,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
   ],
   providers: [
     {
-      provide: LoadMarkdownWorkerInjectorToken,
+      provide: MarkdownOptionsInjectorToken,
       useValue: {
         getWorker: marked,
         options: {
@@ -51,12 +55,12 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
               cs: 'csharp'               // additional
             }
           }
+        },
+        mermaidPath: 'mermaid.min.js',
+        mermaidOptions: {
+          theme: 'neutral',
         }
-      } as GetWorkerPayload
-    },
-    {
-      provide: LoadMermaidInjectorToken,
-      useValue: 'mermaid.min.js'
+      } as MarkdownOptions
     },
     MdCacheExampleService,
     {

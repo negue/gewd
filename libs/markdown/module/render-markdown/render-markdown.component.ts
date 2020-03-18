@@ -23,6 +23,9 @@ export class RenderMarkdownComponent implements OnInit {
   @Input()
   public allowMermaid = true;
 
+  @Input()
+  public mermaidTheme: string;
+
   get markdown (): string {
     return this._markdown;
   }
@@ -45,7 +48,7 @@ export class RenderMarkdownComponent implements OnInit {
 
   constructor (private service: MarkdownService,
                private element: ElementRef,
-               private _: DomSanitizer,
+               private sanitizer: DomSanitizer,
                private cache: MarkdownCacheService) {
     this.parsedHtml$ = this._htmlToShow$;
   }
@@ -59,14 +62,14 @@ export class RenderMarkdownComponent implements OnInit {
       if (this.useCache) {
         const cachedMarkdown = await this.cache.getCached(this._markdown);
         if (!!cachedMarkdown) {
-          this._htmlToShow$.next(this._.bypassSecurityTrustHtml(cachedMarkdown));
+          this._htmlToShow$.next(this.sanitizer.bypassSecurityTrustHtml(cachedMarkdown));
           return;
         }
       }
 
       const parsedHtml = await this.service.compileMarkdown(this._markdown, this.allowMermaid);
 
-      this._htmlToShow$.next(this._.bypassSecurityTrustHtml(parsedHtml));
+      this._htmlToShow$.next(this.sanitizer.bypassSecurityTrustHtml(parsedHtml));
 
       if (this.useCache) {
         this.cache.saveCached(this._markdown, parsedHtml);

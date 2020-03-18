@@ -1,7 +1,7 @@
 # `@gewd/markdown`
 
 Angular Markdown render component, which uses a worker-process.
-Only loads the worker, prism or additional languages once used inside the markdown.
+> Only loads the worker, emoji-map, prism or additional languages once used inside the markdown.
 
 [![NPM Version][npm-img]][npm-url]
 [![Package Size][size-img]][size-url]
@@ -38,7 +38,7 @@ Only loads the worker, prism or additional languages once used inside the markdo
      ],
      providers: [
        {
-         provide: LoadMarkdownWorkerInjectorToken,
+         provide: MarkdownOptionsInjectorToken,
          useValue: {
            getWorker: marked,
            options: {
@@ -105,8 +105,15 @@ in `angular.json` in your app's `assets: [` array
    
      providers: [
        {
-         provide: LoadMermaidInjectorToken,
-         useValue: 'mermaid.min.js' // path to where your mermaid.min.js-asset was copied
+         provide: MarkdownOptionsInjectorToken,
+         useValue: {
+           // ... see other example
+           mermaidPath: 'mermaid.min.js', // path to where your mermaid.min.js-asset was copied
+           mermaidOptions: {
+             theme: 'neutral',
+             // and others see  https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults
+           }
+         }
        }
      ]
 ```

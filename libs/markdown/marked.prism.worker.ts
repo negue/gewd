@@ -2,14 +2,11 @@ import { expose } from 'comlink';
 import * as marked from 'marked';
 import * as xss from 'xss';
 import { Lazy } from '@gewd/markdown/utils';
-import { checkAndReplaceToUnicodeChar, emojiRegex } from '@gewd/markdown/worker-functions';
+import { checkAndReplaceToUnicodeChar, emojiRegex, mermaidRegex } from '@gewd/markdown/worker-functions';
 import { DEFAULT_PRISM_OPTIONS, WorkerOptions } from '@gewd/markdown/contracts';
 
 // web-worker importScripts
 declare function importScripts (...urls: string[]): void;
-
-// Extend Code-Renderer for Mermaid, remove if not needed
-const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
 
 const renderer = new marked.Renderer();
 const oldCodeRenderer = renderer.code;
@@ -18,6 +15,9 @@ renderer.code = function(code, language, isEscaped) {
     return `<div class="mermaid">${language}\n${code}</div>`;
   }
   return oldCodeRenderer.call(this, code, language, isEscaped);
+};
+renderer.link = function( href, title, text ) {
+  return `<a target="_blank" href="${href}" title="${title}">${text}</a>`;
 };
 
 let currentConfigObject: WorkerOptions = {
@@ -49,7 +49,8 @@ const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
 
 // apply changes to marked
 marked.setOptions({
-  renderer, // needed for mermaid
+  // needed for mermaid
+  renderer,
   // highlight override for prismjs
   highlight: function(code, lang, callback): any {
     // if it is a mermaid tag, don't need to go through prism it
@@ -86,7 +87,6 @@ const workerMethods = {
 
       input = checkAndReplaceToUnicodeChar(input, EMOJI_MAP, colonToUnicode);
     }
-
 
     marked(input, {
       // aditional marked config, also enables highlight callback

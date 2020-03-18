@@ -1,18 +1,30 @@
 import { MarkdownCacheService } from '@gewd/markdown/service';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import * as localforage from 'localforage';
 import { simpleHash } from '@gewd/markdown/utils';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class MdCacheExampleService extends MarkdownCacheService {
   private localForageCache: LocalForage;
+  private enabled = true;
 
-  constructor () {
+  constructor (@Inject(PLATFORM_ID) platformId: Object) {
     super();
-    this.createInstance();
+
+    // skip localforage calls during pre-render step
+    this.enabled = isPlatformBrowser(platformId);
+
+    if (this.enabled) {
+      this.createInstance();
+    }
   }
 
   async saveCachedPart (type: string, raw: string, rendered: string) {
+    if (!this.enabled) {
+      return;
+    }
+
     await this.localForageCache.ready();
     const hash = simpleHash(raw);
 
@@ -20,6 +32,10 @@ export class MdCacheExampleService extends MarkdownCacheService {
   }
 
   async getCachedPart (type: string, raw: string): Promise<string> {
+    if (!this.enabled) {
+      return;
+    }
+
     await this.localForageCache.ready();
     const hash = simpleHash(raw);
 
@@ -29,6 +45,10 @@ export class MdCacheExampleService extends MarkdownCacheService {
   }
 
   async getCached (rawMarkdown: string): Promise<string> {
+    if (!this.enabled) {
+      return;
+    }
+
     await this.localForageCache.ready();
     const hash = simpleHash(rawMarkdown);
 
@@ -38,6 +58,10 @@ export class MdCacheExampleService extends MarkdownCacheService {
   }
 
   async saveCached (rawMarkdown: string, renderedMarkdown: string) {
+    if (!this.enabled) {
+      return;
+    }
+
     await this.localForageCache.ready();
     const hash = simpleHash(rawMarkdown);
     this.localForageCache.setItem(hash, renderedMarkdown)

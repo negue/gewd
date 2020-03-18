@@ -7,6 +7,7 @@
   "assets": [
     "./markdown-it.worker.ts",
     "./marked.worker.ts",
-    "./marked.prism.worker.ts"
+    "./marked.prism.worker.ts",
+    "./markdown.mixin.scss"
   ]
 }
