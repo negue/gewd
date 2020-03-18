@@ -11,8 +11,6 @@
 
   <mat-tab-group>
     <mat-tab label="README.MD" #readmeTab>
-      <i>Note: This shows the README.md of this repo, and don't mind the styling of links :P</i>
-
       <gewd-markdown *ngIf="readmeTab.isActive"
                      [markdown]="readmeMD$ | async"></gewd-markdown>
     </mat-tab>
