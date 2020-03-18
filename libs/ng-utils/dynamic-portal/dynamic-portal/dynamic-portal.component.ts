@@ -25,8 +25,6 @@ export class DynamicPortalComponent implements OnInit, OnChanges, OnDestroy {
   templateToShow$: Observable<TemplateRef<any>>;
 
   private key$ = new BehaviorSubject('');
-  private templateHubSubscription: Subscription;
-
 
   constructor (private hub: PortalHubService) {
     this.templateToShow$ = this.key$.pipe(
@@ -45,7 +43,7 @@ export class DynamicPortalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy (): void {
-    this.templateHubSubscription.unsubscribe();
+
   }
 
   private checkKeyAndPushTemplate () {
