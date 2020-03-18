@@ -1,21 +1,22 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { Remote, wrap } from 'comlink';
 import {
-  GetWorkerPayload,
-  LoadMarkdownWorkerInjectorToken,
-  LoadMermaidInjectorToken,
+  DEFAULT_MERMAID_OPTIONS,
+  MarkdownOptions,
   MarkdownWorker
 } from '@gewd/markdown/contracts';
 import { MarkdownCacheService } from './markdown-cache.service';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { MarkdownOptionsInjectorToken } from './injection-token';
+import { simpleHash } from '@gewd/markdown/utils';
 
 
 const compiledRegex = /<div class="mermaid">([\s\S]*?)<\/div>/mg;
-const _mermaidNode = document.createElement('div');
-_mermaidNode.hidden = true;
 
 let renderId = 0;
 
+/** @dynamic - allows Document in ngc build */
 @Injectable({
   providedIn: 'root'
 })
@@ -23,24 +24,36 @@ export class MarkdownService {
   private canTriggerMermaidLoad = false;
   private mermaidAddedToPage = false;
   private workerProxy: Remote<MarkdownWorker>;
+  private mermaidCacheKey = '';
+  private mermaidConfig = Object.assign({},
+    DEFAULT_MERMAID_OPTIONS,
+    this.markdownOptions.mermaidOptions);
 
-  constructor (@Inject(LoadMarkdownWorkerInjectorToken)
-               private readonly workerPayload: GetWorkerPayload,
-               @Inject(LoadMermaidInjectorToken) @Optional()
-               private readonly loadMermaidUrl: string,
-               private readonly cache: MarkdownCacheService
+
+  constructor (@Inject(MarkdownOptionsInjectorToken)
+               readonly markdownOptions: MarkdownOptions,
+               private readonly cache: MarkdownCacheService,
+               @Inject(DOCUMENT)
+               private document: Document,
+               @Inject(PLATFORM_ID) platformId: Object
   ) {
-    this.workerProxy = wrap<MarkdownWorker>(workerPayload.getWorker());
-    if (workerPayload.options) {
-      this.workerProxy.init(workerPayload.options);
+    if (isPlatformBrowser(platformId)) {
+      this.workerProxy = wrap<MarkdownWorker>(markdownOptions.getWorker());
+      if (markdownOptions.options) {
+        this.workerProxy.init(markdownOptions.options);
+      }
     }
-
-    if (loadMermaidUrl) {
+    if (markdownOptions.mermaidPath) {
       this.canTriggerMermaidLoad = true;
+      this.mermaidCacheKey = `mermaid_${this.mermaidConfig.theme}_${simpleHash(this.mermaidConfig.themeCSS) }`
     }
   }
 
   public async compileMarkdown (str: string, triggerMermaid = false): Promise<string> {
+    if (!this.workerProxy) {
+      return;
+    }
+
     let parsedMarkdown = await this.workerProxy.compile(str);
 
     if (triggerMermaid && parsedMarkdown.match(/class="mermaid"/)) {
@@ -51,28 +64,46 @@ export class MarkdownService {
         const matched = parsedMarkdown.match(compiledRegex);
 
         for (const mermaid of matched) {
-          const innerContent = mermaid.replace(/&gt;/mg, '>')
-            .replace('<div class="mermaid">', '')
-            .replace('</div>', '');
+          const innerContent = this.cleanUpMermaidRaw(mermaid);
 
           let rendered = '';
 
-          const cached = await this.cache.getCachedPart('mermaid', innerContent);
+          const cached = await this.cache.getCachedPart(this.mermaidCacheKey, innerContent);
 
           if (!!cached) {
             rendered = cached;
           } else {
-            rendered = mermaidInstance.render(`sub${renderId++}`, innerContent,
-              () => { });
-            this.cache.saveCachedPart('mermaid', innerContent, rendered);
+            let errorStr = "";
+            try {
+              mermaidInstance.parse(innerContent);
+            } catch (e) {
+              errorStr = e.str;
+            }
+
+            if (!errorStr) {
+              rendered = mermaidInstance.render(`sub${renderId++}`, innerContent,
+                () => {
+                });
+              this.cache.saveCachedPart(this.mermaidCacheKey, innerContent, rendered);
+            } else {
+              rendered = `<pre>${errorStr}\n${innerContent}</pre>`;
+            }
           }
 
-          parsedMarkdown = parsedMarkdown.replace(mermaid, `<code class="mermaid">${rendered}</code>`);
+          parsedMarkdown = parsedMarkdown.replace(mermaid, `<pre><code class="mermaid">${rendered}</code></pre>`);
         }
       }
     }
 
     return parsedMarkdown;
+  }
+
+  private cleanUpMermaidRaw (mermaidRaw) {
+    return mermaidRaw
+      .replace(/&gt;/mg, '>')
+      .replace(/&lt;/mg, '<')
+      .replace('<div class="mermaid">', '')
+      .replace('</div>', '');
   }
 
   private triggerMermaidLoadScript () {
@@ -82,24 +113,20 @@ export class MarkdownService {
 
     if (this.canTriggerMermaidLoad && !this.mermaidAddedToPage) {
       this.mermaidAddedToPage = true;
-      document.body.appendChild(_mermaidNode);
+      const _mermaidNode = this.document.createElement('div');
+      _mermaidNode.hidden = true;
+
+      this.document.body.appendChild(_mermaidNode);
 
       return new Promise((resolve, reject) => {
 
-        const scriptTag = document.createElement('script');
-        scriptTag.src = this.loadMermaidUrl;
+        const scriptTag = this.document.createElement('script');
+        scriptTag.src = this.markdownOptions.mermaidPath;
         // trigger mermaid init
         scriptTag.onload = () => {
-          const config = {
-            // startOnLoad:true,
-            flowchart: {
-              useMaxWidth: true,
-              htmlLabels: true
-            }
-          };
 
           const mermaid = (window as any).mermaid;
-          mermaid.initialize(config);
+          mermaid.initialize(this.mermaidConfig);
 
           resolve();
 
@@ -108,8 +135,7 @@ export class MarkdownService {
           };
         };
 
-        document.body.appendChild(scriptTag);
-
+        this.document.body.appendChild(scriptTag);
       });
     }
 

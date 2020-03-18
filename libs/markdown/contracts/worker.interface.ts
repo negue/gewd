@@ -1,5 +1,3 @@
-import { InjectionToken } from '@angular/core';
-
 export interface PrismOptions {
   languageMap: {[key: string]: string};
   languageFileType: string;
@@ -16,18 +14,9 @@ export interface MarkdownWorker {
   compile(str: string): string|Promise<string>;
 }
 
-export interface GetWorkerPayload {
+export interface MarkdownOptions {
   getWorker: () => Worker;
   options?: WorkerOptions;
+  mermaidPath?: string;
+  mermaidOptions?: any;
 }
-
-export const DEFAULT_PRISM_OPTIONS: PrismOptions = {
-  assetPath: '/assets/prism/',
-  languageFileType: 'js',
-  languageMap: {
-    ts: 'typescript'
-  }
-};
-
-export const LoadMarkdownWorkerInjectorToken = new InjectionToken<GetWorkerPayload>('LoadMarkdownWorkerInjectorToken');
-export const LoadMermaidInjectorToken = new InjectionToken<string>('LoadMermaidInjectorToken');

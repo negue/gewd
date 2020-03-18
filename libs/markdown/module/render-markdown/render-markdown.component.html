@@ -1,1 +1,7 @@
+<div class="above">
+  <ng-content select="[markdown__above]"></ng-content>
+</div>
 <div [innerHTML]="parsedHtml$ | async"></div>
+<div class="below">
+  <ng-content select="[markdown__below]"></ng-content>
+</div>

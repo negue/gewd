@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.4.0] - 18.03.2020
+
+#### Markdown SCSS
+- Added a mixin to get a default markdown styling, add to your app's `styles.scss`
+  ```scss 
+  gewd-markdown {
+    @import "~@gewd/markdown/markdown.mixin";
+  
+    @include markdownCss();
+    @include markdownDefaultDarkColor();
+  }
+  ```
+- colors can be changed via css `var(--)`
+
+#### Prerender: 
+- multiple fixes to run `@nguniversal/` prerender steps
+  <br>*note: parsing markdowns or using the `WebWorker` can't be executed during pre-render, this still happens during runtime*
+
+#### :boom: Breaking changes:
+- merged InjectionTokens as `MarkdownOptionsInjectorToken` and moved to a different path `@gewd/markdown/service`
+- mermaid options under `MarkdownOptionsInjectorToken` now are:
+  ```ts
+  mermaidPath: 'mermaid.min.js',
+  mermaidOptions: {
+    theme: 'neutral',
+    // and others see  https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults
+  }
+  ```
+
 ## [0.3.0] - 2020-02-25
 
 #### Optimized

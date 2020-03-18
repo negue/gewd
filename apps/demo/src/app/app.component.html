@@ -5,8 +5,8 @@
     <a href="https://www.npmjs.com/package/@gewd/markdown" rel="nofollow"
        class="npm-link">
       <img src="https://img.shields.io/npm/v/@gewd/markdown.svg?"
-      alt="Markdown NPM Version">
-    </a>&nbsp;-  Markdown
+           alt="Markdown NPM Version">
+    </a>&nbsp;- Markdown
   </mat-expansion-panel-header>
 
   <mat-tab-group>
@@ -14,16 +14,17 @@
       <i>Note: This shows the README.md of this repo, and don't mind the styling of links :P</i>
 
       <gewd-markdown *ngIf="readmeTab.isActive"
-                     [markdown]="loadReadme() | async"></gewd-markdown>
+                     [markdown]="readmeMD$ | async"></gewd-markdown>
     </mat-tab>
     <mat-tab label="Try out">
 
 <textarea #textarea
           (keyup)="changeIt(textarea, markdown)">
-{{exampleMD|async}}
+{{exampleMD$|async}}
 </textarea>
 
-      <gewd-markdown #markdown [useCache]="true"></gewd-markdown>
+      <gewd-markdown #markdown [useCache]="true">
+      </gewd-markdown>
 
     </mat-tab>
 
@@ -41,7 +42,7 @@
        class="npm-link">
       <img src="https://img.shields.io/npm/v/@gewd/lazy.svg?"
            alt="Gewd Lazy NPM Version">
-    </a>&nbsp;-  Lazy Component
+    </a>&nbsp;- Lazy Component
   </mat-expansion-panel-header>
 
   <gewd-lazy-component #lazyComponent
