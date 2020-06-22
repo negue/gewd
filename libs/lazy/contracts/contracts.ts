@@ -1,4 +1,5 @@
 import { ComponentType } from '@angular/cdk/overlay';
+import { ChangeDetectorRef, ComponentRef } from '@angular/core';
 
 export interface LazyModuleComponentInfo {
   name: string,
@@ -15,4 +16,9 @@ export interface InputMap {
 
 export interface OutputMap {
   [key: string]: (value: any) => void;
+}
+
+export interface CreateComponentResult {
+  compRef: ComponentRef<any>;
+  cd: ChangeDetectorRef;
 }

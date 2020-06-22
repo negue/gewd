@@ -11,7 +11,7 @@ export interface WorkerOptions {
 export interface MarkdownWorker {
   name: string;
   init(options: WorkerOptions);
-  compile(str: string): string|Promise<string>;
+  compile(str: string, xssSettings: any): string|Promise<string>;
 }
 
 export interface MarkdownOptions {

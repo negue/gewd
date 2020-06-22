@@ -286,6 +286,9 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     },
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    },
     "@nrwl/angular:component": {
       "styleext": "scss"
     }

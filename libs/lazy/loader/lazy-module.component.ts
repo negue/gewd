@@ -1,17 +1,23 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  ViewChild,
-  ViewContainerRef,
+  ChangeDetectorRef,
+  Compiler,
+  Component,
   ComponentFactoryResolver,
-  Injector, Input, OnChanges,
-  SimpleChanges, EventEmitter, OnDestroy,
-  Compiler, Output, ChangeDetectorRef
+  EventEmitter,
+  Injector,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
-import { InputMap, OutputMap } from '@gewd/lazy/contracts';
+import { CreateComponentResult, InputMap, OutputMap } from '@gewd/lazy/contracts';
 
 @Component({
   selector: 'gewd-lazy-module-component',
@@ -203,4 +209,46 @@ export class LazyModuleComponent implements OnChanges, OnDestroy {
       }
     }
   }
+}
+
+
+export async function loadAndCreateModuleComponent(componentName: string,
+                                             resolver: ComponentFactoryResolver,
+                                             injector: Injector,
+                                             targetContainer: ViewContainerRef = null,
+                                             targetElement: Element = null): Promise<CreateComponentResult> {
+  const importComponent = DynamicLoaderRegistry.LazyComponents[componentName].getValue();
+
+  const imported = await importComponent;
+
+  const keys = Object.keys(imported);
+
+  // get the first object of the imported js-module
+  const theComp = imported[keys[0]];
+
+  const componentFactory = resolver.resolveComponentFactory(theComp);
+
+  // only have one dynamic component render
+  const result = {
+    compRef: null,
+    cd: null,
+  } as CreateComponentResult;
+
+  if (targetContainer) {
+    targetContainer.clear();
+
+    result.compRef = targetContainer.createComponent(componentFactory, 0, injector);
+  }
+
+  if (targetElement) {
+    const ref = componentFactory.create(this.injector, [], targetElement);
+
+    result.compRef = ref;
+  }
+
+  if (result.compRef) {
+    result.cd = result.compRef.injector.get(ChangeDetectorRef);
+  }
+
+  return result;
 }

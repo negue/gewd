@@ -1,16 +1,27 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  ViewChild,
-  ViewContainerRef,
+  ChangeDetectorRef,
+  Component,
   ComponentFactoryResolver,
-  Injector, Input, OnChanges,
-  SimpleChanges, EventEmitter, OnDestroy, Output, ChangeDetectorRef, OnInit
+  ComponentRef,
+  EventEmitter,
+  Injector,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
-import { InputMap, OutputMap } from '@gewd/lazy/contracts';
+import { CreateComponentResult, InputMap, OutputMap } from '@gewd/lazy/contracts';
+
+// TODO abstract common logic
+// - share template?
 
 @Component({
   selector: 'gewd-lazy-component',
@@ -42,9 +53,11 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   public componentLoading = new EventEmitter();
 
-  private componentInstance = null;
+  private componentInstanceRef: ComponentRef<any> = null;
+  private componentChangeDetectorRef: ChangeDetectorRef = null;
 
   private unsubForOutputs$ = new Subject();
+  private currentlyBuildingComponent = null;
 
   constructor (private resolver: ComponentFactoryResolver,
                private injector: Injector,
@@ -52,46 +65,41 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   async setComponent () {
-    if (!this.component) {
+    if (!this.component || this.component === this.currentlyBuildingComponent) {
       return;
     }
 
+    this.currentlyBuildingComponent = this.component;
     this.componentLoading.emit(true);
     this.cd.detectChanges();
 
-    // cached promise
-    const importComponent = DynamicLoaderRegistry.LazyComponents[this.component].getValue();
+    const createdComponent = await loadAndCreateComponent(
+      this.currentlyBuildingComponent,
+      this.resolver,
+      this.injector,
+      this.targetContainer
+    );
 
-    const imported = await importComponent;
+    this.componentInstanceRef = createdComponent.compRef;
+    this.componentChangeDetectorRef = createdComponent.cd;
 
-    const keys = Object.keys(imported);
-
-    // get the first object of the imported js-module
-    const theComp = imported[keys[0]];
-
-    const componentFactory = this.resolver.resolveComponentFactory(theComp);
-
-    // only have one dynamic component render
-    this.targetContainer.clear();
-
-    const componentRef = this.targetContainer.createComponent(componentFactory, 0, this.injector);
-    componentRef.changeDetectorRef.markForCheck();
-
+    this.currentlyBuildingComponent = null;
     this.componentLoading.emit(false);
-    this.componentCreated.emit(componentRef.instance);
-    this.componentInstance = componentRef.instance;
+    this.componentCreated.emit(this.componentInstanceRef.instance);
     this.setInputs();
     this.setOutputs();
   }
 
   ngOnChanges (changes: SimpleChanges): void {
-    if (changes['component']) {
+    const { component, componentInputs, componentOutputs } = changes;
+
+    if (component && component.previousValue !== component.currentValue) {
       this.setComponent();
     }
-    if (changes['componentInputs']) {
+    if (componentInputs) {
       this.setInputs();
     }
-    if (changes['componentOutputs']) {
+    if (componentOutputs) {
       this.setOutputs();
     }
   }
@@ -101,15 +109,21 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private setInputs () {
-    // console.info('setInputs', this.componentInstance, this.componentInputs);
-    if (this.componentInstance && this.componentInputs) {
+    if (!this.componentInstanceRef) {
+      return;
+    }
+
+    const {instance} = this.componentInstanceRef;
+
+    if (instance && this.componentInputs) {
       const inputs = Object.keys(this.componentInputs);
 
       for (const inputKey of inputs) {
-        // console.info('set ', inputKey)
-        this.componentInstance[inputKey] = this.componentInputs[inputKey];
+        instance[inputKey] = this.componentInputs[inputKey];
       }
     }
+
+    this.componentChangeDetectorRef.markForCheck();
   }
 
   private unsubOutputs () {
@@ -119,13 +133,19 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
   private setOutputs () {
     this.unsubOutputs();
 
-    if (this.componentInstance && this.componentOutputs) {
+    if (!this.componentInstanceRef) {
+      return;
+    }
+
+    const {instance} = this.componentInstanceRef;
+
+    if (instance && this.componentOutputs) {
       const outputs = Object.keys(this.componentOutputs);
 
       for (const outputKey of outputs) {
         // console.info('subscribe to', outputKey);
-        if (this.componentInstance[outputKey]) {
-          const emitter = this.componentInstance[outputKey] as EventEmitter<any>;
+        if (instance[outputKey]) {
+          const emitter = instance[outputKey] as EventEmitter<any>;
           emitter.pipe(
             takeUntil(this.unsubForOutputs$),
           ).subscribe(this.componentOutputs[outputKey]);
@@ -137,4 +157,46 @@ export class LazyComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit (): void {
     this.setComponent();
   }
+}
+
+
+export async function loadAndCreateComponent(componentName: string,
+                                             resolver: ComponentFactoryResolver,
+                                             injector: Injector,
+                                             targetContainer: ViewContainerRef = null,
+                                             targetElement: Element = null): Promise<CreateComponentResult> {
+  const importComponent = DynamicLoaderRegistry.LazyComponents[componentName].getValue();
+
+  const imported = await importComponent;
+
+  const keys = Object.keys(imported);
+
+  // get the first object of the imported js-module
+  const theComp = imported[keys[0]];
+
+  const componentFactory = resolver.resolveComponentFactory(theComp);
+
+  // only have one dynamic component render
+  const result = {
+    compRef: null,
+    cd: null,
+  } as CreateComponentResult;
+
+  if (targetContainer) {
+    targetContainer.clear();
+
+    result.compRef = targetContainer.createComponent(componentFactory, 0, injector);
+  }
+
+  if (targetElement) {
+    const ref = componentFactory.create(this.injector, [], targetElement);
+
+    result.compRef = ref;
+  }
+
+  if (result.compRef) {
+    result.cd = result.compRef.injector.get(ChangeDetectorRef);
+  }
+
+  return result;
 }

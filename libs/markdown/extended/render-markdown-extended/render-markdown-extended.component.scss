@@ -1,0 +1,4 @@
+:host ::ng-deep {
+  // fix mermaid overflow :)
+  foreignObject { overflow: visible; }
+}

@@ -2,8 +2,17 @@ import { expose } from 'comlink';
 import * as marked from 'marked';
 import * as xss from 'xss';
 import { Lazy } from '@gewd/markdown/utils';
-import { checkAndReplaceToUnicodeChar, emojiRegex, mermaidRegex } from '@gewd/markdown/worker-functions';
-import { DEFAULT_PRISM_OPTIONS, WorkerOptions } from '@gewd/markdown/contracts';
+import {
+  checkAndReplaceToUnicodeChar,
+  emojiRegex,
+  mermaidRegex,
+  wrapEmojiInSpan
+} from '@gewd/markdown/worker-functions';
+import { DEFAULT_PRISM_OPTIONS, MarkdownWorker, WorkerOptions } from '@gewd/markdown/contracts';
+
+const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
+// if the first markdown contains emojis, this is filled
+let lazyEmojiLoaded = null;
 
 // web-worker importScripts
 declare function importScripts (...urls: string[]): void;
@@ -11,7 +20,18 @@ declare function importScripts (...urls: string[]): void;
 const renderer = new marked.Renderer();
 const oldCodeRenderer = renderer.code;
 renderer.code = function(code, language, isEscaped) {
+  if (language === 'custom') {
+    return code;
+  }
+
   if (mermaidRegex.test(language)) {
+    const emojiInIt = emojiRegex.test(code);
+    // check if code contains emojis
+    if (emojiInIt) {
+      // only replace emojis without wrapping, mermaid can't handle <span> inside
+      code = checkAndReplaceToUnicodeChar(code, lazyEmojiLoaded.EMOJI_MAP, lazyEmojiLoaded.colonToUnicode);
+    }
+
     return `<div class="mermaid">${language}\n${code}</div>`;
   }
   return oldCodeRenderer.call(this, code, language, isEscaped);
@@ -45,7 +65,6 @@ function loadLanguage (prismInstance, lang) {
   return prismInstance.languages[lang];
 }
 
-const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
 
 // apply changes to marked
 marked.setOptions({
@@ -55,7 +74,7 @@ marked.setOptions({
   highlight: function(code, lang, callback): any {
     // if it is a mermaid tag, don't need to go through prism it
     // also for code blocks without a language
-    if (!lang ||  mermaidRegex.test(lang)) {
+    if (!lang || mermaidRegex.test(lang) || lang === 'custom') {
       callback(undefined, code);
       return;
     }
@@ -70,22 +89,24 @@ marked.setOptions({
   }
 });
 
-const workerMethods = {
+const workerMethods: MarkdownWorker = {
   name: 'marked',
   init: config => {
     currentConfigObject = config;
   },
-  compile: input => new Promise<string>(async (resolve, reject) => {
+  compile: (input, xssSettingString = '{}') => new Promise<string>(async (resolve, reject) => {
     if (!input) {
       resolve('');
       return;
     }
 
-    if (emojiRegex.test(input)) {
-      // load emoji-map
-      const { EMOJI_MAP, colonToUnicode } = await lazyEmoji.getValue();
+    const xssSettings = JSON.parse(xssSettingString);
 
-      input = checkAndReplaceToUnicodeChar(input, EMOJI_MAP, colonToUnicode);
+    if (emojiRegex.test(input)) {
+      if (!lazyEmojiLoaded) {
+        // load emoji-map
+        lazyEmojiLoaded = await lazyEmoji.getValue();
+      }
     }
 
     marked(input, {
@@ -96,20 +117,28 @@ const workerMethods = {
         return;
       }
 
-      // extract?^^
-      function resolveCleanMarkup (generatedHTML) {
-        const sanatizedHTML = xss.filterXSS(generatedHTML, {
-          whiteList: {
-            ...xss.whiteList,
-            div: ['class'],  // mermaid class
-            span: ['class']  // prism colors
-          }
-        });
+      const fltersSetting = {
+        whiteList: {
+          ...xss.whiteList,
+          div: ['class'],  // mermaid class
+          span: ['class'],  // prism colors
 
-        resolve(sanatizedHTML);
+          ...xssSettings
+        }
+      };
+
+      // extract?^^
+      let sanatizedHTML = xss.filterXSS(result, fltersSetting );
+
+      // replace all other emojis in the wrapped way
+      if (emojiRegex.test(sanatizedHTML)) {
+        // load emoji-map
+        const { EMOJI_MAP, colonToUnicode } = lazyEmojiLoaded;
+
+        sanatizedHTML = checkAndReplaceToUnicodeChar(sanatizedHTML, EMOJI_MAP, colonToUnicode, wrapEmojiInSpan);
       }
 
-      resolveCleanMarkup(result);
+      resolve(sanatizedHTML);
     });
 
     return;

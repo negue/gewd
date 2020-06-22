@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.0]
+
+### Added
+- replaced emojis now rendered with `<span class="emoji">` to enable further styling
+
+- stuff :tada:
+- adding examples to load in demo instead of tab :)
+- update props instead of re-creating the component again
+  - add instance ID? or something
+
 ## [0.4.0] - 18.03.2020
 
 #### Markdown SCSS

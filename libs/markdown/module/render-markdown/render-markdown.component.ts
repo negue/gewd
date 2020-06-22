@@ -1,12 +1,7 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { MarkdownService, MarkdownCacheService } from '@gewd/markdown/service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { MarkdownCacheService, MarkdownService } from '@gewd/markdown/service';
+import { MermaidService } from '@gewd/markdown/service/mermaid.service';
 
 @Component({
   selector: 'gewd-markdown',
@@ -41,20 +36,19 @@ export class RenderMarkdownComponent implements OnInit {
     }
   }
 
-  private _htmlToShow$ = new BehaviorSubject<string|SafeHtml>("");
+  private _htmlToShow$ = new BehaviorSubject<string>("");
   private _markdown: string;
 
-  public parsedHtml$: Observable<string|SafeHtml>;
+  public parsedHtml$: Observable<string>;
 
   constructor (private service: MarkdownService,
-               private element: ElementRef,
-               private sanitizer: DomSanitizer,
+               private mermaid: MermaidService,
                private cache: MarkdownCacheService) {
     this.parsedHtml$ = this._htmlToShow$;
   }
 
-  async ngOnInit() {
-    await this.compile();
+  ngOnInit() {
+    this.compile();
   }
 
   private async compile() {
@@ -62,14 +56,18 @@ export class RenderMarkdownComponent implements OnInit {
       if (this.useCache) {
         const cachedMarkdown = await this.cache.getCached(this._markdown);
         if (!!cachedMarkdown) {
-          this._htmlToShow$.next(this.sanitizer.bypassSecurityTrustHtml(cachedMarkdown));
+          this._htmlToShow$.next(cachedMarkdown);
           return;
         }
       }
 
-      const parsedHtml = await this.service.compileMarkdown(this._markdown, this.allowMermaid);
+      let parsedHtml = await this.service.compileMarkdown(this._markdown);
 
-      this._htmlToShow$.next(this.sanitizer.bypassSecurityTrustHtml(parsedHtml));
+      if (this.allowMermaid) {
+        parsedHtml = await this.mermaid.compileMermaid(parsedHtml);
+      }
+
+      this._htmlToShow$.next(parsedHtml.trim());
 
       if (this.useCache) {
         this.cache.saveCached(this._markdown, parsedHtml);
