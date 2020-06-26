@@ -4,7 +4,8 @@
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.5",
     "@angular/core": "^9.0.0-rc.5",
-    "comlink": "^4.2.0"
+    "comlink": "^4.2.0",
+    "morphdom": "^2.5.12"
   },
   "repository": {
     "type" : "git",

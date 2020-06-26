@@ -15,14 +15,48 @@
                      [markdown]="readmeMD$ | async"></gewd-markdown>
     </mat-tab>
     <mat-tab label="Try out">
+      <mat-select value="./assets/example.md">
+        <mat-option value="./assets/example.md">Example with Code-Highlighting & MermaidJS</mat-option>
+        <mat-option value="./assets/emojis.md">Emoji Overview</mat-option>
+      </mat-select>
 
-<textarea #textarea
-          (keyup)="changeIt(textarea, markdown)">
-{{exampleMD$|async}}
-</textarea>
+      <textarea #textarea
+          (show)="changeIt(textarea, markdown)"
+          (keyup)="changeIt(textarea, markdown)">{{exampleMD$|async}}</textarea>
 
-      <gewd-markdown #markdown [useCache]="true">
-      </gewd-markdown>
+
+<gewd-markdown #markdown
+               [useCache]="false">
+</gewd-markdown>
+
+
+    </mat-tab>
+    <mat-tab label="Extended">
+      <h3>You can also try Extended Markdown, where you can create components by using a custom Code-Block:</h3>
+      ```custom<br/>
+        &lt;chuck-norris&gt;&lt;/chuck-norris&gt; <br/>
+      ``` <br/>
+      ```custom<br/>
+        &lt;testcomp [testProp]="4353"&gt;&lt;/testcomp&gt; <br/>
+      ``` <br/>
+      ```custom<br/>
+        &lt;xkcd&gt;&lt;/xkcd&gt; <br/>
+      ``` <br/>
+
+      <textarea #extendedTextarea
+           (show)="changeItExtended(extendedTextarea, markdownExtended)"
+          (keyup)="changeItExtended(extendedTextarea, markdownExtended)"
+      >{{markdownExtended$ | async}}</textarea>
+
+
+<gewd-markdown-extended #markdownExtended
+
+                        [extendedComponents]="components"
+                        [useCache]="false">
+</gewd-markdown-extended>
+
+
+
 
     </mat-tab>
 

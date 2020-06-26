@@ -1,6 +1,6 @@
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-gewd-markdown {
+gewd-markdown, gewd-markdown-extended {
   @import "../../../libs/markdown/markdown.mixin";
 
   @include markdownCss();

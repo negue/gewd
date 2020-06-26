@@ -1,15 +1,31 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'test-comp',
   template: `
     My Content {{testProp}}
+
+
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MyComp implements OnInit, OnChanges, OnDestroy {
   @Input()
   public testProp: any;
+
+  @HostBinding('style.background')
+  @Input()
+  public color = '#c911c2';
 
   @Input()
   public outputTest = new EventEmitter();
@@ -23,6 +39,7 @@ export class MyComp implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy (): void {
+    debugger;
     alert('destroy');
   }
 
