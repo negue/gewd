@@ -22,4 +22,15 @@ jobs:
         with:
           node-version: 12.16.2
       - run: npm install
-      - run: npm run affected:build -- --base=origin/master --head=HEAD
+
+      - name: Run Build
+          shell: bash
+          run: |
+            if [[ $GITHUB_BASE_REF ]]
+            then
+              export NX_BASE=remotes/origin/$GITHUB_BASE_REF
+            else
+              export NX_BASE=$(git rev-parse HEAD~1)
+            fi
+            echo "Base => $NX_BASE"
+            npm run affected:build -- --base=$NX_BASE
