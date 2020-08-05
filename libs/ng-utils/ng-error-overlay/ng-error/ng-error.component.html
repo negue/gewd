@@ -1,0 +1,9 @@
+<div class="fullscreen"
+     *ngIf="error$ | async as error"
+     >
+  <error-overlay [error]="error"></error-overlay>
+  <button class="mat-focus-indicator close-button mat-button mat-raised-button mat-button-base"
+          (click)="hide()">
+    close
+  </button>
+</div>

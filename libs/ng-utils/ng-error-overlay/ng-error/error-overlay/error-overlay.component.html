@@ -1,0 +1,11 @@
+<span class="error-info">
+<span class="error">{{error.name}}</span> <br/>
+Error Message: <span class="error">{{error.message}}</span>
+</span>
+
+<div class="stack-block" *ngIf="error.stack">
+Stack:
+<pre class="stack-pre">
+{{error.stack}}
+</pre>
+</div>

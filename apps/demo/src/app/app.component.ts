@@ -6,6 +6,7 @@ import { debounceTime } from 'rxjs/operators';
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'gewd-utils-root',
   templateUrl: './app.component.html',
@@ -22,10 +23,16 @@ export class AppComponent implements OnInit, OnDestroy {
     responseType: 'text'
   });
 
+  ngErrorOverlay$ = this.http.get('./assets/ng-error-overlay.md', {
+    responseType: 'text'
+  });
+
   emojiList = emojiExampleList;
 
   @ViewChild('markdown', {static: true})
   markdown: any;
+
+
 
   public outputLog = [];
   public outputBinding = {
@@ -75,5 +82,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   addLogEntry (e) {
     this.outputLog.push(e);
+  }
+
+  makeError () {
+    let errorSource: any;
+
+    errorSource.subString();
   }
 }
