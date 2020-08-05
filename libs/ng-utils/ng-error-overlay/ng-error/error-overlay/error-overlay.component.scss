@@ -1,0 +1,30 @@
+$padding: 2rem;
+
+:host {
+  color: rgb(232, 232, 232);
+  font-family: Menlo, Consolas, monospace;
+  font-size: large;
+  padding: $padding;
+  line-height: 1.2;
+  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - #{$padding * 2});
+}
+
+.error {
+  color: red;
+}
+
+.stack-pre {
+  margin-top: $padding;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.stack-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

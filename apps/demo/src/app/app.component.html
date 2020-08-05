@@ -105,3 +105,23 @@
     </button>
   </gewd-lazy-module-component>
 </mat-expansion-panel>
+
+<br/>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <a href="https://www.npmjs.com/package/@gewd/ng-utils" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/ng-utils.svg?"
+           alt="Gewd NG-Utils NPM Version">
+    </a>
+    &nbsp;- NgErrorOverlay
+  </mat-expansion-panel-header>
+
+  <gewd-markdown [markdown]="ngErrorOverlay$ | async">
+
+  </gewd-markdown>
+
+  <button (click)="makeError()">Trigger an error</button>
+</mat-expansion-panel>
+
