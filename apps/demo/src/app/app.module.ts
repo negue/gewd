@@ -2,17 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {
-  MarkdownModule,
-} from '@gewd/markdown';
+import { MarkdownModule } from '@gewd/markdown';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  DEFAULT_PRISM_OPTIONS,
-  MarkdownOptions,
-} from '@gewd/markdown/contracts';
+import { DEFAULT_PRISM_OPTIONS, MarkdownOptions } from '@gewd/markdown/contracts';
 
 import './lazy.registration';
 import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
@@ -25,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
 import { MarkdownToolbarComponent } from './markdown-toolbar.component';
+import { NgErrorOverlayModule } from '@gewd/ng-utils/ng-error-overlay';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -37,7 +33,11 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MarkdownModule, FormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
-    GewdLazyLoaderModule, MatButtonModule, DynamicPortalModule, MatProgressBarModule
+    GewdLazyLoaderModule,
+    MatButtonModule,
+    DynamicPortalModule,
+    MatProgressBarModule,
+    NgErrorOverlayModule
   ],
   providers: [
     {

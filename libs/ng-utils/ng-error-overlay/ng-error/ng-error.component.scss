@@ -1,0 +1,18 @@
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  background: #454545DD;
+  padding: 1rem;
+  overflow: auto;
+}
+
+
+.close-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
