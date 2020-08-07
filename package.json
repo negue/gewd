@@ -57,7 +57,7 @@
     "markdown-it": "10.0.0",
     "marked": "0.8.0",
     "mermaid": "8.4.8",
-    "prismjs": "1.19.0",
+    "prismjs": "1.21.0",
     "rxjs": "6.5.4",
     "tslib": "^1.10.0",
     "xss": "^1.0.6",
