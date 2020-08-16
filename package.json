@@ -55,7 +55,7 @@
     "express": "^4.15.2",
     "localforage": "^1.7.3",
     "markdown-it": "10.0.0",
-    "marked": "0.8.0",
+    "marked": "1.1.1",
     "mermaid": "8.4.8",
     "prismjs": "1.19.0",
     "rxjs": "6.5.4",
