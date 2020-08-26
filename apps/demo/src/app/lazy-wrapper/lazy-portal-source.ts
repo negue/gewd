@@ -66,6 +66,9 @@ export class PortalModuleComp implements OnInit, OnChanges, OnDestroy {
     CommonModule,
     MatButtonModule,
     DynamicPortalModule
+  ],
+  entryComponents: [
+    PortalModuleComp
   ]
 })
 export class PortalModule implements LazyModule {
