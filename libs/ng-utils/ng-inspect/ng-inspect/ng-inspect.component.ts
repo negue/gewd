@@ -34,7 +34,7 @@ export class NgInspectComponent implements OnInit, OnDestroy {
   pinnedAr: ContextWithCd[] = [];
 
   private ng = window && (window as any).ng;
-  private IVY_MODE = !!this.ng.getComponent;
+  private IVY_MODE = this.ng && !!this.ng.getComponent;
   private destroy$ = new Subject();
 
   public trackByEntry: TrackByFunction<any> = (index, item) => item.key;
