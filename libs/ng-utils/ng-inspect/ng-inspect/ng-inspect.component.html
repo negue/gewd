@@ -1,0 +1,121 @@
+<ng-template  #itemEdit let-item="item" let-context="context">
+  <div [ngSwitch]="item.propInfo.type">
+    <ng-container *ngSwitchCase="'boolean'">
+      <mat-checkbox [checked]="context.instance[item.key]"
+                    (change)="onChangeGeneric($event.checked, context, item.key)">
+        {{ item.key }}
+      </mat-checkbox>
+    </ng-container>
+    <ng-container *ngSwitchCase="'number'">
+      <mat-form-field>
+        <input type="number" [value]="context.instance[item.key]" #number
+               matInput [placeholder]="item.key"
+               (change)="onChangeGeneric(number.value, context, item.key)">
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="'string'">
+      <mat-form-field>
+        <input type="text" [value]="context.instance[item.key]" #text
+                matInput [placeholder]="item.key"
+               (change)="onChangeGeneric(text.value, context, item.key)">
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="'color'">
+      <mat-form-field>
+        <input type="color"
+               [value]="context.instance[item.key]" #text
+               matInput [placeholder]="item.key"
+               (change)="onChangeGeneric(text.value, context, item.key)">
+      </mat-form-field>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #itemsListTemplate let-items="items" let-context="context">
+  <div *ngFor="let item of items; let odd = odd; trackBy: trackByEntry"
+       class="item-row"
+       [class.odd]="odd"
+  >
+    <div [ngSwitch]="item.propInfo.type" style="flex: 1">
+      <ng-container *ngSwitchDefault>
+        <div *ngIf="item.propInfo.canEdit && item.editMode; else readOnly">
+
+          <ng-template *ngTemplateOutlet="itemEdit; context: {
+          item: item,
+          context: context
+        }">
+          </ng-template>
+        </div>
+
+        <ng-template #readOnly>
+          <span class="mat-hint">{{item.key}}:</span>
+          <br />
+          <span class="prop-value">
+            <span *ngIf="item.propInfo.type === 'color'"
+                 [style]="byPassAttr('--bg-color:'+context.instance[item.key])"
+                  class="color-box">
+
+            </span>
+            {{context.instance[item.key]}}</span>
+        </ng-template>
+      </ng-container>
+      <ng-container *ngSwitchCase="'observable'">
+        <span class="mat-hint">{{item.key}}</span>:
+        <br />
+        <span class="prop-value">{{context.instance[item.key] | async | json}}</span>
+      </ng-container>
+    </div>
+    <div class="icon" *ngIf="item.propInfo.canEdit"
+         (click)="toggleEdit(item)">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path class="svg-color" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg>
+    </div>
+    <div class="icon">
+      <div *ngIf="isPinned(context, item.key), else unpinned"
+           (click)="onPinOp(context, item.key, false)">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             enable-background="new 0 0 24 24"
+             height="24" viewBox="0 0 24 24" width="24">
+          <g><path d="M0,0h24v24H0V0z" fill="none"/>
+            <path d="M0,0h24v24H0V0z" fill="none"/></g>
+          <g><path  class="svg-color" d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg>
+      </div>
+      <ng-template #unpinned>
+        <div (click)="onPinOp(context, item.key, true)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path class="svg-color" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+</ng-template>
+
+<div class="debug-panel" ignore-inspect>
+  <ng-container *ngIf="pinnedItems$ | async as pinnedItems">
+    <div class="panel-background" *ngFor="let pinnedItem of pinnedItems">
+      <h4>{{pinnedItem.name}}</h4>
+
+      <ng-template *ngTemplateOutlet="itemsListTemplate; context: {
+          items: pinnedItem.entries,
+          context: pinnedItem.context
+        }">
+      </ng-template>
+    </div>
+  </ng-container>
+
+  <div class="panel-background" *ngIf="component$ | async as component; else nothing">
+    <h4>{{component.name}}</h4>
+
+    <ng-template *ngTemplateOutlet="itemsListTemplate; context: {
+          items: component.entries,
+          context: component.context
+        }">
+    </ng-template>
+  </div>
+  <ng-template #nothing>
+    <div class="panel-background center-text">
+      Press/hold <kbd>ctrl</kbd> to select <br/>
+      your component to inspect
+    </div>
+  </ng-template>
+</div>

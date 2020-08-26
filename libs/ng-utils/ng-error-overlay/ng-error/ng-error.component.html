@@ -1,9 +1,23 @@
-<div class="fullscreen"
-     *ngIf="error$ | async as error"
-     >
-  <error-overlay [error]="error"></error-overlay>
-  <button class="mat-focus-indicator close-button mat-button mat-raised-button mat-button-base"
-          (click)="hide()">
-    close
-  </button>
-</div>
+<ng-container *ngIf="errors$ | async as errors">
+  <div class="fullscreen"
+       *ngIf="visible$ | async"
+  >
+    <simple-pager [items]="errors">
+      <div simplePagerTopLeft>
+        <dynamic-portal [key]="'errorName'"></dynamic-portal>
+      </div>
+      <ng-template let-item>
+         <ng-template [dynamicPortalSource]="'errorName'">
+           <span class="error-next-to-navigation">{{item.name}}</span>
+         </ng-template>
+         <error-overlay [error]="item"></error-overlay>
+      </ng-template>
+      <div simplePagerTopRight>
+        <button class="mat-focus-indicator mat-button mat-raised-button mat-button-base"
+            (click)="hide()">
+      close
+    </button>
+      </div>
+    </simple-pager>
+  </div>
+</ng-container>

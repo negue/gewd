@@ -27,3 +27,16 @@ Create a dynamic portal, e.g. in your header, and fill it with a template conten
 ```
 
 ![dynamic portal example](https://user-images.githubusercontent.com/842273/71450280-25562380-275f-11ea-9c33-62bc8d282270.gif)
+
+
+## `@gewd/ng-utils/ng-inspect`
+
+Lets you inspect the properties of a component.
+You can also edit string/number/bool properties.
+
+Add this to your `app.component.html`:
+```html
+<ng-inspect></ng-inspect>
+```
+
+Hold ctrl so select a component.

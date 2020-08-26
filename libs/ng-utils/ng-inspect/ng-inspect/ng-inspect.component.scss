@@ -1,0 +1,102 @@
+
+.debug-panel {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+
+  max-height: 500px;
+  overflow: auto;
+  z-index: 10;
+  color: white;
+
+  .panel-background {
+    background: #4f4f4f;
+    border: 2px dashed #4f8cc9;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 150px;
+    max-width: 400px;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+
+  .icon {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+
+  .svg-color {
+    fill: white;
+  }
+
+  .mat-hint {
+    font-size: 12px;
+    color: white;
+  }
+
+  .center-text {
+    text-align: center;
+  }
+  .item-row {
+    display: flex;
+
+    .prop-value {
+      background: #595959;
+    }
+
+    align-items: flex-end;
+
+    &.odd {
+      .prop-value {
+        background: #7d7d7d;
+      }
+    }
+  }
+
+  .prop-value {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    width: 250px;
+  }
+
+  ::ng-deep mat-form-field {
+    margin-bottom: -1.15em;
+    width: 100%;
+  }
+
+  .color-box {
+    --bg-color: grey;
+
+    width: 16px;
+    height: 16px;
+    background: var(--bg-color);
+
+    margin-right: 2px;
+    display: inline-block;
+    border: 1px solid white;
+  }
+
+  kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+  }
+}

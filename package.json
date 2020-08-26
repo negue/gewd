@@ -52,6 +52,7 @@
     "@types/localforage": "0.0.34",
     "@types/markdown-it": "0.0.9",
     "comlink": "4.2.0",
+    "error-stack-parser": "^2.0.6",
     "express": "^4.15.2",
     "localforage": "^1.7.3",
     "markdown-it": "10.0.0",
@@ -59,10 +60,10 @@
     "mermaid": "8.4.8",
     "prismjs": "1.21.0",
     "rxjs": "6.5.4",
+    "snyk": "^1.349.0",
     "tslib": "^1.10.0",
     "xss": "^1.0.6",
-    "zone.js": "^0.10.2",
-    "snyk": "^1.349.0"
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.901.12",

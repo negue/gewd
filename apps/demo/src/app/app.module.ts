@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
 import { MarkdownToolbarComponent } from './markdown-toolbar.component';
 import { NgErrorOverlayModule } from '@gewd/ng-utils/ng-error-overlay';
+import { NgInspectModule } from '@gewd/ng-utils/ng-inspect/ng-inspect/ng-inspect.module';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -37,7 +38,8 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MatButtonModule,
     DynamicPortalModule,
     MatProgressBarModule,
-    NgErrorOverlayModule
+    NgErrorOverlayModule,
+    NgInspectModule
   ],
   providers: [
     {

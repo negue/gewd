@@ -15,7 +15,7 @@ export interface BootstrapComponentConfig {
   component: Type<any>;
 }
 
-const BOOTSTRAP_COMPONENT_TOKEN = new InjectionToken<BootstrapComponentConfig>('@gewd/ng-utils/BootstrapComponentConfig');
+export const BOOTSTRAP_COMPONENT_TOKEN = new InjectionToken<BootstrapComponentConfig>('@gewd/ng-utils/BootstrapComponentConfig');
 
 export function bootstrapComponent(
   document: Document,
@@ -46,7 +46,7 @@ export class BootstrapComponentModule {
     return {
       ngModule: BootstrapComponentModule,
       providers: [
-        { provide: BOOTSTRAP_COMPONENT_TOKEN, useValue }
+        { provide: BOOTSTRAP_COMPONENT_TOKEN, useValue, multi: true }
       ]
     };
   }
@@ -55,7 +55,9 @@ export class BootstrapComponentModule {
                resolver: ComponentFactoryResolver,
                injector: Injector,
                appRef: ApplicationRef,
-               @Inject(BOOTSTRAP_COMPONENT_TOKEN) bootstrapConfig: BootstrapComponentConfig) {
-    bootstrapComponent(document, resolver, injector, appRef, bootstrapConfig);
+               @Inject(BOOTSTRAP_COMPONENT_TOKEN) bootstrapConfigs: BootstrapComponentConfig[]) {
+    for (const bootstrapConfig of bootstrapConfigs) {
+      bootstrapComponent(document, resolver, injector, appRef, bootstrapConfig);
+    }
   }
 }

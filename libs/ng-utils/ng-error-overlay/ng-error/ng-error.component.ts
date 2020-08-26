@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ErrorHandlerService } from './error-handler.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { map, scan, takeUntil } from 'rxjs/operators';
+import { CssPropsService } from '@gewd/ng-utils/css-props';
 
 @Component({
   selector: 'ng-error',
@@ -10,19 +11,33 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NgErrorComponent implements OnInit, OnDestroy {
 
-  public error$ = this.errorService.error$;
+  public showIndex = 0;
+
+  public visible$ = new BehaviorSubject(false);
+
+  public errors$ = this.errorService.error$.pipe(
+    // add all errors to an array
+    // only keep the newest 10
+    scan((a, c) => [c, ...a].slice(0, 10), []),
+    map(value => value.filter(v => !!v))
+  );
 
   private _destroy$ = new Subject();
 
   constructor(private errorService: ErrorHandlerService,
-              private cd: ChangeDetectorRef) {
-
+              private cd: ChangeDetectorRef,
+              private cssProps: CssPropsService,
+              private element: ElementRef<HTMLElement>) {
+    cssProps.updateElementVars(element.nativeElement, {
+      '--overlay-zindex': errorService.config.zIndex
+    })
   }
 
   ngOnInit(): void {
-    this.error$.pipe(
+    this.errors$.pipe(
       takeUntil(this._destroy$)
     ).subscribe(value => {
+      this.visible$.next(value.length > 0);
       this.cd.markForCheck();
     })
   }
@@ -33,6 +48,6 @@ export class NgErrorComponent implements OnInit, OnDestroy {
   }
 
   hide () {
-    this.error$.next(null);
+    this.visible$.next(false);
   }
 }

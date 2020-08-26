@@ -17,4 +17,7 @@ export class Lazy<T> {
     return this.cachedPromise = this.loader();
   }
 
+  public reset() {
+    this.cachedPromise = null;
+  }
 }
