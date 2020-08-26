@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-arrow, .right-arrow {
+  --arrow-color: white;
+
+  svg path {
+    fill: var(--arrow-color);
+  }
+
+  &:hover:not(.disabled) {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    --arrow-color: gray;
+  }
+}
+
+.slot {
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.position-label {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.navigation-row-panel {
+  flex: 1;
+  justify-content: flex-end;
+}
