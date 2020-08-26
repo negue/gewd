@@ -15,7 +15,7 @@ export interface BootstrapComponentConfig {
   component: Type<any>;
 }
 
-const BOOTSTRAP_COMPONENT_TOKEN = new InjectionToken<BootstrapComponentConfig>('@gewd/ng-utils/BootstrapComponentConfig');
+export const BOOTSTRAP_COMPONENT_TOKEN = new InjectionToken<BootstrapComponentConfig>('@gewd/ng-utils/BootstrapComponentConfig');
 
 export function bootstrapComponent(
   document: Document,
