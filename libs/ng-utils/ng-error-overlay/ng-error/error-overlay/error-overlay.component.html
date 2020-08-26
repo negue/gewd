@@ -1,11 +1,34 @@
 <span class="error-info">
-<span class="error">{{error.name}}</span> <br/>
+<span class="error error-name">{{error.name}} <br/></span>
 Error Message: <span class="error">{{error.message}}</span>
 </span>
 
+
 <div class="stack-block" *ngIf="error.stack">
 Stack:
-<pre class="stack-pre">
-{{error.stack}}
-</pre>
+<table class="stack-table">
+  <tr>
+    <th class="align-left">Function Name</th>
+    <th class="align-right">Line Number</th>
+    <th class="align-right">Column Number</th>
+  </tr>
+  <ng-container *ngFor="let stack of errorStack; let odd = odd; let even = even;">
+    <tr class="row"
+        [class.odd]="odd"
+        [class.even]="even"
+    >
+      <td>{{stack.functionName}}</td>
+      <td class="align-right">{{stack.lineNumber}}</td>
+      <td class="align-right">{{stack.columnNumber}}</td>
+    </tr>
+    <tr>
+      <td colspan="3"
+          class="row"
+          [class.odd]="odd"
+          [class.even]="even"
+      >
+        {{stack.fileName}}</td>
+    </tr>
+  </ng-container>
+</table>
 </div>

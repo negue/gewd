@@ -4,27 +4,37 @@ $padding: 2rem;
   color: rgb(232, 232, 232);
   font-family: Menlo, Consolas, monospace;
   font-size: large;
-  padding: $padding;
   line-height: 1.2;
   white-space: pre-wrap;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - #{$padding * 2});
+  height: 100%;
 }
 
 .error {
   color: red;
 }
 
-.stack-pre {
-  margin-top: $padding;
-  overflow-y: auto;
-  flex: 1;
-}
-
 .stack-block {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.stack-table {
+  margin-top: $padding;
+  width: 100%;
+}
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.row {
+  &.even {background: #AAAAAA40}
+  &.odd {background: #CCCCCC40}
 }

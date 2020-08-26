@@ -6,13 +6,35 @@
   width: 100vw;
 
   background: #454545DD;
-  padding: 1rem;
   overflow: auto;
+  z-index: var(--overlay-zindex);
+
+  simple-pager {
+    height: calc(100% - 2rem);
+    padding: 1rem;
+
+    ::ng-deep {
+      .navigation-row-panel.only-one {
+        opacity: 0;
+      }
+    }
+  }
+
+  ::ng-deep .error-name {
+    display: none;
+  }
 }
 
 
 .close-button {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 2rem;
+  right: 2rem;
+}
+
+.error-next-to-navigation {
+  color: red;
+  font-family: Menlo, Consolas, monospace;
+  font-size: large;
+  line-height: 1.2;
 }
