@@ -8,7 +8,6 @@ import { CSSPropsDirective } from './css-props.directive';
   imports: [
     CommonModule
   ],
-
 })
 export class CssPropsModule {
 }
