@@ -30,9 +30,19 @@
                 "output": "./"
               },
               {
-                "glob": "prism-@(c|csharp|typescript).min.js",
+                "glob": "prism-@(c|csharp|css-extras|typescript|markdown).min.js",
                 "input": "./node_modules/prismjs/components",
                 "output": "/assets/prism/"
+              },
+              {
+                "glob": "prism-plugin-(inline-color|bracket-match).worker-func.js",
+                "input": "libs/components/highlight-editor",
+                "output": "/assets/prism/"
+              },
+              {
+                "glob": "**/*.md",
+                "input": "./libs",
+                "output": "./assets/readme"
               },
               {
                 "glob": "README.md",
@@ -42,7 +52,9 @@
             ],
             "styles": [
               "apps/demo/src/styles.scss",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/prismjs/plugins/inline-color/prism-inline-color.css",
+              "libs/components/highlight-editor/bracket-match.css"
             ],
             "scripts": [],
             "webWorkerTsConfig": "apps/demo/tsconfig.worker.json"
@@ -265,6 +277,45 @@
             "jestConfig": "libs/ng-utils/jest.config.js",
             "tsConfig": "libs/ng-utils/tsconfig.spec.json",
             "setupFile": "libs/ng-utils/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "components": {
+      "projectType": "library",
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/tsconfig.lib.json",
+            "project": "libs/components/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/tsconfig.lib.json",
+              "libs/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/components/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/components/jest.config.js",
+            "tsConfig": "libs/components/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/components/src/test-setup.ts"
           }
         }
       },

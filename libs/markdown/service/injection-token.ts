@@ -1,4 +1,4 @@
 import { InjectionToken } from '@angular/core';
-import { MarkdownOptions } from '@gewd/markdown/contracts';
+import { MarkdownServiceOptions } from '@gewd/markdown/contracts';
 
-export const MarkdownOptionsInjectorToken = new InjectionToken<MarkdownOptions>('MarkdownOptionsInjectorToken');
+export const MarkdownOptionsInjectorToken = new InjectionToken<MarkdownServiceOptions>('MarkdownOptionsInjectorToken');

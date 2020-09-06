@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
+    "ng": "nx",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -31,8 +31,7 @@
     "dev:ssr": "ng run demo:serve-ssr",
     "serve:ssr": "node dist/demo-server/main.js",
     "build:ssr": "ng build --prod && ng run demo:server:production",
-    "prerender": "ng run demo:prerender",
-    "prepublish": "npm run snyk-protect"
+    "prerender": "ng run demo:prerender"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +57,7 @@
     "markdown-it": "10.0.0",
     "marked": "1.1.1",
     "mermaid": "8.4.8",
+    "morphdom": "^2.6.1",
     "prismjs": "1.21.0",
     "rxjs": "6.5.4",
     "snyk": "^1.349.0",

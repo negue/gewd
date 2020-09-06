@@ -2,8 +2,8 @@ import { expose } from 'comlink';
 import * as marked from 'marked';
 import * as xss from 'xss';
 import { Lazy } from '@gewd/markdown/utils';
-import { checkAndReplaceToUnicodeChar, emojiRegex, mermaidRegex } from '@gewd/markdown/worker-functions';
-import { DEFAULT_PRISM_OPTIONS, WorkerOptions } from '@gewd/markdown/contracts';
+import { checkAndReplaceToUnicodeChar, emojiRegex, highlightCode, mermaidRegex } from '@gewd/markdown/worker-functions';
+import { DEFAULT_PRISM_OPTIONS, MarkdownWorker, PrismOptions, WorkerOptions } from '@gewd/markdown/contracts';
 
 // web-worker importScripts
 declare function importScripts (...urls: string[]): void;
@@ -24,27 +24,7 @@ let currentConfigObject: WorkerOptions = {
   prism: DEFAULT_PRISM_OPTIONS
 };
 
-/* Prism Config/Importer */
-(self as any).Prism = {
-  disableWorkerMessageHandler: true
-};
-
 const lazyPrism = Lazy.create(() => import('prismjs'));
-
-function loadLanguage (prismInstance, lang) {
-  // if language not exist import-it :)
-  if (!prismInstance.languages[lang]) {
-    const langToLoad = currentConfigObject.prism.languageMap[lang] || lang;
-
-    const fileToLoad = `${currentConfigObject.prism.assetPath}prism-${langToLoad}.${currentConfigObject.prism.languageFileType}`;
-
-    // sync load once
-    importScripts(fileToLoad);
-  }
-
-  return prismInstance.languages[lang];
-}
-
 const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
 
 // apply changes to marked
@@ -60,20 +40,18 @@ marked.setOptions({
       return;
     }
 
-    lazyPrism.getValue().then(prismInstance => {
-      const langConfig = loadLanguage(prismInstance, lang);
-
-      const result = prismInstance.highlight(code, langConfig, lang);
-
-      callback(undefined, result);
+    highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts).then(highlightedCode => {
+      callback(undefined, highlightedCode);
     });
   }
 });
 
-const workerMethods = {
+const workerMethods: MarkdownWorker = {
   name: 'marked',
   init: config => {
     currentConfigObject = config;
+  },
+  initPrism (options: PrismOptions) {
   },
   compile: input => new Promise<string>(async (resolve, reject) => {
     if (!input) {
@@ -102,7 +80,7 @@ const workerMethods = {
           whiteList: {
             ...xss.whiteList,
             div: ['class'],  // mermaid class
-            span: ['class']  // prism colors
+            span: ['class', 'style']  // prism colors
           }
         });
 
@@ -110,6 +88,29 @@ const workerMethods = {
       }
 
       resolveCleanMarkup(result);
+    });
+
+    return;
+  }),
+  highlight: (code, lang) => new Promise<string>(async (resolve, reject) => {
+    if (!code) {
+      resolve('');
+      return;
+    }
+
+    function resolveCleanMarkup (generatedHTML) {
+      const sanatizedHTML = xss.filterXSS(generatedHTML, {
+        whiteList: {
+          ...xss.whiteList,
+          span: ['class', 'style']  // prism colors
+        }
+      });
+
+      resolve(sanatizedHTML);
+    }
+
+    highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts).then(highlightedCode => {
+      resolveCleanMarkup(highlightedCode);
     });
 
     return;

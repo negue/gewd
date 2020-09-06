@@ -19,6 +19,9 @@
     },
     "ng-utils": {
       "tags": []
+    },
+    "components": {
+      "tags": []
     }
   }
 }

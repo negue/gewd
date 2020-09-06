@@ -1,6 +1,6 @@
 {
   "name": "@gewd/markdown",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.5",
     "@angular/core": "^9.0.0-rc.5",
