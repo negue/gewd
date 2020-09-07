@@ -1,6 +1,6 @@
 <h2>Open Dev-Tools to see the network calls.</h2>
 
-<mat-expansion-panel (opened)="changeIt(textarea, markdown)">
+<mat-expansion-panel (opened)="changeIt(prismEditorComponent.value, markdown)">
   <mat-expansion-panel-header>
     <a href="https://www.npmjs.com/package/@gewd/markdown" rel="nofollow"
        class="npm-link">
@@ -16,10 +16,12 @@
     </mat-tab>
     <mat-tab label="Try out">
 
-<textarea #textarea
-          (keyup)="changeIt(textarea, markdown)">
-{{exampleMD$|async}}
-</textarea>
+    <gewd-prism-editor [value]="exampleMD$|async"
+                       #prismEditorComponent
+                      language="markdown"
+                      (changed)="changeIt($event, markdown)">
+   </gewd-prism-editor>
+
 
       <gewd-markdown #markdown [useCache]="true">
       </gewd-markdown>
@@ -123,4 +125,23 @@
   </gewd-markdown>
 
   <button (click)="makeError()">Trigger an error</button>
+</mat-expansion-panel>
+
+
+<br/>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <a href="https://www.npmjs.com/package/@gewd/components" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/components.svg?"
+           alt="Gewd Components NPM Version">
+    </a>
+    &nbsp;- PrismEditor
+  </mat-expansion-panel-header>
+
+
+   <gewd-prism-editor [value]="markDownReadmeMD$ | async"
+                      language="markdown">
+   </gewd-prism-editor>
 </mat-expansion-panel>

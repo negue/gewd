@@ -19,6 +19,10 @@ export class AppComponent implements OnInit, OnDestroy {
   readmeMD$ = this.http.get('README.md', {
     responseType: 'text'
   });
+
+  markDownReadmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
+    responseType: 'text'
+  });
   exampleMD$ = this.http.get('./assets/example.md', {
     responseType: 'text'
   });
@@ -43,8 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
                private http: HttpClient) {
   }
 
-  changeIt (textarea: HTMLTextAreaElement, markdown: any) {
-    this.markdown$.next(textarea.value);
+  changeIt (newMarkdown: string, markdown: any) {
+    this.markdown$.next(newMarkdown);
   }
 
   ngOnDestroy (): void {

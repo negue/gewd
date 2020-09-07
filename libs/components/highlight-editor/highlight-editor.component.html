@@ -1,0 +1,18 @@
+<div class="editor" [class.visible-highlight]="showHighlighedCode$ | async">
+
+<textarea #textarea [value]="value"
+          (change)="onChange(textarea.value)"
+          (keydown)="handleTab($event, textarea)"
+          (keyup)="onChange(textarea.value)"
+          spellcheck="false"
+
+>
+</textarea>
+<pre class="highlight-area"
+     tagName="pre"
+     [morphDom]="highlighedCode$ | async "
+     (done)="morphDone()"
+[options]="{childrenOnly: true}">
+</pre>
+</div>
+

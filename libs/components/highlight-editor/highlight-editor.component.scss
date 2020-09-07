@@ -1,0 +1,110 @@
+:host {
+  margin: 10px;
+  background: #2e2e2e;
+  display: block;
+
+  --editor-min-height: 100px;
+  --editor-max-height: 100px;
+  --editor-font-size: 14px;
+  --editor-line-height: 1.5;
+
+
+  overflow-y: auto;
+
+  min-height: var(--editor-min-height);
+  max-height: var(--editor-max-height);
+}
+
+
+.editor {
+  position: relative;
+
+  padding: 0;
+
+  tab-size: 2ch;
+
+    text-align: left;
+    box-sizing: border-box;
+
+  font-family: 'Fira code', 'Fira Mono', Consolas, Menlo, Courier, monospace;
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  height: 100%;
+}
+
+/** shared styles */
+
+textarea, .highlight-area {
+  margin: 0;
+  border: 0;
+  padding:0;
+
+  background: none;
+
+  box-sizing: inherit;
+  display: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-variant-ligatures: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  text-indent: inherit;
+  text-rendering: inherit;
+  text-transform: inherit;
+
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  // -webkit-font-smoothing: antialiased;
+}
+
+textarea {
+  outline: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+
+  -webkit-text-fill-color: transparent;
+
+  color: inherit;
+  caret-color: white;
+  caret-shape: bar;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.highlight-area {
+
+  position: relative;
+  pointer-events: none;
+
+}
+
+:not(.visible-highlight) {
+  .highlight-area {
+    opacity: 0;
+  }
+}
+
+.visible-highlight {
+  textarea {
+    color: transparent;
+  }
+}
+
+/**
+ * Show the placeholder
+ */
+textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}

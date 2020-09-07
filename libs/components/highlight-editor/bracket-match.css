@@ -1,0 +1,24 @@
+.token.punctuation.depth-1,
+.token.punctuation.depth-5,
+.token.punctuation.depth-9 {
+	color: #E50;
+	opacity: 1;
+}
+.token.punctuation.depth-2,
+.token.punctuation.depth-6,
+.token.punctuation.depth-10 {
+	color: #0B3;
+	opacity: 1;
+}
+.token.punctuation.depth-3,
+.token.punctuation.depth-7,
+.token.punctuation.depth-11 {
+	color: #26F;
+	opacity: 1;
+}
+.token.punctuation.depth-4,
+.token.punctuation.depth-8,
+.token.punctuation.depth-12 {
+	color: #E0E;
+	opacity: 1;
+}

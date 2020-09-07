@@ -1,0 +1,10 @@
+{
+  "lib": {
+    "entryFile": "public_api.ts"
+  },
+  "assets": [
+    "./prism-plugin-inline-color.worker-func.js",
+    "./prism-plugin-bracket-match.worker-func.js",
+    "./bracket-match.css"
+  ]
+}
