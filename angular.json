@@ -30,7 +30,7 @@
                 "output": "./"
               },
               {
-                "glob": "prism-@(c|csharp|css-extras|typescript|markdown).min.js",
+                "glob": "prism-@(c|csharp|css-extras|json|typescript|markdown).min.js",
                 "input": "./node_modules/prismjs/components",
                 "output": "/assets/prism/"
               },
