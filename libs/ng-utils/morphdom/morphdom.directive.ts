@@ -1,17 +1,5 @@
-import { Directive, ElementRef, EventEmitter, Input, NgZone, OnChanges, Output, SimpleChanges } from '@angular/core';
-import morphdom from 'morphdom';
-
-interface MorphDomOptions {
-  getNodeKey?: (node: Node) => any;
-  onBeforeNodeAdded?: (node: Node) => Node;
-  onNodeAdded?: (node: Node) => Node;
-  onBeforeElUpdated?: (fromEl: HTMLElement, toEl: HTMLElement) => boolean;
-  onElUpdated?: (el: HTMLElement) => void;
-  onBeforeNodeDiscarded?: (node: Node) => boolean;
-  onNodeDiscarded?: (node: Node) => void;
-  onBeforeElChildrenUpdated?: (fromEl: HTMLElement, toEl: HTMLElement) => boolean;
-  childrenOnly?: boolean;
-}
+import { Directive, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { MorphDomOptions, MorphdomService } from './morphdom.service';
 
 
 @Directive({
@@ -34,18 +22,14 @@ export class MorphdomDirective implements OnChanges {
   public done = new EventEmitter<ElementRef<Element>>();
 
   constructor(private element: ElementRef<Element>,
-              private ngZone: NgZone) {
-
+              private morphService: MorphdomService) {
   }
 
   ngOnChanges ({morphDom}: SimpleChanges): void {
     if (morphDom && morphDom.currentValue) {
-      this.ngZone.runOutsideAngular(() => {
-        morphdom(this.element.nativeElement,
-          `<${this.tagName}>${morphDom.currentValue}</${this.tagName}>`,
-          this.options
-        );
-      });
+      this.morphService.morphElement(this.element,
+        `<${this.tagName}>${morphDom.currentValue}</${this.tagName}>`,
+        this.options);
 
       this.done.emit(this.element);
     }
