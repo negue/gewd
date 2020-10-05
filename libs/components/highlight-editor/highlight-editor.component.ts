@@ -2,17 +2,25 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
+  NgZone,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from '@angular/core';
 import { ElementCssService } from '@gewd/ng-utils/css-props';
 import { HighlightService } from './highlight.service';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
+import { MorphdomService } from '@gewd/ng-utils/morphdom';
+import { handleTab, HandleTabResponse } from './editor.functions';
+import { ALL_CHARS_REGEX, IGNORE_KEY_EVENTS, KEY_TAB } from './editor.keys';
+
 
 @Component({
   selector: 'gewd-prism-editor',
@@ -23,7 +31,7 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
     ElementCssService
   ]
 })
-export class HighlightEditorComponent implements OnInit, OnChanges {
+export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   public value = '';
@@ -45,51 +53,75 @@ export class HighlightEditorComponent implements OnInit, OnChanges {
 
   public value$ = new BehaviorSubject(this.value);
   public language$ = new BehaviorSubject(this.language);
+  public debounce$ = new BehaviorSubject(this.debounceTime);
 
 
   public showHighlighedCode$ = new BehaviorSubject(false);
   public highlighedCode$: Observable<string>;
 
+  @Input()
+  public allCharsRegex = ALL_CHARS_REGEX;
+
+  @ViewChild('textarea')
+  public textarea: ElementRef<HTMLTextAreaElement>;
+
+  @ViewChild('highlightArea')
+  public highlightArea: ElementRef<HTMLPreElement>;
+
+  private _destroyed$ = new Subject();
+
   constructor(private cd: ChangeDetectorRef,
               private cssProps: ElementCssService,
-              private prism: HighlightService) {
+              private prism: HighlightService,
+              private ngZone: NgZone,
+              private morphService: MorphdomService) {
   }
 
   ngOnInit(): void {
     this.updateLinesAmount();
 
-    this.highlighedCode$ = combineLatest([
-      this.value$,
-      this.language$
+    // once the debounceTime changes
+    // recreate the observable
+    this.debounce$.pipe(
+      switchMap(debounceTimeInterval =>  combineLatest([
+      this.value$.pipe(
+        distinctUntilChanged(),
+        filter(v => !!v),
+      ),
+      this.language$.pipe(
+        distinctUntilChanged()
+      )
     ]).pipe(
-      distinctUntilChanged(([oldVal, oldLang], [newVal, newLang]) => {
-        if (oldLang !== newLang) {
-          return false;
-        }
+        debounceTime(debounceTimeInterval),
+      )
+    ),
+      takeUntil(this._destroyed$),
+    ).subscribe(async ([code, language]) => {
+      this.showHighlighedCode$.next(false);
 
-        if (oldVal !== newVal){
-          return false;
-        }
+      await this.highlightToPreTag(code, language)
 
-        return true;
-      }),
-      tap(() => {
-        this.showHighlighedCode$.next(false);
+      this.showHighlighedCode$.next(true);
+    });
 
-        this.cd.markForCheck();
-      }),
-      debounceTime(this.debounceTime),
-      switchMap(([code, lang]) => this.prism.highlightCode(code, lang))
-    );
+    this.value$.pipe(
+      takeUntil(this._destroyed$),
+      distinctUntilChanged(),
+    ).subscribe(value => {
+      this.value = value;
+      this.changed.emit(value);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._destroyed$.next();
+    this._destroyed$.complete();
   }
 
   onChange(value: string) {
-    this.value = value;
-    this.changed.next(value);
     this.value$.next(value);
-    this.updateLinesAmount();
 
-    this.cd.detectChanges();
+    this.cd.markForCheck();
   }
 
   private updateLinesAmount () {
@@ -104,7 +136,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges ({ value, language }: SimpleChanges): void {
+  ngOnChanges ({ value, language, debounceTime }: SimpleChanges): void {
     if (value) {
       this.value$.next(value.currentValue);
     }
@@ -113,53 +145,71 @@ export class HighlightEditorComponent implements OnInit, OnChanges {
       this.language$.next(language.currentValue);
     }
 
-  }
-
-  morphDone () {
-    this.showHighlighedCode$.next(true);
-    this.cd.detectChanges();
-
-    console.info('morphDone');
+    if (debounceTime) {
+      this.debounce$.next(debounceTime.currentValue);
+    }
   }
 
   handleTab (event: KeyboardEvent, textarea: HTMLTextAreaElement) {
-    if (event.key !== "Tab") {
-      return;
-    }
-
-    let textChanged = false;
-
-    const backwards = event.shiftKey;
-
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-
-    const valueToWork = this.useTabs ? '\t' : ''.padEnd(this.spaceWidth, ' ');
-
-    const textValueUntilStart = textarea.value.substr(0, start);
-    const textValueFromStart = textarea.value.substr(end);
-
-
-    if (backwards) {
-      if (textValueUntilStart.endsWith(valueToWork)) {
-        textarea.value = textValueUntilStart.substr(0, start - valueToWork.length) + textValueFromStart;
-        textarea.selectionStart = textarea.selectionEnd = start - valueToWork.length;
-
-        textChanged = true;
-      }
-    } else {
-      textarea.value = textValueUntilStart + valueToWork + textValueFromStart;
-      textarea.selectionStart = textarea.selectionEnd = start + valueToWork.length;
-
-      textChanged = true;
-    }
-
-    event.preventDefault();
-
-    if (textChanged) {
+    if (event.key.match(this.allCharsRegex) && !IGNORE_KEY_EVENTS.includes(event.key)) {
       this.showHighlighedCode$.next(false);
     }
 
-    return false;
+    this.value$.next(textarea.value);
+
+    if (event.key === KEY_TAB) {
+      const handledTab = handleTab(
+        event,
+        textarea.value,
+        textarea.selectionStart,
+        textarea.selectionEnd,
+        this.useTabs,
+        this.spaceWidth
+      );
+
+      this.applyToTextarea(handledTab);
+
+      if (handledTab.textChanged) {
+        this.showHighlighedCode$.next(false);
+      }
+    }
+  }
+
+  onKeyUp (value: string) {
+    this.value$.next(value);
+  }
+
+  private applyToTextarea(result: HandleTabResponse) {
+    if (result.textChanged) {
+      this.textarea.nativeElement.value =result.newValue;
+      this.textarea.nativeElement.selectionStart =result.newSelectionStart;
+      this.textarea.nativeElement.selectionEnd =result.newSelectionEnd;
+    }
+  }
+
+  private async highlightToPreTag (
+    codeToHighlight: string,
+    language: string
+  ) {
+    if (!codeToHighlight) {
+      return '';
+    }
+
+    const innerHighlighed = await this.prism.highlightCode(codeToHighlight, language);
+
+    let addedNewLine = '';
+
+    // somehow if the new html starts with a newline
+    // its not added to the element
+    if (innerHighlighed.startsWith('\n')) {
+      addedNewLine = '\n';
+    }
+
+    this.morphService.morphElement(this.highlightArea,
+      `<pre>${addedNewLine}${innerHighlighed}</pre>`, {
+        childrenOnly: true
+      });
+
+    return innerHighlighed;
   }
 }

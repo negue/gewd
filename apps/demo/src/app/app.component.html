@@ -130,7 +130,7 @@
 
 <br/>
 
-<mat-expansion-panel>
+<mat-expansion-panel (opened)="openedEditorPanel()">
   <mat-expansion-panel-header>
     <a href="https://www.npmjs.com/package/@gewd/components" rel="nofollow"
        class="npm-link">
@@ -140,8 +140,30 @@
     &nbsp;- PrismEditor
   </mat-expansion-panel-header>
 
+  <mat-form-field>
+    <mat-select placeholder="Examples" [value]="currentPrismExample"
+    (valueChange)="updateValueChanged($event)">
+      <mat-option value="readme_md">Markdown Readme</mat-option>
+      <mat-option value="ts_example">TypeScript</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-   <gewd-prism-editor [value]="markDownReadmeMD$ | async"
-                      language="markdown">
+  <mat-form-field>
+    <input matInput placeholder="Render debounce-time"
+           value="200" type="number"
+           #renderDebounce>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput placeholder="Editor Height (px)"
+           value="400" type="number"
+           #editorHeight>
+  </mat-form-field>
+
+   <gewd-prism-editor [value]="editorExample$ | async"
+                      [language]="editorLanguage$ | async"
+                      [debounceTime]="+renderDebounce.value"
+                      [style.--editor-min-height.px]="editorHeight.value">
    </gewd-prism-editor>
 </mat-expansion-panel>

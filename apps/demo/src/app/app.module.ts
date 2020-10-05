@@ -22,6 +22,8 @@ import { MarkdownToolbarComponent } from './markdown-toolbar.component';
 import { NgErrorOverlayModule } from '@gewd/ng-utils/ng-error-overlay';
 import { environment } from '../environments/environment';
 import { HighlightEditorModule } from '@gewd/components/highlight-editor';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -40,7 +42,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MatProgressBarModule,
     NgErrorOverlayModule,
     ...environment.modules,
-    HighlightEditorModule
+    HighlightEditorModule, MatSelectModule, MatInputModule
   ],
   providers: [
     {

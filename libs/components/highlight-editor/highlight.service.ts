@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, Optional, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, InjectionToken, NgZone, Optional, PLATFORM_ID } from '@angular/core';
 import { MarkdownServiceOptions, MarkdownWorker, PrismServiceOptions, PrismWorker } from '@gewd/markdown/contracts';
 import { MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
 import { isPlatformBrowser } from '@angular/common';
@@ -17,7 +17,8 @@ export class HighlightService {
               @Optional() @Inject(PrismOptionsInjectorToken)
               readonly prismOptions: PrismServiceOptions,
 
-               @Inject(PLATFORM_ID) platformId: Object
+               @Inject(PLATFORM_ID) platformId: Object,
+              private ngZone: NgZone
               ) {
      if (isPlatformBrowser(platformId)) {
        if (markdownOptions) {
@@ -34,11 +35,14 @@ export class HighlightService {
     }
   }
 
-  public async highlightCode (code: string, lang: string): Promise<string> {
+  public highlightCode (code: string, lang: string): Promise<string> {
     if (!this.workerProxy) {
       return;
     }
 
-    return this.workerProxy.highlight(code, lang);
+   return this.ngZone.runOutsideAngular(async () => {
+      // needed?
+      return await this.workerProxy.highlight(code, lang)
+    });
   }
 }

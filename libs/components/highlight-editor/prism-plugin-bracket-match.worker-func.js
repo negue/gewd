@@ -14,9 +14,9 @@
     [
       '(', ')'
     ],
-    [
+    /*[
       '<', '>'
-    ]
+    ]*/
   ]
 
 	var bracketsToWorkWith = [];
@@ -29,7 +29,7 @@
     '[': 0,
     '{': 0,
     '(': 0,
-    '<': 0
+    // '<': 0
   }
 
 	Prism.hooks.add('wrap', function (env) {

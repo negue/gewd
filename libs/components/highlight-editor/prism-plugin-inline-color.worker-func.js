@@ -85,8 +85,6 @@
 		validateColor
 	];
 
-
-	console.info('yep plugin works until here 2');
 	Prism.hooks.add('wrap', function (env) {
 
 	// console.info('wrap', env);

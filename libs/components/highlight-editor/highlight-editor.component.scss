@@ -59,7 +59,8 @@ textarea, .highlight-area {
   word-break: keep-all;
   overflow-wrap: break-word;
 
-  // -webkit-font-smoothing: antialiased;
+  // transition: 20ms color, opacity;
+  -webkit-font-smoothing: antialiased;
 }
 
 textarea {
@@ -72,9 +73,7 @@ textarea {
   resize: none;
   overflow: hidden;
 
-  -webkit-text-fill-color: transparent;
 
-  color: inherit;
   caret-color: white;
   caret-shape: bar;
 
@@ -90,21 +89,26 @@ textarea {
 
 }
 
-:not(.visible-highlight) {
-  .highlight-area {
-    opacity: 0;
-  }
-}
-
-.visible-highlight {
+.editor__no-debounce {
   textarea {
-    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 }
 
-/**
- * Show the placeholder
- */
-textarea:empty {
-  -webkit-text-fill-color: inherit !important;
+:not(.editor__no-debounce) {
+  &:not(.visible-highlight) {
+    textarea {
+      color: inherit;
+    }
+
+    .highlight-area {
+       opacity: 0;
+    }
+  }
+
+  &.visible-highlight {
+    textarea {
+    -webkit-text-fill-color: transparent;
+    }
+  }
 }
