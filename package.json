@@ -31,7 +31,8 @@
     "dev:ssr": "ng run demo:serve-ssr",
     "serve:ssr": "node dist/demo-server/main.js",
     "build:ssr": "ng build --prod && ng run demo:server:production",
-    "prerender": "ng run demo:prerender"
+    "prerender": "ng run demo:prerender",
+    "build:libs": "ng build ng-utils && ng build markdown && ng build lazy && ng build components"
   },
   "private": true,
   "dependencies": {
