@@ -142,12 +142,17 @@ DynamicLoaderRegistry.LazyModuleComponents = {
 
         break;
       }
+      default: {
+        this.editorExample$.next('');
+
+        break;
+      }
     }
   }
 
   openedEditorPanel () {
     if (!this.currentPrismExample) {
-      this.updateValueChanged('ts_example');
+      this.updateValueChanged('empty');
     }
   }
 }

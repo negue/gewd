@@ -143,6 +143,7 @@
   <mat-form-field>
     <mat-select placeholder="Examples" [value]="currentPrismExample"
     (valueChange)="updateValueChanged($event)">
+      <mat-option value="empty">Empty</mat-option>
       <mat-option value="readme_md">Markdown Readme</mat-option>
       <mat-option value="ts_example">TypeScript</mat-option>
     </mat-select>
@@ -157,7 +158,7 @@
 
   <mat-form-field>
     <input matInput placeholder="Editor Height (px)"
-           value="400" type="number"
+           value="100" type="number"
            #editorHeight>
   </mat-form-field>
 
