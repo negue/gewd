@@ -165,6 +165,34 @@
    <gewd-prism-editor [value]="editorExample$ | async"
                       [language]="editorLanguage$ | async"
                       [debounceTime]="+renderDebounce.value"
-                      [style.--editor-min-height.px]="editorHeight.value">
+                      [style.--editor-min-height.px]="editorHeight.value"
+   #prismEditor>
    </gewd-prism-editor>
+
+  <form [formGroup]="aForm">
+
+  <mat-form-field>
+
+    <gewd-custom-form-control placeholder="test" [isEmptyFunc]="isemptyfunc"
+                              formControlName="editor"
+    #customFormControl
+    >
+        <gewd-prism-editor [value]="editorExample$ | async"
+                      [language]="editorLanguage$ | async"
+                      [debounceTime]="+renderDebounce.value"
+                      [style.--editor-min-height.px]="editorHeight.value"
+                           (value$)="customFormControl.value = $event"
+        (focussed$)="customFormControl.focused = $event" #editoe>
+   </gewd-prism-editor>
+    </gewd-custom-form-control>
+  </mat-form-field>
+</form>
+
+  {{editoe.value$ | async | json}}
+  {{aForm.value |json}}
+   <mat-form-field>
+
+
+     <textarea matInput placeholder="test"></textarea>
+  </mat-form-field>
 </mat-expansion-panel>

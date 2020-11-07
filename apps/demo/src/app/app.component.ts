@@ -5,6 +5,7 @@ import { debounceTime, take } from 'rxjs/operators';
 // todo fix nx enforce module boundaries
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 // TODO Splitup each panel functions/vars into its own component
 
@@ -45,6 +46,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public editorLanguage$ = new BehaviorSubject('');
   public editorExample$ = new BehaviorSubject('');
+  isemptyfunc = () => true;
+  aForm =  new FormBuilder().group({'editor': ''});
 
   constructor (private cd: ChangeDetectorRef,
                private http: HttpClient) {

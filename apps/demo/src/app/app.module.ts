@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MarkdownModule } from '@gewd/markdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { HighlightEditorModule } from '@gewd/components/highlight-editor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { CustomFormControlModule } from '@gewd/components/custom-form-control';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -34,6 +35,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     RouterModule.forRoot([]),
     HttpClientModule,
     MarkdownModule, FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
     GewdLazyLoaderModule,
@@ -42,7 +44,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MatProgressBarModule,
     NgErrorOverlayModule,
     ...environment.modules,
-    HighlightEditorModule, MatSelectModule, MatInputModule
+    HighlightEditorModule, MatSelectModule, MatInputModule, CustomFormControlModule
   ],
   providers: [
     {

@@ -51,6 +51,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   public changed = new EventEmitter<string>();
 
+  @Output()
   public value$ = new BehaviorSubject(this.value);
   public language$ = new BehaviorSubject(this.language);
   public debounce$ = new BehaviorSubject(this.debounceTime);
@@ -67,6 +68,9 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild('highlightArea')
   public highlightArea: ElementRef<HTMLPreElement>;
+
+  @Output()
+  focussed$ = new EventEmitter();
 
   private _destroyed$ = new Subject();
 
@@ -102,6 +106,9 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
       await this.highlightToPreTag(code, language)
 
       this.showHighlighedCode$.next(true);
+
+      // incase multiple enters scroll the textarea one off, scroll back up
+      // this.textarea.nativeElement.scrollTo(0,0);
     });
 
     this.value$.pipe(
@@ -111,6 +118,8 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
       this.value = value;
       this.changed.emit(value);
     });
+
+    this.highlightToPreTag('\n', null);
   }
 
   ngOnDestroy(): void {
@@ -132,7 +141,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     const lines = this.value.split('\n').length;
 
     this.cssProps.updateElementVars({
-      '--lines-amount': lines +1
+      '--lines-amount': lines
     });
   }
 
@@ -192,23 +201,36 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     language: string
   ) {
     if (!codeToHighlight) {
+       this.morphService.morphElement(this.highlightArea,
+      `<pre>\n</pre>`, {
+        childrenOnly: true
+      });
+
       return '';
     }
 
     const innerHighlighed = await this.prism.highlightCode(codeToHighlight, language);
 
-    let addedNewLine = '';
+    let addedBeginNewLine = '', addedEndNewLine = '';
 
     // somehow if the new html starts with a newline
     // its not added to the element
     if (innerHighlighed.startsWith('\n')) {
-      addedNewLine = '\n';
+      addedBeginNewLine = '\n';
+    }
+
+    if (innerHighlighed.endsWith('\n')) {
+      addedEndNewLine = '\n';
     }
 
     this.morphService.morphElement(this.highlightArea,
-      `<pre>${addedNewLine}${innerHighlighed}</pre>`, {
+      `<pre>${addedBeginNewLine}${innerHighlighed}${addedEndNewLine}</pre>`, {
         childrenOnly: true
       });
+
+
+    this.textarea.nativeElement.blur();
+    this.textarea.nativeElement.focus();
 
     return innerHighlighed;
   }

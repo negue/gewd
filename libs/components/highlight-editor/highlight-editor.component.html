@@ -6,9 +6,10 @@
             (change)="onChange(textarea.value)"
             (keydown)="handleTab($event, textarea)"
             (keyup)="onKeyUp(textarea.value)"
+            (focus)="focussed$.next(true)"
+            (blur)="focussed$.next(false)"
             spellcheck="false"
-  >
-  </textarea>
+  ></textarea>
   <pre class="highlight-area" #highlightArea></pre>
 </div>
 

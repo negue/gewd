@@ -30,6 +30,8 @@
   font-size: var(--editor-font-size);
   line-height: var(--editor-line-height);
   height: 100%;
+
+  //min-height: var(--editor-min-height);
 }
 
 /** shared styles */
@@ -61,9 +63,13 @@ textarea, .highlight-area {
 
   // transition: 20ms color, opacity;
   -webkit-font-smoothing: antialiased;
+
+
+  min-height: var(--editor-min-height);
 }
 
 textarea {
+  background: #00BB3344;
   outline: 0;
   position: absolute;
   top: 0;
@@ -83,7 +89,6 @@ textarea {
 }
 
 .highlight-area {
-
   position: relative;
   pointer-events: none;
 
