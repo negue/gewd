@@ -16,11 +16,11 @@
     </mat-tab>
     <mat-tab label="Try out">
 
-    <gewd-prism-editor [value]="exampleMD$|async"
-                       #prismEditorComponent
-                      language="markdown"
-                      (changed)="changeIt($event, markdown)">
-   </gewd-prism-editor>
+      <gewd-prism-editor [value]="exampleMD$|async"
+                         #prismEditorComponent
+                         language="markdown"
+                         (changed)="changeIt($event, markdown)">
+      </gewd-prism-editor>
 
 
       <gewd-markdown #markdown [useCache]="true">
@@ -142,7 +142,7 @@
 
   <mat-form-field>
     <mat-select placeholder="Examples" [value]="currentPrismExample"
-    (valueChange)="updateValueChanged($event)">
+                (valueChange)="updateValueChanged($event)">
       <mat-option value="empty">Empty</mat-option>
       <mat-option value="readme_md">Markdown Readme</mat-option>
       <mat-option value="ts_example">TypeScript</mat-option>
@@ -162,37 +162,38 @@
            #editorHeight>
   </mat-form-field>
 
-   <gewd-prism-editor [value]="editorExample$ | async"
-                      [language]="editorLanguage$ | async"
-                      [debounceTime]="+renderDebounce.value"
-                      [style.--editor-min-height.px]="editorHeight.value"
-   #prismEditor>
-   </gewd-prism-editor>
+  <gewd-prism-editor [value]="editorExample$ | async"
+                     [language]="editorLanguage$ | async"
+                     [debounceTime]="+renderDebounce.value"
+                     [style.--editor-min-height.px]="editorHeight.value"
+                     #prismEditor>
+  </gewd-prism-editor>
+
+  <br/>
+
+  <h4>Mat-Form-Field Example</h4>
 
   <form [formGroup]="aForm">
 
-  <mat-form-field>
+    <mat-form-field style="width: 100%">
 
-    <gewd-custom-form-control placeholder="test" [isEmptyFunc]="isemptyfunc"
-                              formControlName="editor"
-    #customFormControl
-    >
+      <gewd-custom-form-control placeholder="test" [isEmptyFunc]="isemptyfunc"
+                                formControlName="editor"
+                                #customFormControl
+      >
         <gewd-prism-editor [value]="editorExample$ | async"
-                      [language]="editorLanguage$ | async"
-                      [debounceTime]="+renderDebounce.value"
-                      [style.--editor-min-height.px]="editorHeight.value"
+                           [language]="editorLanguage$ | async"
+                           [debounceTime]="+renderDebounce.value"
+                           [style.--editor-min-height.px]="editorHeight.value"
                            (value$)="customFormControl.value = $event"
-        (focussed$)="customFormControl.focused = $event" #editoe>
-   </gewd-prism-editor>
-    </gewd-custom-form-control>
-  </mat-form-field>
-</form>
-
-  {{editoe.value$ | async | json}}
-  {{aForm.value |json}}
-   <mat-form-field>
+                           (focussed$)="customFormControl.focused = $event" #editoe>
+        </gewd-prism-editor>
+      </gewd-custom-form-control>
+    </mat-form-field>
+  </form>
 
 
-     <textarea matInput placeholder="test"></textarea>
-  </mat-form-field>
+  Form Field Data:
+  <hr>
+  {{ aForm.value | json }}
 </mat-expansion-panel>

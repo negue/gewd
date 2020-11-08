@@ -27,9 +27,9 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
     return this._value;
   }
 
+  @Input()
   set value (value: any) {
     this._value = value;
-    console.info({value});
     this.stateChangeSubject.next();
     if (this.onChange) {
       this.onChange(value);
@@ -40,9 +40,6 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
   userAriaDescribedBy: string;
 
   @Input()
-  isEmptyFunc: () => boolean;
-
-  @Input()
   placeholder: string;
 
   @Input()
@@ -51,7 +48,7 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
   @Input()
   disabled: boolean;
 
-  @Input() private _value: any;
+   private _value: any;
 
   @Input()
   focused: boolean;
@@ -64,7 +61,7 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
   onTouched = () => {};
 
   get empty() {
-    return this.isEmptyFunc ? this.isEmptyFunc() : true ;
+    return typeof this.value === 'number' ? false : !this.value;
   }
 
   get shouldLabelFloat() {

@@ -1,7 +1,17 @@
 :host {
-  margin: 10px;
   background: #2e2e2e;
   display: block;
+
+  border: 1px solid lightgray;
+  padding: 4px;
+
+  :host-context(.mat-form-field) {
+    border : 0;
+    padding: 0;
+    background: inherit;
+    width: 100%;
+  }
+
 
   --editor-min-height: 100px;
   --editor-max-height: 100px;
@@ -69,7 +79,6 @@ textarea, .highlight-area {
 }
 
 textarea {
-  background: #00BB3344;
   outline: 0;
   position: absolute;
   top: 0;
