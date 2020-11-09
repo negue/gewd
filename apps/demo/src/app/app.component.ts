@@ -101,8 +101,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   updateValueChanged ($event: string) {
-    console.info({ $event});
-
     this.currentPrismExample = $event;
     switch($event ) {
       case 'ts_example':

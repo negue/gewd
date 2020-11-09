@@ -1,6 +1,11 @@
 # `@gewd/components`
 
-Angular Components
+(PrismJS based) Highlight Editor
+
+based on the same idea's as:
+
+- vue: https://github.com/koca/vue-prism-editor
+- react: https://github.com/lumia2046/react-prism-editor
 
 [![NPM Version][npm-img]][npm-url]
 
@@ -9,6 +14,12 @@ Angular Components
 
 
 ## Features:
+
+- [x] Can handle `TAB`-keyboard events
+- [x] Most of the work is done in a web-worker, so as much as possible pushing the work off the view-thread
+- [x] Can use the same web-worker (of `@gewd/markdown`) or its own
+- [x] Can load additional prism-plugins (two examples `inline-colors`/ `bracket-match` included)
+- [x] Can be also used in a `MatFormField` using `@gewd/components/custom-form-control` see example in the Demo-Application
 
 ## Install
 
@@ -83,6 +94,4 @@ Angular Components
               "node_modules/@gewd/components/highlight-editor/bracket-match.css"
             ],
 ```
-
-## Example Code
 

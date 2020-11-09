@@ -1,5 +1,6 @@
 # Changelog
 
-## [0.1.0] - 2020-09-07
+## [0.1.6] - 2020-11-09
 
-- First release
+- Highlight Editor (based on PrismJs)
+- CustomFormControl (to place a custom control inside)

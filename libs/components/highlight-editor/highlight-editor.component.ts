@@ -16,7 +16,7 @@ import {
 import { ElementCssService } from '@gewd/ng-utils/css-props';
 import { HighlightService } from './highlight.service';
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
 import { MorphdomService } from '@gewd/ng-utils/morphdom';
 import { handleTab, HandleTabResponse } from './editor.functions';
 import { ALL_CHARS_REGEX, IGNORE_KEY_EVENTS, KEY_TAB } from './editor.keys';
@@ -89,7 +89,6 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
       switchMap(debounceTimeInterval =>  combineLatest([
         this.value$.pipe(
           distinctUntilChanged(),
-          filter(v => !!v),
         ),
         this.language$.pipe(
           distinctUntilChanged()
