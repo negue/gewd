@@ -184,6 +184,8 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
         this.showHighlighedCode$.next(false);
       }
     }
+
+
   }
 
   onKeyUp (event: KeyboardEvent, value: string) {

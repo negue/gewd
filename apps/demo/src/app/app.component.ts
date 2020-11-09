@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public editorLanguage$ = new BehaviorSubject('');
   public editorExample$ = new BehaviorSubject('');
-  isemptyfunc = () => true;
+
   aForm =  new FormBuilder().group({'editor': ''});
 
   constructor (private cd: ChangeDetectorRef,
