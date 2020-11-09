@@ -4,8 +4,8 @@
 
   <textarea #textarea [value]="value"
             (change)="onChange(textarea.value)"
-            (keydown)="handleTab($event, textarea)"
-            (keyup)="onKeyUp(textarea.value)"
+            (keydown)="onKeyDown($event, textarea)"
+            (keyup)="onKeyUp($event, textarea.value)"
             (focus)="focussed$.next(true)"
             (blur)="focussed$.next(false)"
             spellcheck="false"

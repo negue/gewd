@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { ElementCssService } from '@gewd/ng-utils/css-props';
 import { HighlightService } from './highlight.service';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, takeUntil } from 'rxjs/operators';
 import { MorphdomService } from '@gewd/ng-utils/morphdom';
 import { handleTab, HandleTabResponse } from './editor.functions';
@@ -56,9 +56,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
   public language$ = new BehaviorSubject(this.language);
   public debounce$ = new BehaviorSubject(this.debounceTime);
 
-
   public showHighlighedCode$ = new BehaviorSubject(false);
-  public highlighedCode$: Observable<string>;
 
   @Input()
   public allCharsRegex = ALL_CHARS_REGEX;
@@ -72,6 +70,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   focussed$ = new EventEmitter();
 
+  private lastKeyTriggered$ = new BehaviorSubject<KeyboardEvent>(null);
   private _destroyed$ = new Subject();
 
   constructor(private cd: ChangeDetectorRef,
@@ -88,22 +87,25 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     // recreate the observable
     this.debounce$.pipe(
       switchMap(debounceTimeInterval =>  combineLatest([
-      this.value$.pipe(
-        distinctUntilChanged(),
-        filter(v => !!v),
+        this.value$.pipe(
+          distinctUntilChanged(),
+          filter(v => !!v),
+        ),
+        this.language$.pipe(
+          distinctUntilChanged()
+        ),
+        this.lastKeyTriggered$.pipe(
+          distinctUntilChanged()
+        )
+      ]).pipe(
+          debounceTime(debounceTimeInterval),
+        )
       ),
-      this.language$.pipe(
-        distinctUntilChanged()
-      )
-    ]).pipe(
-        debounceTime(debounceTimeInterval),
-      )
-    ),
       takeUntil(this._destroyed$),
-    ).subscribe(async ([code, language]) => {
+    ).subscribe(async ([code, language, lastKeyEvent]) => {
       this.showHighlighedCode$.next(false);
 
-      await this.highlightToPreTag(code, language)
+      await this.highlightToPreTag(code, language, lastKeyEvent)
 
       this.showHighlighedCode$.next(true);
 
@@ -119,7 +121,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
       this.changed.emit(value);
     });
 
-    this.highlightToPreTag('\n', null);
+    this.highlightToPreTag('\n', null, null);
   }
 
   ngOnDestroy(): void {
@@ -159,7 +161,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  handleTab (event: KeyboardEvent, textarea: HTMLTextAreaElement) {
+  onKeyDown (event: KeyboardEvent, textarea: HTMLTextAreaElement) {
     if (event.key.match(this.allCharsRegex) && !IGNORE_KEY_EVENTS.includes(event.key)) {
       this.showHighlighedCode$.next(false);
     }
@@ -184,8 +186,9 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  onKeyUp (value: string) {
+  onKeyUp (event: KeyboardEvent, value: string) {
     this.value$.next(value);
+    this.lastKeyTriggered$.next(event);
   }
 
   private applyToTextarea(result: HandleTabResponse) {
@@ -196,9 +199,10 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  private async highlightToPreTag (
+  private async highlightToPreTag(
     codeToHighlight: string,
-    language: string
+    language: string,
+    lastKeyEvent: KeyboardEvent
   ) {
     if (!codeToHighlight) {
        this.morphService.morphElement(this.highlightArea,
@@ -228,9 +232,10 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
         childrenOnly: true
       });
 
-
-    this.textarea.nativeElement.blur();
-    this.textarea.nativeElement.focus();
+    if (lastKeyEvent) {
+      this.textarea.nativeElement.blur();
+      this.textarea.nativeElement.focus();
+    }
 
     return innerHighlighed;
   }

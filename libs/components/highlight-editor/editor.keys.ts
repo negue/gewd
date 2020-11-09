@@ -1,4 +1,5 @@
 export const KEY_BACKSPACE = "Backspace";
+export const KEY_DELETE = "Delete";
 export const KEY_ENTER  = "Enter";
 export const KEY_ESCAPE  = "Escape";
 export const KEY_TAB  = "Tab";
