@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { emojiExampleList } from './example-emoji-list';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { debounceTime, take } from 'rxjs/operators';
 // todo fix nx enforce module boundaries
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
+// TODO Splitup each panel functions/vars into its own component
 
 @Component({
   selector: 'gewd-utils-root',
@@ -17,6 +19,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   readmeMD$ = this.http.get('README.md', {
+    responseType: 'text'
+  });
+
+  markDownReadmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
     responseType: 'text'
   });
   exampleMD$ = this.http.get('./assets/example.md', {
@@ -32,19 +38,23 @@ export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('markdown', {static: true})
   markdown: any;
 
-
-
   public outputLog = [];
   public outputBinding = {
     outputTest: (e) => this.addLogEntry(e)
   };
+  public currentPrismExample: string;
+
+  public editorLanguage$ = new BehaviorSubject('');
+  public editorExample$ = new BehaviorSubject('');
+
+  aForm =  new FormBuilder().group({'editor': ''});
 
   constructor (private cd: ChangeDetectorRef,
                private http: HttpClient) {
   }
 
-  changeIt (textarea: HTMLTextAreaElement, markdown: any) {
-    this.markdown$.next(textarea.value);
+  changeIt (newMarkdown: string, markdown: any) {
+    this.markdown$.next(newMarkdown);
   }
 
   ngOnDestroy (): void {
@@ -88,5 +98,62 @@ export class AppComponent implements OnInit, OnDestroy {
     let errorSource: any;
 
     errorSource.subString();
+  }
+
+  updateValueChanged ($event: string) {
+    this.currentPrismExample = $event;
+    switch($event ) {
+      case 'ts_example':
+      {
+        this.editorLanguage$.next('ts');
+
+        this.editorExample$.next(`
+import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
+import { Lazy } from '@gewd/lazy/utils';
+
+DynamicLoaderRegistry.LazyComponents = {
+  'test-comp': new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
+};
+
+DynamicLoaderRegistry.LazyModuleComponents = {
+  'test-module': {
+    load: new Lazy<any>(
+      () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
+      .then(({TestModule}) => TestModule)
+    )
+  },
+  'portal-module': {
+    load: new Lazy<any>(
+      () => import(/* webpackChunkName: "lazy-portal-module" */ './lazy-wrapper/lazy-portal-source')
+        .then(({PortalModule}) => PortalModule)
+    )
+  },
+};
+        `.trim())
+        break;
+      }
+      case 'readme_md': {
+        this.editorLanguage$.next('markdown');
+
+        this.markDownReadmeMD$.pipe(
+          take(1)
+        ).subscribe(value => {
+          this.editorExample$.next(value);
+        })
+
+        break;
+      }
+      default: {
+        this.editorExample$.next('');
+
+        break;
+      }
+    }
+  }
+
+  openedEditorPanel () {
+    if (!this.currentPrismExample) {
+      this.updateValueChanged('empty');
+    }
   }
 }

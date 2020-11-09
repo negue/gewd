@@ -27,7 +27,7 @@ export class CssPropsService {
 
   public updateElementVars(element: HTMLElement, cssProps: any) {
     this.ngZone.runOutsideAngular(() => {
-      updateCssProps(this.document.body, cssProps);
+      updateCssProps(element, cssProps);
     });
   }
 }

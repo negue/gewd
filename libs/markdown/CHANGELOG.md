@@ -1,6 +1,27 @@
 # Changelog
 
-## [0.4.0] - 18.03.2020
+## [0.4.1] - 2020-09-07
+
+#### Feature
+- `PrismOptions` now has the option `highlightMarkdownCode`
+  > This highlights codes inside your markdown highlight, i.e. 
+  > ```markdown
+  > ```js
+  > const code = true;
+  > \```
+  > ```
+  
+  This feature-flag will be probably only used for the `Highlight-Editor`
+
+#### Internal
+
+- Added interfaces for a prism-specific workers
+- Extracted `highlightCode` from `marked.prism.worker.ts` to `@gewd/markdown/worker-function` / `prism.functions.ts`
+  > See `marked.prism.worker.ts` for the newest version
+
+
+
+## [0.4.0] - 2020-03-18
 
 #### Markdown SCSS
 - Added a mixin to get a default markdown styling, add to your app's `styles.scss`
@@ -22,9 +43,9 @@
 - merged InjectionTokens as `MarkdownOptionsInjectorToken` and moved to a different path `@gewd/markdown/service`
 - mermaid options under `MarkdownOptionsInjectorToken` now are:
   ```ts
-  mermaidPath: 'mermaid.min.js',
+  'mermaid.min.js',
   mermaidOptions: {
-    theme: 'neutral',
+    'neutral',
     // and others see  https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults
   }
   ```

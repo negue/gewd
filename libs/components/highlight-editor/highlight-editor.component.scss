@@ -1,0 +1,128 @@
+:host {
+  background: #2e2e2e;
+  display: block;
+
+  border: 1px solid lightgray;
+  padding: 4px;
+
+  :host-context(.mat-form-field) {
+    border : 0;
+    padding: 0;
+    background: inherit;
+    width: 100%;
+  }
+
+
+  --editor-min-height: 100px;
+  --editor-max-height: 100px;
+  --editor-font-size: 14px;
+  --editor-line-height: 1.5;
+
+
+  overflow-y: auto;
+
+  min-height: var(--editor-min-height);
+  max-height: var(--editor-max-height);
+}
+
+
+.editor {
+  position: relative;
+
+  padding: 0;
+
+  tab-size: 2ch;
+
+    text-align: left;
+    box-sizing: border-box;
+
+  font-family: 'Fira code', 'Fira Mono', Consolas, Menlo, Courier, monospace;
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  height: 100%;
+
+  //min-height: var(--editor-min-height);
+}
+
+/** shared styles */
+
+textarea, .highlight-area {
+  margin: 0;
+  border: 0;
+  padding:0;
+
+  background: none;
+
+  box-sizing: inherit;
+  display: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-variant-ligatures: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  text-indent: inherit;
+  text-rendering: inherit;
+  text-transform: inherit;
+
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  // transition: 20ms color, opacity;
+  -webkit-font-smoothing: antialiased;
+
+
+  min-height: var(--editor-min-height);
+}
+
+textarea {
+  outline: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+
+
+  caret-color: white;
+  caret-shape: bar;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.highlight-area {
+  position: relative;
+  pointer-events: none;
+
+}
+
+.editor__no-debounce {
+  textarea {
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+:not(.editor__no-debounce) {
+  &:not(.visible-highlight) {
+    textarea {
+      color: inherit;
+    }
+
+    .highlight-area {
+       opacity: 0;
+    }
+  }
+
+  &.visible-highlight {
+    textarea {
+    -webkit-text-fill-color: transparent;
+    }
+  }
+}

@@ -1,11 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { Remote, wrap } from 'comlink';
-import {
-  DEFAULT_MERMAID_OPTIONS,
-  MarkdownOptions,
-  MarkdownWorker
-} from '@gewd/markdown/contracts';
+import { DEFAULT_MERMAID_OPTIONS, MarkdownServiceOptions, MarkdownWorker } from '@gewd/markdown/contracts';
 import { MarkdownCacheService } from './markdown-cache.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { MarkdownOptionsInjectorToken } from './injection-token';
@@ -31,7 +27,7 @@ export class MarkdownService {
 
 
   constructor (@Inject(MarkdownOptionsInjectorToken)
-               readonly markdownOptions: MarkdownOptions,
+               readonly markdownOptions: MarkdownServiceOptions,
                private readonly cache: MarkdownCacheService,
                @Inject(DOCUMENT)
                private document: Document,

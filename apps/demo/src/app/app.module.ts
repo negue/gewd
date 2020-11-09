@@ -3,25 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MarkdownModule } from '@gewd/markdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DEFAULT_PRISM_OPTIONS, MarkdownOptions } from '@gewd/markdown/contracts';
+import { DEFAULT_PRISM_OPTIONS, MarkdownServiceOptions } from '@gewd/markdown/contracts';
 
 import './lazy.registration';
 import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
 import { MatButtonModule } from '@angular/material/button';
 import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MarkdownCacheService } from '@gewd/markdown/service/markdown-cache.service';
+import { MarkdownCacheService, MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
 import { MdCacheExampleService } from './md-cache-example.service';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MarkdownOptionsInjectorToken } from '@gewd/markdown/service';
 import { MarkdownToolbarComponent } from './markdown-toolbar.component';
 import { NgErrorOverlayModule } from '@gewd/ng-utils/ng-error-overlay';
 import { environment } from '../environments/environment';
+import { HighlightEditorModule } from '@gewd/components/highlight-editor';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { CustomFormControlModule } from '@gewd/components/custom-form-control';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -32,6 +35,7 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     RouterModule.forRoot([]),
     HttpClientModule,
     MarkdownModule, FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
     GewdLazyLoaderModule,
@@ -39,7 +43,8 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     DynamicPortalModule,
     MatProgressBarModule,
     NgErrorOverlayModule,
-    ...environment.modules
+    ...environment.modules,
+    HighlightEditorModule, MatSelectModule, MatInputModule, CustomFormControlModule
   ],
   providers: [
     {
@@ -55,14 +60,20 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
             languageMap: {               // alias to load the real file
               ts: 'typescript',          // default
               cs: 'csharp'               // additional
-            }
+            },
+            highlightMarkdownCode: true,
+            additionalPluginPaths: [
+              'assets/prism/prism-css-extras.min.js',  // needed for the inline color
+              'assets/prism/prism-plugin-inline-color.worker-func.js',
+              'assets/prism/prism-plugin-bracket-match.worker-func.js'
+            ]
           }
         },
         mermaidPath: 'mermaid.min.js',
         mermaidOptions: {
           theme: 'neutral',
         }
-      } as MarkdownOptions
+      } as MarkdownServiceOptions
     },
     MdCacheExampleService,
     {
