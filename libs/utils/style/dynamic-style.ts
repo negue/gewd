@@ -1,5 +1,3 @@
-// Todo use @gewd/utils for that?
-
 export function updateDynamicStyle(
   document: Document,
   styleId: string,

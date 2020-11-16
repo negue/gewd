@@ -19,10 +19,11 @@
     "paths": {
       "@gewd/markdown": ["libs/markdown/module/index.ts"],
       "@gewd/markdown/*.worker": ["libs/markdown/*.worker.ts"],
-      "@gewd/markdown/*": ["dist/libs/markdown/*","libs/markdown/*"],
-      "@gewd/lazy/*": ["dist/libs/lazy/*","libs/lazy/*"],
-      "@gewd/ng-utils/*": ["dist/libs/ng-utils/*","libs/ng-utils/*"],
-      "@gewd/components/*": ["libs/components/*", "dist/libs/components/*"]
+      "@gewd/markdown/*": ["dist/libs/markdown/*", "libs/markdown/*"],
+      "@gewd/lazy/*": ["dist/libs/lazy/*", "libs/lazy/*"],
+      "@gewd/ng-utils/*": ["dist/libs/ng-utils/*", "libs/ng-utils/*"],
+      "@gewd/components/*": ["libs/components/*", "dist/libs/components/*"],
+      "@gewd/utils/*": ["dist/libs/utils/*", "libs/utils/*"]
     }
   },
   "exclude": ["node_modules", "tmp"],

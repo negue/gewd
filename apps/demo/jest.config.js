@@ -1,9 +1,10 @@
+const baseConfig = require('../../jest.config');
+
 module.exports = {
-  name: 'demo',
-  preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/demo',
-  snapshotSerializers: [
-    'jest-preset-angular/AngularSnapshotSerializer.js',
-    'jest-preset-angular/HTMLCommentSerializer.js'
-  ]
+  ...baseConfig,
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/apps/demo/tsconfig.spec.json',
+    },
+  },
 };

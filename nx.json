@@ -22,6 +22,9 @@
     },
     "components": {
       "tags": []
+    },
+    "utils": {
+      "tags": []
     }
   }
 }

@@ -117,11 +117,14 @@
               "apps/demo/tsconfig.spec.json",
               "apps/demo/tsconfig.worker.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/demo/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/demo/**"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "jestConfig": "apps/demo/jest.config.js",
             "tsConfig": "apps/demo/tsconfig.spec.json",
@@ -169,7 +172,9 @@
           "options": {
             "browserTarget": "demo:build:production",
             "serverTarget": "demo:server:production",
-            "routes": [""]
+            "routes": [
+              ""
+            ]
           },
           "configurations": {
             "production": {}
@@ -197,11 +202,14 @@
               "libs/markdown/tsconfig.lib.json",
               "libs/markdown/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/markdown/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/markdown/**"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "jestConfig": "libs/markdown/jest.config.js",
             "tsConfig": "libs/markdown/tsconfig.spec.json",
@@ -230,11 +238,14 @@
               "libs/lazy/tsconfig.lib.json",
               "libs/lazy/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/lazy/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/lazy/**"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "jestConfig": "libs/lazy/jest.config.js",
             "tsConfig": "libs/lazy/tsconfig.spec.json",
@@ -268,11 +279,14 @@
               "libs/ng-utils/tsconfig.lib.json",
               "libs/ng-utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ng-utils/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-utils/**"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "jestConfig": "libs/ng-utils/jest.config.js",
             "tsConfig": "libs/ng-utils/tsconfig.spec.json",
@@ -306,11 +320,14 @@
               "libs/components/tsconfig.lib.json",
               "libs/components/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/components/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/components/**"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "jestConfig": "libs/components/jest.config.js",
             "tsConfig": "libs/components/tsconfig.spec.json",
@@ -324,6 +341,44 @@
           "styleext": "scss"
         }
       }
+    },
+    "utils": {
+      "projectType": "library",
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/utils/tsconfig.lib.json",
+            "project": "libs/utils/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/utils/tsconfig.lib.json",
+              "libs/utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "tsConfig": "libs/utils/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/utils/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
