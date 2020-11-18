@@ -82,7 +82,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "5.2.1",
     "eslint": "6.1.0",
-    "jest": "25.0.0",
+    "jest": "26.0.0",
     "jest-preset-angular": "7.0.1",
     "ng-packagr": "9.0.3",
     "prettier": "1.18.2",
