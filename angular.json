@@ -124,7 +124,7 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/demo/jest.config.js",
             "tsConfig": "apps/demo/tsconfig.spec.json",
@@ -369,7 +369,7 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "tsConfig": "libs/utils/tsconfig.spec.json",

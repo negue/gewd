@@ -1,5 +1,5 @@
 import { ReconnectCallbacks, reconnectWebsocket } from './reconnect-websocket';
-import { sleep } from '@gewd/utils';
+import { sleep } from '../src/lib/utils';
 
 describe('reconnectWebsocket', () => {
   it('onOpen and onClose', () => {

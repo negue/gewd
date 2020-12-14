@@ -23,6 +23,7 @@
       "@gewd/lazy/*": ["dist/libs/lazy/*", "libs/lazy/*"],
       "@gewd/ng-utils/*": ["dist/libs/ng-utils/*", "libs/ng-utils/*"],
       "@gewd/components/*": ["libs/components/*", "dist/libs/components/*"],
+      "@gewd/utils": ["dist/libs/utils", "libs/utils/src"],
       "@gewd/utils/*": ["dist/libs/utils/*", "libs/utils/*"]
     }
   },
