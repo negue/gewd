@@ -2,7 +2,13 @@ import { expose } from 'comlink';
 import * as marked from 'marked';
 import * as xss from 'xss';
 import { Lazy } from '@gewd/markdown/utils';
-import { checkAndReplaceToUnicodeChar, emojiRegex, highlightCode, mermaidRegex } from '@gewd/markdown/worker-functions';
+import {
+  checkAndReplaceToUnicodeChar,
+  emojiRegex,
+  highlightCode,
+  linkRendererWithFavIcon,
+  mermaidRegex
+} from '@gewd/markdown/worker-functions';
 import { DEFAULT_PRISM_OPTIONS, MarkdownWorker, PrismOptions, WorkerOptions } from '@gewd/markdown/contracts';
 
 // web-worker importScripts
@@ -16,9 +22,9 @@ renderer.code = function(code, language, isEscaped) {
   }
   return oldCodeRenderer.call(this, code, language, isEscaped);
 };
-renderer.link = function( href, title, text ) {
-  return `<a target="_blank" href="${href}" title="${title}">${text}</a>`;
-};
+
+renderer.link = linkRendererWithFavIcon;
+
 
 let currentConfigObject: WorkerOptions = {
   prism: DEFAULT_PRISM_OPTIONS
