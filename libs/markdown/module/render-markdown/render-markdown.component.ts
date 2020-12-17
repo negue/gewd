@@ -1,12 +1,12 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { MarkdownService, MarkdownCacheService } from '@gewd/markdown/service';
+import { MarkdownCacheService, MarkdownService } from '@gewd/markdown/service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+export interface MarkdownLinkClicked {
+  event: Event;
+  link: HTMLLinkElement;
+}
 
 @Component({
   selector: 'gewd-markdown',
@@ -41,6 +41,9 @@ export class RenderMarkdownComponent implements OnInit {
     }
   }
 
+  @Output()
+  public onLinkClick = new EventEmitter<MarkdownLinkClicked>();
+
   private _htmlToShow$ = new BehaviorSubject<string|SafeHtml>("");
   private _markdown: string;
 
@@ -55,6 +58,28 @@ export class RenderMarkdownComponent implements OnInit {
 
   async ngOnInit() {
     await this.compile();
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(e: Event) {
+    let target = e.target as HTMLElement;
+
+    let aHref: HTMLLinkElement = null;
+
+    while (aHref == null && target != null) {
+      if (target.tagName === 'A') {
+        aHref = target as any;
+      }
+
+      target = target.parentElement;
+    }
+
+    if (aHref) {
+      this.onLinkClick.next({
+        event: e,
+        link: aHref
+      });
+    }
   }
 
   private async compile() {

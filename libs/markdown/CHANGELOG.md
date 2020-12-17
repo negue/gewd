@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.2] - 2020-12-15
+
+#### Feature
+- `<gewd-markdown>` now has the event-emitter `onLinkClick` to prevent links (or react on them)
+- Extracted `linkRendererTargetBlank` & `linkRendererWithFavIcon` from `marked.prism.worker.ts` to `@gewd/markdown/worker-function`
+  > See `marked.prism.worker.ts` for the newest version
+  
+  `linkRendererWithFavIcon` allows you to use Googles Fav-Icon Service and prepend that before a link 
+
 ## [0.4.1] - 2020-09-07
 
 #### Feature

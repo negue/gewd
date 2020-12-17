@@ -23,7 +23,8 @@
       </gewd-prism-editor>
 
 
-      <gewd-markdown #markdown [useCache]="true">
+      <gewd-markdown #markdown [useCache]="true"
+                     (onLinkClick)="handleLinkClick($event)">
       </gewd-markdown>
 
     </mat-tab>
