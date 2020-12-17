@@ -6,6 +6,7 @@ import { debounceTime, take } from 'rxjs/operators';
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
+import { MarkdownLinkClicked } from '@gewd/markdown';
 
 // TODO Splitup each panel functions/vars into its own component
 
@@ -155,5 +156,11 @@ DynamicLoaderRegistry.LazyModuleComponents = {
     if (!this.currentPrismExample) {
       this.updateValueChanged('empty');
     }
+  }
+
+  handleLinkClick ($event: MarkdownLinkClicked) {
+    $event.event.preventDefault();
+
+    alert('Link Click Handled by Markdown: ' + $event.link.href);
   }
 }
