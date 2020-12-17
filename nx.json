@@ -21,7 +21,10 @@
       "tags": []
     },
     "components": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "ng-utils"
+      ]
     }
   }
 }
