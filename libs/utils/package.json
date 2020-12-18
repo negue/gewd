@@ -1,0 +1,16 @@
+{
+  "name": "@gewd/utils",
+  "version": "0.1.0",
+  "peerDependencies": {
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/negue/gewd.git"
+  },
+  "keywords": [],
+  "author": "Eugen Bolz",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

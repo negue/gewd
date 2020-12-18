@@ -25,6 +25,9 @@
       "implicitDependencies": [
         "ng-utils"
       ]
+    },
+    "utils": {
+      "tags": []
     }
   }
 }

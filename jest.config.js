@@ -1,10 +1,10 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest'
+  moduleNameMapper: {
+    '@core/(.*)': '<rootDir>/src/app/core/$1',
+    '@gewd/utils/(.*)': '<rootDir>/libs/utils/$1',
+    '@gewd/markdown/(.*)': '<rootDir>/libs/markdown/$1'
   },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
-  passWithNoTests: true
+  rootDir: __dirname,
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 };

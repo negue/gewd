@@ -47,6 +47,7 @@
     "@angular/platform-browser-dynamic": "9.0.6",
     "@angular/platform-server": "9.0.6",
     "@angular/router": "9.0.6",
+    "@briebug/jest-schematic": "^3.1.0",
     "@nguniversal/express-engine": "9.0.2",
     "@nrwl/angular": "9.2.0",
     "@types/localforage": "0.0.34",
@@ -67,6 +68,8 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/jest": "10.0.1",
+    "core-js": "2.6.11",
     "@angular-devkit/build-angular": "0.901.12",
     "@angular-devkit/build-ng-packagr": "0.901.12",
     "@angular/cli": "9.1.13",
@@ -82,11 +85,11 @@
     "@types/node": "~8.9.4",
     "codelyzer": "5.2.1",
     "eslint": "6.1.0",
-    "jest": "26.0.0",
-    "jest-preset-angular": "8.1.0",
+    "jest": "26.6.3",
+    "jest-preset-angular": "8.3.2",
     "ng-packagr": "10.1.1",
     "prettier": "1.18.2",
-    "ts-jest": "25.3.0",
+    "ts-jest": "26.4.4",
     "tsickle": "^0.37.0",
     "tslint": "~5.11.0",
     "typescript": "3.6.4"

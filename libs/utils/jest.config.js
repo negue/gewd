@@ -4,7 +4,7 @@ module.exports = {
   ...baseConfig,
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/libs/ng-utils/tsconfig.spec.json',
+      tsConfig: '<rootDir>/libs/utils/tsconfig.spec.json',
     },
   },
 };
