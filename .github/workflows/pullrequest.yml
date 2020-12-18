@@ -34,3 +34,8 @@ jobs:
           fi
           echo "Base => $NX_BASE"
           npm run affected:build -- --base=$NX_BASE
+
+      - name: Run Tests
+        shell: bash
+        run: |
+          npm run affected:test -- --base=$NX_BASE
