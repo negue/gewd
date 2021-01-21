@@ -128,6 +128,25 @@
   <button (click)="makeError()">Trigger an error</button>
 </mat-expansion-panel>
 
+<br/>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <a href="https://www.npmjs.com/package/@gewd/mat-utils" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/mat-utils.svg?"
+           alt="Gewd Mat-Utils NPM Version">
+    </a>
+    &nbsp;- Material Utils
+  </mat-expansion-panel-header>
+
+  <gewd-markdown [markdown]="matUtilsReadmeMD$ | async">
+
+  </gewd-markdown>
+
+  <mat-icon svgIcon="add"></mat-icon>
+</mat-expansion-panel>
+
 
 <br/>
 

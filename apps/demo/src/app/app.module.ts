@@ -25,13 +25,15 @@ import { HighlightEditorModule } from '@gewd/components/highlight-editor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { CustomFormControlModule } from '@gewd/components/custom-form-control';
+import {RegisterIconsModule} from "../../../../libs/mat-utils/material-icons";
+import {MatIconModule} from "@angular/material/icon";
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
 @NgModule({
   declarations: [AppComponent, MarkdownToolbarComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     RouterModule.forRoot([]),
     HttpClientModule,
     MarkdownModule, FormsModule,
@@ -44,7 +46,18 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     MatProgressBarModule,
     NgErrorOverlayModule,
     ...environment.modules,
-    HighlightEditorModule, MatSelectModule, MatInputModule, CustomFormControlModule
+    HighlightEditorModule,
+    MatSelectModule,
+    MatInputModule,
+    CustomFormControlModule,
+    RegisterIconsModule.register({
+      pathToIcons: './assets/material_icons',
+      iconArray: [
+        'add',
+        'art_track',
+      ]
+    }),
+    MatIconModule
   ],
   providers: [
     {

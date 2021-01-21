@@ -34,6 +34,10 @@ export class AppComponent implements OnInit, OnDestroy {
     responseType: 'text'
   });
 
+  matUtilsReadmeMD$ = this.http.get('./assets/readme/mat-utils/README.md', {
+    responseType: 'text'
+  });
+
   emojiList = emojiExampleList;
 
   @ViewChild('markdown', {static: true})

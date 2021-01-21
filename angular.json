@@ -342,6 +342,49 @@
         }
       }
     },
+
+    "mat-utils": {
+      "projectType": "library",
+      "root": "libs/mat-utils",
+      "sourceRoot": "libs/mat-utils/src",
+      "prefix": "gewd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/mat-utils/tsconfig.lib.json",
+            "project": "libs/mat-utils/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mat-utils/tsconfig.lib.json",
+              "libs/mat-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/mat-utils/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "jestConfig": "libs/mat-utils/jest.config.js",
+            "tsConfig": "libs/mat-utils/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/mat-utils/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "utils": {
       "projectType": "library",
       "root": "libs/utils",
