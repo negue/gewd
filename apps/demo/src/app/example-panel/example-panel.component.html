@@ -1,0 +1,15 @@
+<mat-expansion-panel (opened)="applyLazyModuleInputs(lazyModuleComponent)">
+  <mat-expansion-panel-header>
+    <a [href]="'https://www.npmjs.com/package/' + packageName" rel="nofollow"
+       class="npm-link">
+      <img [src]="'https://img.shields.io/npm/v/' + packageName + '.svg?'"
+           [alt]="packageName + ' NPM Version'">
+    </a>
+    &nbsp;- {{ packageTitle }}
+  </mat-expansion-panel-header>
+
+  <gewd-lazy-module-component
+    #lazyModuleComponent>
+    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
+  </gewd-lazy-module-component>
+</mat-expansion-panel>

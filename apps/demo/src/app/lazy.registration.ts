@@ -6,6 +6,13 @@ DynamicLoaderRegistry.LazyComponents = {
 };
 
 DynamicLoaderRegistry.LazyModuleComponents = {
+  'markdown-example': {
+    load: new Lazy(
+      () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
+        .then(({MarkdownExampleModule}) => MarkdownExampleModule)
+    )
+  },
+
   'test-module': {
     load: new Lazy<any>(
       () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')

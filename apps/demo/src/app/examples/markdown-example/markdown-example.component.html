@@ -1,0 +1,25 @@
+<mat-tab-group>
+  <mat-tab label="README.MD" #readmeTab>
+    <gewd-markdown *ngIf="readmeTab.isActive"
+                   [markdown]="readmeMD$ | async"></gewd-markdown>
+  </mat-tab>
+  <mat-tab label="Try out">
+
+    <gewd-prism-editor [value]="exampleMD$|async"
+                       #prismEditorComponent
+                       language="markdown"
+                       (changed)="changeIt($event, markdown)">
+    </gewd-prism-editor>
+
+
+    <gewd-markdown #markdown [useCache]="true"
+                   (onLinkClick)="handleLinkClick($event)">
+    </gewd-markdown>
+
+  </mat-tab>
+
+  <mat-tab label="Emoji Overview" #tab>
+    <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>
+    <gewd-markdown [markdown]="tab.isActive ? emojiList : ''"></gewd-markdown>
+  </mat-tab>
+</mat-tab-group>

@@ -27,11 +27,12 @@ import { MatInputModule } from '@angular/material/input';
 import { CustomFormControlModule } from '@gewd/components/custom-form-control';
 import {RegisterIconsModule} from "../../../../libs/mat-utils/material-icons";
 import {MatIconModule} from "@angular/material/icon";
+import { ExamplePanelComponent } from './example-panel/example-panel.component';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
 @NgModule({
-  declarations: [AppComponent, MarkdownToolbarComponent],
+  declarations: [AppComponent, MarkdownToolbarComponent, ExamplePanelComponent],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     RouterModule.forRoot([]),
