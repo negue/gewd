@@ -1,0 +1,31 @@
+:host {
+  display: block;
+
+  height: var(--zoom_out_height);
+  width: var(--zoom_out_width);
+
+  --scale-width: 0;
+  --scale-height: 0;
+}
+
+
+.zoom_out_parent {
+  resize: both;
+  position: relative;
+  height: var(--zoom_out_height);
+  width: var(--zoom_out_width);
+
+  overflow: hidden;
+}
+
+.zoom_out {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(min(
+    var(--scale-width),
+    var(--scale-height)
+  ));
+  transform-origin: center center;
+}

@@ -1,0 +1,8 @@
+<div class="zoom_out_parent">
+  <div class="zoom_out" #zoomOutElement
+   [style.--scale-width]="(width / zoomOutElement.scrollWidth)| valueOrDefault: 1"
+         [style.--scale-height]="(height / zoomOutElement.scrollHeight) |valueOrDefault: 1"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
