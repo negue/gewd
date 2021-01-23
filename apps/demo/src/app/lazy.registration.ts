@@ -1,10 +1,6 @@
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
 import { Lazy } from '@gewd/lazy/utils';
 
-DynamicLoaderRegistry.LazyComponents = {
-  'test-comp': new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
-};
-
 DynamicLoaderRegistry.LazyModuleComponents = {
   'markdown-example': {
     load: new Lazy(
@@ -12,17 +8,12 @@ DynamicLoaderRegistry.LazyModuleComponents = {
         .then(({MarkdownExampleModule}) => MarkdownExampleModule)
     )
   },
+  'lazyload-example': {
+    load: new Lazy(
+      () => import(/* webpackChunkName: "lazyload-example-module" */ './examples/lazyload-example/lazyload-example.module')
+        .then(({LazyloadExampleModule}) => LazyloadExampleModule)
+    )
+  },
 
-  'test-module': {
-    load: new Lazy<any>(
-      () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
-      .then(({TestModule}) => TestModule)
-    )
-  },
-  'portal-module': {
-    load: new Lazy<any>(
-      () => import(/* webpackChunkName: "lazy-portal-module" */ './lazy-wrapper/lazy-portal-source')
-        .then(({PortalModule}) => PortalModule)
-    )
-  },
+
 };

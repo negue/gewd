@@ -24,10 +24,10 @@ import { environment } from '../environments/environment';
 import { HighlightEditorModule } from '@gewd/components/highlight-editor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { CustomFormControlModule } from '@gewd/components/custom-form-control';
 import {RegisterIconsModule} from "../../../../libs/mat-utils/material-icons";
 import {MatIconModule} from "@angular/material/icon";
 import { ExamplePanelComponent } from './example-panel/example-panel.component';
+import {CustomFormControlModule} from "@gewd/mat-utils/custom-form-control";
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 

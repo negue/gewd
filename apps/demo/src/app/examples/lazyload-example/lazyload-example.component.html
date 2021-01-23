@@ -1,0 +1,39 @@
+
+<h2><code>gewd-lazy-component</code></h2>
+
+<gewd-lazy-component #lazyComponent
+                     [componentInputs]="{ testProp: 'Component Binding from outside' }">
+  <button mat-raised-button color="primary"
+          (click)="setLazyComp(lazyComponent)">
+    Load Lazy Component: Test-Comp <br/> (this button as content will be replaced)
+  </button>
+
+  <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
+</gewd-lazy-component>
+
+<br/>
+<br/>
+
+<h2><code>gewd-lazy-module-component</code></h2>
+
+<gewd-lazy-module-component
+  #lazyModuleComponent
+  [componentInputs]="{ testProp: 'Module Component Example' }"
+  [componentOutputs]="outputBinding">
+  <button mat-raised-button color="primary"
+          (click)="setLazyModuleComp(lazyModuleComponent)">
+    Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
+  </button>
+
+
+  <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
+</gewd-lazy-module-component>
+
+<br/>
+<br/>
+
+<div>
+  This Container outside of the lazy loaded component will list the Output-Events:
+
+  <pre>{{outputLog | json}}</pre>
+</div>

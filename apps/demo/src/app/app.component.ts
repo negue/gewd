@@ -27,10 +27,6 @@ export class AppComponent {
   });
 
 
-  public outputLog = [];
-  public outputBinding = {
-    outputTest: (e) => this.addLogEntry(e)
-  };
   public currentPrismExample: string;
 
   public editorLanguage$ = new BehaviorSubject('');
@@ -42,27 +38,10 @@ export class AppComponent {
                private http: HttpClient) {
   }
 
-  setLazyComp (lazyComponent: LazyComponent) {
-    lazyComponent.component = 'test-comp';
-    lazyComponent.setComponent();
-    this.cd.markForCheck();
-  }
-
-  setLazyModuleComp (lazyModuleComponent: LazyModuleComponent) {
-    lazyModuleComponent.moduleAlias = 'test-module';
-    lazyModuleComponent.component = 'MyModuleComp';
-    lazyModuleComponent.setComponent();
-  }
-
-
   setLazyPortalModuleComp (lazyModuleComponent: LazyModuleComponent) {
     lazyModuleComponent.moduleAlias = 'portal-module';
     lazyModuleComponent.component = 'PortalModuleComp';
     lazyModuleComponent.setComponent();
-  }
-
-  addLogEntry (e) {
-    this.outputLog.push(e);
   }
 
   makeError () {

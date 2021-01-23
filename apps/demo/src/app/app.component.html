@@ -2,55 +2,20 @@
 
 <gewd-example-panel packageName="@gewd/markdown"
                     packageTitle="Markdown"
-moduleName="markdown-example"
-componentName="MarkdownExample">
+                    moduleName="markdown-example"
+                    componentName="MarkdownExample">
 
 </gewd-example-panel>
 
 <br/>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <a href="https://www.npmjs.com/package/@gewd/lazy" rel="nofollow"
-       class="npm-link">
-      <img src="https://img.shields.io/npm/v/@gewd/lazy.svg?"
-           alt="Gewd Lazy NPM Version">
-    </a>&nbsp;- Lazy Component
-  </mat-expansion-panel-header>
 
-  <gewd-lazy-component #lazyComponent
-                       [componentInputs]="{ testProp: 'Component Binding from outside' }">
-    <button mat-raised-button color="primary"
-            (click)="setLazyComp(lazyComponent)">
-      Load Lazy Component: Test-Comp <br/> (this button as content will be replaced)
-    </button>
+<gewd-example-panel packageName="@gewd/lazy"
+                    packageTitle="Lazy Components"
+                    moduleName="lazyload-example"
+                    componentName="LazyLoadExample">
 
-    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
-  </gewd-lazy-component>
-
-  <br/>
-  <br/>
-
-  <gewd-lazy-module-component
-    #lazyModuleComponent
-    [componentInputs]="{ testProp: 'Module Component Example' }"
-    [componentOutputs]="outputBinding">
-    <button mat-raised-button color="primary"
-            (click)="setLazyModuleComp(lazyModuleComponent)">
-      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
-    </button>
-
-
-    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
-  </gewd-lazy-module-component>
-
-  <div>
-    Container of Output-Events:
-
-    <pre>{{outputLog | json}}</pre>
-  </div>
-</mat-expansion-panel>
-
+</gewd-example-panel>
 
 <br/>
 
