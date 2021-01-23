@@ -1,3 +1,9 @@
+<mat-tab-group>
+  <mat-tab label="README.MD" #readmeTab>
+    <gewd-markdown *ngIf="readmeTab.isActive"
+                   [markdown]="lazyLoadReadmeMD$ | async"></gewd-markdown>
+  </mat-tab>
+  <mat-tab label="Try out">
 
 <h2><code>gewd-lazy-component</code></h2>
 
@@ -37,3 +43,6 @@
 
   <pre>{{outputLog | json}}</pre>
 </div>
+
+  </mat-tab>
+</mat-tab-group>

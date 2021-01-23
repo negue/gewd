@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LazyComponent, LazyModuleComponent} from "@gewd/lazy/loader";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'gewd-lazyload-example',
@@ -13,7 +14,11 @@ export class LazyloadExampleComponent implements OnInit {
     outputTest: (e) => this.addLogEntry(e)
   };
 
-  constructor() { }
+  lazyLoadReadmeMD$ = this.http.get('./assets/readme/lazy/README.md', {
+    responseType: 'text'
+  });
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }

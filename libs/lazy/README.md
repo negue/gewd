@@ -28,9 +28,9 @@ const result = await myLazy.getValue();
 Register the lazy component, without a module
 
 ```ts
-DynamicLoaderRegistry.LazyComponents = {
-  'test-comp': new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
-};
+DynamicLoaderRegistry.RegisterLazyComponent('test-comp',
+  new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
+);
 ```
 
 Use it inside your app with:
@@ -64,17 +64,35 @@ Useful for components that don't need any other module's or using 3rd party web-
 
 ## Lazy Module Components
 
+Register the GewdLazyModule to use the Components
+
+```ts
+GewdLazyLoaderModule 
+
+// or with .withLazy
+GewdLazyLoaderModule.withLazy([
+      {
+        moduleName: 'markdown-example',
+        moduleConfig: {
+          load: new Lazy(
+            () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
+              .then(({MarkdownExampleModule}) => MarkdownExampleModule)
+          )
+        }
+      },
+    ])
+```
+
 This is for component that needs other components in it, e.g. Angular Material.
 
 ```ts
-DynamicLoaderRegistry.LazyModuleComponents = {
-  'test-module': {
-    load: new Lazy<any>(
-      () => import('./lazy-wrapper/test-module-comp')
-      .then(({TestModule}) => TestModule)
-    )
-  },
-};
+// alternative to the .withLazy way
+DynamicLoaderRegistry.RegisterLazyModuleComponent('test-module', {
+  load: new Lazy<any>(
+    () => import('./lazy-wrapper/test-module-comp')
+    .then(({TestModule}) => TestModule)
+  )
+});
 ```
 
 Your module need to implement `LazyModule`

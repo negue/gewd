@@ -9,7 +9,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DEFAULT_PRISM_OPTIONS, MarkdownServiceOptions } from '@gewd/markdown/contracts';
 
-import './lazy.registration';
 import { GewdLazyLoaderModule } from '@gewd/lazy/loader';
 import { MatButtonModule } from '@angular/material/button';
 import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
@@ -28,6 +27,7 @@ import {RegisterIconsModule} from "../../../../libs/mat-utils/material-icons";
 import {MatIconModule} from "@angular/material/icon";
 import { ExamplePanelComponent } from './example-panel/example-panel.component';
 import {CustomFormControlModule} from "@gewd/mat-utils/custom-form-control";
+import {Lazy} from "@gewd/lazy/utils";
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
@@ -41,7 +41,35 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
     ReactiveFormsModule,
     MatExpansionModule, MatTabsModule,
     BrowserAnimationsModule,
-    GewdLazyLoaderModule,
+    GewdLazyLoaderModule.withLazy([
+      {
+        moduleName: 'markdown-example',
+        moduleConfig: {
+          load: new Lazy(
+            () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
+              .then(({MarkdownExampleModule}) => MarkdownExampleModule)
+          )
+        }
+      },
+      {
+        moduleName: 'lazyload-example',
+        moduleConfig: {
+          load: new Lazy(
+            () => import(/* webpackChunkName: "lazyload-example-module" */ './examples/lazyload-example/lazyload-example.module')
+              .then(({LazyloadExampleModule}) => LazyloadExampleModule)
+          )
+        }
+      },
+      {
+        moduleName: 'portal-module',
+        moduleConfig: {
+          load: new Lazy<any>(
+            () => import(/* webpackChunkName: "lazy-portal-module" */ './examples/lazyload-example/lazy-wrapper/lazy-portal-source')
+              .then(({PortalModule}) => PortalModule)
+          )
+        }
+      }
+    ]),
     MatButtonModule,
     DynamicPortalModule,
     MatProgressBarModule,

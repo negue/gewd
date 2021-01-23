@@ -7,14 +7,28 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {LazyModule, LazyModuleComponentInfo} from "@gewd/lazy/contracts";
 import {Lazy} from "@gewd/lazy/utils";
 import {DynamicLoaderRegistry} from "@gewd/lazy/registry";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MarkdownModule} from "@gewd/markdown/module";
 
 @NgModule({
   declarations: [LazyloadExampleComponent],
   imports: [
     CommonModule,
-    GewdLazyLoaderModule,
+    GewdLazyLoaderModule.withLazy([
+      {
+        moduleName: 'test-module',
+        moduleConfig: {
+          load: new Lazy<any>(
+            () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
+              .then(({TestModule}) => TestModule)
+          )
+        }
+      }
+    ]),
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTabsModule,
+    MarkdownModule
   ]
 })
 export class LazyloadExampleModule  implements LazyModule {
@@ -28,20 +42,7 @@ export class LazyloadExampleModule  implements LazyModule {
   }
 }
 
-DynamicLoaderRegistry.LazyComponents = {
-  'test-comp': new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
-};
+DynamicLoaderRegistry.RegisterLazyComponent('test-comp',
+  new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
+);
 
-DynamicLoaderRegistry.LazyModuleComponents['test-module'] ={
-  load: new Lazy<any>(
-    () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
-      .then(({TestModule}) => TestModule)
-  )
-};
-
-DynamicLoaderRegistry.LazyModuleComponents['portal-module'] = {
-  load: new Lazy<any>(
-    () => import(/* webpackChunkName: "lazy-portal-module" */ './lazy-wrapper/lazy-portal-source')
-      .then(({PortalModule}) => PortalModule)
-  )
-};

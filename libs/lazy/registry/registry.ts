@@ -14,8 +14,17 @@ export interface LazyModuleComponentConfig {
 
 export class DynamicLoaderRegistry {
   // Registry + Cache
-  public static LazyComponents: { [key: string]: Lazy<any> } = {};
+  public static readonly LazyComponents: { [key: string]: Lazy<any> } = {};
+
+  public static RegisterLazyComponent(componentName: string, lazyImport: Lazy<any>) {
+    DynamicLoaderRegistry.LazyComponents[componentName] = lazyImport;
+  }
 
   // Registry
-  public static LazyModuleComponents: { [key: string]: LazyModuleComponentConfig } = {};
+  public static readonly LazyModuleComponents: { [key: string]: LazyModuleComponentConfig } = {};
+
+  public static RegisterLazyModuleComponent(moduleName: string, lazyImport: LazyModuleComponentConfig) {
+    DynamicLoaderRegistry.LazyModuleComponents[moduleName] = lazyImport;
+  }
+
 }
