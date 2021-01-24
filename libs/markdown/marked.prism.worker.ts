@@ -85,6 +85,7 @@ const workerMethods: MarkdownWorker = {
         const sanatizedHTML = xss.filterXSS(generatedHTML, {
           whiteList: {
             ...xss.whiteList,
+            a: ['class', 'title', 'href'], // link with custom styles like fav-icon
             div: ['class'],  // mermaid class
             span: ['class', 'style']  // prism colors
           }

@@ -14,8 +14,8 @@ Angular Markdown render component, which uses a worker-process.
 ## Example
 [![Visual Example of example.md][example_md_img]][example_md_url]
 
-[example_md_img]: ../../example-images/example_md.png
-[example_md_url]: ../../apps/demo/src/assets/example.md
+[example_md_img]: https://github.com/negue/gewd/raw/master/example-images/example_md.png
+[example_md_url]: https://github.com/negue/gewd/blob/master/apps/demo/src/assets/example.md
 
 
 ## Install

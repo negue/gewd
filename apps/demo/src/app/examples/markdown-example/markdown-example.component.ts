@@ -14,7 +14,7 @@ export class MarkdownExampleComponent implements OnInit {
   private subscription: Subscription;
   private markdown$ = new Subject();
 
-  readmeMD$ = this.http.get('README.md', {
+  readmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
     responseType: 'text'
   });
 

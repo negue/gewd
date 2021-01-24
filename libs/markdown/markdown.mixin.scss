@@ -29,6 +29,11 @@
     color: var(--var-link-color);
   }
 
+  a.with-favicon {
+    display: flex;
+    align-items: center;
+  }
+
   a.anchor {
     display: block;
     padding-left: 30px;
