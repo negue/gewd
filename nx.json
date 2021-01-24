@@ -20,10 +20,14 @@
     "ng-utils": {
       "tags": []
     },
+    "mat-utils": {
+      "tags": []
+    },
     "components": {
       "tags": [],
       "implicitDependencies": [
-        "ng-utils"
+        "ng-utils",
+        "mat-utils"
       ]
     },
     "utils": {

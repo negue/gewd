@@ -46,9 +46,10 @@ marked.setOptions({
       return;
     }
 
-    highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts).then(highlightedCode => {
-      callback(undefined, highlightedCode);
-    });
+    highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts)
+      .then(highlightedCode => {
+        callback(undefined, highlightedCode);
+      });
   }
 });
 
