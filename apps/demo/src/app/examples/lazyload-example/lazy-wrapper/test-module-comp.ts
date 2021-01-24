@@ -18,7 +18,7 @@ import { LazyModule, LazyModuleComponentInfo } from '@gewd/lazy/contracts';
   template: `
     My Card Content: {{testProp}}
 
-    <button mat-raised-button (click)="outputTest.emit('Button Clicked')">Test</button>
+    <button mat-raised-button (click)="outputTest.emit('Raise Event - Clicked')">Raise Event</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,84 +1,21 @@
 <h2>Open Dev-Tools to see the network calls.</h2>
 
-<mat-expansion-panel (opened)="changeIt(prismEditorComponent.value, markdown)">
-  <mat-expansion-panel-header>
-    <a href="https://www.npmjs.com/package/@gewd/markdown" rel="nofollow"
-       class="npm-link">
-      <img src="https://img.shields.io/npm/v/@gewd/markdown.svg?"
-           alt="Markdown NPM Version">
-    </a>&nbsp;- Markdown
-  </mat-expansion-panel-header>
+<gewd-example-panel packageName="@gewd/markdown"
+                    packageTitle="Markdown"
+                    moduleName="markdown-example"
+                    componentName="MarkdownExample">
 
-  <mat-tab-group>
-    <mat-tab label="README.MD" #readmeTab>
-      <gewd-markdown *ngIf="readmeTab.isActive"
-                     [markdown]="readmeMD$ | async"></gewd-markdown>
-    </mat-tab>
-    <mat-tab label="Try out">
+</gewd-example-panel>
 
-      <gewd-prism-editor [value]="exampleMD$|async"
-                         #prismEditorComponent
-                         language="markdown"
-                         (changed)="changeIt($event, markdown)">
-      </gewd-prism-editor>
-
-
-      <gewd-markdown #markdown [useCache]="true"
-                     (onLinkClick)="handleLinkClick($event)">
-      </gewd-markdown>
-
-    </mat-tab>
-
-    <mat-tab label="Emoji Overview" #tab>
-      <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>
-      <gewd-markdown [markdown]="tab.isActive ? emojiList : ''"></gewd-markdown>
-    </mat-tab>
-  </mat-tab-group>
-</mat-expansion-panel>
 <br/>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <a href="https://www.npmjs.com/package/@gewd/lazy" rel="nofollow"
-       class="npm-link">
-      <img src="https://img.shields.io/npm/v/@gewd/lazy.svg?"
-           alt="Gewd Lazy NPM Version">
-    </a>&nbsp;- Lazy Component
-  </mat-expansion-panel-header>
 
-  <gewd-lazy-component #lazyComponent
-                       [componentInputs]="{ testProp: 'Component Binding from outside' }">
-    <button mat-raised-button color="primary"
-            (click)="setLazyComp(lazyComponent)">
-      Load Lazy Component: Test-Comp <br/> (this button as content will be replaced)
-    </button>
+<gewd-example-panel packageName="@gewd/lazy"
+                    packageTitle="Lazy Components"
+                    moduleName="lazyload-example"
+                    componentName="LazyLoadExample">
 
-    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
-  </gewd-lazy-component>
-
-  <br/>
-  <br/>
-
-  <gewd-lazy-module-component
-    #lazyModuleComponent
-    [componentInputs]="{ testProp: 'Module Component Example' }"
-    [componentOutputs]="outputBinding">
-    <button mat-raised-button color="primary"
-            (click)="setLazyModuleComp(lazyModuleComponent)">
-      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)
-    </button>
-
-
-    <mat-progress-bar isLoading mode="indeterminate" color="accent"></mat-progress-bar>
-  </gewd-lazy-module-component>
-
-  <div>
-    Container of Output-Events:
-
-    <pre>{{outputLog | json}}</pre>
-  </div>
-</mat-expansion-panel>
-
+</gewd-example-panel>
 
 <br/>
 
@@ -126,6 +63,25 @@
   </gewd-markdown>
 
   <button (click)="makeError()">Trigger an error</button>
+</mat-expansion-panel>
+
+<br/>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <a href="https://www.npmjs.com/package/@gewd/mat-utils" rel="nofollow"
+       class="npm-link">
+      <img src="https://img.shields.io/npm/v/@gewd/mat-utils.svg?"
+           alt="Gewd Mat-Utils NPM Version">
+    </a>
+    &nbsp;- Material Utils
+  </mat-expansion-panel-header>
+
+  <gewd-markdown [markdown]="matUtilsReadmeMD$ | async">
+
+  </gewd-markdown>
+
+  <mat-icon svgIcon="add"></mat-icon>
 </mat-expansion-panel>
 
 

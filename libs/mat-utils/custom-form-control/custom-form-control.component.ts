@@ -16,19 +16,18 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'gewd-custom-form-control',
-  templateUrl: './custom-form-control.component.html',
-  styleUrls: ['./custom-form-control.component.css'],
+  template: `<ng-content></ng-content>`,
   providers: [
     { provide: MatFormFieldControl, useExisting: CustomFormControlComponent }
   ]
 })
 export class CustomFormControlComponent implements OnInit, ControlValueAccessor, MatFormFieldControl<any>, OnDestroy, OnChanges {
-  get value (): any {
+  get value(): any {
     return this._value;
   }
 
   @Input()
-  set value (value: any) {
+  set value(value: any) {
     this._value = value;
     this.stateChangeSubject.next();
     if (this.onChange) {
@@ -48,7 +47,7 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
   @Input()
   disabled: boolean;
 
-   private _value: any;
+  private _value: any;
 
   @Input()
   focused: boolean;
@@ -57,8 +56,10 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
     return false;
   }
 
-  onChange = (_: any) => {};
-  onTouched = () => {};
+  onChange = (_: any) => {
+  };
+  onTouched = () => {
+  };
 
   get empty() {
     return typeof this.value === 'number' ? false : !this.value;
@@ -81,11 +82,8 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-
-
-
-      ngOnInit(): void {
-     }
+  ngOnInit(): void {
+  }
 
   ngOnDestroy() {
     this._focusMonitor.stopMonitoring(this._elementRef);
@@ -123,10 +121,8 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
   readonly stateChanges: Observable<void> = this.stateChangeSubject;
 
 
-  ngOnChanges ({value}: SimpleChanges): void {
-    console.info({value});
+  ngOnChanges({value}: SimpleChanges): void {
     if (value && this.onChange) {
-      console.info('test');
       this.onChange(value.currentValue);
       this.stateChangeSubject.next();
     }

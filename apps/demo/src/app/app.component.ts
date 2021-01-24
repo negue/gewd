@@ -1,12 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { emojiExampleList } from './example-emoji-list';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { debounceTime, take } from 'rxjs/operators';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { take } from 'rxjs/operators';
 // todo fix nx enforce module boundaries
 import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
-import { MarkdownLinkClicked } from '@gewd/markdown';
 
 // TODO Splitup each panel functions/vars into its own component
 
@@ -15,18 +13,8 @@ import { MarkdownLinkClicked } from '@gewd/markdown';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  private markdown$ = new Subject();
-  private subscription: Subscription;
-
-  readmeMD$ = this.http.get('README.md', {
-    responseType: 'text'
-  });
-
+export class AppComponent {
   markDownReadmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
-    responseType: 'text'
-  });
-  exampleMD$ = this.http.get('./assets/example.md', {
     responseType: 'text'
   });
 
@@ -34,15 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
     responseType: 'text'
   });
 
-  emojiList = emojiExampleList;
+  matUtilsReadmeMD$ = this.http.get('./assets/readme/mat-utils/README.md', {
+    responseType: 'text'
+  });
 
-  @ViewChild('markdown', {static: true})
-  markdown: any;
 
-  public outputLog = [];
-  public outputBinding = {
-    outputTest: (e) => this.addLogEntry(e)
-  };
   public currentPrismExample: string;
 
   public editorLanguage$ = new BehaviorSubject('');
@@ -54,45 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
                private http: HttpClient) {
   }
 
-  changeIt (newMarkdown: string, markdown: any) {
-    this.markdown$.next(newMarkdown);
-  }
-
-  ngOnDestroy (): void {
-    this.subscription.unsubscribe();
-  }
-
-  ngOnInit (): void {
-    this.subscription = this.markdown$
-      .pipe(
-        debounceTime(350)
-      )
-      .subscribe(value => {
-        this.markdown.markdown = value;
-      })
-  }
-
-  setLazyComp (lazyComponent: LazyComponent) {
-    lazyComponent.component = 'test-comp';
-    lazyComponent.setComponent();
-    this.cd.markForCheck();
-  }
-
-  setLazyModuleComp (lazyModuleComponent: LazyModuleComponent) {
-    lazyModuleComponent.moduleAlias = 'test-module';
-    lazyModuleComponent.component = 'MyModuleComp';
-    lazyModuleComponent.setComponent();
-  }
-
-
   setLazyPortalModuleComp (lazyModuleComponent: LazyModuleComponent) {
     lazyModuleComponent.moduleAlias = 'portal-module';
     lazyModuleComponent.component = 'PortalModuleComp';
     lazyModuleComponent.setComponent();
-  }
-
-  addLogEntry (e) {
-    this.outputLog.push(e);
   }
 
   makeError () {
@@ -117,6 +66,7 @@ DynamicLoaderRegistry.LazyComponents = {
 };
 
 DynamicLoaderRegistry.LazyModuleComponents = {
+
   'test-module': {
     load: new Lazy<any>(
       () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
@@ -158,9 +108,4 @@ DynamicLoaderRegistry.LazyModuleComponents = {
     }
   }
 
-  handleLinkClick ($event: MarkdownLinkClicked) {
-    $event.event.preventDefault();
-
-    alert('Link Click Handled by Markdown: ' + $event.link.href);
-  }
 }

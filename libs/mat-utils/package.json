@@ -1,0 +1,20 @@
+{
+  "name": "@gewd/mat-utils",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^9.0.0-rc.5",
+    "@angular/core": "^9.0.0-rc.5",
+    "@angular/material": "^9.1.2",
+    "@gewd/ng-utils": "^0.4.1"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/negue/gewd.git"
+  },
+  "keywords": [],
+  "author": "Eugen Bolz",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
