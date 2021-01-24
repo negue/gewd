@@ -30,15 +30,17 @@ export const REGISTORY_LAZY_LOADED_MODULE_TOKEN = new InjectionToken<RegisterLaz
 })
 export class GewdLazyLoaderModule {
   static withLazy (entries: RegisterLazyLoaderModuleEntry[]): ModuleWithProviders<GewdLazyLoaderModule> {
+    const providers = entries.map(useValue => {
+      return {
+        provide: REGISTORY_LAZY_LOADED_MODULE_TOKEN,
+        useValue,
+        multi: true
+      }
+    });
+
     return {
       ngModule: GewdLazyLoaderModule,
-      providers: entries.map(useValue => {
-       return {
-          provide: REGISTORY_LAZY_LOADED_MODULE_TOKEN,
-            useValue,
-            multi: true
-        }
-      })
+      providers
     };
   }
 
