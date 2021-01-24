@@ -31,6 +31,19 @@ import {Lazy} from "@gewd/lazy/utils";
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
+const markdownExampleLazy =new Lazy(() => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
+  .then(({MarkdownExampleModule}) => MarkdownExampleModule));
+
+const lazyLoadExampleLazy =new Lazy(
+  () => import(/* webpackChunkName: "lazyload-example-module" */ './examples/lazyload-example/lazyload-example.module')
+    .then(({LazyloadExampleModule}) => LazyloadExampleModule)
+);
+
+const portalLazy = new Lazy<any>(
+  () => import(/* webpackChunkName: "lazy-portal-module" */ './examples/lazyload-example/lazy-wrapper/lazy-portal-source')
+    .then(({PortalModule}) => PortalModule)
+);
+
 @NgModule({
   declarations: [AppComponent, MarkdownToolbarComponent, ExamplePanelComponent],
   imports: [
@@ -45,28 +58,19 @@ const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
       {
         moduleName: 'markdown-example',
         moduleConfig: {
-          load: new Lazy(
-            () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
-              .then(({MarkdownExampleModule}) => MarkdownExampleModule)
-          )
+          load: markdownExampleLazy
         }
       },
       {
         moduleName: 'lazyload-example',
         moduleConfig: {
-          load: new Lazy(
-            () => import(/* webpackChunkName: "lazyload-example-module" */ './examples/lazyload-example/lazyload-example.module')
-              .then(({LazyloadExampleModule}) => LazyloadExampleModule)
-          )
+          load: lazyLoadExampleLazy
         }
       },
       {
         moduleName: 'portal-module',
         moduleConfig: {
-          load: new Lazy<any>(
-            () => import(/* webpackChunkName: "lazy-portal-module" */ './examples/lazyload-example/lazy-wrapper/lazy-portal-source')
-              .then(({PortalModule}) => PortalModule)
-          )
+          load: portalLazy
         }
       }
     ]),

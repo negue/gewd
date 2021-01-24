@@ -10,6 +10,11 @@ import {DynamicLoaderRegistry} from "@gewd/lazy/registry";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MarkdownModule} from "@gewd/markdown/module";
 
+const testModuleLazy = new Lazy<any>(
+  () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
+    .then(({TestModule}) => TestModule)
+);
+
 @NgModule({
   declarations: [LazyloadExampleComponent],
   imports: [
@@ -18,10 +23,7 @@ import {MarkdownModule} from "@gewd/markdown/module";
       {
         moduleName: 'test-module',
         moduleConfig: {
-          load: new Lazy<any>(
-            () => import(/* webpackChunkName: "lazy-test-module" */ './lazy-wrapper/test-module-comp')
-              .then(({TestModule}) => TestModule)
-          )
+          load: testModuleLazy
         }
       }
     ]),
