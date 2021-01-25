@@ -1,0 +1,21 @@
+<gewd-auto-scale [width]="outerSize.value" [height]="outerSize.value">
+  <div style="background: green;"
+  [style.width.px]="innerSize.value"
+  [style.height.px]="innerSize.value"
+  >
+    200x200 <br/> Inner
+  </div>
+</gewd-auto-scale>
+
+<br/>
+
+  <mat-label>Outer Size: {{outerSize.value}}px</mat-label>
+  <mat-slider min="100" max="400" #outerSize>
+  </mat-slider>
+
+
+<br />
+<mat-label>Inner Size: {{innerSize.value}}px</mat-label>
+<mat-slider min="100" max="400" value="200" #innerSize>
+</mat-slider>
+

@@ -39,7 +39,12 @@ const lazyLoadExampleLazy =new Lazy(
     .then(({LazyloadExampleModule}) => LazyloadExampleModule)
 );
 
-const portalLazy = new Lazy<any>(
+const componentsExampleLazy =new Lazy(
+  () => import(/* webpackChunkName: "components-example-module" */ './examples/components-example/components-example.module')
+    .then(({ComponentsExampleModule}) => ComponentsExampleModule)
+);
+
+const portalLazy = new Lazy(
   () => import(/* webpackChunkName: "lazy-portal-module" */ './examples/lazyload-example/lazy-wrapper/lazy-portal-source')
     .then(({PortalModule}) => PortalModule)
 );
@@ -71,6 +76,12 @@ const portalLazy = new Lazy<any>(
         moduleName: 'portal-module',
         moduleConfig: {
           load: portalLazy
+        }
+      },
+      {
+        moduleName: 'components-example',
+        moduleConfig: {
+          load: componentsExampleLazy
         }
       }
     ]),
