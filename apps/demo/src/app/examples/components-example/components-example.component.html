@@ -19,3 +19,8 @@
 <mat-slider min="100" max="400" value="200" #innerSize>
 </mat-slider>
 
+<gewd-auto-scale width='120' height='120'>
+  <img [src]='imgSource' alt='test image'>
+</gewd-auto-scale>
+
+<button (click)='toggleImgSource()'>Toggle IMG source</button>
