@@ -1,11 +1,11 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'gewd-auto-scale',
   templateUrl: './auto-scale.component.html',
   styleUrls: ['./auto-scale.component.scss']
 })
-export class AutoScaleComponent implements OnInit {
+export class AutoScaleComponent {
 
   @HostBinding('style.--zoom_out_width.px')
   @Input()
@@ -15,9 +15,6 @@ export class AutoScaleComponent implements OnInit {
   @Input()
   height = 100;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @ContentChild(ElementRef)
+  private _elem: ElementRef;
 }
