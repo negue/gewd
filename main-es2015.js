@@ -2097,7 +2097,7 @@ var RegisterIconsModule_1;
 
 
 
-const REGISTORY_ICONS_PAIR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('@gewd/mat-utils/BootstrapComponentConfig');
+const REGISTORY_ICONS_PAIR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('@gewd/mat-utils/RegistryIconsPair');
 let RegisterIconsModule = RegisterIconsModule_1 = class RegisterIconsModule {
     constructor(iconRegistry, sanitizer, registryIconsPairsArray) {
         for (const iconPair of registryIconsPairsArray) {

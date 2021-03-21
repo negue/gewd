@@ -3660,7 +3660,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "../../node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
 
     var RegisterIconsModule_1;
-    var REGISTORY_ICONS_PAIR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('@gewd/mat-utils/BootstrapComponentConfig');
+    var REGISTORY_ICONS_PAIR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('@gewd/mat-utils/RegistryIconsPair');
 
     var RegisterIconsModule = RegisterIconsModule_1 = /*#__PURE__*/function () {
       function RegisterIconsModule(iconRegistry, sanitizer, registryIconsPairsArray) {
