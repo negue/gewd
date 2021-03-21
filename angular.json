@@ -48,6 +48,11 @@
                 "glob": "README.md",
                 "input": "./",
                 "output": "./"
+              },
+              {
+                "glob": "example_md.png",
+                "input": "example-images",
+                "output": "/assets/"
               }
             ],
             "styles": [
