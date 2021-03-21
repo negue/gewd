@@ -11,10 +11,10 @@ export class AutoScaleImgDirective {
   }
 
   constructor(
-    @Self() public elemRef: ElementRef,
+    @Self() public elemRef: ElementRef<HTMLElement>,
     private _cd: ChangeDetectorRef
   ) {
-    const htmlElem = elemRef.nativeElement as HTMLElement;
+    const htmlElem = elemRef.nativeElement;
 
     if (htmlElem.tagName.toLocaleLowerCase() !== 'img') {
       throw new Error('Only <img> tags are supported with the AutoScaleImgDirective!');
