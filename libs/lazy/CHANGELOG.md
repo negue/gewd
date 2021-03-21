@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.3.0] - 2021-01-25
+
+### Breaking Changes
+
+The Registration Syntax is now a method instead of a Dictionary everyone could override (which may produce issues)
+
+New Syntax:
+
+```ts
+DynamicLoaderRegistry.RegisterLazyComponent('test-comp',
+  new Lazy<any>(() => import('./lazy-wrapper/test-comp'))
+);
+
+DynamicLoaderRegistry.RegisterLazyModuleComponent('test-module', {
+  load: new Lazy(
+    () => import('./lazy-wrapper/test-module-comp')
+    .then(({TestModule}) => TestModule)
+  )
+});
+```
+
 ## [0.2.0] - 2020-02-25
 
 ### [`gewd-lazy-module-component`]

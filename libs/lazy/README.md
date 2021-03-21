@@ -70,14 +70,19 @@ Register the GewdLazyModule to use the Components
 GewdLazyLoaderModule 
 
 // or with .withLazy
+
+// outside of the Angular Module
+const lazyModule = new Lazy(
+            () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
+              .then(({MarkdownExampleModule}) => MarkdownExampleModule)
+);
+
+
 GewdLazyLoaderModule.withLazy([
       {
         moduleName: 'markdown-example',
         moduleConfig: {
-          load: new Lazy(
-            () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
-              .then(({MarkdownExampleModule}) => MarkdownExampleModule)
-          )
+          load: lazyModule
         }
       },
     ])

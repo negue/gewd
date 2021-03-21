@@ -8,3 +8,19 @@ export const uuid = () => {
     return v.toString(16);
   });
 }
+
+export function downloadFile(filename: string, linkToClick: string) {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = linkToClick;
+  link.click();
+}
+
+export function downloadData(filename: string, mimeType: string, data: string) {
+  downloadFile(filename, `data:${mimeType};base64,${btoa(data)};`);
+}
+
+export function downloadImage(filename: string,
+                              canvasElement: HTMLCanvasElement): void {
+  downloadFile(filename, canvasElement.toDataURL());
+}
