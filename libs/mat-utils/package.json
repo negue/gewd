@@ -4,8 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.5",
     "@angular/core": "^9.0.0-rc.5",
-    "@angular/material": "^9.1.2",
-    "@gewd/ng-utils": "^0.4.1"
+    "@angular/material": "^9.1.2"
   },
   "repository": {
     "type" : "git",
