@@ -20,6 +20,85 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-example-module"], {
   /***/
+  "../../libs/components/auto-scale/auto-scale-img.directive.ts":
+  /*!******************************************************************************************!*\
+    !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale-img.directive.ts ***!
+    \******************************************************************************************/
+
+  /*! exports provided: AutoScaleImgDirective */
+
+  /***/
+  function libsComponentsAutoScaleAutoScaleImgDirectiveTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function () {
+      return AutoScaleImgDirective;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "../../node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./auto-scale.component */
+    "../../libs/components/auto-scale/auto-scale.component.ts");
+
+    var AutoScaleImgDirective = /*#__PURE__*/function () {
+      function AutoScaleImgDirective(elemRef, _autoScale) {
+        _classCallCheck(this, AutoScaleImgDirective);
+
+        this.elemRef = elemRef;
+        this._autoScale = _autoScale;
+        var htmlElem = elemRef.nativeElement;
+
+        if (htmlElem.tagName.toLocaleLowerCase() !== 'img') {
+          throw new Error('Only <img> tags are supported with the AutoScaleImgDirective!');
+        }
+      }
+
+      _createClass(AutoScaleImgDirective, [{
+        key: "onLoad",
+        value: function onLoad() {
+          this._autoScale.forceUpdate();
+        }
+      }]);
+
+      return AutoScaleImgDirective;
+    }();
+
+    AutoScaleImgDirective.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Self"]
+        }]
+      }, {
+        type: _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"]
+      }];
+    };
+
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('load'), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Function), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", []), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:returntype", void 0)], AutoScaleImgDirective.prototype, "onLoad", null);
+    AutoScaleImgDirective = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+      selector: '[gewdAutoScaleImg]'
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Self"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"]])], AutoScaleImgDirective);
+    /***/
+  },
+
+  /***/
   "../../libs/components/auto-scale/auto-scale.component.scss":
   /*!****************************************************************************************!*\
     !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale.component.scss ***!
@@ -72,20 +151,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
     var AutoScaleComponent = /*#__PURE__*/function () {
-      function AutoScaleComponent() {
+      function AutoScaleComponent(_cd) {
         _classCallCheck(this, AutoScaleComponent);
 
+        this._cd = _cd;
         this.width = 100;
         this.height = 100;
       }
 
       _createClass(AutoScaleComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
+        key: "forceUpdate",
+        value: function forceUpdate() {
+          this._cd.markForCheck();
+        }
       }]);
 
       return AutoScaleComponent;
     }();
+
+    AutoScaleComponent.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+      }];
+    };
 
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.--zoom_out_width.px'), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)], AutoScaleComponent.prototype, "width", void 0);
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.--zoom_out_height.px'), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)], AutoScaleComponent.prototype, "height", void 0);
@@ -97,7 +185,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./auto-scale.component.scss */
       "../../libs/components/auto-scale/auto-scale.component.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])], AutoScaleComponent);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]])], AutoScaleComponent);
     /***/
   },
 
@@ -150,14 +238,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./value-or-default.pipe */
     "../../libs/components/auto-scale/value-or-default.pipe.ts");
+    /* harmony import */
+
+
+    var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./auto-scale-img.directive */
+    "../../libs/components/auto-scale/auto-scale-img.directive.ts");
 
     var AutoScaleModule = function AutoScaleModule() {
       _classCallCheck(this, AutoScaleModule);
     };
 
     AutoScaleModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"], _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__["ValueOrDefaultPipe"]],
-      exports: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"]],
+      declarations: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"], _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__["ValueOrDefaultPipe"], _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]],
+      exports: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"], _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]],
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]]
     })], AutoScaleModule);
     /***/
@@ -169,7 +263,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/index.ts ***!
     \***********************************************************************/
 
-  /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe */
+  /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
 
   /***/
   function libsComponentsAutoScaleIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -200,6 +294,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function () {
       return _public_api__WEBPACK_IMPORTED_MODULE_0__["ValueOrDefaultPipe"];
     });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function () {
+      return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleImgDirective"];
+    });
     /***/
 
   },
@@ -210,7 +310,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/public_api.ts ***!
     \****************************************************************************/
 
-  /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe */
+  /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
 
   /***/
   function libsComponentsAutoScalePublic_apiTs(module, __webpack_exports__, __webpack_require__) {
@@ -252,6 +352,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function () {
       return _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_2__["ValueOrDefaultPipe"];
+    });
+    /* harmony import */
+
+
+    var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./auto-scale-img.directive */
+    "../../libs/components/auto-scale/auto-scale-img.directive.ts");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function () {
+      return _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__["AutoScaleImgDirective"];
     });
     /***/
 
@@ -2206,7 +2318,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<gewd-auto-scale [width]=\"outerSize.value\" [height]=\"outerSize.value\">\n  <div style=\"background: green;\"\n  [style.width.px]=\"innerSize.value\"\n  [style.height.px]=\"innerSize.value\"\n  >\n    200x200 <br/> Inner\n  </div>\n</gewd-auto-scale>\n\n<br/>\n\n  <mat-label>Outer Size: {{outerSize.value}}px</mat-label>\n  <mat-slider min=\"100\" max=\"400\" #outerSize>\n  </mat-slider>\n\n\n<br />\n<mat-label>Inner Size: {{innerSize.value}}px</mat-label>\n<mat-slider min=\"100\" max=\"400\" value=\"200\" #innerSize>\n</mat-slider>\n\n";
+    __webpack_exports__["default"] = "<gewd-auto-scale [width]=\"outerSize.value\" [height]=\"outerSize.value\">\n  <div style=\"background: green;\"\n  [style.width.px]=\"innerSize.value\"\n  [style.height.px]=\"innerSize.value\"\n  >\n    200x200 <br/> Inner\n  </div>\n</gewd-auto-scale>\n\n<br/>\n\n  <mat-label>Outer Size: {{outerSize.value}}px</mat-label>\n  <mat-slider min=\"100\" max=\"400\" #outerSize>\n  </mat-slider>\n\n\n<br />\n<mat-label>Inner Size: {{innerSize.value}}px</mat-label>\n<mat-slider min=\"100\" max=\"400\" value=\"200\" #innerSize>\n</mat-slider>\n\n<gewd-auto-scale width='120' height='120'>\n  <img [src]='imgSource' gewdAutoScaleImg alt='test image'/>\n</gewd-auto-scale>\n\n<button (click)='toggleImgSource()'>Toggle IMG source</button>\n";
     /***/
   },
 
@@ -2262,14 +2374,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
+    var img1 = '/assets/example_md.png';
+    var img2 = '/assets/example-bg.png';
+
     var ComponentsExampleComponent = /*#__PURE__*/function () {
       function ComponentsExampleComponent() {
         _classCallCheck(this, ComponentsExampleComponent);
+
+        this.imgSource = img1;
       }
 
       _createClass(ComponentsExampleComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
+      }, {
+        key: "toggleImgSource",
+        value: function toggleImgSource() {
+          this.imgSource = this.imgSource === img1 ? img2 : img1;
+        }
       }]);
 
       return ComponentsExampleComponent;
