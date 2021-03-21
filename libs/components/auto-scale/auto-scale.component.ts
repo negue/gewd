@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, HostBinding, HostListener, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'gewd-auto-scale',
@@ -15,6 +15,10 @@ export class AutoScaleComponent {
   @Input()
   height = 100;
 
-  @ContentChild(ElementRef)
-  private _elem: ElementRef;
+  constructor(private _cd: ChangeDetectorRef) {
+  }
+
+  forceUpdate(): void {
+    this._cd.markForCheck();
+  }
 }
