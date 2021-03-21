@@ -16,14 +16,14 @@ jobs:
         with:
           path: |
             **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-${{ hashFiles('package.json') }}
       - name: Use Node.js 12.16.2
         uses: actions/setup-node@v1
         with:
           node-version: 12.16.2
       - run: npm install
 
-      - name: Run Build
+      - name: Build Libs
         shell: bash
         run: |
           if [[ $GITHUB_BASE_REF ]]
@@ -46,3 +46,12 @@ jobs:
           fi
           echo "Base => $NX_BASE"
           npm run affected:test -- --base=$NX_BASE
+
+      - run: npm run build
+      - name: Deploy Preview
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/apps/demo
+          destination_dir: ./pr_${{ github.event.number }}
+          keep_files: false
