@@ -13,6 +13,9 @@
   "keywords": ["lazy", "angular", "lazy-component", "lazy-load"],
   "author": "Eugen Bolz",
   "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "publishConfig": {
     "access": "public"
   }
