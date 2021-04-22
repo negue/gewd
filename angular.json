@@ -441,7 +441,7 @@
       "unitTestRunner": "jest"
     },
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     },
     "@nrwl/angular:component": {
       "styleext": "scss"
