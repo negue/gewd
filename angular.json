@@ -75,7 +75,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": true,
-              "extractCss": true,
               "namedChunks": true,
               "aot": true,
               "statsJson": true,
@@ -194,7 +193,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/markdown/tsconfig.lib.json",
             "project": "libs/markdown/ng-package.json"
@@ -230,7 +229,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/lazy/tsconfig.lib.json",
             "project": "libs/lazy/ng-package.json"
@@ -271,7 +270,7 @@
       "prefix": "",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/ng-utils/tsconfig.lib.json",
             "project": "libs/ng-utils/ng-package.json"
@@ -312,7 +311,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/components/tsconfig.lib.json",
             "project": "libs/components/ng-package.json"
@@ -355,7 +354,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/mat-utils/tsconfig.lib.json",
             "project": "libs/mat-utils/ng-package.json"
@@ -397,7 +396,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/utils/tsconfig.lib.json",
             "project": "libs/utils/ng-package.json"
@@ -441,7 +440,7 @@
       "unitTestRunner": "jest"
     },
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     },
     "@nrwl/angular:component": {
       "styleext": "scss"
