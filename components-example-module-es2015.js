@@ -1,225 +1,17 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-example-module"],{
 
-/***/ "../../libs/components/auto-scale/auto-scale-img.directive.ts":
-/*!******************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale-img.directive.ts ***!
-  \******************************************************************************************/
-/*! exports provided: AutoScaleImgDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return AutoScaleImgDirective; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-scale.component */ "../../libs/components/auto-scale/auto-scale.component.ts");
-
-
-
-let AutoScaleImgDirective = class AutoScaleImgDirective {
-    constructor(elemRef, _autoScale) {
-        this.elemRef = elemRef;
-        this._autoScale = _autoScale;
-        const htmlElem = elemRef.nativeElement;
-        if (htmlElem.tagName.toLocaleLowerCase() !== 'img') {
-            throw new Error('Only <img> tags are supported with the AutoScaleImgDirective!');
-        }
-    }
-    onLoad() {
-        this._autoScale.forceUpdate();
-    }
-};
-AutoScaleImgDirective.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Self"] }] },
-    { type: _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"] }
-];
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('load'),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Function),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", []),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:returntype", void 0)
-], AutoScaleImgDirective.prototype, "onLoad", null);
-AutoScaleImgDirective = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
-        selector: '[gewdAutoScaleImg]'
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Self"])()),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"],
-        _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"]])
-], AutoScaleImgDirective);
-
-
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/auto-scale.component.scss":
-/*!****************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale.component.scss ***!
-  \****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n  height: var(--zoom_out_height);\n  width: var(--zoom_out_width);\n  --scale-width: 0;\n  --scale-height: 0;\n}\n\n.zoom_out_parent {\n  position: relative;\n  height: var(--zoom_out_height);\n  width: var(--zoom_out_width);\n  overflow: hidden;\n}\n\n.zoom_out {\n  text-align: center;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) scale(min(var(--scale-width), var(--scale-height)));\n  transform-origin: center center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL2dld2QvZ2V3ZC9saWJzL2NvbXBvbmVudHMvYXV0by1zY2FsZS9hdXRvLXNjYWxlLmNvbXBvbmVudC5zY3NzIiwibGlicy9jb21wb25lbnRzL2F1dG8tc2NhbGUvYXV0by1zY2FsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQUE7RUFFQSw4QkFBQTtFQUNBLDRCQUFBO0VBRUEsZ0JBQUE7RUFDQSxpQkFBQTtBQ0RGOztBREtBO0VBQ0Usa0JBQUE7RUFDQSw4QkFBQTtFQUNBLDRCQUFBO0VBRUEsZ0JBQUE7QUNIRjs7QURNQTtFQUNFLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EsUUFBQTtFQUNBLG9GQUFBO0VBSUEsK0JBQUE7QUNORiIsImZpbGUiOiJsaWJzL2NvbXBvbmVudHMvYXV0by1zY2FsZS9hdXRvLXNjYWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3Qge1xuICBkaXNwbGF5OiBibG9jaztcblxuICBoZWlnaHQ6IHZhcigtLXpvb21fb3V0X2hlaWdodCk7XG4gIHdpZHRoOiB2YXIoLS16b29tX291dF93aWR0aCk7XG5cbiAgLS1zY2FsZS13aWR0aDogMDtcbiAgLS1zY2FsZS1oZWlnaHQ6IDA7XG59XG5cblxuLnpvb21fb3V0X3BhcmVudCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgaGVpZ2h0OiB2YXIoLS16b29tX291dF9oZWlnaHQpO1xuICB3aWR0aDogdmFyKC0tem9vbV9vdXRfd2lkdGgpO1xuXG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi56b29tX291dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiA1MCU7XG4gIHRvcDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKSBzY2FsZShtaW4oXG4gICAgdmFyKC0tc2NhbGUtd2lkdGgpLFxuICAgIHZhcigtLXNjYWxlLWhlaWdodClcbiAgKSk7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlciBjZW50ZXI7XG59XG4iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IHZhcigtLXpvb21fb3V0X2hlaWdodCk7XG4gIHdpZHRoOiB2YXIoLS16b29tX291dF93aWR0aCk7XG4gIC0tc2NhbGUtd2lkdGg6IDA7XG4gIC0tc2NhbGUtaGVpZ2h0OiAwO1xufVxuXG4uem9vbV9vdXRfcGFyZW50IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBoZWlnaHQ6IHZhcigtLXpvb21fb3V0X2hlaWdodCk7XG4gIHdpZHRoOiB2YXIoLS16b29tX291dF93aWR0aCk7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi56b29tX291dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiA1MCU7XG4gIHRvcDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKSBzY2FsZShtaW4odmFyKC0tc2NhbGUtd2lkdGgpLCB2YXIoLS1zY2FsZS1oZWlnaHQpKSk7XG4gIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlciBjZW50ZXI7XG59Il19 */");
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/auto-scale.component.ts":
-/*!**************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale.component.ts ***!
-  \**************************************************************************************/
-/*! exports provided: AutoScaleComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return AutoScaleComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-
-let AutoScaleComponent = class AutoScaleComponent {
-    constructor(_cd) {
-        this._cd = _cd;
-        this.width = 100;
-        this.height = 100;
-    }
-    forceUpdate() {
-        this._cd.markForCheck();
-    }
-};
-AutoScaleComponent.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }
-];
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.--zoom_out_width.px'),
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], AutoScaleComponent.prototype, "width", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('style.--zoom_out_height.px'),
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], AutoScaleComponent.prototype, "height", void 0);
-AutoScaleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'gewd-auto-scale',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./auto-scale.component.html */ "../../node_modules/raw-loader/dist/cjs.js!../../libs/components/auto-scale/auto-scale.component.html")).default,
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./auto-scale.component.scss */ "../../libs/components/auto-scale/auto-scale.component.scss")).default]
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]])
-], AutoScaleComponent);
-
-
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/auto-scale.module.ts":
-/*!***********************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale.module.ts ***!
-  \***********************************************************************************/
-/*! exports provided: AutoScaleModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return AutoScaleModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auto-scale.component */ "../../libs/components/auto-scale/auto-scale.component.ts");
-/* harmony import */ var _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./value-or-default.pipe */ "../../libs/components/auto-scale/value-or-default.pipe.ts");
-/* harmony import */ var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auto-scale-img.directive */ "../../libs/components/auto-scale/auto-scale-img.directive.ts");
-
-
-
-
-
-
-let AutoScaleModule = class AutoScaleModule {
-};
-AutoScaleModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"], _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__["ValueOrDefaultPipe"], _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]],
-        exports: [
-            _auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"],
-            _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]
-        ],
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-        ]
-    })
-], AutoScaleModule);
-
-
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/index.ts":
-/*!***********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/index.ts ***!
-  \***********************************************************************/
-/*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "../../libs/components/auto-scale/public_api.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleModule"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["ValueOrDefaultPipe"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleImgDirective"]; });
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/public_api.ts":
-/*!****************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/public_api.ts ***!
-  \****************************************************************************/
-/*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _auto_scale_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auto-scale.module */ "../../libs/components/auto-scale/auto-scale.module.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return _auto_scale_module__WEBPACK_IMPORTED_MODULE_0__["AutoScaleModule"]; });
-
-/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auto-scale.component */ "../../libs/components/auto-scale/auto-scale.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return _auto_scale_component__WEBPACK_IMPORTED_MODULE_1__["AutoScaleComponent"]; });
-
-/* harmony import */ var _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./value-or-default.pipe */ "../../libs/components/auto-scale/value-or-default.pipe.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function() { return _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_2__["ValueOrDefaultPipe"]; });
-
-/* harmony import */ var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auto-scale-img.directive */ "../../libs/components/auto-scale/auto-scale-img.directive.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__["AutoScaleImgDirective"]; });
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/components/auto-scale/value-or-default.pipe.ts":
-/*!***************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/components/auto-scale/value-or-default.pipe.ts ***!
-  \***************************************************************************************/
+/***/ "/PFe":
+/*!*************************************************************!*\
+  !*** ./libs/components/auto-scale/value-or-default.pipe.ts ***!
+  \*************************************************************/
 /*! exports provided: ValueOrDefaultPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function() { return ValueOrDefaultPipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 let ValueOrDefaultPipe = class ValueOrDefaultPipe {
@@ -240,10 +32,23 @@ ValueOrDefaultPipe = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
-/***/ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js":
-/*!**************************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js ***!
-  \**************************************************************************************************/
+/***/ "3pE5":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/examples/components-example/components-example.component.html ***!
+  \*******************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<gewd-auto-scale [width]=\"outerSize.value\" [height]=\"outerSize.value\">\n  <div style=\"background: green;\"\n  [style.width.px]=\"innerSize.value\"\n  [style.height.px]=\"innerSize.value\"\n  >\n    200x200 <br/> Inner\n  </div>\n</gewd-auto-scale>\n\n<br/>\n\n  <mat-label>Outer Size: {{outerSize.value}}px</mat-label>\n  <mat-slider min=\"100\" max=\"400\" #outerSize>\n  </mat-slider>\n\n\n<br />\n<mat-label>Inner Size: {{innerSize.value}}px</mat-label>\n<mat-slider min=\"100\" max=\"400\" value=\"200\" #innerSize>\n</mat-slider>\n\n<gewd-auto-scale width='120' height='120'>\n  <img [src]='imgSource' gewdAutoScaleImg alt='test image'/>\n</gewd-auto-scale>\n\n<button (click)='toggleImgSource()'>Toggle IMG source</button>\n");
+
+/***/ }),
+
+/***/ "5RNC":
+/*!************************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js ***!
+  \************************************************************************/
 /*! exports provided: MAT_SLIDER_VALUE_ACCESSOR, MatSlider, MatSliderChange, MatSliderModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -253,17 +58,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatSlider", function() { return MatSlider; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatSliderChange", function() { return MatSliderChange; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatSliderModule", function() { return MatSliderModule; });
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/core */ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/a11y */ "../../node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/a11y.js");
-/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/bidi */ "../../node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
-/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/coercion */ "../../node_modules/@angular/cdk/fesm2015/coercion.js");
-/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/keycodes */ "../../node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "../../node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "../../node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
-/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/cdk/platform */ "../../node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "../../node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/core */ "FKr1");
+/* harmony import */ var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/a11y */ "u47x");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/bidi */ "cH1L");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/coercion */ "8LU1");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/keycodes */ "FtGj");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "qCKp");
 
 
 
@@ -277,11 +82,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * @fileoverview added by tsickle
- * Generated from: src/material/slider/slider.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
-/** @type {?} */
 
 
 
@@ -292,83 +98,47 @@ const activeEventOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE
 /**
  * Visually, a 30px separation between tick marks looks best. This is very subjective but it is
  * the default separation we chose.
- * @type {?}
  */
 const MIN_AUTO_TICK_SEPARATION = 30;
-/**
- * The thumb gap size for a disabled slider.
- * @type {?}
- */
+/** The thumb gap size for a disabled slider. */
 const DISABLED_THUMB_GAP = 7;
-/**
- * The thumb gap size for a non-active slider at its minimum value.
- * @type {?}
- */
+/** The thumb gap size for a non-active slider at its minimum value. */
 const MIN_VALUE_NONACTIVE_THUMB_GAP = 7;
-/**
- * The thumb gap size for an active slider at its minimum value.
- * @type {?}
- */
+/** The thumb gap size for an active slider at its minimum value. */
 const MIN_VALUE_ACTIVE_THUMB_GAP = 10;
 /**
  * Provider Expression that allows mat-slider to register as a ControlValueAccessor.
  * This allows it to support [(ngModel)] and [formControl].
- * \@docs-private
- * @type {?}
+ * @docs-private
  */
 const MAT_SLIDER_VALUE_ACCESSOR = {
     provide: _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NG_VALUE_ACCESSOR"],
-    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])((/**
-     * @return {?}
-     */
-    () => MatSlider)),
+    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(() => MatSlider),
     multi: true
 };
-/**
- * A simple change event emitted by the MatSlider component.
- */
+/** A simple change event emitted by the MatSlider component. */
 class MatSliderChange {
 }
-if (false) {}
 // Boilerplate for applying mixins to MatSlider.
-/**
- * \@docs-private
- */
+/** @docs-private */
 class MatSliderBase {
-    /**
-     * @param {?} _elementRef
-     */
     constructor(_elementRef) {
         this._elementRef = _elementRef;
     }
 }
-if (false) {}
-/** @type {?} */
 const _MatSliderMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatSliderBase), 'accent'));
 /**
  * Allows users to select from a range of values by moving the slider thumb. It is similar in
  * behavior to the native `<input type="range">` element.
  */
 class MatSlider extends _MatSliderMixinBase {
-    /**
-     * @param {?} elementRef
-     * @param {?} _focusMonitor
-     * @param {?} _changeDetectorRef
-     * @param {?} _dir
-     * @param {?} tabIndex
-     * @param {?=} _animationMode
-     * @param {?=} _ngZone
-     * @param {?=} document
-     */
-    constructor(elementRef, _focusMonitor, _changeDetectorRef, _dir, tabIndex, _animationMode, _ngZone, 
-    /** @breaking-change 11.0.0 make document required */
-    document) {
+    constructor(elementRef, _focusMonitor, _changeDetectorRef, _dir, tabIndex, _ngZone, _document, _animationMode) {
         super(elementRef);
         this._focusMonitor = _focusMonitor;
         this._changeDetectorRef = _changeDetectorRef;
         this._dir = _dir;
-        this._animationMode = _animationMode;
         this._ngZone = _ngZone;
+        this._animationMode = _animationMode;
         this._invert = false;
         this._max = 100;
         this._min = 0;
@@ -377,27 +147,18 @@ class MatSlider extends _MatSliderMixinBase {
         this._tickInterval = 0;
         this._value = null;
         this._vertical = false;
-        /**
-         * Event emitted when the slider value has changed.
-         */
+        /** Event emitted when the slider value has changed. */
         this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        /**
-         * Event emitted when the slider thumb moves.
-         */
+        /** Event emitted when the slider thumb moves. */
         this.input = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         /**
          * Emits when the raw value of the slider changes. This is here primarily
          * to facilitate the two-way binding for the `value` input.
-         * \@docs-private
+         * @docs-private
          */
         this.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        /**
-         * onTouch function registered via registerOnTouch (ControlValueAccessor).
-         */
-        this.onTouched = (/**
-         * @return {?}
-         */
-        () => { });
+        /** onTouch function registered via registerOnTouch (ControlValueAccessor). */
+        this.onTouched = () => { };
         this._percent = 0;
         /**
          * Whether or not the thumb is sliding.
@@ -409,42 +170,22 @@ class MatSlider extends _MatSliderMixinBase {
          * Used to shrink and grow the thumb as according to the Material Design spec.
          */
         this._isActive = false;
-        /**
-         * The size of a tick interval as a percentage of the size of the track.
-         */
+        /** The size of a tick interval as a percentage of the size of the track. */
         this._tickIntervalPercent = 0;
-        /**
-         * The dimensions of the slider.
-         */
+        /** The dimensions of the slider. */
         this._sliderDimensions = null;
-        this._controlValueAccessorChangeFn = (/**
-         * @return {?}
-         */
-        () => { });
-        /**
-         * Subscription to the Directionality change EventEmitter.
-         */
+        this._controlValueAccessorChangeFn = () => { };
+        /** Subscription to the Directionality change EventEmitter. */
         this._dirChangeSubscription = rxjs__WEBPACK_IMPORTED_MODULE_10__["Subscription"].EMPTY;
-        /**
-         * Called when the user has put their pointer down on the slider.
-         */
-        this._pointerDown = (/**
-         * @param {?} event
-         * @return {?}
-         */
-        (event) => {
+        /** Called when the user has put their pointer down on the slider. */
+        this._pointerDown = (event) => {
             // Don't do anything if the slider is disabled or the
             // user is using anything other than the main mouse button.
             if (this.disabled || this._isSliding || (!isTouchEvent(event) && event.button !== 0)) {
                 return;
             }
-            this._runInsideZone((/**
-             * @return {?}
-             */
-            () => {
-                /** @type {?} */
+            this._ngZone.run(() => {
                 const oldValue = this.value;
-                /** @type {?} */
                 const pointerPosition = getPointerPositionOnPage(event);
                 this._isSliding = true;
                 this._lastPointerEvent = event;
@@ -454,28 +195,21 @@ class MatSlider extends _MatSliderMixinBase {
                 this._bindGlobalEvents(event);
                 this._focusHostElement();
                 this._updateValueFromPosition(pointerPosition);
-                this._valueOnSlideStart = this.value;
-                this._pointerPositionOnStart = pointerPosition;
+                this._valueOnSlideStart = oldValue;
                 // Emit a change and input event if the value changed.
                 if (oldValue != this.value) {
                     this._emitInputEvent();
-                    this._emitChangeEvent();
                 }
-            }));
-        });
+            });
+        };
         /**
          * Called when the user has moved their pointer after
          * starting to drag. Bound on the document level.
          */
-        this._pointerMove = (/**
-         * @param {?} event
-         * @return {?}
-         */
-        (event) => {
+        this._pointerMove = (event) => {
             if (this._isSliding) {
                 // Prevent the slide from selecting anything else.
                 event.preventDefault();
-                /** @type {?} */
                 const oldValue = this.value;
                 this._lastPointerEvent = event;
                 this._updateValueFromPosition(getPointerPositionOnPage(event));
@@ -484,92 +218,50 @@ class MatSlider extends _MatSliderMixinBase {
                     this._emitInputEvent();
                 }
             }
-        });
-        /**
-         * Called when the user has lifted their pointer. Bound on the document level.
-         */
-        this._pointerUp = (/**
-         * @param {?} event
-         * @return {?}
-         */
-        (event) => {
+        };
+        /** Called when the user has lifted their pointer. Bound on the document level. */
+        this._pointerUp = (event) => {
             if (this._isSliding) {
-                /** @type {?} */
-                const pointerPositionOnStart = this._pointerPositionOnStart;
-                /** @type {?} */
-                const currentPointerPosition = getPointerPositionOnPage(event);
                 event.preventDefault();
                 this._removeGlobalEvents();
-                this._valueOnSlideStart = this._pointerPositionOnStart = this._lastPointerEvent = null;
                 this._isSliding = false;
-                if (this._valueOnSlideStart != this.value && !this.disabled &&
-                    pointerPositionOnStart && (pointerPositionOnStart.x !== currentPointerPosition.x ||
-                    pointerPositionOnStart.y !== currentPointerPosition.y)) {
+                if (this._valueOnSlideStart != this.value && !this.disabled) {
                     this._emitChangeEvent();
                 }
+                this._valueOnSlideStart = this._lastPointerEvent = null;
             }
-        });
-        /**
-         * Called when the window has lost focus.
-         */
-        this._windowBlur = (/**
-         * @return {?}
-         */
-        () => {
+        };
+        /** Called when the window has lost focus. */
+        this._windowBlur = () => {
             // If the window is blurred while dragging we need to stop dragging because the
             // browser won't dispatch the `mouseup` and `touchend` events anymore.
             if (this._lastPointerEvent) {
                 this._pointerUp(this._lastPointerEvent);
             }
-        });
-        this._document = document;
+        };
+        this._document = _document;
         this.tabIndex = parseInt(tabIndex) || 0;
-        this._runOutsizeZone((/**
-         * @return {?}
-         */
-        () => {
-            /** @type {?} */
+        _ngZone.runOutsideAngular(() => {
             const element = elementRef.nativeElement;
             element.addEventListener('mousedown', this._pointerDown, activeEventOptions);
             element.addEventListener('touchstart', this._pointerDown, activeEventOptions);
-        }));
+        });
     }
-    /**
-     * Whether the slider is inverted.
-     * @return {?}
-     */
+    /** Whether the slider is inverted. */
     get invert() { return this._invert; }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set invert(value) {
         this._invert = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value);
     }
-    /**
-     * The maximum value that the slider can have.
-     * @return {?}
-     */
+    /** The maximum value that the slider can have. */
     get max() { return this._max; }
-    /**
-     * @param {?} v
-     * @return {?}
-     */
     set max(v) {
         this._max = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(v, this._max);
         this._percent = this._calculatePercentage(this._value);
         // Since this also modifies the percentage, we need to let the change detection know.
         this._changeDetectorRef.markForCheck();
     }
-    /**
-     * The minimum value that the slider can have.
-     * @return {?}
-     */
+    /** The minimum value that the slider can have. */
     get min() { return this._min; }
-    /**
-     * @param {?} v
-     * @return {?}
-     */
     set min(v) {
         this._min = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(v, this._min);
         // If the value wasn't explicitly set by the user, set it to the min.
@@ -580,58 +272,36 @@ class MatSlider extends _MatSliderMixinBase {
         // Since this also modifies the percentage, we need to let the change detection know.
         this._changeDetectorRef.markForCheck();
     }
-    /**
-     * The values at which the thumb will snap.
-     * @return {?}
-     */
+    /** The values at which the thumb will snap. */
     get step() { return this._step; }
-    /**
-     * @param {?} v
-     * @return {?}
-     */
     set step(v) {
         this._step = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(v, this._step);
         if (this._step % 1 !== 0) {
-            this._roundToDecimal = (/** @type {?} */ (this._step.toString().split('.').pop())).length;
+            this._roundToDecimal = this._step.toString().split('.').pop().length;
         }
         // Since this could modify the label, we need to notify the change detection.
         this._changeDetectorRef.markForCheck();
     }
-    /**
-     * Whether or not to show the thumb label.
-     * @return {?}
-     */
+    /** Whether or not to show the thumb label. */
     get thumbLabel() { return this._thumbLabel; }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set thumbLabel(value) { this._thumbLabel = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value); }
     /**
      * How often to show ticks. Relative to the step so that a tick always appears on a step.
      * Ex: Tick interval of 4 with a step of 3 will draw a tick every 4 steps (every 12 values).
-     * @return {?}
      */
     get tickInterval() { return this._tickInterval; }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set tickInterval(value) {
         if (value === 'auto') {
             this._tickInterval = 'auto';
         }
         else if (typeof value === 'number' || typeof value === 'string') {
-            this._tickInterval = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(value, (/** @type {?} */ (this._tickInterval)));
+            this._tickInterval = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(value, this._tickInterval);
         }
         else {
             this._tickInterval = 0;
         }
     }
-    /**
-     * Value of the slider.
-     * @return {?}
-     */
+    /** Value of the slider. */
     get value() {
         // If the value needs to be read and it is still uninitialized, initialize it to the min.
         if (this._value === null) {
@@ -639,17 +309,12 @@ class MatSlider extends _MatSliderMixinBase {
         }
         return this._value;
     }
-    /**
-     * @param {?} v
-     * @return {?}
-     */
     set value(v) {
         if (v !== this._value) {
-            /** @type {?} */
             let value = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(v);
             // While incrementing by a decimal we can end up with values like 33.300000000000004.
             // Truncate it to ensure that it matches the label and to make it easier to work with.
-            if (this._roundToDecimal) {
+            if (this._roundToDecimal && value !== this.min && value !== this.max) {
                 value = parseFloat(value.toFixed(this._roundToDecimal));
             }
             this._value = value;
@@ -658,27 +323,17 @@ class MatSlider extends _MatSliderMixinBase {
             this._changeDetectorRef.markForCheck();
         }
     }
-    /**
-     * Whether the slider is vertical.
-     * @return {?}
-     */
+    /** Whether the slider is vertical. */
     get vertical() { return this._vertical; }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set vertical(value) {
         this._vertical = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value);
     }
-    /**
-     * The value to be used for display purposes.
-     * @return {?}
-     */
+    /** The value to be used for display purposes. */
     get displayValue() {
         if (this.displayWith) {
             // Value is never null but since setters and getters cannot have
             // different types, the value getter is also typed to return null.
-            return this.displayWith((/** @type {?} */ (this.value)));
+            return this.displayWith(this.value);
         }
         // Note that this could be improved further by rounding something like 0.999 to 1 or
         // 0.899 to 0.9, however it is very performance sensitive, because it gets called on
@@ -688,89 +343,61 @@ class MatSlider extends _MatSliderMixinBase {
         }
         return this.value || 0;
     }
-    /**
-     * set focus to the host element
-     * @param {?=} options
-     * @return {?}
-     */
+    /** set focus to the host element */
     focus(options) {
         this._focusHostElement(options);
     }
-    /**
-     * blur the host element
-     * @return {?}
-     */
+    /** blur the host element */
     blur() {
         this._blurHostElement();
     }
-    /**
-     * The percentage of the slider that coincides with the value.
-     * @return {?}
-     */
+    /** The percentage of the slider that coincides with the value. */
     get percent() { return this._clamp(this._percent); }
     /**
      * Whether the axis of the slider is inverted.
      * (i.e. whether moving the thumb in the positive x or y direction decreases the slider's value).
-     * @return {?}
      */
-    get _invertAxis() {
+    _shouldInvertAxis() {
         // Standard non-inverted mode for a vertical slider should be dragging the thumb from bottom to
         // top. However from a y-axis standpoint this is inverted.
         return this.vertical ? !this.invert : this.invert;
     }
-    /**
-     * Whether the slider is at its minimum value.
-     * @return {?}
-     */
-    get _isMinValue() {
+    /** Whether the slider is at its minimum value. */
+    _isMinValue() {
         return this.percent === 0;
     }
     /**
      * The amount of space to leave between the slider thumb and the track fill & track background
      * elements.
-     * @return {?}
      */
-    get _thumbGap() {
+    _getThumbGap() {
         if (this.disabled) {
             return DISABLED_THUMB_GAP;
         }
-        if (this._isMinValue && !this.thumbLabel) {
+        if (this._isMinValue() && !this.thumbLabel) {
             return this._isActive ? MIN_VALUE_ACTIVE_THUMB_GAP : MIN_VALUE_NONACTIVE_THUMB_GAP;
         }
         return 0;
     }
-    /**
-     * CSS styles for the track background element.
-     * @return {?}
-     */
-    get _trackBackgroundStyles() {
-        /** @type {?} */
+    /** CSS styles for the track background element. */
+    _getTrackBackgroundStyles() {
         const axis = this.vertical ? 'Y' : 'X';
-        /** @type {?} */
         const scale = this.vertical ? `1, ${1 - this.percent}, 1` : `${1 - this.percent}, 1, 1`;
-        /** @type {?} */
         const sign = this._shouldInvertMouseCoords() ? '-' : '';
         return {
             // scale3d avoids some rendering issues in Chrome. See #12071.
-            transform: `translate${axis}(${sign}${this._thumbGap}px) scale3d(${scale})`
+            transform: `translate${axis}(${sign}${this._getThumbGap()}px) scale3d(${scale})`
         };
     }
-    /**
-     * CSS styles for the track fill element.
-     * @return {?}
-     */
-    get _trackFillStyles() {
-        /** @type {?} */
+    /** CSS styles for the track fill element. */
+    _getTrackFillStyles() {
         const percent = this.percent;
-        /** @type {?} */
         const axis = this.vertical ? 'Y' : 'X';
-        /** @type {?} */
         const scale = this.vertical ? `1, ${percent}, 1` : `${percent}, 1, 1`;
-        /** @type {?} */
         const sign = this._shouldInvertMouseCoords() ? '' : '-';
         return {
             // scale3d avoids some rendering issues in Chrome. See #12071.
-            transform: `translate${axis}(${sign}${this._thumbGap}px) scale3d(${scale})`,
+            transform: `translate${axis}(${sign}${this._getThumbGap()}px) scale3d(${scale})`,
             // iOS Safari has a bug where it won't re-render elements which start of as `scale(0)` until
             // something forces a style recalculation on it. Since we'll end up with `scale(0)` when
             // the value of the slider is 0, we can easily get into this situation. We force a
@@ -778,71 +405,51 @@ class MatSlider extends _MatSliderMixinBase {
             display: percent === 0 ? 'none' : ''
         };
     }
-    /**
-     * CSS styles for the ticks container element.
-     * @return {?}
-     */
-    get _ticksContainerStyles() {
-        /** @type {?} */
+    /** CSS styles for the ticks container element. */
+    _getTicksContainerStyles() {
         let axis = this.vertical ? 'Y' : 'X';
         // For a horizontal slider in RTL languages we push the ticks container off the left edge
         // instead of the right edge to avoid causing a horizontal scrollbar to appear.
-        /** @type {?} */
         let sign = !this.vertical && this._getDirection() == 'rtl' ? '' : '-';
-        /** @type {?} */
         let offset = this._tickIntervalPercent / 2 * 100;
         return {
             'transform': `translate${axis}(${sign}${offset}%)`
         };
     }
-    /**
-     * CSS styles for the ticks element.
-     * @return {?}
-     */
-    get _ticksStyles() {
-        /** @type {?} */
+    /** CSS styles for the ticks element. */
+    _getTicksStyles() {
         let tickSize = this._tickIntervalPercent * 100;
-        /** @type {?} */
         let backgroundSize = this.vertical ? `2px ${tickSize}%` : `${tickSize}% 2px`;
-        /** @type {?} */
         let axis = this.vertical ? 'Y' : 'X';
         // Depending on the direction we pushed the ticks container, push the ticks the opposite
         // direction to re-center them but clip off the end edge. In RTL languages we need to flip the
         // ticks 180 degrees so we're really cutting off the end edge abd not the start.
-        /** @type {?} */
         let sign = !this.vertical && this._getDirection() == 'rtl' ? '-' : '';
-        /** @type {?} */
         let rotate = !this.vertical && this._getDirection() == 'rtl' ? ' rotate(180deg)' : '';
-        /** @type {?} */
         let styles = {
             'backgroundSize': backgroundSize,
             // Without translateZ ticks sometimes jitter as the slider moves on Chrome & Firefox.
             'transform': `translateZ(0) translate${axis}(${sign}${tickSize / 2}%)${rotate}`
         };
-        if (this._isMinValue && this._thumbGap) {
-            /** @type {?} */
+        if (this._isMinValue() && this._getThumbGap()) {
+            const shouldInvertAxis = this._shouldInvertAxis();
             let side;
             if (this.vertical) {
-                side = this._invertAxis ? 'Bottom' : 'Top';
+                side = shouldInvertAxis ? 'Bottom' : 'Top';
             }
             else {
-                side = this._invertAxis ? 'Right' : 'Left';
+                side = shouldInvertAxis ? 'Right' : 'Left';
             }
-            styles[`padding${side}`] = `${this._thumbGap}px`;
+            styles[`padding${side}`] = `${this._getThumbGap()}px`;
         }
         return styles;
     }
-    /**
-     * @return {?}
-     */
-    get _thumbContainerStyles() {
-        /** @type {?} */
+    _getThumbContainerStyles() {
+        const shouldInvertAxis = this._shouldInvertAxis();
         let axis = this.vertical ? 'Y' : 'X';
         // For a horizontal slider in RTL languages we push the thumb container off the left edge
         // instead of the right edge to avoid causing a horizontal scrollbar to appear.
-        /** @type {?} */
-        let invertOffset = (this._getDirection() == 'rtl' && !this.vertical) ? !this._invertAxis : this._invertAxis;
-        /** @type {?} */
+        let invertOffset = (this._getDirection() == 'rtl' && !this.vertical) ? !shouldInvertAxis : shouldInvertAxis;
         let offset = (invertOffset ? this.percent : 1 - this.percent) * 100;
         return {
             'transform': `translate${axis}(-${offset}%)`
@@ -851,47 +458,29 @@ class MatSlider extends _MatSliderMixinBase {
     /**
      * Whether mouse events should be converted to a slider position by calculating their distance
      * from the right or bottom edge of the slider as opposed to the top or left.
-     * @return {?}
      */
     _shouldInvertMouseCoords() {
-        return (this._getDirection() == 'rtl' && !this.vertical) ? !this._invertAxis : this._invertAxis;
+        const shouldInvertAxis = this._shouldInvertAxis();
+        return (this._getDirection() == 'rtl' && !this.vertical) ? !shouldInvertAxis : shouldInvertAxis;
     }
-    /**
-     * The language direction for this slider element.
-     * @private
-     * @return {?}
-     */
+    /** The language direction for this slider element. */
     _getDirection() {
         return (this._dir && this._dir.value == 'rtl') ? 'rtl' : 'ltr';
     }
-    /**
-     * @return {?}
-     */
-    ngOnInit() {
+    ngAfterViewInit() {
         this._focusMonitor
             .monitor(this._elementRef, true)
-            .subscribe((/**
-         * @param {?} origin
-         * @return {?}
-         */
-        (origin) => {
+            .subscribe((origin) => {
             this._isActive = !!origin && origin !== 'keyboard';
             this._changeDetectorRef.detectChanges();
-        }));
+        });
         if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe((/**
-             * @return {?}
-             */
-            () => {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => {
                 this._changeDetectorRef.markForCheck();
-            }));
+            });
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnDestroy() {
-        /** @type {?} */
         const element = this._elementRef.nativeElement;
         element.removeEventListener('mousedown', this._pointerDown, activeEventOptions);
         element.removeEventListener('touchstart', this._pointerDown, activeEventOptions);
@@ -900,9 +489,6 @@ class MatSlider extends _MatSliderMixinBase {
         this._focusMonitor.stopMonitoring(this._elementRef);
         this._dirChangeSubscription.unsubscribe();
     }
-    /**
-     * @return {?}
-     */
     _onMouseenter() {
         if (this.disabled) {
             return;
@@ -912,30 +498,19 @@ class MatSlider extends _MatSliderMixinBase {
         this._sliderDimensions = this._getSliderDimensions();
         this._updateTickIntervalPercent();
     }
-    /**
-     * @return {?}
-     */
     _onFocus() {
         // We save the dimensions of the slider here so we can use them to update the spacing of the
         // ticks and determine where on the slider click and slide events happen.
         this._sliderDimensions = this._getSliderDimensions();
         this._updateTickIntervalPercent();
     }
-    /**
-     * @return {?}
-     */
     _onBlur() {
         this.onTouched();
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     _onKeydown(event) {
         if (this.disabled || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_6__["hasModifierKey"])(event)) {
             return;
         }
-        /** @type {?} */
         const oldValue = this.value;
         switch (event.keyCode) {
             case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_6__["PAGE_UP"]:
@@ -982,86 +557,61 @@ class MatSlider extends _MatSliderMixinBase {
         this._isSliding = true;
         event.preventDefault();
     }
-    /**
-     * @return {?}
-     */
     _onKeyup() {
         this._isSliding = false;
+    }
+    /** Use defaultView of injected document if available or fallback to global window reference */
+    _getWindow() {
+        return this._document.defaultView || window;
     }
     /**
      * Binds our global move and end events. They're bound at the document level and only while
      * dragging so that the user doesn't have to keep their pointer exactly over the slider
      * as they're swiping across the screen.
-     * @private
-     * @param {?} triggerEvent
-     * @return {?}
      */
     _bindGlobalEvents(triggerEvent) {
-        if (typeof this._document !== 'undefined' && this._document) {
-            /** @type {?} */
-            const body = this._document.body;
-            /** @type {?} */
-            const isTouch = isTouchEvent(triggerEvent);
-            /** @type {?} */
-            const moveEventName = isTouch ? 'touchmove' : 'mousemove';
-            /** @type {?} */
-            const endEventName = isTouch ? 'touchend' : 'mouseup';
-            body.addEventListener(moveEventName, this._pointerMove, activeEventOptions);
-            body.addEventListener(endEventName, this._pointerUp, activeEventOptions);
-            if (isTouch) {
-                body.addEventListener('touchcancel', this._pointerUp, activeEventOptions);
-            }
+        // Note that we bind the events to the `document`, because it allows us to capture
+        // drag cancel events where the user's pointer is outside the browser window.
+        const document = this._document;
+        const isTouch = isTouchEvent(triggerEvent);
+        const moveEventName = isTouch ? 'touchmove' : 'mousemove';
+        const endEventName = isTouch ? 'touchend' : 'mouseup';
+        document.addEventListener(moveEventName, this._pointerMove, activeEventOptions);
+        document.addEventListener(endEventName, this._pointerUp, activeEventOptions);
+        if (isTouch) {
+            document.addEventListener('touchcancel', this._pointerUp, activeEventOptions);
         }
+        const window = this._getWindow();
         if (typeof window !== 'undefined' && window) {
             window.addEventListener('blur', this._windowBlur);
         }
     }
-    /**
-     * Removes any global event listeners that we may have added.
-     * @private
-     * @return {?}
-     */
+    /** Removes any global event listeners that we may have added. */
     _removeGlobalEvents() {
-        if (typeof this._document !== 'undefined' && this._document) {
-            /** @type {?} */
-            const body = this._document.body;
-            body.removeEventListener('mousemove', this._pointerMove, activeEventOptions);
-            body.removeEventListener('mouseup', this._pointerUp, activeEventOptions);
-            body.removeEventListener('touchmove', this._pointerMove, activeEventOptions);
-            body.removeEventListener('touchend', this._pointerUp, activeEventOptions);
-            body.removeEventListener('touchcancel', this._pointerUp, activeEventOptions);
-        }
+        const document = this._document;
+        document.removeEventListener('mousemove', this._pointerMove, activeEventOptions);
+        document.removeEventListener('mouseup', this._pointerUp, activeEventOptions);
+        document.removeEventListener('touchmove', this._pointerMove, activeEventOptions);
+        document.removeEventListener('touchend', this._pointerUp, activeEventOptions);
+        document.removeEventListener('touchcancel', this._pointerUp, activeEventOptions);
+        const window = this._getWindow();
         if (typeof window !== 'undefined' && window) {
             window.removeEventListener('blur', this._windowBlur);
         }
     }
-    /**
-     * Increments the slider by the given number of steps (negative number decrements).
-     * @private
-     * @param {?} numSteps
-     * @return {?}
-     */
+    /** Increments the slider by the given number of steps (negative number decrements). */
     _increment(numSteps) {
         this.value = this._clamp((this.value || 0) + this.step * numSteps, this.min, this.max);
     }
-    /**
-     * Calculate the new value from the new physical location. The value will always be snapped.
-     * @private
-     * @param {?} pos
-     * @return {?}
-     */
+    /** Calculate the new value from the new physical location. The value will always be snapped. */
     _updateValueFromPosition(pos) {
         if (!this._sliderDimensions) {
             return;
         }
-        /** @type {?} */
         let offset = this.vertical ? this._sliderDimensions.top : this._sliderDimensions.left;
-        /** @type {?} */
         let size = this.vertical ? this._sliderDimensions.height : this._sliderDimensions.width;
-        /** @type {?} */
         let posComponent = this.vertical ? pos.y : pos.x;
         // The exact value is calculated from the event and used to find the closest snap value.
-        /** @type {?} */
         let percent = this._clamp((posComponent - offset) / size);
         if (this._shouldInvertMouseCoords()) {
             percent = 1 - percent;
@@ -1077,51 +627,33 @@ class MatSlider extends _MatSliderMixinBase {
             this.value = this.max;
         }
         else {
-            /** @type {?} */
             const exactValue = this._calculateValue(percent);
             // This calculation finds the closest step by finding the closest
             // whole number divisible by the step relative to the min.
-            /** @type {?} */
             const closestValue = Math.round((exactValue - this.min) / this.step) * this.step + this.min;
             // The value needs to snap to the min and max.
             this.value = this._clamp(closestValue, this.min, this.max);
         }
     }
-    /**
-     * Emits a change event if the current value is different from the last emitted value.
-     * @private
-     * @return {?}
-     */
+    /** Emits a change event if the current value is different from the last emitted value. */
     _emitChangeEvent() {
         this._controlValueAccessorChangeFn(this.value);
         this.valueChange.emit(this.value);
         this.change.emit(this._createChangeEvent());
     }
-    /**
-     * Emits an input event when the current value is different from the last emitted value.
-     * @private
-     * @return {?}
-     */
+    /** Emits an input event when the current value is different from the last emitted value. */
     _emitInputEvent() {
         this.input.emit(this._createChangeEvent());
     }
-    /**
-     * Updates the amount of space between ticks as a percentage of the width of the slider.
-     * @private
-     * @return {?}
-     */
+    /** Updates the amount of space between ticks as a percentage of the width of the slider. */
     _updateTickIntervalPercent() {
         if (!this.tickInterval || !this._sliderDimensions) {
             return;
         }
         if (this.tickInterval == 'auto') {
-            /** @type {?} */
             let trackSize = this.vertical ? this._sliderDimensions.height : this._sliderDimensions.width;
-            /** @type {?} */
             let pixelsPerStep = trackSize * this.step / (this.max - this.min);
-            /** @type {?} */
             let stepsPerTick = Math.ceil(MIN_AUTO_TICK_SEPARATION / pixelsPerStep);
-            /** @type {?} */
             let pixelsPerTick = stepsPerTick * this.step;
             this._tickIntervalPercent = pixelsPerTick / trackSize;
         }
@@ -1129,45 +661,22 @@ class MatSlider extends _MatSliderMixinBase {
             this._tickIntervalPercent = this.tickInterval * this.step / (this.max - this.min);
         }
     }
-    /**
-     * Creates a slider change object from the specified value.
-     * @private
-     * @param {?=} value
-     * @return {?}
-     */
+    /** Creates a slider change object from the specified value. */
     _createChangeEvent(value = this.value) {
-        /** @type {?} */
         let event = new MatSliderChange();
         event.source = this;
         event.value = value;
         return event;
     }
-    /**
-     * Calculates the percentage of the slider that a value is.
-     * @private
-     * @param {?} value
-     * @return {?}
-     */
+    /** Calculates the percentage of the slider that a value is. */
     _calculatePercentage(value) {
         return ((value || 0) - this.min) / (this.max - this.min);
     }
-    /**
-     * Calculates the value a percentage of the slider corresponds to.
-     * @private
-     * @param {?} percentage
-     * @return {?}
-     */
+    /** Calculates the value a percentage of the slider corresponds to. */
     _calculateValue(percentage) {
         return this.min + percentage * (this.max - this.min);
     }
-    /**
-     * Return a number between two numbers.
-     * @private
-     * @param {?} value
-     * @param {?=} min
-     * @param {?=} max
-     * @return {?}
-     */
+    /** Return a number between two numbers. */
     _clamp(value, min = 0, max = 1) {
         return Math.max(min, Math.min(value, max));
     }
@@ -1175,8 +684,6 @@ class MatSlider extends _MatSliderMixinBase {
      * Get the bounding client rect of the slider track element.
      * The track is used rather than the native element to ignore the extra space that the thumb can
      * take up.
-     * @private
-     * @return {?}
      */
     _getSliderDimensions() {
         return this._sliderWrapper ? this._sliderWrapper.nativeElement.getBoundingClientRect() : null;
@@ -1184,45 +691,17 @@ class MatSlider extends _MatSliderMixinBase {
     /**
      * Focuses the native element.
      * Currently only used to allow a blur event to fire but will be used with keyboard input later.
-     * @private
-     * @param {?=} options
-     * @return {?}
      */
     _focusHostElement(options) {
         this._elementRef.nativeElement.focus(options);
     }
-    /**
-     * Blurs the native element.
-     * @private
-     * @return {?}
-     */
+    /** Blurs the native element. */
     _blurHostElement() {
         this._elementRef.nativeElement.blur();
     }
     /**
-     * Runs a callback inside of the NgZone, if possible.
-     * @private
-     * @param {?} fn
-     * @return {?}
-     */
-    _runInsideZone(fn) {
-        // @breaking-change 9.0.0 Remove this function once `_ngZone` is a required parameter.
-        this._ngZone ? this._ngZone.run(fn) : fn();
-    }
-    /**
-     * Runs a callback outside of the NgZone, if possible.
-     * @private
-     * @param {?} fn
-     * @return {?}
-     */
-    _runOutsizeZone(fn) {
-        // @breaking-change 9.0.0 Remove this function once `_ngZone` is a required parameter.
-        this._ngZone ? this._ngZone.runOutsideAngular(fn) : fn();
-    }
-    /**
      * Sets the model value. Implemented as part of ControlValueAccessor.
-     * @param {?} value
-     * @return {?}
+     * @param value
      */
     writeValue(value) {
         this.value = value;
@@ -1230,8 +709,7 @@ class MatSlider extends _MatSliderMixinBase {
     /**
      * Registers a callback to be triggered when the value has changed.
      * Implemented as part of ControlValueAccessor.
-     * @param {?} fn Callback to be registered.
-     * @return {?}
+     * @param fn Callback to be registered.
      */
     registerOnChange(fn) {
         this._controlValueAccessorChangeFn = fn;
@@ -1239,8 +717,7 @@ class MatSlider extends _MatSliderMixinBase {
     /**
      * Registers a callback to be triggered when the component is touched.
      * Implemented as part of ControlValueAccessor.
-     * @param {?} fn Callback to be registered.
-     * @return {?}
+     * @param fn Callback to be registered.
      */
     registerOnTouched(fn) {
         this.onTouched = fn;
@@ -1248,26 +725,25 @@ class MatSlider extends _MatSliderMixinBase {
     /**
      * Sets whether the component should be disabled.
      * Implemented as part of ControlValueAccessor.
-     * @param {?} isDisabled
-     * @return {?}
+     * @param isDisabled
      */
     setDisabledState(isDisabled) {
         this.disabled = isDisabled;
     }
 }
-MatSlider.ɵfac = function MatSlider_Factory(t) { return new (t || MatSlider)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__["FocusMonitor"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinjectAttribute"]('tabindex'), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["ANIMATION_MODULE_TYPE"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8)); };
+MatSlider.ɵfac = function MatSlider_Factory(t) { return new (t || MatSlider)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__["FocusMonitor"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinjectAttribute"]('tabindex'), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["ANIMATION_MODULE_TYPE"], 8)); };
 MatSlider.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MatSlider, selectors: [["mat-slider"]], viewQuery: function MatSlider_Query(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c0, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c0, 1);
     } if (rf & 2) {
-        var _t;
+        let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx._sliderWrapper = _t.first);
-    } }, hostAttrs: ["role", "slider", 1, "mat-slider", "mat-focus-indicator"], hostVars: 28, hostBindings: function MatSlider_HostBindings(rf, ctx) { if (rf & 1) {
+    } }, hostAttrs: ["role", "slider", 1, "mat-slider", "mat-focus-indicator"], hostVars: 29, hostBindings: function MatSlider_HostBindings(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("focus", function MatSlider_focus_HostBindingHandler() { return ctx._onFocus(); })("blur", function MatSlider_blur_HostBindingHandler() { return ctx._onBlur(); })("keydown", function MatSlider_keydown_HostBindingHandler($event) { return ctx._onKeydown($event); })("keyup", function MatSlider_keyup_HostBindingHandler() { return ctx._onKeyup(); })("mouseenter", function MatSlider_mouseenter_HostBindingHandler() { return ctx._onMouseenter(); })("selectstart", function MatSlider_selectstart_HostBindingHandler($event) { return $event.preventDefault(); });
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵhostProperty"]("tabIndex", ctx.tabIndex);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-disabled", ctx.disabled)("aria-valuemax", ctx.max)("aria-valuemin", ctx.min)("aria-valuenow", ctx.value)("aria-orientation", ctx.vertical ? "vertical" : "horizontal");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("mat-slider-disabled", ctx.disabled)("mat-slider-has-ticks", ctx.tickInterval)("mat-slider-horizontal", !ctx.vertical)("mat-slider-axis-inverted", ctx._invertAxis)("mat-slider-invert-mouse-coords", ctx._shouldInvertMouseCoords())("mat-slider-sliding", ctx._isSliding)("mat-slider-thumb-label-showing", ctx.thumbLabel)("mat-slider-vertical", ctx.vertical)("mat-slider-min-value", ctx._isMinValue)("mat-slider-hide-last-tick", ctx.disabled || ctx._isMinValue && ctx._thumbGap && ctx._invertAxis)("_mat-animation-noopable", ctx._animationMode === "NoopAnimations");
-    } }, inputs: { disabled: "disabled", color: "color", tabIndex: "tabIndex", invert: "invert", max: "max", min: "min", value: "value", step: "step", thumbLabel: "thumbLabel", tickInterval: "tickInterval", vertical: "vertical", displayWith: "displayWith" }, outputs: { change: "change", input: "input", valueChange: "valueChange" }, exportAs: ["matSlider"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([MAT_SLIDER_VALUE_ACCESSOR]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵInheritDefinitionFeature"]], decls: 13, vars: 6, consts: [[1, "mat-slider-wrapper"], ["sliderWrapper", ""], [1, "mat-slider-track-wrapper"], [1, "mat-slider-track-background", 3, "ngStyle"], [1, "mat-slider-track-fill", 3, "ngStyle"], [1, "mat-slider-ticks-container", 3, "ngStyle"], [1, "mat-slider-ticks", 3, "ngStyle"], [1, "mat-slider-thumb-container", 3, "ngStyle"], [1, "mat-slider-focus-ring"], [1, "mat-slider-thumb"], [1, "mat-slider-thumb-label"], [1, "mat-slider-thumb-label-text"]], template: function MatSlider_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-disabled", ctx.disabled)("aria-valuemax", ctx.max)("aria-valuemin", ctx.min)("aria-valuenow", ctx.value)("aria-valuetext", ctx.valueText == null ? ctx.displayValue : ctx.valueText)("aria-orientation", ctx.vertical ? "vertical" : "horizontal");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("mat-slider-disabled", ctx.disabled)("mat-slider-has-ticks", ctx.tickInterval)("mat-slider-horizontal", !ctx.vertical)("mat-slider-axis-inverted", ctx._shouldInvertAxis())("mat-slider-invert-mouse-coords", ctx._shouldInvertMouseCoords())("mat-slider-sliding", ctx._isSliding)("mat-slider-thumb-label-showing", ctx.thumbLabel)("mat-slider-vertical", ctx.vertical)("mat-slider-min-value", ctx._isMinValue())("mat-slider-hide-last-tick", ctx.disabled || ctx._isMinValue() && ctx._getThumbGap() && ctx._shouldInvertAxis())("_mat-animation-noopable", ctx._animationMode === "NoopAnimations");
+    } }, inputs: { disabled: "disabled", color: "color", tabIndex: "tabIndex", invert: "invert", max: "max", min: "min", value: "value", step: "step", thumbLabel: "thumbLabel", tickInterval: "tickInterval", vertical: "vertical", displayWith: "displayWith", valueText: "valueText" }, outputs: { change: "change", input: "input", valueChange: "valueChange" }, exportAs: ["matSlider"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([MAT_SLIDER_VALUE_ACCESSOR]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵInheritDefinitionFeature"]], decls: 13, vars: 6, consts: [[1, "mat-slider-wrapper"], ["sliderWrapper", ""], [1, "mat-slider-track-wrapper"], [1, "mat-slider-track-background", 3, "ngStyle"], [1, "mat-slider-track-fill", 3, "ngStyle"], [1, "mat-slider-ticks-container", 3, "ngStyle"], [1, "mat-slider-ticks", 3, "ngStyle"], [1, "mat-slider-thumb-container", 3, "ngStyle"], [1, "mat-slider-focus-ring"], [1, "mat-slider-thumb"], [1, "mat-slider-thumb-label"], [1, "mat-slider-thumb-label-text"]], template: function MatSlider_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "div", 3);
@@ -1288,28 +764,27 @@ MatSlider.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponen
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._trackBackgroundStyles);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._getTrackBackgroundStyles());
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._trackFillStyles);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._getTrackFillStyles());
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._ticksContainerStyles);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._getTicksContainerStyles());
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._ticksStyles);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._getTicksStyles());
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._thumbContainerStyles);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngStyle", ctx._getThumbContainerStyles());
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.displayValue);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["NgStyle"]], styles: [".mat-slider{display:inline-block;position:relative;box-sizing:border-box;padding:8px;outline:none;vertical-align:middle}.mat-slider:not(.mat-slider-disabled):active,.mat-slider.mat-slider-sliding:not(.mat-slider-disabled){cursor:-webkit-grabbing;cursor:grabbing}.mat-slider-wrapper{position:absolute}.mat-slider-track-wrapper{position:absolute;top:0;left:0;overflow:hidden}.mat-slider-track-fill{position:absolute;transform-origin:0 0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-track-background{position:absolute;transform-origin:100% 100%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-ticks-container{position:absolute;left:0;top:0;overflow:hidden}.mat-slider-ticks{background-repeat:repeat;background-clip:content-box;box-sizing:border-box;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-container{position:absolute;z-index:1;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-focus-ring{position:absolute;width:30px;height:30px;border-radius:50%;transform:scale(0);opacity:0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider.cdk-keyboard-focused .mat-slider-focus-ring,.mat-slider.cdk-program-focused .mat-slider-focus-ring{transform:scale(1);opacity:1}.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb-label,.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb{cursor:-webkit-grab;cursor:grab}.mat-slider-thumb{position:absolute;right:-10px;bottom:-10px;box-sizing:border-box;width:20px;height:20px;border:3px solid transparent;border-radius:50%;transform:scale(0.7);transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-label{display:none;align-items:center;justify-content:center;position:absolute;width:28px;height:28px;border-radius:50%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-radius 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.cdk-high-contrast-active .mat-slider-thumb-label{outline:solid 1px}.mat-slider-thumb-label-text{z-index:1;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-sliding .mat-slider-track-fill,.mat-slider-sliding .mat-slider-track-background,.mat-slider-sliding .mat-slider-thumb-container{transition-duration:0ms}.mat-slider-has-ticks .mat-slider-wrapper::after{content:\"\";position:absolute;border-width:0;border-style:solid;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after,.mat-slider-has-ticks:hover:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after{opacity:1}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-disabled) .mat-slider-ticks,.mat-slider-has-ticks:hover:not(.mat-slider-disabled) .mat-slider-ticks{opacity:1}.mat-slider-thumb-label-showing .mat-slider-focus-ring{display:none}.mat-slider-thumb-label-showing .mat-slider-thumb-label{display:flex}.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:100% 100%}.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:0 0}.mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb{transform:scale(0)}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label{border-radius:50% 50% 0}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text{opacity:1}.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-touch-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-program-focused .mat-slider-thumb{border-width:2px;transform:scale(1)}.mat-slider-disabled .mat-slider-focus-ring{transform:scale(0);opacity:0}.mat-slider-disabled .mat-slider-thumb{border-width:4px;transform:scale(0.5)}.mat-slider-disabled .mat-slider-thumb-label{display:none}.mat-slider-horizontal{height:48px;min-width:128px}.mat-slider-horizontal .mat-slider-wrapper{height:2px;top:23px;left:8px;right:8px}.mat-slider-horizontal .mat-slider-wrapper::after{height:2px;border-left-width:2px;right:0;top:0}.mat-slider-horizontal .mat-slider-track-wrapper{height:2px;width:100%}.mat-slider-horizontal .mat-slider-track-fill{height:2px;width:100%;transform:scaleX(0)}.mat-slider-horizontal .mat-slider-track-background{height:2px;width:100%;transform:scaleX(1)}.mat-slider-horizontal .mat-slider-ticks-container{height:2px;width:100%}.cdk-high-contrast-active .mat-slider-horizontal .mat-slider-ticks-container{height:0;outline:solid 2px;top:1px}.mat-slider-horizontal .mat-slider-ticks{height:2px;width:100%}.mat-slider-horizontal .mat-slider-thumb-container{width:100%;height:0;top:50%}.mat-slider-horizontal .mat-slider-focus-ring{top:-15px;right:-15px}.mat-slider-horizontal .mat-slider-thumb-label{right:-14px;top:-40px;transform:translateY(26px) scale(0.01) rotate(45deg)}.mat-slider-horizontal .mat-slider-thumb-label-text{transform:rotate(-45deg)}.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label{transform:rotate(45deg)}.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label,.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label-text{transform:none}.mat-slider-vertical{width:48px;min-height:128px}.mat-slider-vertical .mat-slider-wrapper{width:2px;top:8px;bottom:8px;left:23px}.mat-slider-vertical .mat-slider-wrapper::after{width:2px;border-top-width:2px;bottom:0;left:0}.mat-slider-vertical .mat-slider-track-wrapper{height:100%;width:2px}.mat-slider-vertical .mat-slider-track-fill{height:100%;width:2px;transform:scaleY(0)}.mat-slider-vertical .mat-slider-track-background{height:100%;width:2px;transform:scaleY(1)}.mat-slider-vertical .mat-slider-ticks-container{width:2px;height:100%}.cdk-high-contrast-active .mat-slider-vertical .mat-slider-ticks-container{width:0;outline:solid 2px;left:1px}.mat-slider-vertical .mat-slider-focus-ring{bottom:-15px;left:-15px}.mat-slider-vertical .mat-slider-ticks{width:2px;height:100%}.mat-slider-vertical .mat-slider-thumb-container{height:100%;width:0;left:50%}.mat-slider-vertical .mat-slider-thumb{-webkit-backface-visibility:hidden;backface-visibility:hidden}.mat-slider-vertical .mat-slider-thumb-label{bottom:-14px;left:-40px;transform:translateX(26px) scale(0.01) rotate(-45deg)}.mat-slider-vertical .mat-slider-thumb-label-text{transform:rotate(45deg)}.mat-slider-vertical.cdk-focused .mat-slider-thumb-label{transform:rotate(-45deg)}[dir=rtl] .mat-slider-wrapper::after{left:0;right:auto}[dir=rtl] .mat-slider-horizontal .mat-slider-track-fill{transform-origin:100% 100%}[dir=rtl] .mat-slider-horizontal .mat-slider-track-background{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:100% 100%}.mat-slider._mat-animation-noopable .mat-slider-track-fill,.mat-slider._mat-animation-noopable .mat-slider-track-background,.mat-slider._mat-animation-noopable .mat-slider-ticks,.mat-slider._mat-animation-noopable .mat-slider-thumb-container,.mat-slider._mat-animation-noopable .mat-slider-focus-ring,.mat-slider._mat-animation-noopable .mat-slider-thumb,.mat-slider._mat-animation-noopable .mat-slider-thumb-label,.mat-slider._mat-animation-noopable .mat-slider-thumb-label-text,.mat-slider._mat-animation-noopable .mat-slider-has-ticks .mat-slider-wrapper::after{transition:none}\n"], encapsulation: 2, changeDetection: 0 });
-/** @nocollapse */
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["NgStyle"]], styles: [".mat-slider{display:inline-block;position:relative;box-sizing:border-box;padding:8px;outline:none;vertical-align:middle}.mat-slider:not(.mat-slider-disabled):active,.mat-slider.mat-slider-sliding:not(.mat-slider-disabled){cursor:-webkit-grabbing;cursor:grabbing}.mat-slider-wrapper{position:absolute;-webkit-print-color-adjust:exact;color-adjust:exact}.mat-slider-track-wrapper{position:absolute;top:0;left:0;overflow:hidden}.mat-slider-track-fill{position:absolute;transform-origin:0 0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-track-background{position:absolute;transform-origin:100% 100%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-ticks-container{position:absolute;left:0;top:0;overflow:hidden}.mat-slider-ticks{background-repeat:repeat;background-clip:content-box;box-sizing:border-box;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-container{position:absolute;z-index:1;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-focus-ring{position:absolute;width:30px;height:30px;border-radius:50%;transform:scale(0);opacity:0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider.cdk-keyboard-focused .mat-slider-focus-ring,.mat-slider.cdk-program-focused .mat-slider-focus-ring{transform:scale(1);opacity:1}.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb-label,.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb{cursor:-webkit-grab;cursor:grab}.mat-slider-thumb{position:absolute;right:-10px;bottom:-10px;box-sizing:border-box;width:20px;height:20px;border:3px solid transparent;border-radius:50%;transform:scale(0.7);transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-label{display:none;align-items:center;justify-content:center;position:absolute;width:28px;height:28px;border-radius:50%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-radius 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.cdk-high-contrast-active .mat-slider-thumb-label{outline:solid 1px}.mat-slider-thumb-label-text{z-index:1;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-sliding .mat-slider-track-fill,.mat-slider-sliding .mat-slider-track-background,.mat-slider-sliding .mat-slider-thumb-container{transition-duration:0ms}.mat-slider-has-ticks .mat-slider-wrapper::after{content:\"\";position:absolute;border-width:0;border-style:solid;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after,.mat-slider-has-ticks:hover:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after{opacity:1}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-disabled) .mat-slider-ticks,.mat-slider-has-ticks:hover:not(.mat-slider-disabled) .mat-slider-ticks{opacity:1}.mat-slider-thumb-label-showing .mat-slider-focus-ring{display:none}.mat-slider-thumb-label-showing .mat-slider-thumb-label{display:flex}.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:100% 100%}.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:0 0}.mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb{transform:scale(0)}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label{border-radius:50% 50% 0}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text{opacity:1}.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-touch-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-program-focused .mat-slider-thumb{border-width:2px;transform:scale(1)}.mat-slider-disabled .mat-slider-focus-ring{transform:scale(0);opacity:0}.mat-slider-disabled .mat-slider-thumb{border-width:4px;transform:scale(0.5)}.mat-slider-disabled .mat-slider-thumb-label{display:none}.mat-slider-horizontal{height:48px;min-width:128px}.mat-slider-horizontal .mat-slider-wrapper{height:2px;top:23px;left:8px;right:8px}.mat-slider-horizontal .mat-slider-wrapper::after{height:2px;border-left-width:2px;right:0;top:0}.mat-slider-horizontal .mat-slider-track-wrapper{height:2px;width:100%}.mat-slider-horizontal .mat-slider-track-fill{height:2px;width:100%;transform:scaleX(0)}.mat-slider-horizontal .mat-slider-track-background{height:2px;width:100%;transform:scaleX(1)}.mat-slider-horizontal .mat-slider-ticks-container{height:2px;width:100%}.cdk-high-contrast-active .mat-slider-horizontal .mat-slider-ticks-container{height:0;outline:solid 2px;top:1px}.mat-slider-horizontal .mat-slider-ticks{height:2px;width:100%}.mat-slider-horizontal .mat-slider-thumb-container{width:100%;height:0;top:50%}.mat-slider-horizontal .mat-slider-focus-ring{top:-15px;right:-15px}.mat-slider-horizontal .mat-slider-thumb-label{right:-14px;top:-40px;transform:translateY(26px) scale(0.01) rotate(45deg)}.mat-slider-horizontal .mat-slider-thumb-label-text{transform:rotate(-45deg)}.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label{transform:rotate(45deg)}.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label,.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label-text{transform:none}.mat-slider-vertical{width:48px;min-height:128px}.mat-slider-vertical .mat-slider-wrapper{width:2px;top:8px;bottom:8px;left:23px}.mat-slider-vertical .mat-slider-wrapper::after{width:2px;border-top-width:2px;bottom:0;left:0}.mat-slider-vertical .mat-slider-track-wrapper{height:100%;width:2px}.mat-slider-vertical .mat-slider-track-fill{height:100%;width:2px;transform:scaleY(0)}.mat-slider-vertical .mat-slider-track-background{height:100%;width:2px;transform:scaleY(1)}.mat-slider-vertical .mat-slider-ticks-container{width:2px;height:100%}.cdk-high-contrast-active .mat-slider-vertical .mat-slider-ticks-container{width:0;outline:solid 2px;left:1px}.mat-slider-vertical .mat-slider-focus-ring{bottom:-15px;left:-15px}.mat-slider-vertical .mat-slider-ticks{width:2px;height:100%}.mat-slider-vertical .mat-slider-thumb-container{height:100%;width:0;left:50%}.mat-slider-vertical .mat-slider-thumb{-webkit-backface-visibility:hidden;backface-visibility:hidden}.mat-slider-vertical .mat-slider-thumb-label{bottom:-14px;left:-40px;transform:translateX(26px) scale(0.01) rotate(-45deg)}.mat-slider-vertical .mat-slider-thumb-label-text{transform:rotate(45deg)}.mat-slider-vertical.cdk-focused .mat-slider-thumb-label{transform:rotate(-45deg)}[dir=rtl] .mat-slider-wrapper::after{left:0;right:auto}[dir=rtl] .mat-slider-horizontal .mat-slider-track-fill{transform-origin:100% 100%}[dir=rtl] .mat-slider-horizontal .mat-slider-track-background{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:100% 100%}.mat-slider._mat-animation-noopable .mat-slider-track-fill,.mat-slider._mat-animation-noopable .mat-slider-track-background,.mat-slider._mat-animation-noopable .mat-slider-ticks,.mat-slider._mat-animation-noopable .mat-slider-thumb-container,.mat-slider._mat-animation-noopable .mat-slider-focus-ring,.mat-slider._mat-animation-noopable .mat-slider-thumb,.mat-slider._mat-animation-noopable .mat-slider-thumb-label,.mat-slider._mat-animation-noopable .mat-slider-thumb-label-text,.mat-slider._mat-animation-noopable .mat-slider-has-ticks .mat-slider-wrapper::after{transition:none}\n"], encapsulation: 2, changeDetection: 0 });
 MatSlider.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
     { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__["FocusMonitor"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
     { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"], args: ['tabindex',] }] },
-    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["ANIMATION_MODULE_TYPE"],] }] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
+    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["ANIMATION_MODULE_TYPE"],] }] }
 ];
 MatSlider.propDecorators = {
     invert: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
@@ -1320,13 +795,14 @@ MatSlider.propDecorators = {
     tickInterval: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     value: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     displayWith: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    valueText: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     vertical: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     change: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }],
     input: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }],
     valueChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }],
     _sliderWrapper: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"], args: ['sliderWrapper',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MatSlider, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MatSlider, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
                 selector: 'mat-slider',
@@ -1348,42 +824,46 @@ MatSlider.propDecorators = {
                     '[attr.aria-valuemax]': 'max',
                     '[attr.aria-valuemin]': 'min',
                     '[attr.aria-valuenow]': 'value',
+                    // NVDA and Jaws appear to announce the `aria-valuenow` by calculating its percentage based
+                    // on its value between `aria-valuemin` and `aria-valuemax`. Due to how decimals are handled,
+                    // it can cause the slider to read out a very long value like 0.20000068 if the current value
+                    // is 0.2 with a min of 0 and max of 1. We work around the issue by setting `aria-valuetext`
+                    // to the same value that we set on the slider's thumb which will be truncated.
+                    '[attr.aria-valuetext]': 'valueText == null ? displayValue : valueText',
                     '[attr.aria-orientation]': 'vertical ? "vertical" : "horizontal"',
                     '[class.mat-slider-disabled]': 'disabled',
                     '[class.mat-slider-has-ticks]': 'tickInterval',
                     '[class.mat-slider-horizontal]': '!vertical',
-                    '[class.mat-slider-axis-inverted]': '_invertAxis',
+                    '[class.mat-slider-axis-inverted]': '_shouldInvertAxis()',
                     // Class binding which is only used by the test harness as there is no other
                     // way for the harness to detect if mouse coordinates need to be inverted.
                     '[class.mat-slider-invert-mouse-coords]': '_shouldInvertMouseCoords()',
                     '[class.mat-slider-sliding]': '_isSliding',
                     '[class.mat-slider-thumb-label-showing]': 'thumbLabel',
                     '[class.mat-slider-vertical]': 'vertical',
-                    '[class.mat-slider-min-value]': '_isMinValue',
-                    '[class.mat-slider-hide-last-tick]': 'disabled || _isMinValue && _thumbGap && _invertAxis',
+                    '[class.mat-slider-min-value]': '_isMinValue()',
+                    '[class.mat-slider-hide-last-tick]': 'disabled || _isMinValue() && _getThumbGap() && _shouldInvertAxis()',
                     '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"'
                 },
-                template: "<div class=\"mat-slider-wrapper\" #sliderWrapper>\n  <div class=\"mat-slider-track-wrapper\">\n    <div class=\"mat-slider-track-background\" [ngStyle]=\"_trackBackgroundStyles\"></div>\n    <div class=\"mat-slider-track-fill\" [ngStyle]=\"_trackFillStyles\"></div>\n  </div>\n  <div class=\"mat-slider-ticks-container\" [ngStyle]=\"_ticksContainerStyles\">\n    <div class=\"mat-slider-ticks\" [ngStyle]=\"_ticksStyles\"></div>\n  </div>\n  <div class=\"mat-slider-thumb-container\" [ngStyle]=\"_thumbContainerStyles\">\n    <div class=\"mat-slider-focus-ring\"></div>\n    <div class=\"mat-slider-thumb\"></div>\n    <div class=\"mat-slider-thumb-label\">\n      <span class=\"mat-slider-thumb-label-text\">{{displayValue}}</span>\n    </div>\n  </div>\n</div>\n",
+                template: "<div class=\"mat-slider-wrapper\" #sliderWrapper>\n  <div class=\"mat-slider-track-wrapper\">\n    <div class=\"mat-slider-track-background\" [ngStyle]=\"_getTrackBackgroundStyles()\"></div>\n    <div class=\"mat-slider-track-fill\" [ngStyle]=\"_getTrackFillStyles()\"></div>\n  </div>\n  <div class=\"mat-slider-ticks-container\" [ngStyle]=\"_getTicksContainerStyles()\">\n    <div class=\"mat-slider-ticks\" [ngStyle]=\"_getTicksStyles()\"></div>\n  </div>\n  <div class=\"mat-slider-thumb-container\" [ngStyle]=\"_getThumbContainerStyles()\">\n    <div class=\"mat-slider-focus-ring\"></div>\n    <div class=\"mat-slider-thumb\"></div>\n    <div class=\"mat-slider-thumb-label\">\n      <span class=\"mat-slider-thumb-label-text\">{{displayValue}}</span>\n    </div>\n  </div>\n</div>\n",
                 inputs: ['disabled', 'color', 'tabIndex'],
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush,
-                styles: [".mat-slider{display:inline-block;position:relative;box-sizing:border-box;padding:8px;outline:none;vertical-align:middle}.mat-slider:not(.mat-slider-disabled):active,.mat-slider.mat-slider-sliding:not(.mat-slider-disabled){cursor:-webkit-grabbing;cursor:grabbing}.mat-slider-wrapper{position:absolute}.mat-slider-track-wrapper{position:absolute;top:0;left:0;overflow:hidden}.mat-slider-track-fill{position:absolute;transform-origin:0 0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-track-background{position:absolute;transform-origin:100% 100%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-ticks-container{position:absolute;left:0;top:0;overflow:hidden}.mat-slider-ticks{background-repeat:repeat;background-clip:content-box;box-sizing:border-box;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-container{position:absolute;z-index:1;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-focus-ring{position:absolute;width:30px;height:30px;border-radius:50%;transform:scale(0);opacity:0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider.cdk-keyboard-focused .mat-slider-focus-ring,.mat-slider.cdk-program-focused .mat-slider-focus-ring{transform:scale(1);opacity:1}.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb-label,.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb{cursor:-webkit-grab;cursor:grab}.mat-slider-thumb{position:absolute;right:-10px;bottom:-10px;box-sizing:border-box;width:20px;height:20px;border:3px solid transparent;border-radius:50%;transform:scale(0.7);transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-label{display:none;align-items:center;justify-content:center;position:absolute;width:28px;height:28px;border-radius:50%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-radius 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.cdk-high-contrast-active .mat-slider-thumb-label{outline:solid 1px}.mat-slider-thumb-label-text{z-index:1;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-sliding .mat-slider-track-fill,.mat-slider-sliding .mat-slider-track-background,.mat-slider-sliding .mat-slider-thumb-container{transition-duration:0ms}.mat-slider-has-ticks .mat-slider-wrapper::after{content:\"\";position:absolute;border-width:0;border-style:solid;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after,.mat-slider-has-ticks:hover:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after{opacity:1}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-disabled) .mat-slider-ticks,.mat-slider-has-ticks:hover:not(.mat-slider-disabled) .mat-slider-ticks{opacity:1}.mat-slider-thumb-label-showing .mat-slider-focus-ring{display:none}.mat-slider-thumb-label-showing .mat-slider-thumb-label{display:flex}.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:100% 100%}.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:0 0}.mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb{transform:scale(0)}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label{border-radius:50% 50% 0}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text{opacity:1}.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-touch-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-program-focused .mat-slider-thumb{border-width:2px;transform:scale(1)}.mat-slider-disabled .mat-slider-focus-ring{transform:scale(0);opacity:0}.mat-slider-disabled .mat-slider-thumb{border-width:4px;transform:scale(0.5)}.mat-slider-disabled .mat-slider-thumb-label{display:none}.mat-slider-horizontal{height:48px;min-width:128px}.mat-slider-horizontal .mat-slider-wrapper{height:2px;top:23px;left:8px;right:8px}.mat-slider-horizontal .mat-slider-wrapper::after{height:2px;border-left-width:2px;right:0;top:0}.mat-slider-horizontal .mat-slider-track-wrapper{height:2px;width:100%}.mat-slider-horizontal .mat-slider-track-fill{height:2px;width:100%;transform:scaleX(0)}.mat-slider-horizontal .mat-slider-track-background{height:2px;width:100%;transform:scaleX(1)}.mat-slider-horizontal .mat-slider-ticks-container{height:2px;width:100%}.cdk-high-contrast-active .mat-slider-horizontal .mat-slider-ticks-container{height:0;outline:solid 2px;top:1px}.mat-slider-horizontal .mat-slider-ticks{height:2px;width:100%}.mat-slider-horizontal .mat-slider-thumb-container{width:100%;height:0;top:50%}.mat-slider-horizontal .mat-slider-focus-ring{top:-15px;right:-15px}.mat-slider-horizontal .mat-slider-thumb-label{right:-14px;top:-40px;transform:translateY(26px) scale(0.01) rotate(45deg)}.mat-slider-horizontal .mat-slider-thumb-label-text{transform:rotate(-45deg)}.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label{transform:rotate(45deg)}.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label,.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label-text{transform:none}.mat-slider-vertical{width:48px;min-height:128px}.mat-slider-vertical .mat-slider-wrapper{width:2px;top:8px;bottom:8px;left:23px}.mat-slider-vertical .mat-slider-wrapper::after{width:2px;border-top-width:2px;bottom:0;left:0}.mat-slider-vertical .mat-slider-track-wrapper{height:100%;width:2px}.mat-slider-vertical .mat-slider-track-fill{height:100%;width:2px;transform:scaleY(0)}.mat-slider-vertical .mat-slider-track-background{height:100%;width:2px;transform:scaleY(1)}.mat-slider-vertical .mat-slider-ticks-container{width:2px;height:100%}.cdk-high-contrast-active .mat-slider-vertical .mat-slider-ticks-container{width:0;outline:solid 2px;left:1px}.mat-slider-vertical .mat-slider-focus-ring{bottom:-15px;left:-15px}.mat-slider-vertical .mat-slider-ticks{width:2px;height:100%}.mat-slider-vertical .mat-slider-thumb-container{height:100%;width:0;left:50%}.mat-slider-vertical .mat-slider-thumb{-webkit-backface-visibility:hidden;backface-visibility:hidden}.mat-slider-vertical .mat-slider-thumb-label{bottom:-14px;left:-40px;transform:translateX(26px) scale(0.01) rotate(-45deg)}.mat-slider-vertical .mat-slider-thumb-label-text{transform:rotate(45deg)}.mat-slider-vertical.cdk-focused .mat-slider-thumb-label{transform:rotate(-45deg)}[dir=rtl] .mat-slider-wrapper::after{left:0;right:auto}[dir=rtl] .mat-slider-horizontal .mat-slider-track-fill{transform-origin:100% 100%}[dir=rtl] .mat-slider-horizontal .mat-slider-track-background{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:100% 100%}.mat-slider._mat-animation-noopable .mat-slider-track-fill,.mat-slider._mat-animation-noopable .mat-slider-track-background,.mat-slider._mat-animation-noopable .mat-slider-ticks,.mat-slider._mat-animation-noopable .mat-slider-thumb-container,.mat-slider._mat-animation-noopable .mat-slider-focus-ring,.mat-slider._mat-animation-noopable .mat-slider-thumb,.mat-slider._mat-animation-noopable .mat-slider-thumb-label,.mat-slider._mat-animation-noopable .mat-slider-thumb-label-text,.mat-slider._mat-animation-noopable .mat-slider-has-ticks .mat-slider-wrapper::after{transition:none}\n"]
+                styles: [".mat-slider{display:inline-block;position:relative;box-sizing:border-box;padding:8px;outline:none;vertical-align:middle}.mat-slider:not(.mat-slider-disabled):active,.mat-slider.mat-slider-sliding:not(.mat-slider-disabled){cursor:-webkit-grabbing;cursor:grabbing}.mat-slider-wrapper{position:absolute;-webkit-print-color-adjust:exact;color-adjust:exact}.mat-slider-track-wrapper{position:absolute;top:0;left:0;overflow:hidden}.mat-slider-track-fill{position:absolute;transform-origin:0 0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-track-background{position:absolute;transform-origin:100% 100%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-ticks-container{position:absolute;left:0;top:0;overflow:hidden}.mat-slider-ticks{background-repeat:repeat;background-clip:content-box;box-sizing:border-box;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-container{position:absolute;z-index:1;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-focus-ring{position:absolute;width:30px;height:30px;border-radius:50%;transform:scale(0);opacity:0;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider.cdk-keyboard-focused .mat-slider-focus-ring,.mat-slider.cdk-program-focused .mat-slider-focus-ring{transform:scale(1);opacity:1}.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb-label,.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb{cursor:-webkit-grab;cursor:grab}.mat-slider-thumb{position:absolute;right:-10px;bottom:-10px;box-sizing:border-box;width:20px;height:20px;border:3px solid transparent;border-radius:50%;transform:scale(0.7);transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-thumb-label{display:none;align-items:center;justify-content:center;position:absolute;width:28px;height:28px;border-radius:50%;transition:transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),border-radius 400ms cubic-bezier(0.25, 0.8, 0.25, 1),background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.cdk-high-contrast-active .mat-slider-thumb-label{outline:solid 1px}.mat-slider-thumb-label-text{z-index:1;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-sliding .mat-slider-track-fill,.mat-slider-sliding .mat-slider-track-background,.mat-slider-sliding .mat-slider-thumb-container{transition-duration:0ms}.mat-slider-has-ticks .mat-slider-wrapper::after{content:\"\";position:absolute;border-width:0;border-style:solid;opacity:0;transition:opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1)}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after,.mat-slider-has-ticks:hover:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after{opacity:1}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-disabled) .mat-slider-ticks,.mat-slider-has-ticks:hover:not(.mat-slider-disabled) .mat-slider-ticks{opacity:1}.mat-slider-thumb-label-showing .mat-slider-focus-ring{display:none}.mat-slider-thumb-label-showing .mat-slider-thumb-label{display:flex}.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:100% 100%}.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:0 0}.mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb{transform:scale(0)}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label{border-radius:50% 50% 0}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text{opacity:1}.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-touch-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-program-focused .mat-slider-thumb{border-width:2px;transform:scale(1)}.mat-slider-disabled .mat-slider-focus-ring{transform:scale(0);opacity:0}.mat-slider-disabled .mat-slider-thumb{border-width:4px;transform:scale(0.5)}.mat-slider-disabled .mat-slider-thumb-label{display:none}.mat-slider-horizontal{height:48px;min-width:128px}.mat-slider-horizontal .mat-slider-wrapper{height:2px;top:23px;left:8px;right:8px}.mat-slider-horizontal .mat-slider-wrapper::after{height:2px;border-left-width:2px;right:0;top:0}.mat-slider-horizontal .mat-slider-track-wrapper{height:2px;width:100%}.mat-slider-horizontal .mat-slider-track-fill{height:2px;width:100%;transform:scaleX(0)}.mat-slider-horizontal .mat-slider-track-background{height:2px;width:100%;transform:scaleX(1)}.mat-slider-horizontal .mat-slider-ticks-container{height:2px;width:100%}.cdk-high-contrast-active .mat-slider-horizontal .mat-slider-ticks-container{height:0;outline:solid 2px;top:1px}.mat-slider-horizontal .mat-slider-ticks{height:2px;width:100%}.mat-slider-horizontal .mat-slider-thumb-container{width:100%;height:0;top:50%}.mat-slider-horizontal .mat-slider-focus-ring{top:-15px;right:-15px}.mat-slider-horizontal .mat-slider-thumb-label{right:-14px;top:-40px;transform:translateY(26px) scale(0.01) rotate(45deg)}.mat-slider-horizontal .mat-slider-thumb-label-text{transform:rotate(-45deg)}.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label{transform:rotate(45deg)}.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label,.cdk-high-contrast-active .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label-text{transform:none}.mat-slider-vertical{width:48px;min-height:128px}.mat-slider-vertical .mat-slider-wrapper{width:2px;top:8px;bottom:8px;left:23px}.mat-slider-vertical .mat-slider-wrapper::after{width:2px;border-top-width:2px;bottom:0;left:0}.mat-slider-vertical .mat-slider-track-wrapper{height:100%;width:2px}.mat-slider-vertical .mat-slider-track-fill{height:100%;width:2px;transform:scaleY(0)}.mat-slider-vertical .mat-slider-track-background{height:100%;width:2px;transform:scaleY(1)}.mat-slider-vertical .mat-slider-ticks-container{width:2px;height:100%}.cdk-high-contrast-active .mat-slider-vertical .mat-slider-ticks-container{width:0;outline:solid 2px;left:1px}.mat-slider-vertical .mat-slider-focus-ring{bottom:-15px;left:-15px}.mat-slider-vertical .mat-slider-ticks{width:2px;height:100%}.mat-slider-vertical .mat-slider-thumb-container{height:100%;width:0;left:50%}.mat-slider-vertical .mat-slider-thumb{-webkit-backface-visibility:hidden;backface-visibility:hidden}.mat-slider-vertical .mat-slider-thumb-label{bottom:-14px;left:-40px;transform:translateX(26px) scale(0.01) rotate(-45deg)}.mat-slider-vertical .mat-slider-thumb-label-text{transform:rotate(45deg)}.mat-slider-vertical.cdk-focused .mat-slider-thumb-label{transform:rotate(-45deg)}[dir=rtl] .mat-slider-wrapper::after{left:0;right:auto}[dir=rtl] .mat-slider-horizontal .mat-slider-track-fill{transform-origin:100% 100%}[dir=rtl] .mat-slider-horizontal .mat-slider-track-background{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:100% 100%}.mat-slider._mat-animation-noopable .mat-slider-track-fill,.mat-slider._mat-animation-noopable .mat-slider-track-background,.mat-slider._mat-animation-noopable .mat-slider-ticks,.mat-slider._mat-animation-noopable .mat-slider-thumb-container,.mat-slider._mat-animation-noopable .mat-slider-focus-ring,.mat-slider._mat-animation-noopable .mat-slider-thumb,.mat-slider._mat-animation-noopable .mat-slider-thumb-label,.mat-slider._mat-animation-noopable .mat-slider-thumb-label-text,.mat-slider._mat-animation-noopable .mat-slider-has-ticks .mat-slider-wrapper::after{transition:none}\n"]
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }, { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__["FocusMonitor"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"], decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
             }] }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"],
                 args: ['tabindex']
+            }] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
             }] }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
                 args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["ANIMATION_MODULE_TYPE"]]
-            }] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: undefined, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-                args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
             }] }]; }, { change: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
         }], input: [{
@@ -1408,47 +888,40 @@ MatSlider.propDecorators = {
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
         }], displayWith: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], valueText: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
         }], _sliderWrapper: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
             args: ['sliderWrapper']
         }] }); })();
-if (false) {}
-/**
- * Returns whether an event is a touch event.
- * @param {?} event
- * @return {?}
- */
+/** Returns whether an event is a touch event. */
 function isTouchEvent(event) {
     // This function is called for every pixel that the user has dragged so we need it to be
     // as fast as possible. Since we only bind mouse events and touch events, we can assume
     // that if the event's name starts with `t`, it's a touch event.
     return event.type[0] === 't';
 }
-/**
- * Gets the coordinates of a touch or mouse event relative to the viewport.
- * @param {?} event
- * @return {?}
- */
+/** Gets the coordinates of a touch or mouse event relative to the viewport. */
 function getPointerPositionOnPage(event) {
     // `touches` will be empty for start/end events so we have to fall back to `changedTouches`.
-    /** @type {?} */
     const point = isTouchEvent(event) ? (event.touches[0] || event.changedTouches[0]) : event;
     return { x: point.clientX, y: point.clientY };
 }
 
 /**
- * @fileoverview added by tsickle
- * Generated from: src/material/slider/slider-module.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
 class MatSliderModule {
 }
+MatSliderModule.ɵfac = function MatSliderModule_Factory(t) { return new (t || MatSliderModule)(); };
 MatSliderModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: MatSliderModule });
-MatSliderModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function MatSliderModule_Factory(t) { return new (t || MatSliderModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]],
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](MatSliderModule, { declarations: function () { return [MatSlider]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]]; }, exports: function () { return [MatSlider,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MatSliderModule, [{
+MatSliderModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](MatSliderModule, { declarations: function () { return [MatSlider]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]]; }, exports: function () { return [MatSlider, _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]]; } }); })();
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MatSliderModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
                 imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]],
@@ -1458,9 +931,11 @@ MatSliderModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineIn
     }], null, null); })();
 
 /**
- * @fileoverview added by tsickle
- * Generated from: src/material/slider/public-api.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
 
 /**
@@ -1473,101 +948,36 @@ MatSliderModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineIn
 
 /***/ }),
 
-/***/ "../../node_modules/raw-loader/dist/cjs.js!../../libs/components/auto-scale/auto-scale.component.html":
-/*!********************************************************************************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/raw-loader/dist/cjs.js!/home/runner/work/gewd/gewd/libs/components/auto-scale/auto-scale.component.html ***!
-  \********************************************************************************************************************************************************/
+/***/ "5kGt":
+/*!****************************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/components-example/components-example.component.css ***!
+  \****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"zoom_out_parent\">\n  <div class=\"zoom_out\" #zoomOutElement\n   [style.--scale-width]=\"(width / zoomOutElement.scrollWidth)| valueOrDefault: 1\"\n         [style.--scale-height]=\"(height / zoomOutElement.scrollHeight) |valueOrDefault: 1\"\n  >\n    <ng-content></ng-content>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb21wb25lbnRzLWV4YW1wbGUuY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
-/***/ "../../node_modules/raw-loader/dist/cjs.js!./src/app/examples/components-example/components-example.component.html":
-/*!***********************************************************************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/raw-loader/dist/cjs.js!./src/app/examples/components-example/components-example.component.html ***!
-  \***********************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<gewd-auto-scale [width]=\"outerSize.value\" [height]=\"outerSize.value\">\n  <div style=\"background: green;\"\n  [style.width.px]=\"innerSize.value\"\n  [style.height.px]=\"innerSize.value\"\n  >\n    200x200 <br/> Inner\n  </div>\n</gewd-auto-scale>\n\n<br/>\n\n  <mat-label>Outer Size: {{outerSize.value}}px</mat-label>\n  <mat-slider min=\"100\" max=\"400\" #outerSize>\n  </mat-slider>\n\n\n<br />\n<mat-label>Inner Size: {{innerSize.value}}px</mat-label>\n<mat-slider min=\"100\" max=\"400\" value=\"200\" #innerSize>\n</mat-slider>\n\n<gewd-auto-scale width='120' height='120'>\n  <img [src]='imgSource' gewdAutoScaleImg alt='test image'/>\n</gewd-auto-scale>\n\n<button (click)='toggleImgSource()'>Toggle IMG source</button>\n");
-
-/***/ }),
-
-/***/ "./src/app/examples/components-example/components-example.component.css":
-/*!******************************************************************************!*\
-  !*** ./src/app/examples/components-example/components-example.component.css ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHBzL2RlbW8vc3JjL2FwcC9leGFtcGxlcy9jb21wb25lbnRzLWV4YW1wbGUvY29tcG9uZW50cy1leGFtcGxlLmNvbXBvbmVudC5jc3MifQ== */");
-
-/***/ }),
-
-/***/ "./src/app/examples/components-example/components-example.component.ts":
-/*!*****************************************************************************!*\
-  !*** ./src/app/examples/components-example/components-example.component.ts ***!
-  \*****************************************************************************/
-/*! exports provided: ComponentsExampleComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsExampleComponent", function() { return ComponentsExampleComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-
-const img1 = '/assets/example_md.png';
-const img2 = '/assets/example-bg.png';
-let ComponentsExampleComponent = class ComponentsExampleComponent {
-    constructor() {
-        this.imgSource = img1;
-    }
-    ngOnInit() {
-    }
-    toggleImgSource() {
-        this.imgSource = this.imgSource === img1 ? img2 : img1;
-    }
-};
-ComponentsExampleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'gewd-components-example',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./components-example.component.html */ "../../node_modules/raw-loader/dist/cjs.js!./src/app/examples/components-example/components-example.component.html")).default,
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./components-example.component.css */ "./src/app/examples/components-example/components-example.component.css")).default]
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])
-], ComponentsExampleComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/examples/components-example/components-example.module.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/examples/components-example/components-example.module.ts ***!
-  \**************************************************************************/
+/***/ "6RHk":
+/*!************************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/components-example/components-example.module.ts ***!
+  \************************************************************************************/
 /*! exports provided: ComponentsExampleModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsExampleModule", function() { return ComponentsExampleModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _components_example_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components-example.component */ "./src/app/examples/components-example/components-example.component.ts");
-/* harmony import */ var _gewd_components_auto_scale__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/components/auto-scale */ "../../libs/components/auto-scale/index.ts");
-/* harmony import */ var _angular_material_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/slider */ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/form-field */ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _components_example_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components-example.component */ "xFkL");
+/* harmony import */ var _gewd_components_auto_scale__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/components/auto-scale */ "e6fE");
+/* harmony import */ var _angular_material_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/slider */ "5RNC");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
 
 
 
@@ -1598,6 +1008,265 @@ ComponentsExampleModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
         ]
     })
 ], ComponentsExampleModule);
+
+
+
+/***/ }),
+
+/***/ "YZfy":
+/*!****************************************************************!*\
+  !*** ./libs/components/auto-scale/auto-scale-img.directive.ts ***!
+  \****************************************************************/
+/*! exports provided: AutoScaleImgDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return AutoScaleImgDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-scale.component */ "cA1M");
+
+
+
+let AutoScaleImgDirective = class AutoScaleImgDirective {
+    constructor(elemRef, _autoScale) {
+        this.elemRef = elemRef;
+        this._autoScale = _autoScale;
+        const htmlElem = elemRef.nativeElement;
+        if (htmlElem.tagName.toLocaleLowerCase() !== 'img') {
+            throw new Error('Only <img> tags are supported with the AutoScaleImgDirective!');
+        }
+    }
+    onLoad() {
+        this._autoScale.forceUpdate();
+    }
+};
+AutoScaleImgDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Self"] }] },
+    { type: _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"] }
+];
+AutoScaleImgDirective.propDecorators = {
+    onLoad: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"], args: ['load',] }]
+};
+AutoScaleImgDirective = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+        selector: '[gewdAutoScaleImg]'
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"],
+        _auto_scale_component__WEBPACK_IMPORTED_MODULE_2__["AutoScaleComponent"]])
+], AutoScaleImgDirective);
+
+
+
+/***/ }),
+
+/***/ "cA1M":
+/*!************************************************************!*\
+  !*** ./libs/components/auto-scale/auto-scale.component.ts ***!
+  \************************************************************/
+/*! exports provided: AutoScaleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return AutoScaleComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_auto_scale_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./auto-scale.component.html */ "j+rG");
+/* harmony import */ var _auto_scale_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auto-scale.component.scss */ "dy/h");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+let AutoScaleComponent = class AutoScaleComponent {
+    constructor(_cd) {
+        this._cd = _cd;
+        this.width = 100;
+        this.height = 100;
+    }
+    forceUpdate() {
+        this._cd.markForCheck();
+    }
+};
+AutoScaleComponent.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"] }
+];
+AutoScaleComponent.propDecorators = {
+    width: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["HostBinding"], args: ['style.--zoom_out_width.px',] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
+    height: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["HostBinding"], args: ['style.--zoom_out_height.px',] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
+};
+AutoScaleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'gewd-auto-scale',
+        template: _raw_loader_auto_scale_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_auto_scale_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]])
+], AutoScaleComponent);
+
+
+
+/***/ }),
+
+/***/ "dy/h":
+/*!**************************************************************!*\
+  !*** ./libs/components/auto-scale/auto-scale.component.scss ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n  height: var(--zoom_out_height);\n  width: var(--zoom_out_width);\n  --scale-width: 0;\n  --scale-height: 0;\n}\n\n.zoom_out_parent {\n  position: relative;\n  height: var(--zoom_out_height);\n  width: var(--zoom_out_width);\n  overflow: hidden;\n}\n\n.zoom_out {\n  text-align: center;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) scale(min(var(--scale-width), var(--scale-height)));\n  transform-origin: center center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2F1dG8tc2NhbGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBRUEsOEJBQUE7RUFDQSw0QkFBQTtFQUVBLGdCQUFBO0VBQ0EsaUJBQUE7QUFERjs7QUFLQTtFQUNFLGtCQUFBO0VBQ0EsOEJBQUE7RUFDQSw0QkFBQTtFQUVBLGdCQUFBO0FBSEY7O0FBTUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFFBQUE7RUFDQSxvRkFBQTtFQUlBLCtCQUFBO0FBTkYiLCJmaWxlIjoiYXV0by1zY2FsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogYmxvY2s7XG5cbiAgaGVpZ2h0OiB2YXIoLS16b29tX291dF9oZWlnaHQpO1xuICB3aWR0aDogdmFyKC0tem9vbV9vdXRfd2lkdGgpO1xuXG4gIC0tc2NhbGUtd2lkdGg6IDA7XG4gIC0tc2NhbGUtaGVpZ2h0OiAwO1xufVxuXG5cbi56b29tX291dF9wYXJlbnQge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGhlaWdodDogdmFyKC0tem9vbV9vdXRfaGVpZ2h0KTtcbiAgd2lkdGg6IHZhcigtLXpvb21fb3V0X3dpZHRoKTtcblxuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4uem9vbV9vdXQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogNTAlO1xuICB0b3A6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSkgc2NhbGUobWluKFxuICAgIHZhcigtLXNjYWxlLXdpZHRoKSxcbiAgICB2YXIoLS1zY2FsZS1oZWlnaHQpXG4gICkpO1xuICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXIgY2VudGVyO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "e6fE":
+/*!*********************************************!*\
+  !*** ./libs/components/auto-scale/index.ts ***!
+  \*********************************************/
+/*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "zSBd");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleModule"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["ValueOrDefaultPipe"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["AutoScaleImgDirective"]; });
+
+
+
+
+/***/ }),
+
+/***/ "j+rG":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./libs/components/auto-scale/auto-scale.component.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"zoom_out_parent\">\n  <div class=\"zoom_out\" #zoomOutElement\n   [style.--scale-width]=\"(width / zoomOutElement.scrollWidth)| valueOrDefault: 1\"\n         [style.--scale-height]=\"(height / zoomOutElement.scrollHeight) |valueOrDefault: 1\"\n  >\n    <ng-content></ng-content>\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "xFkL":
+/*!***************************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/components-example/components-example.component.ts ***!
+  \***************************************************************************************/
+/*! exports provided: ComponentsExampleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsExampleComponent", function() { return ComponentsExampleComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_components_example_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./components-example.component.html */ "3pE5");
+/* harmony import */ var _components_example_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components-example.component.css */ "5kGt");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+const img1 = '/assets/example_md.png';
+const img2 = '/assets/example-bg.png';
+let ComponentsExampleComponent = class ComponentsExampleComponent {
+    constructor() {
+        this.imgSource = img1;
+    }
+    ngOnInit() {
+    }
+    toggleImgSource() {
+        this.imgSource = this.imgSource === img1 ? img2 : img1;
+    }
+};
+ComponentsExampleComponent.ctorParameters = () => [];
+ComponentsExampleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'gewd-components-example',
+        template: _raw_loader_components_example_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_components_example_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])
+], ComponentsExampleComponent);
+
+
+
+/***/ }),
+
+/***/ "yjiX":
+/*!*********************************************************!*\
+  !*** ./libs/components/auto-scale/auto-scale.module.ts ***!
+  \*********************************************************/
+/*! exports provided: AutoScaleModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return AutoScaleModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auto-scale.component */ "cA1M");
+/* harmony import */ var _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./value-or-default.pipe */ "/PFe");
+/* harmony import */ var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auto-scale-img.directive */ "YZfy");
+
+
+
+
+
+
+let AutoScaleModule = class AutoScaleModule {
+};
+AutoScaleModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"], _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_4__["ValueOrDefaultPipe"], _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]],
+        exports: [
+            _auto_scale_component__WEBPACK_IMPORTED_MODULE_3__["AutoScaleComponent"],
+            _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_5__["AutoScaleImgDirective"]
+        ],
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+        ]
+    })
+], AutoScaleModule);
+
+
+
+/***/ }),
+
+/***/ "zSBd":
+/*!**************************************************!*\
+  !*** ./libs/components/auto-scale/public_api.ts ***!
+  \**************************************************/
+/*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _auto_scale_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auto-scale.module */ "yjiX");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleModule", function() { return _auto_scale_module__WEBPACK_IMPORTED_MODULE_0__["AutoScaleModule"]; });
+
+/* harmony import */ var _auto_scale_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auto-scale.component */ "cA1M");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleComponent", function() { return _auto_scale_component__WEBPACK_IMPORTED_MODULE_1__["AutoScaleComponent"]; });
+
+/* harmony import */ var _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./value-or-default.pipe */ "/PFe");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueOrDefaultPipe", function() { return _value_or_default_pipe__WEBPACK_IMPORTED_MODULE_2__["ValueOrDefaultPipe"]; });
+
+/* harmony import */ var _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auto-scale-img.directive */ "YZfy");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AutoScaleImgDirective", function() { return _auto_scale_img_directive__WEBPACK_IMPORTED_MODULE_3__["AutoScaleImgDirective"]; });
+
+
+
+
 
 
 

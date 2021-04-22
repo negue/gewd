@@ -1,50 +1,28 @@
 self["webpackChunk"](["gewd-markdown-emoji-map"],{
 
-/***/ "../../libs/markdown/emoji-map/colonToUnicode.ts":
-/*!*****************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/emoji-map/colonToUnicode.ts ***!
-  \*****************************************************************************/
-/*! exports provided: colonToUnicode */
+/***/ "LyO7":
+/*!******************************************!*\
+  !*** ./libs/markdown/emoji-map/index.ts ***!
+  \******************************************/
+/*! exports provided: EMOJI_MAP, colonToUnicode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colonToUnicode", function() { return colonToUnicode; });
-// thanks to https://stackoverflow.com/a/10615607
-function fixedFromCharCode(codeStr) {
-    let codePt = parseInt(codeStr, 16);
-    if (codePt > 0xFFFF) {
-        codePt -= 0x10000;
-        // tslint:disable-next-line:no-bitwise
-        return String.fromCharCode(0xD800 + (codePt >> 10), 0xDC00 + (codePt & 0x3FF));
-    }
-    else {
-        return String.fromCharCode(codePt);
-    }
-}
-function colonToUnicode(unicodeStringValue) {
-    const colonLength = unicodeStringValue.length;
-    switch (colonLength) {
-        case 4:
-        case 5: {
-            return fixedFromCharCode(unicodeStringValue);
-        }
-        default: {
-            // split the parts
-            const split = unicodeStringValue.split('-');
-            // merged emoji's need &zwj;
-            return split.map(fixedFromCharCode).join('&zwj;');
-        }
-    }
-}
+/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "uHIA");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EMOJI_MAP", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["EMOJI_MAP"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "colonToUnicode", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["colonToUnicode"]; });
+
+
 
 
 /***/ }),
 
-/***/ "../../libs/markdown/emoji-map/emoji.map.ts":
-/*!************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/emoji-map/emoji.map.ts ***!
-  \************************************************************************/
+/***/ "WbJ9":
+/*!**********************************************!*\
+  !*** ./libs/markdown/emoji-map/emoji.map.ts ***!
+  \**********************************************/
 /*! exports provided: EMOJI_MAP */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1548,38 +1526,60 @@ const EMOJI_MAP = {
 
 /***/ }),
 
-/***/ "../../libs/markdown/emoji-map/index.ts":
-/*!********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/emoji-map/index.ts ***!
-  \********************************************************************/
-/*! exports provided: EMOJI_MAP, colonToUnicode */
+/***/ "c8Vy":
+/*!***************************************************!*\
+  !*** ./libs/markdown/emoji-map/colonToUnicode.ts ***!
+  \***************************************************/
+/*! exports provided: colonToUnicode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "../../libs/markdown/emoji-map/public_api.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EMOJI_MAP", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["EMOJI_MAP"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "colonToUnicode", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["colonToUnicode"]; });
-
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colonToUnicode", function() { return colonToUnicode; });
+// thanks to https://stackoverflow.com/a/10615607
+function fixedFromCharCode(codeStr) {
+    let codePt = parseInt(codeStr, 16);
+    if (codePt > 0xFFFF) {
+        codePt -= 0x10000;
+        // tslint:disable-next-line:no-bitwise
+        return String.fromCharCode(0xD800 + (codePt >> 10), 0xDC00 + (codePt & 0x3FF));
+    }
+    else {
+        return String.fromCharCode(codePt);
+    }
+}
+function colonToUnicode(unicodeStringValue) {
+    const colonLength = unicodeStringValue.length;
+    switch (colonLength) {
+        case 4:
+        case 5: {
+            return fixedFromCharCode(unicodeStringValue);
+        }
+        default: {
+            // split the parts
+            const split = unicodeStringValue.split('-');
+            // merged emoji's need &zwj;
+            return split.map(fixedFromCharCode).join('&zwj;');
+        }
+    }
+}
 
 
 /***/ }),
 
-/***/ "../../libs/markdown/emoji-map/public_api.ts":
-/*!*************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/emoji-map/public_api.ts ***!
-  \*************************************************************************/
+/***/ "uHIA":
+/*!***********************************************!*\
+  !*** ./libs/markdown/emoji-map/public_api.ts ***!
+  \***********************************************/
 /*! exports provided: EMOJI_MAP, colonToUnicode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emoji_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emoji.map */ "../../libs/markdown/emoji-map/emoji.map.ts");
+/* harmony import */ var _emoji_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emoji.map */ "WbJ9");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EMOJI_MAP", function() { return _emoji_map__WEBPACK_IMPORTED_MODULE_0__["EMOJI_MAP"]; });
 
-/* harmony import */ var _colonToUnicode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colonToUnicode */ "../../libs/markdown/emoji-map/colonToUnicode.ts");
+/* harmony import */ var _colonToUnicode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colonToUnicode */ "c8Vy");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "colonToUnicode", function() { return _colonToUnicode__WEBPACK_IMPORTED_MODULE_1__["colonToUnicode"]; });
 
 

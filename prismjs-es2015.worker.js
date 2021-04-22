@@ -1,9 +1,9 @@
 self["webpackChunk"](["prismjs"],{
 
-/***/ "../../node_modules/prismjs/prism.js":
-/*!*****************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/prismjs/prism.js ***!
-  \*****************************************************************/
+/***/ "wZee":
+/*!***************************************!*\
+  !*** ./node_modules/prismjs/prism.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

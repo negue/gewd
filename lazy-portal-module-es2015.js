@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["lazy-portal-module"],{
 
-/***/ "./src/app/examples/lazyload-example/lazy-wrapper/lazy-portal-source.ts":
-/*!******************************************************************************!*\
-  !*** ./src/app/examples/lazyload-example/lazy-wrapper/lazy-portal-source.ts ***!
-  \******************************************************************************/
+/***/ "uy6E":
+/*!****************************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/lazyload-example/lazy-wrapper/lazy-portal-source.ts ***!
+  \****************************************************************************************/
 /*! exports provided: PortalModuleComp, PortalModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,11 +11,11 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalModuleComp", function() { return PortalModuleComp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalModule", function() { return PortalModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-/* harmony import */ var _gewd_ng_utils_dynamic_portal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/ng-utils/dynamic-portal */ "../../libs/ng-utils/dynamic-portal/index.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
+/* harmony import */ var _gewd_ng_utils_dynamic_portal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/ng-utils/dynamic-portal */ "zzJY");
 
 
 
@@ -33,14 +33,11 @@ let PortalModuleComp = class PortalModuleComp {
     ngOnInit() {
     }
 };
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], PortalModuleComp.prototype, "testProp", void 0);
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", String)
-], PortalModuleComp.prototype, "portalKey", void 0);
+PortalModuleComp.ctorParameters = () => [];
+PortalModuleComp.propDecorators = {
+    testProp: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    portalKey: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
 PortalModuleComp = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'test-module-comp',

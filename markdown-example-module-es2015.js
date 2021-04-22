@@ -1,22 +1,22 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["markdown-example-module"],{
 
-/***/ "../../node_modules/raw-loader/dist/cjs.js!./src/app/examples/markdown-example/markdown-example.component.html":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/raw-loader/dist/cjs.js!./src/app/examples/markdown-example/markdown-example.component.html ***!
-  \*******************************************************************************************************************************************/
+/***/ "4Wqj":
+/*!************************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/markdown-example/markdown-example.component.css ***!
+  \************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-tab-group>\n  <mat-tab label=\"README.MD\" #readmeTab>\n    <gewd-markdown *ngIf=\"readmeTab.isActive\"\n                   [markdown]=\"readmeMD$ | async\"></gewd-markdown>\n  </mat-tab>\n  <mat-tab label=\"Try out\">\n\n    <gewd-prism-editor [value]=\"exampleMD$|async\"\n                       #prismEditorComponent\n                       language=\"markdown\"\n                       (changed)=\"changeIt($event, markdown)\">\n    </gewd-prism-editor>\n\n\n    <gewd-markdown #markdown [useCache]=\"true\"\n                   (onLinkClick)=\"handleLinkClick($event)\">\n    </gewd-markdown>\n\n  </mat-tab>\n\n  <mat-tab label=\"Emoji Overview\" #tab>\n    <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>\n    <gewd-markdown [markdown]=\"tab.isActive ? emojiList : ''\"></gewd-markdown>\n  </mat-tab>\n</mat-tab-group>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXJrZG93bi1leGFtcGxlLmNvbXBvbmVudC5jc3MifQ== */");
 
 /***/ }),
 
-/***/ "./src/app/example-emoji-list.ts":
-/*!***************************************!*\
-  !*** ./src/app/example-emoji-list.ts ***!
-  \***************************************/
+/***/ "AqwI":
+/*!*************************************************!*\
+  !*** ./apps/demo/src/app/example-emoji-list.ts ***!
+  \*************************************************/
 /*! exports provided: emojiExampleList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1517,108 +1517,23 @@ const emojiExampleList = [':100:',
 
 /***/ }),
 
-/***/ "./src/app/examples/markdown-example/markdown-example.component.css":
-/*!**************************************************************************!*\
-  !*** ./src/app/examples/markdown-example/markdown-example.component.css ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHBzL2RlbW8vc3JjL2FwcC9leGFtcGxlcy9tYXJrZG93bi1leGFtcGxlL21hcmtkb3duLWV4YW1wbGUuY29tcG9uZW50LmNzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/examples/markdown-example/markdown-example.component.ts":
-/*!*************************************************************************!*\
-  !*** ./src/app/examples/markdown-example/markdown-example.component.ts ***!
-  \*************************************************************************/
-/*! exports provided: MarkdownExampleComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarkdownExampleComponent", function() { return MarkdownExampleComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "../../node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "../../node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _example_emoji_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../example-emoji-list */ "./src/app/example-emoji-list.ts");
-
-
-
-
-
-
-let MarkdownExampleComponent = class MarkdownExampleComponent {
-    constructor(http) {
-        this.http = http;
-        this.markdown$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.readmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
-            responseType: 'text'
-        });
-        this.exampleMD$ = this.http.get('./assets/example.md', {
-            responseType: 'text'
-        });
-        this.emojiList = _example_emoji_list__WEBPACK_IMPORTED_MODULE_5__["emojiExampleList"];
-    }
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
-    ngOnInit() {
-        this.subscription = this.markdown$
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(350))
-            .subscribe(value => {
-            this.markdown.markdown = value;
-        });
-    }
-    changeIt(newMarkdown, markdown) {
-        this.markdown$.next(newMarkdown);
-    }
-    handleLinkClick($event) {
-        $event.event.preventDefault();
-        alert('Link Click Handled by Markdown: ' + $event.link.href);
-    }
-};
-MarkdownExampleComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
-Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('markdown', { static: true }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
-], MarkdownExampleComponent.prototype, "markdown", void 0);
-MarkdownExampleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'gewd-markdown-example',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./markdown-example.component.html */ "../../node_modules/raw-loader/dist/cjs.js!./src/app/examples/markdown-example/markdown-example.component.html")).default,
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./markdown-example.component.css */ "./src/app/examples/markdown-example/markdown-example.component.css")).default]
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], MarkdownExampleComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/examples/markdown-example/markdown-example.module.ts":
-/*!**********************************************************************!*\
-  !*** ./src/app/examples/markdown-example/markdown-example.module.ts ***!
-  \**********************************************************************/
+/***/ "B/di":
+/*!********************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/markdown-example/markdown-example.module.ts ***!
+  \********************************************************************************/
 /*! exports provided: MarkdownExampleModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarkdownExampleModule", function() { return MarkdownExampleModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "../../node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _markdown_example_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./markdown-example.component */ "./src/app/examples/markdown-example/markdown-example.component.ts");
-/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/tabs */ "../../node_modules/@angular/material/__ivy_ngcc__/fesm2015/tabs.js");
-/* harmony import */ var _gewd_components_highlight_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @gewd/components/highlight-editor */ "../../libs/components/highlight-editor/index.ts");
-/* harmony import */ var _gewd_markdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @gewd/markdown */ "../../libs/markdown/module/index.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _markdown_example_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./markdown-example.component */ "bnBa");
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/tabs */ "wZkO");
+/* harmony import */ var _gewd_components_highlight_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @gewd/components/highlight-editor */ "W81V");
+/* harmony import */ var _gewd_markdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @gewd/markdown */ "PbxA");
 
 
 
@@ -1649,6 +1564,94 @@ MarkdownExampleModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
 ], MarkdownExampleModule);
 
 
+
+/***/ }),
+
+/***/ "bnBa":
+/*!***********************************************************************************!*\
+  !*** ./apps/demo/src/app/examples/markdown-example/markdown-example.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: MarkdownExampleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarkdownExampleComponent", function() { return MarkdownExampleComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_markdown_example_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./markdown-example.component.html */ "okDt");
+/* harmony import */ var _markdown_example_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./markdown-example.component.css */ "4Wqj");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _example_emoji_list__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../example-emoji-list */ "AqwI");
+
+
+
+
+
+
+
+
+let MarkdownExampleComponent = class MarkdownExampleComponent {
+    constructor(http) {
+        this.http = http;
+        this.markdown$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+        this.readmeMD$ = this.http.get('./assets/readme/markdown/README.md', {
+            responseType: 'text'
+        });
+        this.exampleMD$ = this.http.get('./assets/example.md', {
+            responseType: 'text'
+        });
+        this.emojiList = _example_emoji_list__WEBPACK_IMPORTED_MODULE_7__["emojiExampleList"];
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+    ngOnInit() {
+        this.subscription = this.markdown$
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["debounceTime"])(350))
+            .subscribe(value => {
+            this.markdown.markdown = value;
+        });
+    }
+    changeIt(newMarkdown, markdown) {
+        this.markdown$.next(newMarkdown);
+    }
+    handleLinkClick($event) {
+        $event.event.preventDefault();
+        alert('Link Click Handled by Markdown: ' + $event.link.href);
+    }
+};
+MarkdownExampleComponent.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+];
+MarkdownExampleComponent.propDecorators = {
+    markdown: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ['markdown', { static: true },] }]
+};
+MarkdownExampleComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'gewd-markdown-example',
+        template: _raw_loader_markdown_example_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_markdown_example_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+], MarkdownExampleComponent);
+
+
+
+/***/ }),
+
+/***/ "okDt":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/examples/markdown-example/markdown-example.component.html ***!
+  \***************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-tab-group>\n  <mat-tab label=\"README.MD\" #readmeTab>\n    <gewd-markdown *ngIf=\"readmeTab.isActive\"\n                   [markdown]=\"readmeMD$ | async\"></gewd-markdown>\n  </mat-tab>\n  <mat-tab label=\"Try out\">\n\n    <gewd-prism-editor [value]=\"exampleMD$|async\"\n                       #prismEditorComponent\n                       language=\"markdown\"\n                       (changed)=\"changeIt($event, markdown)\">\n    </gewd-prism-editor>\n\n\n    <gewd-markdown #markdown [useCache]=\"true\"\n                   (onLinkClick)=\"handleLinkClick($event)\">\n    </gewd-markdown>\n\n  </mat-tab>\n\n  <mat-tab label=\"Emoji Overview\" #tab>\n    <i>Note: Emojilist is only passed to markdown once this tab is activated :)</i>\n    <gewd-markdown [markdown]=\"tab.isActive ? emojiList : ''\"></gewd-markdown>\n  </mat-tab>\n</mat-tab-group>\n");
 
 /***/ })
 

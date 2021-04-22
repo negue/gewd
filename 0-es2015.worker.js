@@ -107,15 +107,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "../../node_modules/@ngtools/webpack/src/index.js!./src/app/markdown.worker.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "nIOu");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "../../libs/markdown/contracts/default-options.ts":
-/*!******************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/contracts/default-options.ts ***!
-  \******************************************************************************/
+/***/ "0/xO":
+/*!****************************************************!*\
+  !*** ./libs/markdown/contracts/default-options.ts ***!
+  \****************************************************/
 /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -144,16 +144,82 @@ const DEFAULT_MERMAID_OPTIONS = {
 
 /***/ }),
 
-/***/ "../../libs/markdown/contracts/index.ts":
-/*!********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/contracts/index.ts ***!
-  \********************************************************************/
+/***/ "1qV8":
+/*!***********************************************!*\
+  !*** ./libs/markdown/contracts/public_api.ts ***!
+  \***********************************************/
 /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "../../libs/markdown/contracts/public_api.ts");
+/* harmony import */ var _worker_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./worker.interface */ "hR9A");
+/* empty/unused harmony star reexport *//* harmony import */ var _default_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./default-options */ "0/xO");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_PRISM_OPTIONS", function() { return _default_options__WEBPACK_IMPORTED_MODULE_1__["DEFAULT_PRISM_OPTIONS"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_MERMAID_OPTIONS", function() { return _default_options__WEBPACK_IMPORTED_MODULE_1__["DEFAULT_MERMAID_OPTIONS"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "63Hc":
+/*!**************************************!*\
+  !*** ./node_modules/xss/lib/util.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  indexOf: function(arr, item) {
+    var i, j;
+    if (Array.prototype.indexOf) {
+      return arr.indexOf(item);
+    }
+    for (i = 0, j = arr.length; i < j; i++) {
+      if (arr[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  },
+  forEach: function(arr, fn, scope) {
+    var i, j;
+    if (Array.prototype.forEach) {
+      return arr.forEach(fn, scope);
+    }
+    for (i = 0, j = arr.length; i < j; i++) {
+      fn.call(scope, arr[i], i, arr);
+    }
+  },
+  trim: function(str) {
+    if (String.prototype.trim) {
+      return str.trim();
+    }
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+  },
+  spaceIndex: function(str) {
+    var reg = /\s|\n|\t/;
+    var match = reg.exec(str);
+    return match ? match.index : -1;
+  }
+};
+
+
+/***/ }),
+
+/***/ "7DNQ":
+/*!******************************************!*\
+  !*** ./libs/markdown/contracts/index.ts ***!
+  \******************************************/
+/*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "1qV8");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_PRISM_OPTIONS", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_PRISM_OPTIONS"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_MERMAID_OPTIONS", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_MERMAID_OPTIONS"]; });
@@ -163,373 +229,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../libs/markdown/contracts/public_api.ts":
-/*!*************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/contracts/public_api.ts ***!
-  \*************************************************************************/
-/*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _default_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./default-options */ "../../libs/markdown/contracts/default-options.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_PRISM_OPTIONS", function() { return _default_options__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_PRISM_OPTIONS"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_MERMAID_OPTIONS", function() { return _default_options__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_MERMAID_OPTIONS"]; });
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/marked.prism.worker.ts":
-/*!************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/marked.prism.worker.ts ***!
-  \************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
-/* harmony import */ var comlink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! comlink */ "../../node_modules/comlink/dist/esm/comlink.mjs");
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! marked */ "../../node_modules/marked/lib/marked.js");
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var xss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! xss */ "../../node_modules/xss/lib/index.js");
-/* harmony import */ var xss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(xss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/markdown/utils */ "../../libs/markdown/utils/index.ts");
-/* harmony import */ var _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @gewd/markdown/worker-functions */ "../../libs/markdown/worker-functions/index.ts");
-/* harmony import */ var _gewd_markdown_contracts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @gewd/markdown/contracts */ "../../libs/markdown/contracts/index.ts");
-
-
-
-
-
-
-
-const renderer = new marked__WEBPACK_IMPORTED_MODULE_2__["Renderer"]();
-const oldCodeRenderer = renderer.code;
-renderer.code = function (code, language, isEscaped) {
-    if (_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["mermaidRegex"].test(language)) {
-        return `<div class="mermaid">${language}\n${code}</div>`;
-    }
-    return oldCodeRenderer.call(this, code, language, isEscaped);
-};
-renderer.link = _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["linkRendererWithFavIcon"];
-let currentConfigObject = {
-    prism: _gewd_markdown_contracts__WEBPACK_IMPORTED_MODULE_6__["DEFAULT_PRISM_OPTIONS"]
-};
-const lazyPrism = _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__["Lazy"].create(() => __webpack_require__.e(/*! import() | prismjs */ "prismjs").then(__webpack_require__.t.bind(null, /*! prismjs */ "../../node_modules/prismjs/prism.js", 7)));
-const lazyEmoji = _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__["Lazy"].create(() => __webpack_require__.e(/*! import() | gewd-markdown-emoji-map */ "gewd-markdown-emoji-map").then(__webpack_require__.bind(null, /*! @gewd/markdown/emoji-map */ "../../libs/markdown/emoji-map/index.ts")));
-// apply changes to marked
-marked__WEBPACK_IMPORTED_MODULE_2__["setOptions"]({
-    // needed for mermaid
-    renderer,
-    // highlight override for prismjs
-    highlight: function (code, lang, callback) {
-        // if it is a mermaid tag, don't need to go through prism it
-        // also for code blocks without a language
-        if (!lang || _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["mermaidRegex"].test(lang)) {
-            callback(undefined, code);
-            return;
-        }
-        Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["highlightCode"])(lazyPrism, lang, code, currentConfigObject.prism, importScripts)
-            .then(highlightedCode => {
-            callback(undefined, highlightedCode);
-        });
-    }
-});
-const workerMethods = {
-    name: 'marked',
-    init: config => {
-        currentConfigObject = config;
-    },
-    initPrism(options) {
-    },
-    compile: input => new Promise((resolve, reject) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
-        if (!input) {
-            resolve('');
-            return;
-        }
-        if (_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["emojiRegex"].test(input)) {
-            // load emoji-map
-            const { EMOJI_MAP, colonToUnicode } = yield lazyEmoji.getValue();
-            input = Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["checkAndReplaceToUnicodeChar"])(input, EMOJI_MAP, colonToUnicode);
-        }
-        marked__WEBPACK_IMPORTED_MODULE_2__(input, {
-        // aditional marked config, also enables highlight callback
-        }, (err, result) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            // extract?^^
-            function resolveCleanMarkup(generatedHTML) {
-                const sanatizedHTML = xss__WEBPACK_IMPORTED_MODULE_3__["filterXSS"](generatedHTML, {
-                    whiteList: Object.assign(Object.assign({}, xss__WEBPACK_IMPORTED_MODULE_3__["whiteList"]), { a: ['class', 'title', 'href'], div: ['class'], span: ['class', 'style'] // prism colors
-                     })
-                });
-                resolve(sanatizedHTML);
-            }
-            resolveCleanMarkup(result);
-        });
-        return;
-    })),
-    highlight: (code, lang) => new Promise((resolve, reject) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
-        if (!code) {
-            resolve('');
-            return;
-        }
-        function resolveCleanMarkup(generatedHTML) {
-            const sanatizedHTML = xss__WEBPACK_IMPORTED_MODULE_3__["filterXSS"](generatedHTML, {
-                whiteList: Object.assign(Object.assign({}, xss__WEBPACK_IMPORTED_MODULE_3__["whiteList"]), { span: ['class', 'style'] // prism colors
-                 })
-            });
-            resolve(sanatizedHTML);
-        }
-        Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["highlightCode"])(lazyPrism, lang, code, currentConfigObject.prism, importScripts).then(highlightedCode => {
-            resolveCleanMarkup(highlightedCode);
-        });
-        return;
-    }))
-};
-Object(comlink__WEBPACK_IMPORTED_MODULE_1__["expose"])(workerMethods);
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/utils/index.ts":
-/*!****************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/utils/index.ts ***!
-  \****************************************************************/
-/*! exports provided: Lazy, simpleHash */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "../../libs/markdown/utils/public_api.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["Lazy"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["simpleHash"]; });
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/utils/lazy.ts":
-/*!***************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/utils/lazy.ts ***!
-  \***************************************************************/
-/*! exports provided: Lazy */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return Lazy; });
-class Lazy {
-    constructor(loader) {
-        this.loader = loader;
-    }
-    static create(loader) {
-        return new Lazy(loader);
-    }
-    getValue() {
-        if (this.cachedPromise) {
-            return this.cachedPromise;
-        }
-        return this.cachedPromise = this.loader();
-    }
-}
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/utils/public_api.ts":
-/*!*********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/utils/public_api.ts ***!
-  \*********************************************************************/
-/*! exports provided: Lazy, simpleHash */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lazy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lazy */ "../../libs/markdown/utils/lazy.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return _lazy__WEBPACK_IMPORTED_MODULE_0__["Lazy"]; });
-
-/* harmony import */ var _simple_hash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple-hash */ "../../libs/markdown/utils/simple-hash.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return _simple_hash__WEBPACK_IMPORTED_MODULE_1__["simpleHash"]; });
-
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/utils/simple-hash.ts":
-/*!**********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/utils/simple-hash.ts ***!
-  \**********************************************************************/
-/*! exports provided: simpleHash */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return simpleHash; });
-function simpleHash(str) {
-    let hash = 0, i, chr;
-    if (!str || str.length === 0)
-        return '';
-    for (i = 0; i < str.length; i++) {
-        chr = str.charCodeAt(i);
-        // tslint:disable-next-line:no-bitwise
-        hash = ((hash << 5) - hash) + chr;
-        // tslint:disable-next-line:no-bitwise
-        hash |= 0; // Convert to 32bit integer
-    }
-    return hash.toString(16);
-}
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/worker-functions/emoji.functions.ts":
-/*!*************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/worker-functions/emoji.functions.ts ***!
-  \*************************************************************************************/
-/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return emojiRegex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return mermaidRegex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return checkAndReplaceToUnicodeChar; });
-const emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
-const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
-const emojiCache = {};
-function checkAndReplaceToUnicodeChar(rawMarkdown, EMOJI_MAP, convertKeyToUnicode, cache = false) {
-    return rawMarkdown.replace(emojiRegex, (source, colonValue) => {
-        // not exists, just return it
-        if (!EMOJI_MAP[colonValue]) {
-            return source;
-        }
-        if (cache && emojiCache[colonValue]) {
-            return emojiCache[colonValue];
-        }
-        const emojiUnicodeStr = EMOJI_MAP[colonValue];
-        const converted = convertKeyToUnicode(emojiUnicodeStr);
-        if (cache) {
-            return emojiCache[colonValue] = converted;
-        }
-        return converted;
-    });
-}
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/worker-functions/index.ts":
-/*!***************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/worker-functions/index.ts ***!
-  \***************************************************************************/
-/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "../../libs/markdown/worker-functions/public_api.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["emojiRegex"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["mermaidRegex"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["checkAndReplaceToUnicodeChar"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "highlightCode", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["highlightCode"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["linkRendererTargetBlank"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["get_favicon"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["linkRendererWithFavIcon"]; });
-
-
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/worker-functions/marked.functions.ts":
-/*!**************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/worker-functions/marked.functions.ts ***!
-  \**************************************************************************************/
-/*! exports provided: linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return linkRendererTargetBlank; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return get_favicon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return linkRendererWithFavIcon; });
-function linkRendererTargetBlank(href, title, text) {
-    return `<a target="_blank" href="${href}" title="${title}">${text}</a>`;
-}
-// original code from https://stackoverflow.com/a/46838553
-// changed to use href/text separately
-function get_favicon(href, text) {
-    // return replacement text here...
-    return `<img src="https://www.google.com/s2/favicons?domain=${href}">${text}`;
-}
-function linkRendererWithFavIcon(href, title, text) {
-    try {
-        var prot = decodeURIComponent(unescape(href))
-            .replace(/[^\w:]/g, '')
-            .toLowerCase();
-    }
-    catch (e) {
-        return '';
-    }
-    if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
-        return '';
-    }
-    const hasImage = text.includes('<img');
-    const withFavIcon = !href.startsWith('./');
-    const newLink = [];
-    newLink.push(`<a href="${href}"`);
-    if (hasImage) {
-        newLink.push(' class="has-image"');
-    }
-    if (!hasImage && withFavIcon) {
-        console.info(newLink, href);
-        newLink.push(' class="with-favicon"');
-    }
-    if (title) {
-        newLink.push(` title="${title}"`);
-    }
-    newLink.push('>');
-    if (hasImage || !withFavIcon) {
-        newLink.push(text);
-    }
-    else {
-        newLink.push(get_favicon(href, text));
-    }
-    newLink.push('</a>');
-    return newLink.join('');
-}
-
-
-/***/ }),
-
-/***/ "../../libs/markdown/worker-functions/prism.functions.ts":
-/*!*************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/worker-functions/prism.functions.ts ***!
-  \*************************************************************************************/
+/***/ "AzHr":
+/*!***********************************************************!*\
+  !*** ./libs/markdown/worker-functions/prism.functions.ts ***!
+  \***********************************************************/
 /*! exports provided: highlightCode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "highlightCode", function() { return highlightCode; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 
 const markdownCodeRegex = /```([a-z].*)\n([\s\S]*?)```/g;
 /* Prism Config/Importer */
@@ -605,1075 +315,37 @@ function highlightCode(prismInstanceAsync, lang, code, prismOption, importScript
 
 /***/ }),
 
-/***/ "../../libs/markdown/worker-functions/public_api.ts":
-/*!********************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/libs/markdown/worker-functions/public_api.ts ***!
-  \********************************************************************************/
-/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
+/***/ "B+Hh":
+/*!********************************************!*\
+  !*** ./libs/markdown/utils/simple-hash.ts ***!
+  \********************************************/
+/*! exports provided: simpleHash */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _emoji_functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emoji.functions */ "../../libs/markdown/worker-functions/emoji.functions.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["emojiRegex"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["mermaidRegex"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["checkAndReplaceToUnicodeChar"]; });
-
-/* harmony import */ var _prism_functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prism.functions */ "../../libs/markdown/worker-functions/prism.functions.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "highlightCode", function() { return _prism_functions__WEBPACK_IMPORTED_MODULE_1__["highlightCode"]; });
-
-/* harmony import */ var _marked_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./marked.functions */ "../../libs/markdown/worker-functions/marked.functions.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["linkRendererTargetBlank"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["get_favicon"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["linkRendererWithFavIcon"]; });
-
-
-
-
-
-
-/***/ }),
-
-/***/ "../../node_modules/@ngtools/webpack/src/index.js!./src/app/markdown.worker.ts":
-/*!**************************************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/@ngtools/webpack/src!./src/app/markdown.worker.ts ***!
-  \**************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _gewd_markdown_marked_prism_worker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @gewd/markdown/marked.prism.worker */ "../../libs/markdown/marked.prism.worker.ts");
-// tslint:disable-next-line:nx-enforce-module-boundaries
-
-
-
-/***/ }),
-
-/***/ "../../node_modules/comlink/dist/esm/comlink.mjs":
-/*!*****************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/comlink/dist/esm/comlink.mjs ***!
-  \*****************************************************************************/
-/*! exports provided: createEndpoint, expose, proxy, proxyMarker, releaseProxy, transfer, transferHandlers, windowEndpoint, wrap */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEndpoint", function() { return createEndpoint; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "expose", function() { return expose; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "proxy", function() { return proxy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "proxyMarker", function() { return proxyMarker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "releaseProxy", function() { return releaseProxy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transfer", function() { return transfer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transferHandlers", function() { return transferHandlers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowEndpoint", function() { return windowEndpoint; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrap", function() { return wrap; });
-/**
- * Copyright 2019 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const proxyMarker = Symbol("Comlink.proxy");
-const createEndpoint = Symbol("Comlink.endpoint");
-const releaseProxy = Symbol("Comlink.releaseProxy");
-const throwSet = new WeakSet();
-const transferHandlers = new Map([
-    [
-        "proxy",
-        {
-            canHandle: obj => obj && obj[proxyMarker],
-            serialize(obj) {
-                const { port1, port2 } = new MessageChannel();
-                expose(obj, port1);
-                return [port2, [port2]];
-            },
-            deserialize: (port) => {
-                port.start();
-                return wrap(port);
-            }
-        }
-    ],
-    [
-        "throw",
-        {
-            canHandle: obj => throwSet.has(obj),
-            serialize(obj) {
-                const isError = obj instanceof Error;
-                let serialized = obj;
-                if (isError) {
-                    serialized = {
-                        isError,
-                        message: obj.message,
-                        stack: obj.stack
-                    };
-                }
-                return [serialized, []];
-            },
-            deserialize(obj) {
-                if (obj.isError) {
-                    throw Object.assign(new Error(), obj);
-                }
-                throw obj;
-            }
-        }
-    ]
-]);
-function expose(obj, ep = self) {
-    ep.addEventListener("message", function callback(ev) {
-        if (!ev || !ev.data) {
-            return;
-        }
-        const { id, type, path } = Object.assign({ path: [] }, ev.data);
-        const argumentList = (ev.data.argumentList || []).map(fromWireValue);
-        let returnValue;
-        try {
-            const parent = path.slice(0, -1).reduce((obj, prop) => obj[prop], obj);
-            const rawValue = path.reduce((obj, prop) => obj[prop], obj);
-            switch (type) {
-                case 0 /* GET */:
-                    {
-                        returnValue = rawValue;
-                    }
-                    break;
-                case 1 /* SET */:
-                    {
-                        parent[path.slice(-1)[0]] = fromWireValue(ev.data.value);
-                        returnValue = true;
-                    }
-                    break;
-                case 2 /* APPLY */:
-                    {
-                        returnValue = rawValue.apply(parent, argumentList);
-                    }
-                    break;
-                case 3 /* CONSTRUCT */:
-                    {
-                        const value = new rawValue(...argumentList);
-                        returnValue = proxy(value);
-                    }
-                    break;
-                case 4 /* ENDPOINT */:
-                    {
-                        const { port1, port2 } = new MessageChannel();
-                        expose(obj, port2);
-                        returnValue = transfer(port1, [port1]);
-                    }
-                    break;
-                case 5 /* RELEASE */:
-                    {
-                        returnValue = undefined;
-                    }
-                    break;
-            }
-        }
-        catch (e) {
-            returnValue = e;
-            throwSet.add(e);
-        }
-        Promise.resolve(returnValue)
-            .catch(e => {
-            throwSet.add(e);
-            return e;
-        })
-            .then(returnValue => {
-            const [wireValue, transferables] = toWireValue(returnValue);
-            ep.postMessage(Object.assign(Object.assign({}, wireValue), { id }), transferables);
-            if (type === 5 /* RELEASE */) {
-                // detach and deactive after sending release response above.
-                ep.removeEventListener("message", callback);
-                closeEndPoint(ep);
-            }
-        });
-    });
-    if (ep.start) {
-        ep.start();
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return simpleHash; });
+function simpleHash(str) {
+    let hash = 0, i, chr;
+    if (!str || str.length === 0)
+        return '';
+    for (i = 0; i < str.length; i++) {
+        chr = str.charCodeAt(i);
+        // tslint:disable-next-line:no-bitwise
+        hash = ((hash << 5) - hash) + chr;
+        // tslint:disable-next-line:no-bitwise
+        hash |= 0; // Convert to 32bit integer
     }
-}
-function isMessagePort(endpoint) {
-    return endpoint.constructor.name === "MessagePort";
-}
-function closeEndPoint(endpoint) {
-    if (isMessagePort(endpoint))
-        endpoint.close();
-}
-function wrap(ep, target) {
-    return createProxy(ep, [], target);
-}
-function throwIfProxyReleased(isReleased) {
-    if (isReleased) {
-        throw new Error("Proxy has been released and is not useable");
-    }
-}
-function createProxy(ep, path = [], target = function () { }) {
-    let isProxyReleased = false;
-    const proxy = new Proxy(target, {
-        get(_target, prop) {
-            throwIfProxyReleased(isProxyReleased);
-            if (prop === releaseProxy) {
-                return () => {
-                    return requestResponseMessage(ep, {
-                        type: 5 /* RELEASE */,
-                        path: path.map(p => p.toString())
-                    }).then(() => {
-                        closeEndPoint(ep);
-                        isProxyReleased = true;
-                    });
-                };
-            }
-            if (prop === "then") {
-                if (path.length === 0) {
-                    return { then: () => proxy };
-                }
-                const r = requestResponseMessage(ep, {
-                    type: 0 /* GET */,
-                    path: path.map(p => p.toString())
-                }).then(fromWireValue);
-                return r.then.bind(r);
-            }
-            return createProxy(ep, [...path, prop]);
-        },
-        set(_target, prop, rawValue) {
-            throwIfProxyReleased(isProxyReleased);
-            // FIXME: ES6 Proxy Handler `set` methods are supposed to return a
-            // boolean. To show good will, we return true asynchronously ¯\_(ツ)_/¯
-            const [value, transferables] = toWireValue(rawValue);
-            return requestResponseMessage(ep, {
-                type: 1 /* SET */,
-                path: [...path, prop].map(p => p.toString()),
-                value
-            }, transferables).then(fromWireValue);
-        },
-        apply(_target, _thisArg, rawArgumentList) {
-            throwIfProxyReleased(isProxyReleased);
-            const last = path[path.length - 1];
-            if (last === createEndpoint) {
-                return requestResponseMessage(ep, {
-                    type: 4 /* ENDPOINT */
-                }).then(fromWireValue);
-            }
-            // We just pretend that `bind()` didn’t happen.
-            if (last === "bind") {
-                return createProxy(ep, path.slice(0, -1));
-            }
-            const [argumentList, transferables] = processArguments(rawArgumentList);
-            return requestResponseMessage(ep, {
-                type: 2 /* APPLY */,
-                path: path.map(p => p.toString()),
-                argumentList
-            }, transferables).then(fromWireValue);
-        },
-        construct(_target, rawArgumentList) {
-            throwIfProxyReleased(isProxyReleased);
-            const [argumentList, transferables] = processArguments(rawArgumentList);
-            return requestResponseMessage(ep, {
-                type: 3 /* CONSTRUCT */,
-                path: path.map(p => p.toString()),
-                argumentList
-            }, transferables).then(fromWireValue);
-        }
-    });
-    return proxy;
-}
-function myFlat(arr) {
-    return Array.prototype.concat.apply([], arr);
-}
-function processArguments(argumentList) {
-    const processed = argumentList.map(toWireValue);
-    return [processed.map(v => v[0]), myFlat(processed.map(v => v[1]))];
-}
-const transferCache = new WeakMap();
-function transfer(obj, transfers) {
-    transferCache.set(obj, transfers);
-    return obj;
-}
-function proxy(obj) {
-    return Object.assign(obj, { [proxyMarker]: true });
-}
-function windowEndpoint(w, context = self, targetOrigin = "*") {
-    return {
-        postMessage: (msg, transferables) => w.postMessage(msg, targetOrigin, transferables),
-        addEventListener: context.addEventListener.bind(context),
-        removeEventListener: context.removeEventListener.bind(context)
-    };
-}
-function toWireValue(value) {
-    for (const [name, handler] of transferHandlers) {
-        if (handler.canHandle(value)) {
-            const [serializedValue, transferables] = handler.serialize(value);
-            return [
-                {
-                    type: 3 /* HANDLER */,
-                    name,
-                    value: serializedValue
-                },
-                transferables
-            ];
-        }
-    }
-    return [
-        {
-            type: 0 /* RAW */,
-            value
-        },
-        transferCache.get(value) || []
-    ];
-}
-function fromWireValue(value) {
-    switch (value.type) {
-        case 3 /* HANDLER */:
-            return transferHandlers.get(value.name).deserialize(value.value);
-        case 0 /* RAW */:
-            return value.value;
-    }
-}
-function requestResponseMessage(ep, msg, transfers) {
-    return new Promise(resolve => {
-        const id = generateUUID();
-        ep.addEventListener("message", function l(ev) {
-            if (!ev.data || !ev.data.id || ev.data.id !== id) {
-                return;
-            }
-            ep.removeEventListener("message", l);
-            resolve(ev.data);
-        });
-        if (ep.start) {
-            ep.start();
-        }
-        ep.postMessage(Object.assign({ id }, msg), transfers);
-    });
-}
-function generateUUID() {
-    return new Array(4)
-        .fill(0)
-        .map(() => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16))
-        .join("-");
-}
-
-
-//# sourceMappingURL=comlink.mjs.map
-
-
-/***/ }),
-
-/***/ "../../node_modules/cssfilter/lib/css.js":
-/*!*********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/cssfilter/lib/css.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * cssfilter
- *
- * @author 老雷<leizongmin@gmail.com>
- */
-
-var DEFAULT = __webpack_require__(/*! ./default */ "../../node_modules/cssfilter/lib/default.js");
-var parseStyle = __webpack_require__(/*! ./parser */ "../../node_modules/cssfilter/lib/parser.js");
-var _ = __webpack_require__(/*! ./util */ "../../node_modules/cssfilter/lib/util.js");
-
-
-/**
- * 返回值是否为空
- *
- * @param {Object} obj
- * @return {Boolean}
- */
-function isNull (obj) {
-  return (obj === undefined || obj === null);
-}
-
-/**
- * 浅拷贝对象
- *
- * @param {Object} obj
- * @return {Object}
- */
-function shallowCopyObject (obj) {
-  var ret = {};
-  for (var i in obj) {
-    ret[i] = obj[i];
-  }
-  return ret;
-}
-
-/**
- * 创建CSS过滤器
- *
- * @param {Object} options
- *   - {Object} whiteList
- *   - {Function} onAttr
- *   - {Function} onIgnoreAttr
- *   - {Function} safeAttrValue
- */
-function FilterCSS (options) {
-  options = shallowCopyObject(options || {});
-  options.whiteList = options.whiteList || DEFAULT.whiteList;
-  options.onAttr = options.onAttr || DEFAULT.onAttr;
-  options.onIgnoreAttr = options.onIgnoreAttr || DEFAULT.onIgnoreAttr;
-  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
-  this.options = options;
-}
-
-FilterCSS.prototype.process = function (css) {
-  // 兼容各种奇葩输入
-  css = css || '';
-  css = css.toString();
-  if (!css) return '';
-
-  var me = this;
-  var options = me.options;
-  var whiteList = options.whiteList;
-  var onAttr = options.onAttr;
-  var onIgnoreAttr = options.onIgnoreAttr;
-  var safeAttrValue = options.safeAttrValue;
-
-  var retCSS = parseStyle(css, function (sourcePosition, position, name, value, source) {
-
-    var check = whiteList[name];
-    var isWhite = false;
-    if (check === true) isWhite = check;
-    else if (typeof check === 'function') isWhite = check(value);
-    else if (check instanceof RegExp) isWhite = check.test(value);
-    if (isWhite !== true) isWhite = false;
-
-    // 如果过滤后 value 为空则直接忽略
-    value = safeAttrValue(name, value);
-    if (!value) return;
-
-    var opts = {
-      position: position,
-      sourcePosition: sourcePosition,
-      source: source,
-      isWhite: isWhite
-    };
-
-    if (isWhite) {
-
-      var ret = onAttr(name, value, opts);
-      if (isNull(ret)) {
-        return name + ':' + value;
-      } else {
-        return ret;
-      }
-
-    } else {
-
-      var ret = onIgnoreAttr(name, value, opts);
-      if (!isNull(ret)) {
-        return ret;
-      }
-
-    }
-  });
-
-  return retCSS;
-};
-
-
-module.exports = FilterCSS;
-
-
-/***/ }),
-
-/***/ "../../node_modules/cssfilter/lib/default.js":
-/*!*************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/cssfilter/lib/default.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/**
- * cssfilter
- *
- * @author 老雷<leizongmin@gmail.com>
- */
-
-function getDefaultWhiteList () {
-  // 白名单值说明：
-  // true: 允许该属性
-  // Function: function (val) { } 返回true表示允许该属性，其他值均表示不允许
-  // RegExp: regexp.test(val) 返回true表示允许该属性，其他值均表示不允许
-  // 除上面列出的值外均表示不允许
-  var whiteList = {};
-
-  whiteList['align-content'] = false; // default: auto
-  whiteList['align-items'] = false; // default: auto
-  whiteList['align-self'] = false; // default: auto
-  whiteList['alignment-adjust'] = false; // default: auto
-  whiteList['alignment-baseline'] = false; // default: baseline
-  whiteList['all'] = false; // default: depending on individual properties
-  whiteList['anchor-point'] = false; // default: none
-  whiteList['animation'] = false; // default: depending on individual properties
-  whiteList['animation-delay'] = false; // default: 0
-  whiteList['animation-direction'] = false; // default: normal
-  whiteList['animation-duration'] = false; // default: 0
-  whiteList['animation-fill-mode'] = false; // default: none
-  whiteList['animation-iteration-count'] = false; // default: 1
-  whiteList['animation-name'] = false; // default: none
-  whiteList['animation-play-state'] = false; // default: running
-  whiteList['animation-timing-function'] = false; // default: ease
-  whiteList['azimuth'] = false; // default: center
-  whiteList['backface-visibility'] = false; // default: visible
-  whiteList['background'] = true; // default: depending on individual properties
-  whiteList['background-attachment'] = true; // default: scroll
-  whiteList['background-clip'] = true; // default: border-box
-  whiteList['background-color'] = true; // default: transparent
-  whiteList['background-image'] = true; // default: none
-  whiteList['background-origin'] = true; // default: padding-box
-  whiteList['background-position'] = true; // default: 0% 0%
-  whiteList['background-repeat'] = true; // default: repeat
-  whiteList['background-size'] = true; // default: auto
-  whiteList['baseline-shift'] = false; // default: baseline
-  whiteList['binding'] = false; // default: none
-  whiteList['bleed'] = false; // default: 6pt
-  whiteList['bookmark-label'] = false; // default: content()
-  whiteList['bookmark-level'] = false; // default: none
-  whiteList['bookmark-state'] = false; // default: open
-  whiteList['border'] = true; // default: depending on individual properties
-  whiteList['border-bottom'] = true; // default: depending on individual properties
-  whiteList['border-bottom-color'] = true; // default: current color
-  whiteList['border-bottom-left-radius'] = true; // default: 0
-  whiteList['border-bottom-right-radius'] = true; // default: 0
-  whiteList['border-bottom-style'] = true; // default: none
-  whiteList['border-bottom-width'] = true; // default: medium
-  whiteList['border-collapse'] = true; // default: separate
-  whiteList['border-color'] = true; // default: depending on individual properties
-  whiteList['border-image'] = true; // default: none
-  whiteList['border-image-outset'] = true; // default: 0
-  whiteList['border-image-repeat'] = true; // default: stretch
-  whiteList['border-image-slice'] = true; // default: 100%
-  whiteList['border-image-source'] = true; // default: none
-  whiteList['border-image-width'] = true; // default: 1
-  whiteList['border-left'] = true; // default: depending on individual properties
-  whiteList['border-left-color'] = true; // default: current color
-  whiteList['border-left-style'] = true; // default: none
-  whiteList['border-left-width'] = true; // default: medium
-  whiteList['border-radius'] = true; // default: 0
-  whiteList['border-right'] = true; // default: depending on individual properties
-  whiteList['border-right-color'] = true; // default: current color
-  whiteList['border-right-style'] = true; // default: none
-  whiteList['border-right-width'] = true; // default: medium
-  whiteList['border-spacing'] = true; // default: 0
-  whiteList['border-style'] = true; // default: depending on individual properties
-  whiteList['border-top'] = true; // default: depending on individual properties
-  whiteList['border-top-color'] = true; // default: current color
-  whiteList['border-top-left-radius'] = true; // default: 0
-  whiteList['border-top-right-radius'] = true; // default: 0
-  whiteList['border-top-style'] = true; // default: none
-  whiteList['border-top-width'] = true; // default: medium
-  whiteList['border-width'] = true; // default: depending on individual properties
-  whiteList['bottom'] = false; // default: auto
-  whiteList['box-decoration-break'] = true; // default: slice
-  whiteList['box-shadow'] = true; // default: none
-  whiteList['box-sizing'] = true; // default: content-box
-  whiteList['box-snap'] = true; // default: none
-  whiteList['box-suppress'] = true; // default: show
-  whiteList['break-after'] = true; // default: auto
-  whiteList['break-before'] = true; // default: auto
-  whiteList['break-inside'] = true; // default: auto
-  whiteList['caption-side'] = false; // default: top
-  whiteList['chains'] = false; // default: none
-  whiteList['clear'] = true; // default: none
-  whiteList['clip'] = false; // default: auto
-  whiteList['clip-path'] = false; // default: none
-  whiteList['clip-rule'] = false; // default: nonzero
-  whiteList['color'] = true; // default: implementation dependent
-  whiteList['color-interpolation-filters'] = true; // default: auto
-  whiteList['column-count'] = false; // default: auto
-  whiteList['column-fill'] = false; // default: balance
-  whiteList['column-gap'] = false; // default: normal
-  whiteList['column-rule'] = false; // default: depending on individual properties
-  whiteList['column-rule-color'] = false; // default: current color
-  whiteList['column-rule-style'] = false; // default: medium
-  whiteList['column-rule-width'] = false; // default: medium
-  whiteList['column-span'] = false; // default: none
-  whiteList['column-width'] = false; // default: auto
-  whiteList['columns'] = false; // default: depending on individual properties
-  whiteList['contain'] = false; // default: none
-  whiteList['content'] = false; // default: normal
-  whiteList['counter-increment'] = false; // default: none
-  whiteList['counter-reset'] = false; // default: none
-  whiteList['counter-set'] = false; // default: none
-  whiteList['crop'] = false; // default: auto
-  whiteList['cue'] = false; // default: depending on individual properties
-  whiteList['cue-after'] = false; // default: none
-  whiteList['cue-before'] = false; // default: none
-  whiteList['cursor'] = false; // default: auto
-  whiteList['direction'] = false; // default: ltr
-  whiteList['display'] = true; // default: depending on individual properties
-  whiteList['display-inside'] = true; // default: auto
-  whiteList['display-list'] = true; // default: none
-  whiteList['display-outside'] = true; // default: inline-level
-  whiteList['dominant-baseline'] = false; // default: auto
-  whiteList['elevation'] = false; // default: level
-  whiteList['empty-cells'] = false; // default: show
-  whiteList['filter'] = false; // default: none
-  whiteList['flex'] = false; // default: depending on individual properties
-  whiteList['flex-basis'] = false; // default: auto
-  whiteList['flex-direction'] = false; // default: row
-  whiteList['flex-flow'] = false; // default: depending on individual properties
-  whiteList['flex-grow'] = false; // default: 0
-  whiteList['flex-shrink'] = false; // default: 1
-  whiteList['flex-wrap'] = false; // default: nowrap
-  whiteList['float'] = false; // default: none
-  whiteList['float-offset'] = false; // default: 0 0
-  whiteList['flood-color'] = false; // default: black
-  whiteList['flood-opacity'] = false; // default: 1
-  whiteList['flow-from'] = false; // default: none
-  whiteList['flow-into'] = false; // default: none
-  whiteList['font'] = true; // default: depending on individual properties
-  whiteList['font-family'] = true; // default: implementation dependent
-  whiteList['font-feature-settings'] = true; // default: normal
-  whiteList['font-kerning'] = true; // default: auto
-  whiteList['font-language-override'] = true; // default: normal
-  whiteList['font-size'] = true; // default: medium
-  whiteList['font-size-adjust'] = true; // default: none
-  whiteList['font-stretch'] = true; // default: normal
-  whiteList['font-style'] = true; // default: normal
-  whiteList['font-synthesis'] = true; // default: weight style
-  whiteList['font-variant'] = true; // default: normal
-  whiteList['font-variant-alternates'] = true; // default: normal
-  whiteList['font-variant-caps'] = true; // default: normal
-  whiteList['font-variant-east-asian'] = true; // default: normal
-  whiteList['font-variant-ligatures'] = true; // default: normal
-  whiteList['font-variant-numeric'] = true; // default: normal
-  whiteList['font-variant-position'] = true; // default: normal
-  whiteList['font-weight'] = true; // default: normal
-  whiteList['grid'] = false; // default: depending on individual properties
-  whiteList['grid-area'] = false; // default: depending on individual properties
-  whiteList['grid-auto-columns'] = false; // default: auto
-  whiteList['grid-auto-flow'] = false; // default: none
-  whiteList['grid-auto-rows'] = false; // default: auto
-  whiteList['grid-column'] = false; // default: depending on individual properties
-  whiteList['grid-column-end'] = false; // default: auto
-  whiteList['grid-column-start'] = false; // default: auto
-  whiteList['grid-row'] = false; // default: depending on individual properties
-  whiteList['grid-row-end'] = false; // default: auto
-  whiteList['grid-row-start'] = false; // default: auto
-  whiteList['grid-template'] = false; // default: depending on individual properties
-  whiteList['grid-template-areas'] = false; // default: none
-  whiteList['grid-template-columns'] = false; // default: none
-  whiteList['grid-template-rows'] = false; // default: none
-  whiteList['hanging-punctuation'] = false; // default: none
-  whiteList['height'] = true; // default: auto
-  whiteList['hyphens'] = false; // default: manual
-  whiteList['icon'] = false; // default: auto
-  whiteList['image-orientation'] = false; // default: auto
-  whiteList['image-resolution'] = false; // default: normal
-  whiteList['ime-mode'] = false; // default: auto
-  whiteList['initial-letters'] = false; // default: normal
-  whiteList['inline-box-align'] = false; // default: last
-  whiteList['justify-content'] = false; // default: auto
-  whiteList['justify-items'] = false; // default: auto
-  whiteList['justify-self'] = false; // default: auto
-  whiteList['left'] = false; // default: auto
-  whiteList['letter-spacing'] = true; // default: normal
-  whiteList['lighting-color'] = true; // default: white
-  whiteList['line-box-contain'] = false; // default: block inline replaced
-  whiteList['line-break'] = false; // default: auto
-  whiteList['line-grid'] = false; // default: match-parent
-  whiteList['line-height'] = false; // default: normal
-  whiteList['line-snap'] = false; // default: none
-  whiteList['line-stacking'] = false; // default: depending on individual properties
-  whiteList['line-stacking-ruby'] = false; // default: exclude-ruby
-  whiteList['line-stacking-shift'] = false; // default: consider-shifts
-  whiteList['line-stacking-strategy'] = false; // default: inline-line-height
-  whiteList['list-style'] = true; // default: depending on individual properties
-  whiteList['list-style-image'] = true; // default: none
-  whiteList['list-style-position'] = true; // default: outside
-  whiteList['list-style-type'] = true; // default: disc
-  whiteList['margin'] = true; // default: depending on individual properties
-  whiteList['margin-bottom'] = true; // default: 0
-  whiteList['margin-left'] = true; // default: 0
-  whiteList['margin-right'] = true; // default: 0
-  whiteList['margin-top'] = true; // default: 0
-  whiteList['marker-offset'] = false; // default: auto
-  whiteList['marker-side'] = false; // default: list-item
-  whiteList['marks'] = false; // default: none
-  whiteList['mask'] = false; // default: border-box
-  whiteList['mask-box'] = false; // default: see individual properties
-  whiteList['mask-box-outset'] = false; // default: 0
-  whiteList['mask-box-repeat'] = false; // default: stretch
-  whiteList['mask-box-slice'] = false; // default: 0 fill
-  whiteList['mask-box-source'] = false; // default: none
-  whiteList['mask-box-width'] = false; // default: auto
-  whiteList['mask-clip'] = false; // default: border-box
-  whiteList['mask-image'] = false; // default: none
-  whiteList['mask-origin'] = false; // default: border-box
-  whiteList['mask-position'] = false; // default: center
-  whiteList['mask-repeat'] = false; // default: no-repeat
-  whiteList['mask-size'] = false; // default: border-box
-  whiteList['mask-source-type'] = false; // default: auto
-  whiteList['mask-type'] = false; // default: luminance
-  whiteList['max-height'] = true; // default: none
-  whiteList['max-lines'] = false; // default: none
-  whiteList['max-width'] = true; // default: none
-  whiteList['min-height'] = true; // default: 0
-  whiteList['min-width'] = true; // default: 0
-  whiteList['move-to'] = false; // default: normal
-  whiteList['nav-down'] = false; // default: auto
-  whiteList['nav-index'] = false; // default: auto
-  whiteList['nav-left'] = false; // default: auto
-  whiteList['nav-right'] = false; // default: auto
-  whiteList['nav-up'] = false; // default: auto
-  whiteList['object-fit'] = false; // default: fill
-  whiteList['object-position'] = false; // default: 50% 50%
-  whiteList['opacity'] = false; // default: 1
-  whiteList['order'] = false; // default: 0
-  whiteList['orphans'] = false; // default: 2
-  whiteList['outline'] = false; // default: depending on individual properties
-  whiteList['outline-color'] = false; // default: invert
-  whiteList['outline-offset'] = false; // default: 0
-  whiteList['outline-style'] = false; // default: none
-  whiteList['outline-width'] = false; // default: medium
-  whiteList['overflow'] = false; // default: depending on individual properties
-  whiteList['overflow-wrap'] = false; // default: normal
-  whiteList['overflow-x'] = false; // default: visible
-  whiteList['overflow-y'] = false; // default: visible
-  whiteList['padding'] = true; // default: depending on individual properties
-  whiteList['padding-bottom'] = true; // default: 0
-  whiteList['padding-left'] = true; // default: 0
-  whiteList['padding-right'] = true; // default: 0
-  whiteList['padding-top'] = true; // default: 0
-  whiteList['page'] = false; // default: auto
-  whiteList['page-break-after'] = false; // default: auto
-  whiteList['page-break-before'] = false; // default: auto
-  whiteList['page-break-inside'] = false; // default: auto
-  whiteList['page-policy'] = false; // default: start
-  whiteList['pause'] = false; // default: implementation dependent
-  whiteList['pause-after'] = false; // default: implementation dependent
-  whiteList['pause-before'] = false; // default: implementation dependent
-  whiteList['perspective'] = false; // default: none
-  whiteList['perspective-origin'] = false; // default: 50% 50%
-  whiteList['pitch'] = false; // default: medium
-  whiteList['pitch-range'] = false; // default: 50
-  whiteList['play-during'] = false; // default: auto
-  whiteList['position'] = false; // default: static
-  whiteList['presentation-level'] = false; // default: 0
-  whiteList['quotes'] = false; // default: text
-  whiteList['region-fragment'] = false; // default: auto
-  whiteList['resize'] = false; // default: none
-  whiteList['rest'] = false; // default: depending on individual properties
-  whiteList['rest-after'] = false; // default: none
-  whiteList['rest-before'] = false; // default: none
-  whiteList['richness'] = false; // default: 50
-  whiteList['right'] = false; // default: auto
-  whiteList['rotation'] = false; // default: 0
-  whiteList['rotation-point'] = false; // default: 50% 50%
-  whiteList['ruby-align'] = false; // default: auto
-  whiteList['ruby-merge'] = false; // default: separate
-  whiteList['ruby-position'] = false; // default: before
-  whiteList['shape-image-threshold'] = false; // default: 0.0
-  whiteList['shape-outside'] = false; // default: none
-  whiteList['shape-margin'] = false; // default: 0
-  whiteList['size'] = false; // default: auto
-  whiteList['speak'] = false; // default: auto
-  whiteList['speak-as'] = false; // default: normal
-  whiteList['speak-header'] = false; // default: once
-  whiteList['speak-numeral'] = false; // default: continuous
-  whiteList['speak-punctuation'] = false; // default: none
-  whiteList['speech-rate'] = false; // default: medium
-  whiteList['stress'] = false; // default: 50
-  whiteList['string-set'] = false; // default: none
-  whiteList['tab-size'] = false; // default: 8
-  whiteList['table-layout'] = false; // default: auto
-  whiteList['text-align'] = true; // default: start
-  whiteList['text-align-last'] = true; // default: auto
-  whiteList['text-combine-upright'] = true; // default: none
-  whiteList['text-decoration'] = true; // default: none
-  whiteList['text-decoration-color'] = true; // default: currentColor
-  whiteList['text-decoration-line'] = true; // default: none
-  whiteList['text-decoration-skip'] = true; // default: objects
-  whiteList['text-decoration-style'] = true; // default: solid
-  whiteList['text-emphasis'] = true; // default: depending on individual properties
-  whiteList['text-emphasis-color'] = true; // default: currentColor
-  whiteList['text-emphasis-position'] = true; // default: over right
-  whiteList['text-emphasis-style'] = true; // default: none
-  whiteList['text-height'] = true; // default: auto
-  whiteList['text-indent'] = true; // default: 0
-  whiteList['text-justify'] = true; // default: auto
-  whiteList['text-orientation'] = true; // default: mixed
-  whiteList['text-overflow'] = true; // default: clip
-  whiteList['text-shadow'] = true; // default: none
-  whiteList['text-space-collapse'] = true; // default: collapse
-  whiteList['text-transform'] = true; // default: none
-  whiteList['text-underline-position'] = true; // default: auto
-  whiteList['text-wrap'] = true; // default: normal
-  whiteList['top'] = false; // default: auto
-  whiteList['transform'] = false; // default: none
-  whiteList['transform-origin'] = false; // default: 50% 50% 0
-  whiteList['transform-style'] = false; // default: flat
-  whiteList['transition'] = false; // default: depending on individual properties
-  whiteList['transition-delay'] = false; // default: 0s
-  whiteList['transition-duration'] = false; // default: 0s
-  whiteList['transition-property'] = false; // default: all
-  whiteList['transition-timing-function'] = false; // default: ease
-  whiteList['unicode-bidi'] = false; // default: normal
-  whiteList['vertical-align'] = false; // default: baseline
-  whiteList['visibility'] = false; // default: visible
-  whiteList['voice-balance'] = false; // default: center
-  whiteList['voice-duration'] = false; // default: auto
-  whiteList['voice-family'] = false; // default: implementation dependent
-  whiteList['voice-pitch'] = false; // default: medium
-  whiteList['voice-range'] = false; // default: medium
-  whiteList['voice-rate'] = false; // default: normal
-  whiteList['voice-stress'] = false; // default: normal
-  whiteList['voice-volume'] = false; // default: medium
-  whiteList['volume'] = false; // default: medium
-  whiteList['white-space'] = false; // default: normal
-  whiteList['widows'] = false; // default: 2
-  whiteList['width'] = true; // default: auto
-  whiteList['will-change'] = false; // default: auto
-  whiteList['word-break'] = true; // default: normal
-  whiteList['word-spacing'] = true; // default: normal
-  whiteList['word-wrap'] = true; // default: normal
-  whiteList['wrap-flow'] = false; // default: auto
-  whiteList['wrap-through'] = false; // default: wrap
-  whiteList['writing-mode'] = false; // default: horizontal-tb
-  whiteList['z-index'] = false; // default: auto
-
-  return whiteList;
-}
-
-
-/**
- * 匹配到白名单上的一个属性时
- *
- * @param {String} name
- * @param {String} value
- * @param {Object} options
- * @return {String}
- */
-function onAttr (name, value, options) {
-  // do nothing
-}
-
-/**
- * 匹配到不在白名单上的一个属性时
- *
- * @param {String} name
- * @param {String} value
- * @param {Object} options
- * @return {String}
- */
-function onIgnoreAttr (name, value, options) {
-  // do nothing
-}
-
-var REGEXP_URL_JAVASCRIPT = /javascript\s*\:/img;
-
-/**
- * 过滤属性值
- *
- * @param {String} name
- * @param {String} value
- * @return {String}
- */
-function safeAttrValue(name, value) {
-  if (REGEXP_URL_JAVASCRIPT.test(value)) return '';
-  return value;
-}
-
-
-exports.whiteList = getDefaultWhiteList();
-exports.getDefaultWhiteList = getDefaultWhiteList;
-exports.onAttr = onAttr;
-exports.onIgnoreAttr = onIgnoreAttr;
-exports.safeAttrValue = safeAttrValue;
-
-
-/***/ }),
-
-/***/ "../../node_modules/cssfilter/lib/index.js":
-/*!***********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/cssfilter/lib/index.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * cssfilter
- *
- * @author 老雷<leizongmin@gmail.com>
- */
-
-var DEFAULT = __webpack_require__(/*! ./default */ "../../node_modules/cssfilter/lib/default.js");
-var FilterCSS = __webpack_require__(/*! ./css */ "../../node_modules/cssfilter/lib/css.js");
-
-
-/**
- * XSS过滤
- *
- * @param {String} css 要过滤的CSS代码
- * @param {Object} options 选项：whiteList, onAttr, onIgnoreAttr
- * @return {String}
- */
-function filterCSS (html, options) {
-  var xss = new FilterCSS(options);
-  return xss.process(html);
-}
-
-
-// 输出
-exports = module.exports = filterCSS;
-exports.FilterCSS = FilterCSS;
-for (var i in DEFAULT) exports[i] = DEFAULT[i];
-
-// 在浏览器端使用
-if (typeof window !== 'undefined') {
-  window.filterCSS = module.exports;
+    return hash.toString(16);
 }
 
 
 /***/ }),
 
-/***/ "../../node_modules/cssfilter/lib/parser.js":
-/*!************************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/cssfilter/lib/parser.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * cssfilter
- *
- * @author 老雷<leizongmin@gmail.com>
- */
-
-var _ = __webpack_require__(/*! ./util */ "../../node_modules/cssfilter/lib/util.js");
-
-
-/**
- * 解析style
- *
- * @param {String} css
- * @param {Function} onAttr 处理属性的函数
- *   参数格式： function (sourcePosition, position, name, value, source)
- * @return {String}
- */
-function parseStyle (css, onAttr) {
-  css = _.trimRight(css);
-  if (css[css.length - 1] !== ';') css += ';';
-  var cssLength = css.length;
-  var isParenthesisOpen = false;
-  var lastPos = 0;
-  var i = 0;
-  var retCSS = '';
-
-  function addNewAttr () {
-    // 如果没有正常的闭合圆括号，则直接忽略当前属性
-    if (!isParenthesisOpen) {
-      var source = _.trim(css.slice(lastPos, i));
-      var j = source.indexOf(':');
-      if (j !== -1) {
-        var name = _.trim(source.slice(0, j));
-        var value = _.trim(source.slice(j + 1));
-        // 必须有属性名称
-        if (name) {
-          var ret = onAttr(lastPos, retCSS.length, name, value, source);
-          if (ret) retCSS += ret + '; ';
-        }
-      }
-    }
-    lastPos = i + 1;
-  }
-
-  for (; i < cssLength; i++) {
-    var c = css[i];
-    if (c === '/' && css[i + 1] === '*') {
-      // 备注开始
-      var j = css.indexOf('*/', i + 2);
-      // 如果没有正常的备注结束，则后面的部分全部跳过
-      if (j === -1) break;
-      // 直接将当前位置调到备注结尾，并且初始化状态
-      i = j + 1;
-      lastPos = i + 1;
-      isParenthesisOpen = false;
-    } else if (c === '(') {
-      isParenthesisOpen = true;
-    } else if (c === ')') {
-      isParenthesisOpen = false;
-    } else if (c === ';') {
-      if (isParenthesisOpen) {
-        // 在圆括号里面，忽略
-      } else {
-        addNewAttr();
-      }
-    } else if (c === '\n') {
-      addNewAttr();
-    }
-  }
-
-  return _.trim(retCSS);
-}
-
-module.exports = parseStyle;
-
-
-/***/ }),
-
-/***/ "../../node_modules/cssfilter/lib/util.js":
-/*!**********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/cssfilter/lib/util.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  indexOf: function (arr, item) {
-    var i, j;
-    if (Array.prototype.indexOf) {
-      return arr.indexOf(item);
-    }
-    for (i = 0, j = arr.length; i < j; i++) {
-      if (arr[i] === item) {
-        return i;
-      }
-    }
-    return -1;
-  },
-  forEach: function (arr, fn, scope) {
-    var i, j;
-    if (Array.prototype.forEach) {
-      return arr.forEach(fn, scope);
-    }
-    for (i = 0, j = arr.length; i < j; i++) {
-      fn.call(scope, arr[i], i, arr);
-    }
-  },
-  trim: function (str) {
-    if (String.prototype.trim) {
-      return str.trim();
-    }
-    return str.replace(/(^\s*)|(\s*$)/g, '');
-  },
-  trimRight: function (str) {
-    if (String.prototype.trimRight) {
-      return str.trimRight();
-    }
-    return str.replace(/(\s*$)/g, '');
-  }
-};
-
-
-/***/ }),
-
-/***/ "../../node_modules/marked/lib/marked.js":
-/*!*********************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/marked/lib/marked.js ***!
-  \*********************************************************************/
+/***/ "DlQD":
+/*!*******************************************!*\
+  !*** ./node_modules/marked/lib/marked.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4279,11 +2951,1553 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/tslib/tslib.es6.js":
-/*!*******************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/tslib/tslib.es6.js ***!
-  \*******************************************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+/***/ "E8Ja":
+/*!*************************************!*\
+  !*** ./libs/markdown/utils/lazy.ts ***!
+  \*************************************/
+/*! exports provided: Lazy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return Lazy; });
+class Lazy {
+    constructor(loader) {
+        this.loader = loader;
+    }
+    static create(loader) {
+        return new Lazy(loader);
+    }
+    getValue() {
+        if (this.cachedPromise) {
+            return this.cachedPromise;
+        }
+        return this.cachedPromise = this.loader();
+    }
+}
+
+
+/***/ }),
+
+/***/ "GrKN":
+/*!*********************************************!*\
+  !*** ./node_modules/cssfilter/lib/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * cssfilter
+ *
+ * @author 老雷<leizongmin@gmail.com>
+ */
+
+var DEFAULT = __webpack_require__(/*! ./default */ "e8zy");
+var FilterCSS = __webpack_require__(/*! ./css */ "vGzR");
+
+
+/**
+ * XSS过滤
+ *
+ * @param {String} css 要过滤的CSS代码
+ * @param {Object} options 选项：whiteList, onAttr, onIgnoreAttr
+ * @return {String}
+ */
+function filterCSS (html, options) {
+  var xss = new FilterCSS(options);
+  return xss.process(html);
+}
+
+
+// 输出
+exports = module.exports = filterCSS;
+exports.FilterCSS = FilterCSS;
+for (var i in DEFAULT) exports[i] = DEFAULT[i];
+
+// 在浏览器端使用
+if (typeof window !== 'undefined') {
+  window.filterCSS = module.exports;
+}
+
+
+/***/ }),
+
+/***/ "LSeC":
+/*!******************************************************!*\
+  !*** ./libs/markdown/worker-functions/public_api.ts ***!
+  \******************************************************/
+/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _emoji_functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emoji.functions */ "Qqpq");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["emojiRegex"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["mermaidRegex"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return _emoji_functions__WEBPACK_IMPORTED_MODULE_0__["checkAndReplaceToUnicodeChar"]; });
+
+/* harmony import */ var _prism_functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prism.functions */ "AzHr");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "highlightCode", function() { return _prism_functions__WEBPACK_IMPORTED_MODULE_1__["highlightCode"]; });
+
+/* harmony import */ var _marked_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./marked.functions */ "dDB8");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["linkRendererTargetBlank"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["get_favicon"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return _marked_functions__WEBPACK_IMPORTED_MODULE_2__["linkRendererWithFavIcon"]; });
+
+
+
+
+
+
+/***/ }),
+
+/***/ "OxZn":
+/*!*************************************!*\
+  !*** ./node_modules/xss/lib/xss.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * filter xss
+ *
+ * @author Zongmin Lei<leizongmin@gmail.com>
+ */
+
+var FilterCSS = __webpack_require__(/*! cssfilter */ "GrKN").FilterCSS;
+var DEFAULT = __webpack_require__(/*! ./default */ "vaBj");
+var parser = __webpack_require__(/*! ./parser */ "UOFQ");
+var parseTag = parser.parseTag;
+var parseAttr = parser.parseAttr;
+var _ = __webpack_require__(/*! ./util */ "63Hc");
+
+/**
+ * returns `true` if the input value is `undefined` or `null`
+ *
+ * @param {Object} obj
+ * @return {Boolean}
+ */
+function isNull(obj) {
+  return obj === undefined || obj === null;
+}
+
+/**
+ * get attributes for a tag
+ *
+ * @param {String} html
+ * @return {Object}
+ *   - {String} html
+ *   - {Boolean} closing
+ */
+function getAttrs(html) {
+  var i = _.spaceIndex(html);
+  if (i === -1) {
+    return {
+      html: "",
+      closing: html[html.length - 2] === "/"
+    };
+  }
+  html = _.trim(html.slice(i + 1, -1));
+  var isClosing = html[html.length - 1] === "/";
+  if (isClosing) html = _.trim(html.slice(0, -1));
+  return {
+    html: html,
+    closing: isClosing
+  };
+}
+
+/**
+ * shallow copy
+ *
+ * @param {Object} obj
+ * @return {Object}
+ */
+function shallowCopyObject(obj) {
+  var ret = {};
+  for (var i in obj) {
+    ret[i] = obj[i];
+  }
+  return ret;
+}
+
+/**
+ * FilterXSS class
+ *
+ * @param {Object} options
+ *        whiteList, onTag, onTagAttr, onIgnoreTag,
+ *        onIgnoreTagAttr, safeAttrValue, escapeHtml
+ *        stripIgnoreTagBody, allowCommentTag, stripBlankChar
+ *        css{whiteList, onAttr, onIgnoreAttr} `css=false` means don't use `cssfilter`
+ */
+function FilterXSS(options) {
+  options = shallowCopyObject(options || {});
+
+  if (options.stripIgnoreTag) {
+    if (options.onIgnoreTag) {
+      console.error(
+        'Notes: cannot use these two options "stripIgnoreTag" and "onIgnoreTag" at the same time'
+      );
+    }
+    options.onIgnoreTag = DEFAULT.onIgnoreTagStripAll;
+  }
+
+  options.whiteList = options.whiteList || DEFAULT.whiteList;
+  options.onTag = options.onTag || DEFAULT.onTag;
+  options.onTagAttr = options.onTagAttr || DEFAULT.onTagAttr;
+  options.onIgnoreTag = options.onIgnoreTag || DEFAULT.onIgnoreTag;
+  options.onIgnoreTagAttr = options.onIgnoreTagAttr || DEFAULT.onIgnoreTagAttr;
+  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
+  options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
+  this.options = options;
+
+  if (options.css === false) {
+    this.cssFilter = false;
+  } else {
+    options.css = options.css || {};
+    this.cssFilter = new FilterCSS(options.css);
+  }
+}
+
+/**
+ * start process and returns result
+ *
+ * @param {String} html
+ * @return {String}
+ */
+FilterXSS.prototype.process = function(html) {
+  // compatible with the input
+  html = html || "";
+  html = html.toString();
+  if (!html) return "";
+
+  var me = this;
+  var options = me.options;
+  var whiteList = options.whiteList;
+  var onTag = options.onTag;
+  var onIgnoreTag = options.onIgnoreTag;
+  var onTagAttr = options.onTagAttr;
+  var onIgnoreTagAttr = options.onIgnoreTagAttr;
+  var safeAttrValue = options.safeAttrValue;
+  var escapeHtml = options.escapeHtml;
+  var cssFilter = me.cssFilter;
+
+  // remove invisible characters
+  if (options.stripBlankChar) {
+    html = DEFAULT.stripBlankChar(html);
+  }
+
+  // remove html comments
+  if (!options.allowCommentTag) {
+    html = DEFAULT.stripCommentTag(html);
+  }
+
+  // if enable stripIgnoreTagBody
+  var stripIgnoreTagBody = false;
+  if (options.stripIgnoreTagBody) {
+    var stripIgnoreTagBody = DEFAULT.StripTagBody(
+      options.stripIgnoreTagBody,
+      onIgnoreTag
+    );
+    onIgnoreTag = stripIgnoreTagBody.onIgnoreTag;
+  }
+
+  var retHtml = parseTag(
+    html,
+    function(sourcePosition, position, tag, html, isClosing) {
+      var info = {
+        sourcePosition: sourcePosition,
+        position: position,
+        isClosing: isClosing,
+        isWhite: whiteList.hasOwnProperty(tag)
+      };
+
+      // call `onTag()`
+      var ret = onTag(tag, html, info);
+      if (!isNull(ret)) return ret;
+
+      if (info.isWhite) {
+        if (info.isClosing) {
+          return "</" + tag + ">";
+        }
+
+        var attrs = getAttrs(html);
+        var whiteAttrList = whiteList[tag];
+        var attrsHtml = parseAttr(attrs.html, function(name, value) {
+          // call `onTagAttr()`
+          var isWhiteAttr = _.indexOf(whiteAttrList, name) !== -1;
+          var ret = onTagAttr(tag, name, value, isWhiteAttr);
+          if (!isNull(ret)) return ret;
+
+          if (isWhiteAttr) {
+            // call `safeAttrValue()`
+            value = safeAttrValue(tag, name, value, cssFilter);
+            if (value) {
+              return name + '="' + value + '"';
+            } else {
+              return name;
+            }
+          } else {
+            // call `onIgnoreTagAttr()`
+            var ret = onIgnoreTagAttr(tag, name, value, isWhiteAttr);
+            if (!isNull(ret)) return ret;
+            return;
+          }
+        });
+
+        // build new tag html
+        var html = "<" + tag;
+        if (attrsHtml) html += " " + attrsHtml;
+        if (attrs.closing) html += " /";
+        html += ">";
+        return html;
+      } else {
+        // call `onIgnoreTag()`
+        var ret = onIgnoreTag(tag, html, info);
+        if (!isNull(ret)) return ret;
+        return escapeHtml(html);
+      }
+    },
+    escapeHtml
+  );
+
+  // if enable stripIgnoreTagBody
+  if (stripIgnoreTagBody) {
+    retHtml = stripIgnoreTagBody.remove(retHtml);
+  }
+
+  return retHtml;
+};
+
+module.exports = FilterXSS;
+
+
+/***/ }),
+
+/***/ "PRU4":
+/*!***************************************************!*\
+  !*** ./node_modules/comlink/dist/esm/comlink.mjs ***!
+  \***************************************************/
+/*! exports provided: createEndpoint, expose, proxy, proxyMarker, releaseProxy, transfer, transferHandlers, windowEndpoint, wrap */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEndpoint", function() { return createEndpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "expose", function() { return expose; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "proxy", function() { return proxy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "proxyMarker", function() { return proxyMarker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "releaseProxy", function() { return releaseProxy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transfer", function() { return transfer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transferHandlers", function() { return transferHandlers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowEndpoint", function() { return windowEndpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrap", function() { return wrap; });
+/**
+ * Copyright 2019 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const proxyMarker = Symbol("Comlink.proxy");
+const createEndpoint = Symbol("Comlink.endpoint");
+const releaseProxy = Symbol("Comlink.releaseProxy");
+const throwSet = new WeakSet();
+const transferHandlers = new Map([
+    [
+        "proxy",
+        {
+            canHandle: obj => obj && obj[proxyMarker],
+            serialize(obj) {
+                const { port1, port2 } = new MessageChannel();
+                expose(obj, port1);
+                return [port2, [port2]];
+            },
+            deserialize: (port) => {
+                port.start();
+                return wrap(port);
+            }
+        }
+    ],
+    [
+        "throw",
+        {
+            canHandle: obj => throwSet.has(obj),
+            serialize(obj) {
+                const isError = obj instanceof Error;
+                let serialized = obj;
+                if (isError) {
+                    serialized = {
+                        isError,
+                        message: obj.message,
+                        stack: obj.stack
+                    };
+                }
+                return [serialized, []];
+            },
+            deserialize(obj) {
+                if (obj.isError) {
+                    throw Object.assign(new Error(), obj);
+                }
+                throw obj;
+            }
+        }
+    ]
+]);
+function expose(obj, ep = self) {
+    ep.addEventListener("message", function callback(ev) {
+        if (!ev || !ev.data) {
+            return;
+        }
+        const { id, type, path } = Object.assign({ path: [] }, ev.data);
+        const argumentList = (ev.data.argumentList || []).map(fromWireValue);
+        let returnValue;
+        try {
+            const parent = path.slice(0, -1).reduce((obj, prop) => obj[prop], obj);
+            const rawValue = path.reduce((obj, prop) => obj[prop], obj);
+            switch (type) {
+                case 0 /* GET */:
+                    {
+                        returnValue = rawValue;
+                    }
+                    break;
+                case 1 /* SET */:
+                    {
+                        parent[path.slice(-1)[0]] = fromWireValue(ev.data.value);
+                        returnValue = true;
+                    }
+                    break;
+                case 2 /* APPLY */:
+                    {
+                        returnValue = rawValue.apply(parent, argumentList);
+                    }
+                    break;
+                case 3 /* CONSTRUCT */:
+                    {
+                        const value = new rawValue(...argumentList);
+                        returnValue = proxy(value);
+                    }
+                    break;
+                case 4 /* ENDPOINT */:
+                    {
+                        const { port1, port2 } = new MessageChannel();
+                        expose(obj, port2);
+                        returnValue = transfer(port1, [port1]);
+                    }
+                    break;
+                case 5 /* RELEASE */:
+                    {
+                        returnValue = undefined;
+                    }
+                    break;
+            }
+        }
+        catch (e) {
+            returnValue = e;
+            throwSet.add(e);
+        }
+        Promise.resolve(returnValue)
+            .catch(e => {
+            throwSet.add(e);
+            return e;
+        })
+            .then(returnValue => {
+            const [wireValue, transferables] = toWireValue(returnValue);
+            ep.postMessage(Object.assign(Object.assign({}, wireValue), { id }), transferables);
+            if (type === 5 /* RELEASE */) {
+                // detach and deactive after sending release response above.
+                ep.removeEventListener("message", callback);
+                closeEndPoint(ep);
+            }
+        });
+    });
+    if (ep.start) {
+        ep.start();
+    }
+}
+function isMessagePort(endpoint) {
+    return endpoint.constructor.name === "MessagePort";
+}
+function closeEndPoint(endpoint) {
+    if (isMessagePort(endpoint))
+        endpoint.close();
+}
+function wrap(ep, target) {
+    return createProxy(ep, [], target);
+}
+function throwIfProxyReleased(isReleased) {
+    if (isReleased) {
+        throw new Error("Proxy has been released and is not useable");
+    }
+}
+function createProxy(ep, path = [], target = function () { }) {
+    let isProxyReleased = false;
+    const proxy = new Proxy(target, {
+        get(_target, prop) {
+            throwIfProxyReleased(isProxyReleased);
+            if (prop === releaseProxy) {
+                return () => {
+                    return requestResponseMessage(ep, {
+                        type: 5 /* RELEASE */,
+                        path: path.map(p => p.toString())
+                    }).then(() => {
+                        closeEndPoint(ep);
+                        isProxyReleased = true;
+                    });
+                };
+            }
+            if (prop === "then") {
+                if (path.length === 0) {
+                    return { then: () => proxy };
+                }
+                const r = requestResponseMessage(ep, {
+                    type: 0 /* GET */,
+                    path: path.map(p => p.toString())
+                }).then(fromWireValue);
+                return r.then.bind(r);
+            }
+            return createProxy(ep, [...path, prop]);
+        },
+        set(_target, prop, rawValue) {
+            throwIfProxyReleased(isProxyReleased);
+            // FIXME: ES6 Proxy Handler `set` methods are supposed to return a
+            // boolean. To show good will, we return true asynchronously ¯\_(ツ)_/¯
+            const [value, transferables] = toWireValue(rawValue);
+            return requestResponseMessage(ep, {
+                type: 1 /* SET */,
+                path: [...path, prop].map(p => p.toString()),
+                value
+            }, transferables).then(fromWireValue);
+        },
+        apply(_target, _thisArg, rawArgumentList) {
+            throwIfProxyReleased(isProxyReleased);
+            const last = path[path.length - 1];
+            if (last === createEndpoint) {
+                return requestResponseMessage(ep, {
+                    type: 4 /* ENDPOINT */
+                }).then(fromWireValue);
+            }
+            // We just pretend that `bind()` didn’t happen.
+            if (last === "bind") {
+                return createProxy(ep, path.slice(0, -1));
+            }
+            const [argumentList, transferables] = processArguments(rawArgumentList);
+            return requestResponseMessage(ep, {
+                type: 2 /* APPLY */,
+                path: path.map(p => p.toString()),
+                argumentList
+            }, transferables).then(fromWireValue);
+        },
+        construct(_target, rawArgumentList) {
+            throwIfProxyReleased(isProxyReleased);
+            const [argumentList, transferables] = processArguments(rawArgumentList);
+            return requestResponseMessage(ep, {
+                type: 3 /* CONSTRUCT */,
+                path: path.map(p => p.toString()),
+                argumentList
+            }, transferables).then(fromWireValue);
+        }
+    });
+    return proxy;
+}
+function myFlat(arr) {
+    return Array.prototype.concat.apply([], arr);
+}
+function processArguments(argumentList) {
+    const processed = argumentList.map(toWireValue);
+    return [processed.map(v => v[0]), myFlat(processed.map(v => v[1]))];
+}
+const transferCache = new WeakMap();
+function transfer(obj, transfers) {
+    transferCache.set(obj, transfers);
+    return obj;
+}
+function proxy(obj) {
+    return Object.assign(obj, { [proxyMarker]: true });
+}
+function windowEndpoint(w, context = self, targetOrigin = "*") {
+    return {
+        postMessage: (msg, transferables) => w.postMessage(msg, targetOrigin, transferables),
+        addEventListener: context.addEventListener.bind(context),
+        removeEventListener: context.removeEventListener.bind(context)
+    };
+}
+function toWireValue(value) {
+    for (const [name, handler] of transferHandlers) {
+        if (handler.canHandle(value)) {
+            const [serializedValue, transferables] = handler.serialize(value);
+            return [
+                {
+                    type: 3 /* HANDLER */,
+                    name,
+                    value: serializedValue
+                },
+                transferables
+            ];
+        }
+    }
+    return [
+        {
+            type: 0 /* RAW */,
+            value
+        },
+        transferCache.get(value) || []
+    ];
+}
+function fromWireValue(value) {
+    switch (value.type) {
+        case 3 /* HANDLER */:
+            return transferHandlers.get(value.name).deserialize(value.value);
+        case 0 /* RAW */:
+            return value.value;
+    }
+}
+function requestResponseMessage(ep, msg, transfers) {
+    return new Promise(resolve => {
+        const id = generateUUID();
+        ep.addEventListener("message", function l(ev) {
+            if (!ev.data || !ev.data.id || ev.data.id !== id) {
+                return;
+            }
+            ep.removeEventListener("message", l);
+            resolve(ev.data);
+        });
+        if (ep.start) {
+            ep.start();
+        }
+        ep.postMessage(Object.assign({ id }, msg), transfers);
+    });
+}
+function generateUUID() {
+    return new Array(4)
+        .fill(0)
+        .map(() => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16))
+        .join("-");
+}
+
+
+//# sourceMappingURL=comlink.mjs.map
+
+
+/***/ }),
+
+/***/ "Qqpq":
+/*!***********************************************************!*\
+  !*** ./libs/markdown/worker-functions/emoji.functions.ts ***!
+  \***********************************************************/
+/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return emojiRegex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return mermaidRegex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return checkAndReplaceToUnicodeChar; });
+const emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
+const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
+const emojiCache = {};
+function checkAndReplaceToUnicodeChar(rawMarkdown, EMOJI_MAP, convertKeyToUnicode, cache = false) {
+    return rawMarkdown.replace(emojiRegex, (source, colonValue) => {
+        // not exists, just return it
+        if (!EMOJI_MAP[colonValue]) {
+            return source;
+        }
+        if (cache && emojiCache[colonValue]) {
+            return emojiCache[colonValue];
+        }
+        const emojiUnicodeStr = EMOJI_MAP[colonValue];
+        const converted = convertKeyToUnicode(emojiUnicodeStr);
+        if (cache) {
+            return emojiCache[colonValue] = converted;
+        }
+        return converted;
+    });
+}
+
+
+/***/ }),
+
+/***/ "UOFQ":
+/*!****************************************!*\
+  !*** ./node_modules/xss/lib/parser.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Simple HTML Parser
+ *
+ * @author Zongmin Lei<leizongmin@gmail.com>
+ */
+
+var _ = __webpack_require__(/*! ./util */ "63Hc");
+
+/**
+ * get tag name
+ *
+ * @param {String} html e.g. '<a hef="#">'
+ * @return {String}
+ */
+function getTagName(html) {
+  var i = _.spaceIndex(html);
+  if (i === -1) {
+    var tagName = html.slice(1, -1);
+  } else {
+    var tagName = html.slice(1, i + 1);
+  }
+  tagName = _.trim(tagName).toLowerCase();
+  if (tagName.slice(0, 1) === "/") tagName = tagName.slice(1);
+  if (tagName.slice(-1) === "/") tagName = tagName.slice(0, -1);
+  return tagName;
+}
+
+/**
+ * is close tag?
+ *
+ * @param {String} html 如：'<a hef="#">'
+ * @return {Boolean}
+ */
+function isClosing(html) {
+  return html.slice(0, 2) === "</";
+}
+
+/**
+ * parse input html and returns processed html
+ *
+ * @param {String} html
+ * @param {Function} onTag e.g. function (sourcePosition, position, tag, html, isClosing)
+ * @param {Function} escapeHtml
+ * @return {String}
+ */
+function parseTag(html, onTag, escapeHtml) {
+  "use strict";
+
+  var rethtml = "";
+  var lastPos = 0;
+  var tagStart = false;
+  var quoteStart = false;
+  var currentPos = 0;
+  var len = html.length;
+  var currentTagName = "";
+  var currentHtml = "";
+
+  chariterator: for (currentPos = 0; currentPos < len; currentPos++) {
+    var c = html.charAt(currentPos);
+    if (tagStart === false) {
+      if (c === "<") {
+        tagStart = currentPos;
+        continue;
+      }
+    } else {
+      if (quoteStart === false) {
+        if (c === "<") {
+          rethtml += escapeHtml(html.slice(lastPos, currentPos));
+          tagStart = currentPos;
+          lastPos = currentPos;
+          continue;
+        }
+        if (c === ">") {
+          rethtml += escapeHtml(html.slice(lastPos, tagStart));
+          currentHtml = html.slice(tagStart, currentPos + 1);
+          currentTagName = getTagName(currentHtml);
+          rethtml += onTag(
+            tagStart,
+            rethtml.length,
+            currentTagName,
+            currentHtml,
+            isClosing(currentHtml)
+          );
+          lastPos = currentPos + 1;
+          tagStart = false;
+          continue;
+        }
+        if ((c === '"' || c === "'")) {
+          var i = 1;
+          var ic = html.charAt(currentPos - i);
+
+          while ((ic === " ") || (ic === "=")) {
+            if (ic === "=") {
+              quoteStart = c;
+              continue chariterator;
+            }
+            ic = html.charAt(currentPos - ++i);
+          }
+        }
+      } else {
+        if (c === quoteStart) {
+          quoteStart = false;
+          continue;
+        }
+      }
+    }
+  }
+  if (lastPos < html.length) {
+    rethtml += escapeHtml(html.substr(lastPos));
+  }
+
+  return rethtml;
+}
+
+var REGEXP_ILLEGAL_ATTR_NAME = /[^a-zA-Z0-9_:\.\-]/gim;
+
+/**
+ * parse input attributes and returns processed attributes
+ *
+ * @param {String} html e.g. `href="#" target="_blank"`
+ * @param {Function} onAttr e.g. `function (name, value)`
+ * @return {String}
+ */
+function parseAttr(html, onAttr) {
+  "use strict";
+
+  var lastPos = 0;
+  var retAttrs = [];
+  var tmpName = false;
+  var len = html.length;
+
+  function addAttr(name, value) {
+    name = _.trim(name);
+    name = name.replace(REGEXP_ILLEGAL_ATTR_NAME, "").toLowerCase();
+    if (name.length < 1) return;
+    var ret = onAttr(name, value || "");
+    if (ret) retAttrs.push(ret);
+  }
+
+  // 逐个分析字符
+  for (var i = 0; i < len; i++) {
+    var c = html.charAt(i);
+    var v, j;
+    if (tmpName === false && c === "=") {
+      tmpName = html.slice(lastPos, i);
+      lastPos = i + 1;
+      continue;
+    }
+    if (tmpName !== false) {
+      if (
+        i === lastPos &&
+        (c === '"' || c === "'") &&
+        html.charAt(i - 1) === "="
+      ) {
+        j = html.indexOf(c, i + 1);
+        if (j === -1) {
+          break;
+        } else {
+          v = _.trim(html.slice(lastPos + 1, j));
+          addAttr(tmpName, v);
+          tmpName = false;
+          i = j;
+          lastPos = i + 1;
+          continue;
+        }
+      }
+    }
+    if (/\s|\n|\t/.test(c)) {
+      html = html.replace(/\s|\n|\t/g, " ");
+      if (tmpName === false) {
+        j = findNextEqual(html, i);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          addAttr(v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          i = j - 1;
+          continue;
+        }
+      } else {
+        j = findBeforeEqual(html, i - 1);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          v = stripQuoteWrap(v);
+          addAttr(tmpName, v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          continue;
+        }
+      }
+    }
+  }
+
+  if (lastPos < html.length) {
+    if (tmpName === false) {
+      addAttr(html.slice(lastPos));
+    } else {
+      addAttr(tmpName, stripQuoteWrap(_.trim(html.slice(lastPos))));
+    }
+  }
+
+  return _.trim(retAttrs.join(" "));
+}
+
+function findNextEqual(str, i) {
+  for (; i < str.length; i++) {
+    var c = str[i];
+    if (c === " ") continue;
+    if (c === "=") return i;
+    return -1;
+  }
+}
+
+function findBeforeEqual(str, i) {
+  for (; i > 0; i--) {
+    var c = str[i];
+    if (c === " ") continue;
+    if (c === "=") return i;
+    return -1;
+  }
+}
+
+function isQuoteWrapString(text) {
+  if (
+    (text[0] === '"' && text[text.length - 1] === '"') ||
+    (text[0] === "'" && text[text.length - 1] === "'")
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function stripQuoteWrap(text) {
+  if (isQuoteWrapString(text)) {
+    return text.substr(1, text.length - 2);
+  } else {
+    return text;
+  }
+}
+
+exports.parseTag = parseTag;
+exports.parseAttr = parseAttr;
+
+
+/***/ }),
+
+/***/ "VJhy":
+/*!*************************************************!*\
+  !*** ./libs/markdown/worker-functions/index.ts ***!
+  \*************************************************/
+/*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "LSeC");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "emojiRegex", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["emojiRegex"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mermaidRegex", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["mermaidRegex"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "checkAndReplaceToUnicodeChar", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["checkAndReplaceToUnicodeChar"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "highlightCode", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["highlightCode"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["linkRendererTargetBlank"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["get_favicon"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["linkRendererWithFavIcon"]; });
+
+
+
+
+/***/ }),
+
+/***/ "Xjjk":
+/*!***************************************!*\
+  !*** ./node_modules/xss/lib/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * xss
+ *
+ * @author Zongmin Lei<leizongmin@gmail.com>
+ */
+
+var DEFAULT = __webpack_require__(/*! ./default */ "vaBj");
+var parser = __webpack_require__(/*! ./parser */ "UOFQ");
+var FilterXSS = __webpack_require__(/*! ./xss */ "OxZn");
+
+/**
+ * filter xss function
+ *
+ * @param {String} html
+ * @param {Object} options { whiteList, onTag, onTagAttr, onIgnoreTag, onIgnoreTagAttr, safeAttrValue, escapeHtml }
+ * @return {String}
+ */
+function filterXSS(html, options) {
+  var xss = new FilterXSS(options);
+  return xss.process(html);
+}
+
+exports = module.exports = filterXSS;
+exports.filterXSS = filterXSS;
+exports.FilterXSS = FilterXSS;
+for (var i in DEFAULT) exports[i] = DEFAULT[i];
+for (var i in parser) exports[i] = parser[i];
+
+// using `xss` on the browser, output `filterXSS` to the globals
+if (typeof window !== "undefined") {
+  window.filterXSS = module.exports;
+}
+
+// using `xss` on the WebWorker, output `filterXSS` to the globals
+function isWorkerEnv() {
+  return typeof self !== 'undefined' && typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
+}
+if (isWorkerEnv()) {
+  self.filterXSS = module.exports;
+}
+
+
+/***/ }),
+
+/***/ "dDB8":
+/*!************************************************************!*\
+  !*** ./libs/markdown/worker-functions/marked.functions.ts ***!
+  \************************************************************/
+/*! exports provided: linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linkRendererTargetBlank", function() { return linkRendererTargetBlank; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_favicon", function() { return get_favicon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linkRendererWithFavIcon", function() { return linkRendererWithFavIcon; });
+function linkRendererTargetBlank(href, title, text) {
+    return `<a target="_blank" href="${href}" title="${title}">${text}</a>`;
+}
+// original code from https://stackoverflow.com/a/46838553
+// changed to use href/text separately
+function get_favicon(href, text) {
+    // return replacement text here...
+    return `<img src="https://www.google.com/s2/favicons?domain=${href}">${text}`;
+}
+function linkRendererWithFavIcon(href, title, text) {
+    try {
+        var prot = decodeURIComponent(unescape(href))
+            .replace(/[^\w:]/g, '')
+            .toLowerCase();
+    }
+    catch (e) {
+        return '';
+    }
+    if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
+        return '';
+    }
+    const hasImage = text.includes('<img');
+    const withFavIcon = !href.startsWith('./');
+    const newLink = [];
+    newLink.push(`<a href="${href}"`);
+    if (hasImage) {
+        newLink.push(' class="has-image"');
+    }
+    if (!hasImage && withFavIcon) {
+        console.info(newLink, href);
+        newLink.push(' class="with-favicon"');
+    }
+    if (title) {
+        newLink.push(` title="${title}"`);
+    }
+    newLink.push('>');
+    if (hasImage || !withFavIcon) {
+        newLink.push(text);
+    }
+    else {
+        newLink.push(get_favicon(href, text));
+    }
+    newLink.push('</a>');
+    return newLink.join('');
+}
+
+
+/***/ }),
+
+/***/ "e8zy":
+/*!***********************************************!*\
+  !*** ./node_modules/cssfilter/lib/default.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * cssfilter
+ *
+ * @author 老雷<leizongmin@gmail.com>
+ */
+
+function getDefaultWhiteList () {
+  // 白名单值说明：
+  // true: 允许该属性
+  // Function: function (val) { } 返回true表示允许该属性，其他值均表示不允许
+  // RegExp: regexp.test(val) 返回true表示允许该属性，其他值均表示不允许
+  // 除上面列出的值外均表示不允许
+  var whiteList = {};
+
+  whiteList['align-content'] = false; // default: auto
+  whiteList['align-items'] = false; // default: auto
+  whiteList['align-self'] = false; // default: auto
+  whiteList['alignment-adjust'] = false; // default: auto
+  whiteList['alignment-baseline'] = false; // default: baseline
+  whiteList['all'] = false; // default: depending on individual properties
+  whiteList['anchor-point'] = false; // default: none
+  whiteList['animation'] = false; // default: depending on individual properties
+  whiteList['animation-delay'] = false; // default: 0
+  whiteList['animation-direction'] = false; // default: normal
+  whiteList['animation-duration'] = false; // default: 0
+  whiteList['animation-fill-mode'] = false; // default: none
+  whiteList['animation-iteration-count'] = false; // default: 1
+  whiteList['animation-name'] = false; // default: none
+  whiteList['animation-play-state'] = false; // default: running
+  whiteList['animation-timing-function'] = false; // default: ease
+  whiteList['azimuth'] = false; // default: center
+  whiteList['backface-visibility'] = false; // default: visible
+  whiteList['background'] = true; // default: depending on individual properties
+  whiteList['background-attachment'] = true; // default: scroll
+  whiteList['background-clip'] = true; // default: border-box
+  whiteList['background-color'] = true; // default: transparent
+  whiteList['background-image'] = true; // default: none
+  whiteList['background-origin'] = true; // default: padding-box
+  whiteList['background-position'] = true; // default: 0% 0%
+  whiteList['background-repeat'] = true; // default: repeat
+  whiteList['background-size'] = true; // default: auto
+  whiteList['baseline-shift'] = false; // default: baseline
+  whiteList['binding'] = false; // default: none
+  whiteList['bleed'] = false; // default: 6pt
+  whiteList['bookmark-label'] = false; // default: content()
+  whiteList['bookmark-level'] = false; // default: none
+  whiteList['bookmark-state'] = false; // default: open
+  whiteList['border'] = true; // default: depending on individual properties
+  whiteList['border-bottom'] = true; // default: depending on individual properties
+  whiteList['border-bottom-color'] = true; // default: current color
+  whiteList['border-bottom-left-radius'] = true; // default: 0
+  whiteList['border-bottom-right-radius'] = true; // default: 0
+  whiteList['border-bottom-style'] = true; // default: none
+  whiteList['border-bottom-width'] = true; // default: medium
+  whiteList['border-collapse'] = true; // default: separate
+  whiteList['border-color'] = true; // default: depending on individual properties
+  whiteList['border-image'] = true; // default: none
+  whiteList['border-image-outset'] = true; // default: 0
+  whiteList['border-image-repeat'] = true; // default: stretch
+  whiteList['border-image-slice'] = true; // default: 100%
+  whiteList['border-image-source'] = true; // default: none
+  whiteList['border-image-width'] = true; // default: 1
+  whiteList['border-left'] = true; // default: depending on individual properties
+  whiteList['border-left-color'] = true; // default: current color
+  whiteList['border-left-style'] = true; // default: none
+  whiteList['border-left-width'] = true; // default: medium
+  whiteList['border-radius'] = true; // default: 0
+  whiteList['border-right'] = true; // default: depending on individual properties
+  whiteList['border-right-color'] = true; // default: current color
+  whiteList['border-right-style'] = true; // default: none
+  whiteList['border-right-width'] = true; // default: medium
+  whiteList['border-spacing'] = true; // default: 0
+  whiteList['border-style'] = true; // default: depending on individual properties
+  whiteList['border-top'] = true; // default: depending on individual properties
+  whiteList['border-top-color'] = true; // default: current color
+  whiteList['border-top-left-radius'] = true; // default: 0
+  whiteList['border-top-right-radius'] = true; // default: 0
+  whiteList['border-top-style'] = true; // default: none
+  whiteList['border-top-width'] = true; // default: medium
+  whiteList['border-width'] = true; // default: depending on individual properties
+  whiteList['bottom'] = false; // default: auto
+  whiteList['box-decoration-break'] = true; // default: slice
+  whiteList['box-shadow'] = true; // default: none
+  whiteList['box-sizing'] = true; // default: content-box
+  whiteList['box-snap'] = true; // default: none
+  whiteList['box-suppress'] = true; // default: show
+  whiteList['break-after'] = true; // default: auto
+  whiteList['break-before'] = true; // default: auto
+  whiteList['break-inside'] = true; // default: auto
+  whiteList['caption-side'] = false; // default: top
+  whiteList['chains'] = false; // default: none
+  whiteList['clear'] = true; // default: none
+  whiteList['clip'] = false; // default: auto
+  whiteList['clip-path'] = false; // default: none
+  whiteList['clip-rule'] = false; // default: nonzero
+  whiteList['color'] = true; // default: implementation dependent
+  whiteList['color-interpolation-filters'] = true; // default: auto
+  whiteList['column-count'] = false; // default: auto
+  whiteList['column-fill'] = false; // default: balance
+  whiteList['column-gap'] = false; // default: normal
+  whiteList['column-rule'] = false; // default: depending on individual properties
+  whiteList['column-rule-color'] = false; // default: current color
+  whiteList['column-rule-style'] = false; // default: medium
+  whiteList['column-rule-width'] = false; // default: medium
+  whiteList['column-span'] = false; // default: none
+  whiteList['column-width'] = false; // default: auto
+  whiteList['columns'] = false; // default: depending on individual properties
+  whiteList['contain'] = false; // default: none
+  whiteList['content'] = false; // default: normal
+  whiteList['counter-increment'] = false; // default: none
+  whiteList['counter-reset'] = false; // default: none
+  whiteList['counter-set'] = false; // default: none
+  whiteList['crop'] = false; // default: auto
+  whiteList['cue'] = false; // default: depending on individual properties
+  whiteList['cue-after'] = false; // default: none
+  whiteList['cue-before'] = false; // default: none
+  whiteList['cursor'] = false; // default: auto
+  whiteList['direction'] = false; // default: ltr
+  whiteList['display'] = true; // default: depending on individual properties
+  whiteList['display-inside'] = true; // default: auto
+  whiteList['display-list'] = true; // default: none
+  whiteList['display-outside'] = true; // default: inline-level
+  whiteList['dominant-baseline'] = false; // default: auto
+  whiteList['elevation'] = false; // default: level
+  whiteList['empty-cells'] = false; // default: show
+  whiteList['filter'] = false; // default: none
+  whiteList['flex'] = false; // default: depending on individual properties
+  whiteList['flex-basis'] = false; // default: auto
+  whiteList['flex-direction'] = false; // default: row
+  whiteList['flex-flow'] = false; // default: depending on individual properties
+  whiteList['flex-grow'] = false; // default: 0
+  whiteList['flex-shrink'] = false; // default: 1
+  whiteList['flex-wrap'] = false; // default: nowrap
+  whiteList['float'] = false; // default: none
+  whiteList['float-offset'] = false; // default: 0 0
+  whiteList['flood-color'] = false; // default: black
+  whiteList['flood-opacity'] = false; // default: 1
+  whiteList['flow-from'] = false; // default: none
+  whiteList['flow-into'] = false; // default: none
+  whiteList['font'] = true; // default: depending on individual properties
+  whiteList['font-family'] = true; // default: implementation dependent
+  whiteList['font-feature-settings'] = true; // default: normal
+  whiteList['font-kerning'] = true; // default: auto
+  whiteList['font-language-override'] = true; // default: normal
+  whiteList['font-size'] = true; // default: medium
+  whiteList['font-size-adjust'] = true; // default: none
+  whiteList['font-stretch'] = true; // default: normal
+  whiteList['font-style'] = true; // default: normal
+  whiteList['font-synthesis'] = true; // default: weight style
+  whiteList['font-variant'] = true; // default: normal
+  whiteList['font-variant-alternates'] = true; // default: normal
+  whiteList['font-variant-caps'] = true; // default: normal
+  whiteList['font-variant-east-asian'] = true; // default: normal
+  whiteList['font-variant-ligatures'] = true; // default: normal
+  whiteList['font-variant-numeric'] = true; // default: normal
+  whiteList['font-variant-position'] = true; // default: normal
+  whiteList['font-weight'] = true; // default: normal
+  whiteList['grid'] = false; // default: depending on individual properties
+  whiteList['grid-area'] = false; // default: depending on individual properties
+  whiteList['grid-auto-columns'] = false; // default: auto
+  whiteList['grid-auto-flow'] = false; // default: none
+  whiteList['grid-auto-rows'] = false; // default: auto
+  whiteList['grid-column'] = false; // default: depending on individual properties
+  whiteList['grid-column-end'] = false; // default: auto
+  whiteList['grid-column-start'] = false; // default: auto
+  whiteList['grid-row'] = false; // default: depending on individual properties
+  whiteList['grid-row-end'] = false; // default: auto
+  whiteList['grid-row-start'] = false; // default: auto
+  whiteList['grid-template'] = false; // default: depending on individual properties
+  whiteList['grid-template-areas'] = false; // default: none
+  whiteList['grid-template-columns'] = false; // default: none
+  whiteList['grid-template-rows'] = false; // default: none
+  whiteList['hanging-punctuation'] = false; // default: none
+  whiteList['height'] = true; // default: auto
+  whiteList['hyphens'] = false; // default: manual
+  whiteList['icon'] = false; // default: auto
+  whiteList['image-orientation'] = false; // default: auto
+  whiteList['image-resolution'] = false; // default: normal
+  whiteList['ime-mode'] = false; // default: auto
+  whiteList['initial-letters'] = false; // default: normal
+  whiteList['inline-box-align'] = false; // default: last
+  whiteList['justify-content'] = false; // default: auto
+  whiteList['justify-items'] = false; // default: auto
+  whiteList['justify-self'] = false; // default: auto
+  whiteList['left'] = false; // default: auto
+  whiteList['letter-spacing'] = true; // default: normal
+  whiteList['lighting-color'] = true; // default: white
+  whiteList['line-box-contain'] = false; // default: block inline replaced
+  whiteList['line-break'] = false; // default: auto
+  whiteList['line-grid'] = false; // default: match-parent
+  whiteList['line-height'] = false; // default: normal
+  whiteList['line-snap'] = false; // default: none
+  whiteList['line-stacking'] = false; // default: depending on individual properties
+  whiteList['line-stacking-ruby'] = false; // default: exclude-ruby
+  whiteList['line-stacking-shift'] = false; // default: consider-shifts
+  whiteList['line-stacking-strategy'] = false; // default: inline-line-height
+  whiteList['list-style'] = true; // default: depending on individual properties
+  whiteList['list-style-image'] = true; // default: none
+  whiteList['list-style-position'] = true; // default: outside
+  whiteList['list-style-type'] = true; // default: disc
+  whiteList['margin'] = true; // default: depending on individual properties
+  whiteList['margin-bottom'] = true; // default: 0
+  whiteList['margin-left'] = true; // default: 0
+  whiteList['margin-right'] = true; // default: 0
+  whiteList['margin-top'] = true; // default: 0
+  whiteList['marker-offset'] = false; // default: auto
+  whiteList['marker-side'] = false; // default: list-item
+  whiteList['marks'] = false; // default: none
+  whiteList['mask'] = false; // default: border-box
+  whiteList['mask-box'] = false; // default: see individual properties
+  whiteList['mask-box-outset'] = false; // default: 0
+  whiteList['mask-box-repeat'] = false; // default: stretch
+  whiteList['mask-box-slice'] = false; // default: 0 fill
+  whiteList['mask-box-source'] = false; // default: none
+  whiteList['mask-box-width'] = false; // default: auto
+  whiteList['mask-clip'] = false; // default: border-box
+  whiteList['mask-image'] = false; // default: none
+  whiteList['mask-origin'] = false; // default: border-box
+  whiteList['mask-position'] = false; // default: center
+  whiteList['mask-repeat'] = false; // default: no-repeat
+  whiteList['mask-size'] = false; // default: border-box
+  whiteList['mask-source-type'] = false; // default: auto
+  whiteList['mask-type'] = false; // default: luminance
+  whiteList['max-height'] = true; // default: none
+  whiteList['max-lines'] = false; // default: none
+  whiteList['max-width'] = true; // default: none
+  whiteList['min-height'] = true; // default: 0
+  whiteList['min-width'] = true; // default: 0
+  whiteList['move-to'] = false; // default: normal
+  whiteList['nav-down'] = false; // default: auto
+  whiteList['nav-index'] = false; // default: auto
+  whiteList['nav-left'] = false; // default: auto
+  whiteList['nav-right'] = false; // default: auto
+  whiteList['nav-up'] = false; // default: auto
+  whiteList['object-fit'] = false; // default: fill
+  whiteList['object-position'] = false; // default: 50% 50%
+  whiteList['opacity'] = false; // default: 1
+  whiteList['order'] = false; // default: 0
+  whiteList['orphans'] = false; // default: 2
+  whiteList['outline'] = false; // default: depending on individual properties
+  whiteList['outline-color'] = false; // default: invert
+  whiteList['outline-offset'] = false; // default: 0
+  whiteList['outline-style'] = false; // default: none
+  whiteList['outline-width'] = false; // default: medium
+  whiteList['overflow'] = false; // default: depending on individual properties
+  whiteList['overflow-wrap'] = false; // default: normal
+  whiteList['overflow-x'] = false; // default: visible
+  whiteList['overflow-y'] = false; // default: visible
+  whiteList['padding'] = true; // default: depending on individual properties
+  whiteList['padding-bottom'] = true; // default: 0
+  whiteList['padding-left'] = true; // default: 0
+  whiteList['padding-right'] = true; // default: 0
+  whiteList['padding-top'] = true; // default: 0
+  whiteList['page'] = false; // default: auto
+  whiteList['page-break-after'] = false; // default: auto
+  whiteList['page-break-before'] = false; // default: auto
+  whiteList['page-break-inside'] = false; // default: auto
+  whiteList['page-policy'] = false; // default: start
+  whiteList['pause'] = false; // default: implementation dependent
+  whiteList['pause-after'] = false; // default: implementation dependent
+  whiteList['pause-before'] = false; // default: implementation dependent
+  whiteList['perspective'] = false; // default: none
+  whiteList['perspective-origin'] = false; // default: 50% 50%
+  whiteList['pitch'] = false; // default: medium
+  whiteList['pitch-range'] = false; // default: 50
+  whiteList['play-during'] = false; // default: auto
+  whiteList['position'] = false; // default: static
+  whiteList['presentation-level'] = false; // default: 0
+  whiteList['quotes'] = false; // default: text
+  whiteList['region-fragment'] = false; // default: auto
+  whiteList['resize'] = false; // default: none
+  whiteList['rest'] = false; // default: depending on individual properties
+  whiteList['rest-after'] = false; // default: none
+  whiteList['rest-before'] = false; // default: none
+  whiteList['richness'] = false; // default: 50
+  whiteList['right'] = false; // default: auto
+  whiteList['rotation'] = false; // default: 0
+  whiteList['rotation-point'] = false; // default: 50% 50%
+  whiteList['ruby-align'] = false; // default: auto
+  whiteList['ruby-merge'] = false; // default: separate
+  whiteList['ruby-position'] = false; // default: before
+  whiteList['shape-image-threshold'] = false; // default: 0.0
+  whiteList['shape-outside'] = false; // default: none
+  whiteList['shape-margin'] = false; // default: 0
+  whiteList['size'] = false; // default: auto
+  whiteList['speak'] = false; // default: auto
+  whiteList['speak-as'] = false; // default: normal
+  whiteList['speak-header'] = false; // default: once
+  whiteList['speak-numeral'] = false; // default: continuous
+  whiteList['speak-punctuation'] = false; // default: none
+  whiteList['speech-rate'] = false; // default: medium
+  whiteList['stress'] = false; // default: 50
+  whiteList['string-set'] = false; // default: none
+  whiteList['tab-size'] = false; // default: 8
+  whiteList['table-layout'] = false; // default: auto
+  whiteList['text-align'] = true; // default: start
+  whiteList['text-align-last'] = true; // default: auto
+  whiteList['text-combine-upright'] = true; // default: none
+  whiteList['text-decoration'] = true; // default: none
+  whiteList['text-decoration-color'] = true; // default: currentColor
+  whiteList['text-decoration-line'] = true; // default: none
+  whiteList['text-decoration-skip'] = true; // default: objects
+  whiteList['text-decoration-style'] = true; // default: solid
+  whiteList['text-emphasis'] = true; // default: depending on individual properties
+  whiteList['text-emphasis-color'] = true; // default: currentColor
+  whiteList['text-emphasis-position'] = true; // default: over right
+  whiteList['text-emphasis-style'] = true; // default: none
+  whiteList['text-height'] = true; // default: auto
+  whiteList['text-indent'] = true; // default: 0
+  whiteList['text-justify'] = true; // default: auto
+  whiteList['text-orientation'] = true; // default: mixed
+  whiteList['text-overflow'] = true; // default: clip
+  whiteList['text-shadow'] = true; // default: none
+  whiteList['text-space-collapse'] = true; // default: collapse
+  whiteList['text-transform'] = true; // default: none
+  whiteList['text-underline-position'] = true; // default: auto
+  whiteList['text-wrap'] = true; // default: normal
+  whiteList['top'] = false; // default: auto
+  whiteList['transform'] = false; // default: none
+  whiteList['transform-origin'] = false; // default: 50% 50% 0
+  whiteList['transform-style'] = false; // default: flat
+  whiteList['transition'] = false; // default: depending on individual properties
+  whiteList['transition-delay'] = false; // default: 0s
+  whiteList['transition-duration'] = false; // default: 0s
+  whiteList['transition-property'] = false; // default: all
+  whiteList['transition-timing-function'] = false; // default: ease
+  whiteList['unicode-bidi'] = false; // default: normal
+  whiteList['vertical-align'] = false; // default: baseline
+  whiteList['visibility'] = false; // default: visible
+  whiteList['voice-balance'] = false; // default: center
+  whiteList['voice-duration'] = false; // default: auto
+  whiteList['voice-family'] = false; // default: implementation dependent
+  whiteList['voice-pitch'] = false; // default: medium
+  whiteList['voice-range'] = false; // default: medium
+  whiteList['voice-rate'] = false; // default: normal
+  whiteList['voice-stress'] = false; // default: normal
+  whiteList['voice-volume'] = false; // default: medium
+  whiteList['volume'] = false; // default: medium
+  whiteList['white-space'] = false; // default: normal
+  whiteList['widows'] = false; // default: 2
+  whiteList['width'] = true; // default: auto
+  whiteList['will-change'] = false; // default: auto
+  whiteList['word-break'] = true; // default: normal
+  whiteList['word-spacing'] = true; // default: normal
+  whiteList['word-wrap'] = true; // default: normal
+  whiteList['wrap-flow'] = false; // default: auto
+  whiteList['wrap-through'] = false; // default: wrap
+  whiteList['writing-mode'] = false; // default: horizontal-tb
+  whiteList['z-index'] = false; // default: auto
+
+  return whiteList;
+}
+
+
+/**
+ * 匹配到白名单上的一个属性时
+ *
+ * @param {String} name
+ * @param {String} value
+ * @param {Object} options
+ * @return {String}
+ */
+function onAttr (name, value, options) {
+  // do nothing
+}
+
+/**
+ * 匹配到不在白名单上的一个属性时
+ *
+ * @param {String} name
+ * @param {String} value
+ * @param {Object} options
+ * @return {String}
+ */
+function onIgnoreAttr (name, value, options) {
+  // do nothing
+}
+
+var REGEXP_URL_JAVASCRIPT = /javascript\s*\:/img;
+
+/**
+ * 过滤属性值
+ *
+ * @param {String} name
+ * @param {String} value
+ * @return {String}
+ */
+function safeAttrValue(name, value) {
+  if (REGEXP_URL_JAVASCRIPT.test(value)) return '';
+  return value;
+}
+
+
+exports.whiteList = getDefaultWhiteList();
+exports.getDefaultWhiteList = getDefaultWhiteList;
+exports.onAttr = onAttr;
+exports.onIgnoreAttr = onIgnoreAttr;
+exports.safeAttrValue = safeAttrValue;
+
+
+/***/ }),
+
+/***/ "h1NE":
+/*!********************************************!*\
+  !*** ./node_modules/cssfilter/lib/util.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  indexOf: function (arr, item) {
+    var i, j;
+    if (Array.prototype.indexOf) {
+      return arr.indexOf(item);
+    }
+    for (i = 0, j = arr.length; i < j; i++) {
+      if (arr[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  },
+  forEach: function (arr, fn, scope) {
+    var i, j;
+    if (Array.prototype.forEach) {
+      return arr.forEach(fn, scope);
+    }
+    for (i = 0, j = arr.length; i < j; i++) {
+      fn.call(scope, arr[i], i, arr);
+    }
+  },
+  trim: function (str) {
+    if (String.prototype.trim) {
+      return str.trim();
+    }
+    return str.replace(/(^\s*)|(\s*$)/g, '');
+  },
+  trimRight: function (str) {
+    if (String.prototype.trimRight) {
+      return str.trimRight();
+    }
+    return str.replace(/(\s*$)/g, '');
+  }
+};
+
+
+/***/ }),
+
+/***/ "hR9A":
+/*!*****************************************************!*\
+  !*** ./libs/markdown/contracts/worker.interface.ts ***!
+  \*****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+
+/***/ }),
+
+/***/ "mrSG":
+/*!*****************************************!*\
+  !*** ./node_modules/tslib/tslib.es6.js ***!
+  \*****************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4302,6 +4516,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArray", function() { return __spreadArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -4330,11 +4545,13 @@ PERFORMANCE OF THIS SOFTWARE.
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
     return extendStatics(d, b);
 };
 
 function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -4416,13 +4633,16 @@ function __generator(thisArg, body) {
     }
 }
 
-function __createBinding(o, m, k, k2) {
+var __createBinding = Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
-}
+});
 
-function __exportStar(m, exports) {
-    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+function __exportStar(m, o) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
 }
 
 function __values(o) {
@@ -4454,19 +4674,27 @@ function __read(o, n) {
     return ar;
 }
 
+/** @deprecated */
 function __spread() {
     for (var ar = [], i = 0; i < arguments.length; i++)
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
 
+/** @deprecated */
 function __spreadArrays() {
     for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
     for (var r = Array(s), k = 0, i = 0; i < il; i++)
         for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
             r[k] = a[j];
     return r;
-};
+}
+
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+}
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -4503,11 +4731,17 @@ function __makeTemplateObject(cooked, raw) {
     return cooked;
 };
 
+var __setModuleDefault = Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+};
+
 function __importStar(mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result.default = mod;
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
     return result;
 }
 
@@ -4515,28 +4749,385 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
-function __classPrivateFieldGet(receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
+function __classPrivateFieldGet(receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 }
 
-function __classPrivateFieldSet(receiver, privateMap, value) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to set private field on non-instance");
-    }
-    privateMap.set(receiver, value);
-    return value;
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 }
 
 
 /***/ }),
 
-/***/ "../../node_modules/xss/lib/default.js":
-/*!*******************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/xss/lib/default.js ***!
-  \*******************************************************************/
+/***/ "nIOu":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@angular-devkit/build-angular/src/babel/webpack-loader.js??ref--7-0!./node_modules/@ngtools/webpack/src/ivy!./apps/demo/src/app/markdown.worker.ts ***!
+  \*************************************************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _gewd_markdown_marked_prism_worker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @gewd/markdown/marked.prism.worker */ "pyUn");
+// tslint:disable-next-line:nx-enforce-module-boundaries
+
+
+
+/***/ }),
+
+/***/ "o4qD":
+/*!*******************************************!*\
+  !*** ./libs/markdown/utils/public_api.ts ***!
+  \*******************************************/
+/*! exports provided: Lazy, simpleHash */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lazy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lazy */ "E8Ja");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return _lazy__WEBPACK_IMPORTED_MODULE_0__["Lazy"]; });
+
+/* harmony import */ var _simple_hash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple-hash */ "B+Hh");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return _simple_hash__WEBPACK_IMPORTED_MODULE_1__["simpleHash"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "pyUn":
+/*!**********************************************!*\
+  !*** ./libs/markdown/marked.prism.worker.ts ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var comlink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! comlink */ "PRU4");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! marked */ "DlQD");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var xss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! xss */ "Xjjk");
+/* harmony import */ var xss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(xss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @gewd/markdown/utils */ "zOTi");
+/* harmony import */ var _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @gewd/markdown/worker-functions */ "VJhy");
+/* harmony import */ var _gewd_markdown_contracts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @gewd/markdown/contracts */ "7DNQ");
+
+
+
+
+
+
+
+const renderer = new marked__WEBPACK_IMPORTED_MODULE_2__["Renderer"]();
+const oldCodeRenderer = renderer.code;
+renderer.code = function (code, language, isEscaped) {
+    if (_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["mermaidRegex"].test(language)) {
+        return `<div class="mermaid">${language}\n${code}</div>`;
+    }
+    return oldCodeRenderer.call(this, code, language, isEscaped);
+};
+renderer.link = _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["linkRendererWithFavIcon"];
+let currentConfigObject = {
+    prism: _gewd_markdown_contracts__WEBPACK_IMPORTED_MODULE_6__["DEFAULT_PRISM_OPTIONS"]
+};
+const lazyPrism = _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__["Lazy"].create(() => __webpack_require__.e(/*! import() | prismjs */ "prismjs").then(__webpack_require__.t.bind(null, /*! prismjs */ "wZee", 7)));
+const lazyEmoji = _gewd_markdown_utils__WEBPACK_IMPORTED_MODULE_4__["Lazy"].create(() => __webpack_require__.e(/*! import() | gewd-markdown-emoji-map */ "gewd-markdown-emoji-map").then(__webpack_require__.bind(null, /*! @gewd/markdown/emoji-map */ "LyO7")));
+// apply changes to marked
+marked__WEBPACK_IMPORTED_MODULE_2__["setOptions"]({
+    // needed for mermaid
+    renderer,
+    // highlight override for prismjs
+    highlight: function (code, lang, callback) {
+        // if it is a mermaid tag, don't need to go through prism it
+        // also for code blocks without a language
+        if (!lang || _gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["mermaidRegex"].test(lang)) {
+            callback(undefined, code);
+            return;
+        }
+        Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["highlightCode"])(lazyPrism, lang, code, currentConfigObject.prism, importScripts)
+            .then(highlightedCode => {
+            callback(undefined, highlightedCode);
+        });
+    }
+});
+const workerMethods = {
+    name: 'marked',
+    init: config => {
+        currentConfigObject = config;
+    },
+    initPrism(options) {
+    },
+    compile: input => new Promise((resolve, reject) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+        if (!input) {
+            resolve('');
+            return;
+        }
+        if (_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["emojiRegex"].test(input)) {
+            // load emoji-map
+            const { EMOJI_MAP, colonToUnicode } = yield lazyEmoji.getValue();
+            input = Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["checkAndReplaceToUnicodeChar"])(input, EMOJI_MAP, colonToUnicode);
+        }
+        marked__WEBPACK_IMPORTED_MODULE_2__(input, {
+        // aditional marked config, also enables highlight callback
+        }, (err, result) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            // extract?^^
+            function resolveCleanMarkup(generatedHTML) {
+                const sanatizedHTML = xss__WEBPACK_IMPORTED_MODULE_3__["filterXSS"](generatedHTML, {
+                    whiteList: Object.assign(Object.assign({}, xss__WEBPACK_IMPORTED_MODULE_3__["whiteList"]), { a: ['class', 'title', 'href'], div: ['class'], span: ['class', 'style'] // prism colors
+                     })
+                });
+                resolve(sanatizedHTML);
+            }
+            resolveCleanMarkup(result);
+        });
+        return;
+    })),
+    highlight: (code, lang) => new Promise((resolve, reject) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(void 0, void 0, void 0, function* () {
+        if (!code) {
+            resolve('');
+            return;
+        }
+        function resolveCleanMarkup(generatedHTML) {
+            const sanatizedHTML = xss__WEBPACK_IMPORTED_MODULE_3__["filterXSS"](generatedHTML, {
+                whiteList: Object.assign(Object.assign({}, xss__WEBPACK_IMPORTED_MODULE_3__["whiteList"]), { span: ['class', 'style'] // prism colors
+                 })
+            });
+            resolve(sanatizedHTML);
+        }
+        Object(_gewd_markdown_worker_functions__WEBPACK_IMPORTED_MODULE_5__["highlightCode"])(lazyPrism, lang, code, currentConfigObject.prism, importScripts).then(highlightedCode => {
+            resolveCleanMarkup(highlightedCode);
+        });
+        return;
+    }))
+};
+Object(comlink__WEBPACK_IMPORTED_MODULE_1__["expose"])(workerMethods);
+
+
+/***/ }),
+
+/***/ "rjQ/":
+/*!**********************************************!*\
+  !*** ./node_modules/cssfilter/lib/parser.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * cssfilter
+ *
+ * @author 老雷<leizongmin@gmail.com>
+ */
+
+var _ = __webpack_require__(/*! ./util */ "h1NE");
+
+
+/**
+ * 解析style
+ *
+ * @param {String} css
+ * @param {Function} onAttr 处理属性的函数
+ *   参数格式： function (sourcePosition, position, name, value, source)
+ * @return {String}
+ */
+function parseStyle (css, onAttr) {
+  css = _.trimRight(css);
+  if (css[css.length - 1] !== ';') css += ';';
+  var cssLength = css.length;
+  var isParenthesisOpen = false;
+  var lastPos = 0;
+  var i = 0;
+  var retCSS = '';
+
+  function addNewAttr () {
+    // 如果没有正常的闭合圆括号，则直接忽略当前属性
+    if (!isParenthesisOpen) {
+      var source = _.trim(css.slice(lastPos, i));
+      var j = source.indexOf(':');
+      if (j !== -1) {
+        var name = _.trim(source.slice(0, j));
+        var value = _.trim(source.slice(j + 1));
+        // 必须有属性名称
+        if (name) {
+          var ret = onAttr(lastPos, retCSS.length, name, value, source);
+          if (ret) retCSS += ret + '; ';
+        }
+      }
+    }
+    lastPos = i + 1;
+  }
+
+  for (; i < cssLength; i++) {
+    var c = css[i];
+    if (c === '/' && css[i + 1] === '*') {
+      // 备注开始
+      var j = css.indexOf('*/', i + 2);
+      // 如果没有正常的备注结束，则后面的部分全部跳过
+      if (j === -1) break;
+      // 直接将当前位置调到备注结尾，并且初始化状态
+      i = j + 1;
+      lastPos = i + 1;
+      isParenthesisOpen = false;
+    } else if (c === '(') {
+      isParenthesisOpen = true;
+    } else if (c === ')') {
+      isParenthesisOpen = false;
+    } else if (c === ';') {
+      if (isParenthesisOpen) {
+        // 在圆括号里面，忽略
+      } else {
+        addNewAttr();
+      }
+    } else if (c === '\n') {
+      addNewAttr();
+    }
+  }
+
+  return _.trim(retCSS);
+}
+
+module.exports = parseStyle;
+
+
+/***/ }),
+
+/***/ "vGzR":
+/*!*******************************************!*\
+  !*** ./node_modules/cssfilter/lib/css.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * cssfilter
+ *
+ * @author 老雷<leizongmin@gmail.com>
+ */
+
+var DEFAULT = __webpack_require__(/*! ./default */ "e8zy");
+var parseStyle = __webpack_require__(/*! ./parser */ "rjQ/");
+var _ = __webpack_require__(/*! ./util */ "h1NE");
+
+
+/**
+ * 返回值是否为空
+ *
+ * @param {Object} obj
+ * @return {Boolean}
+ */
+function isNull (obj) {
+  return (obj === undefined || obj === null);
+}
+
+/**
+ * 浅拷贝对象
+ *
+ * @param {Object} obj
+ * @return {Object}
+ */
+function shallowCopyObject (obj) {
+  var ret = {};
+  for (var i in obj) {
+    ret[i] = obj[i];
+  }
+  return ret;
+}
+
+/**
+ * 创建CSS过滤器
+ *
+ * @param {Object} options
+ *   - {Object} whiteList
+ *   - {Function} onAttr
+ *   - {Function} onIgnoreAttr
+ *   - {Function} safeAttrValue
+ */
+function FilterCSS (options) {
+  options = shallowCopyObject(options || {});
+  options.whiteList = options.whiteList || DEFAULT.whiteList;
+  options.onAttr = options.onAttr || DEFAULT.onAttr;
+  options.onIgnoreAttr = options.onIgnoreAttr || DEFAULT.onIgnoreAttr;
+  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
+  this.options = options;
+}
+
+FilterCSS.prototype.process = function (css) {
+  // 兼容各种奇葩输入
+  css = css || '';
+  css = css.toString();
+  if (!css) return '';
+
+  var me = this;
+  var options = me.options;
+  var whiteList = options.whiteList;
+  var onAttr = options.onAttr;
+  var onIgnoreAttr = options.onIgnoreAttr;
+  var safeAttrValue = options.safeAttrValue;
+
+  var retCSS = parseStyle(css, function (sourcePosition, position, name, value, source) {
+
+    var check = whiteList[name];
+    var isWhite = false;
+    if (check === true) isWhite = check;
+    else if (typeof check === 'function') isWhite = check(value);
+    else if (check instanceof RegExp) isWhite = check.test(value);
+    if (isWhite !== true) isWhite = false;
+
+    // 如果过滤后 value 为空则直接忽略
+    value = safeAttrValue(name, value);
+    if (!value) return;
+
+    var opts = {
+      position: position,
+      sourcePosition: sourcePosition,
+      source: source,
+      isWhite: isWhite
+    };
+
+    if (isWhite) {
+
+      var ret = onAttr(name, value, opts);
+      if (isNull(ret)) {
+        return name + ':' + value;
+      } else {
+        return ret;
+      }
+
+    } else {
+
+      var ret = onIgnoreAttr(name, value, opts);
+      if (!isNull(ret)) {
+        return ret;
+      }
+
+    }
+  });
+
+  return retCSS;
+};
+
+
+module.exports = FilterCSS;
+
+
+/***/ }),
+
+/***/ "vaBj":
+/*!*****************************************!*\
+  !*** ./node_modules/xss/lib/default.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4546,9 +5137,9 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
  * @author Zongmin Lei<leizongmin@gmail.com>
  */
 
-var FilterCSS = __webpack_require__(/*! cssfilter */ "../../node_modules/cssfilter/lib/index.js").FilterCSS;
-var getDefaultCSSWhiteList = __webpack_require__(/*! cssfilter */ "../../node_modules/cssfilter/lib/index.js").getDefaultWhiteList;
-var _ = __webpack_require__(/*! ./util */ "../../node_modules/xss/lib/util.js");
+var FilterCSS = __webpack_require__(/*! cssfilter */ "GrKN").FilterCSS;
+var getDefaultCSSWhiteList = __webpack_require__(/*! cssfilter */ "GrKN").getDefaultWhiteList;
+var _ = __webpack_require__(/*! ./util */ "63Hc");
 
 function getDefaultWhiteList() {
   return {
@@ -4963,578 +5554,21 @@ exports.getDefaultCSSWhiteList = getDefaultCSSWhiteList;
 
 /***/ }),
 
-/***/ "../../node_modules/xss/lib/index.js":
-/*!*****************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/xss/lib/index.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "zOTi":
+/*!**************************************!*\
+  !*** ./libs/markdown/utils/index.ts ***!
+  \**************************************/
+/*! exports provided: Lazy, simpleHash */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/**
- * xss
- *
- * @author Zongmin Lei<leizongmin@gmail.com>
- */
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "o4qD");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["Lazy"]; });
 
-var DEFAULT = __webpack_require__(/*! ./default */ "../../node_modules/xss/lib/default.js");
-var parser = __webpack_require__(/*! ./parser */ "../../node_modules/xss/lib/parser.js");
-var FilterXSS = __webpack_require__(/*! ./xss */ "../../node_modules/xss/lib/xss.js");
-
-/**
- * filter xss function
- *
- * @param {String} html
- * @param {Object} options { whiteList, onTag, onTagAttr, onIgnoreTag, onIgnoreTagAttr, safeAttrValue, escapeHtml }
- * @return {String}
- */
-function filterXSS(html, options) {
-  var xss = new FilterXSS(options);
-  return xss.process(html);
-}
-
-exports = module.exports = filterXSS;
-exports.filterXSS = filterXSS;
-exports.FilterXSS = FilterXSS;
-for (var i in DEFAULT) exports[i] = DEFAULT[i];
-for (var i in parser) exports[i] = parser[i];
-
-// using `xss` on the browser, output `filterXSS` to the globals
-if (typeof window !== "undefined") {
-  window.filterXSS = module.exports;
-}
-
-// using `xss` on the WebWorker, output `filterXSS` to the globals
-function isWorkerEnv() {
-  return typeof self !== 'undefined' && typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
-}
-if (isWorkerEnv()) {
-  self.filterXSS = module.exports;
-}
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "simpleHash", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["simpleHash"]; });
 
 
-/***/ }),
-
-/***/ "../../node_modules/xss/lib/parser.js":
-/*!******************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/xss/lib/parser.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Simple HTML Parser
- *
- * @author Zongmin Lei<leizongmin@gmail.com>
- */
-
-var _ = __webpack_require__(/*! ./util */ "../../node_modules/xss/lib/util.js");
-
-/**
- * get tag name
- *
- * @param {String} html e.g. '<a hef="#">'
- * @return {String}
- */
-function getTagName(html) {
-  var i = _.spaceIndex(html);
-  if (i === -1) {
-    var tagName = html.slice(1, -1);
-  } else {
-    var tagName = html.slice(1, i + 1);
-  }
-  tagName = _.trim(tagName).toLowerCase();
-  if (tagName.slice(0, 1) === "/") tagName = tagName.slice(1);
-  if (tagName.slice(-1) === "/") tagName = tagName.slice(0, -1);
-  return tagName;
-}
-
-/**
- * is close tag?
- *
- * @param {String} html 如：'<a hef="#">'
- * @return {Boolean}
- */
-function isClosing(html) {
-  return html.slice(0, 2) === "</";
-}
-
-/**
- * parse input html and returns processed html
- *
- * @param {String} html
- * @param {Function} onTag e.g. function (sourcePosition, position, tag, html, isClosing)
- * @param {Function} escapeHtml
- * @return {String}
- */
-function parseTag(html, onTag, escapeHtml) {
-  "use strict";
-
-  var rethtml = "";
-  var lastPos = 0;
-  var tagStart = false;
-  var quoteStart = false;
-  var currentPos = 0;
-  var len = html.length;
-  var currentTagName = "";
-  var currentHtml = "";
-
-  chariterator: for (currentPos = 0; currentPos < len; currentPos++) {
-    var c = html.charAt(currentPos);
-    if (tagStart === false) {
-      if (c === "<") {
-        tagStart = currentPos;
-        continue;
-      }
-    } else {
-      if (quoteStart === false) {
-        if (c === "<") {
-          rethtml += escapeHtml(html.slice(lastPos, currentPos));
-          tagStart = currentPos;
-          lastPos = currentPos;
-          continue;
-        }
-        if (c === ">") {
-          rethtml += escapeHtml(html.slice(lastPos, tagStart));
-          currentHtml = html.slice(tagStart, currentPos + 1);
-          currentTagName = getTagName(currentHtml);
-          rethtml += onTag(
-            tagStart,
-            rethtml.length,
-            currentTagName,
-            currentHtml,
-            isClosing(currentHtml)
-          );
-          lastPos = currentPos + 1;
-          tagStart = false;
-          continue;
-        }
-        if ((c === '"' || c === "'")) {
-          var i = 1;
-          var ic = html.charAt(currentPos - i);
-
-          while ((ic === " ") || (ic === "=")) {
-            if (ic === "=") {
-              quoteStart = c;
-              continue chariterator;
-            }
-            ic = html.charAt(currentPos - ++i);
-          }
-        }
-      } else {
-        if (c === quoteStart) {
-          quoteStart = false;
-          continue;
-        }
-      }
-    }
-  }
-  if (lastPos < html.length) {
-    rethtml += escapeHtml(html.substr(lastPos));
-  }
-
-  return rethtml;
-}
-
-var REGEXP_ILLEGAL_ATTR_NAME = /[^a-zA-Z0-9_:\.\-]/gim;
-
-/**
- * parse input attributes and returns processed attributes
- *
- * @param {String} html e.g. `href="#" target="_blank"`
- * @param {Function} onAttr e.g. `function (name, value)`
- * @return {String}
- */
-function parseAttr(html, onAttr) {
-  "use strict";
-
-  var lastPos = 0;
-  var retAttrs = [];
-  var tmpName = false;
-  var len = html.length;
-
-  function addAttr(name, value) {
-    name = _.trim(name);
-    name = name.replace(REGEXP_ILLEGAL_ATTR_NAME, "").toLowerCase();
-    if (name.length < 1) return;
-    var ret = onAttr(name, value || "");
-    if (ret) retAttrs.push(ret);
-  }
-
-  // 逐个分析字符
-  for (var i = 0; i < len; i++) {
-    var c = html.charAt(i);
-    var v, j;
-    if (tmpName === false && c === "=") {
-      tmpName = html.slice(lastPos, i);
-      lastPos = i + 1;
-      continue;
-    }
-    if (tmpName !== false) {
-      if (
-        i === lastPos &&
-        (c === '"' || c === "'") &&
-        html.charAt(i - 1) === "="
-      ) {
-        j = html.indexOf(c, i + 1);
-        if (j === -1) {
-          break;
-        } else {
-          v = _.trim(html.slice(lastPos + 1, j));
-          addAttr(tmpName, v);
-          tmpName = false;
-          i = j;
-          lastPos = i + 1;
-          continue;
-        }
-      }
-    }
-    if (/\s|\n|\t/.test(c)) {
-      html = html.replace(/\s|\n|\t/g, " ");
-      if (tmpName === false) {
-        j = findNextEqual(html, i);
-        if (j === -1) {
-          v = _.trim(html.slice(lastPos, i));
-          addAttr(v);
-          tmpName = false;
-          lastPos = i + 1;
-          continue;
-        } else {
-          i = j - 1;
-          continue;
-        }
-      } else {
-        j = findBeforeEqual(html, i - 1);
-        if (j === -1) {
-          v = _.trim(html.slice(lastPos, i));
-          v = stripQuoteWrap(v);
-          addAttr(tmpName, v);
-          tmpName = false;
-          lastPos = i + 1;
-          continue;
-        } else {
-          continue;
-        }
-      }
-    }
-  }
-
-  if (lastPos < html.length) {
-    if (tmpName === false) {
-      addAttr(html.slice(lastPos));
-    } else {
-      addAttr(tmpName, stripQuoteWrap(_.trim(html.slice(lastPos))));
-    }
-  }
-
-  return _.trim(retAttrs.join(" "));
-}
-
-function findNextEqual(str, i) {
-  for (; i < str.length; i++) {
-    var c = str[i];
-    if (c === " ") continue;
-    if (c === "=") return i;
-    return -1;
-  }
-}
-
-function findBeforeEqual(str, i) {
-  for (; i > 0; i--) {
-    var c = str[i];
-    if (c === " ") continue;
-    if (c === "=") return i;
-    return -1;
-  }
-}
-
-function isQuoteWrapString(text) {
-  if (
-    (text[0] === '"' && text[text.length - 1] === '"') ||
-    (text[0] === "'" && text[text.length - 1] === "'")
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function stripQuoteWrap(text) {
-  if (isQuoteWrapString(text)) {
-    return text.substr(1, text.length - 2);
-  } else {
-    return text;
-  }
-}
-
-exports.parseTag = parseTag;
-exports.parseAttr = parseAttr;
-
-
-/***/ }),
-
-/***/ "../../node_modules/xss/lib/util.js":
-/*!****************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/xss/lib/util.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-  indexOf: function(arr, item) {
-    var i, j;
-    if (Array.prototype.indexOf) {
-      return arr.indexOf(item);
-    }
-    for (i = 0, j = arr.length; i < j; i++) {
-      if (arr[i] === item) {
-        return i;
-      }
-    }
-    return -1;
-  },
-  forEach: function(arr, fn, scope) {
-    var i, j;
-    if (Array.prototype.forEach) {
-      return arr.forEach(fn, scope);
-    }
-    for (i = 0, j = arr.length; i < j; i++) {
-      fn.call(scope, arr[i], i, arr);
-    }
-  },
-  trim: function(str) {
-    if (String.prototype.trim) {
-      return str.trim();
-    }
-    return str.replace(/(^\s*)|(\s*$)/g, "");
-  },
-  spaceIndex: function(str) {
-    var reg = /\s|\n|\t/;
-    var match = reg.exec(str);
-    return match ? match.index : -1;
-  }
-};
-
-
-/***/ }),
-
-/***/ "../../node_modules/xss/lib/xss.js":
-/*!***************************************************************!*\
-  !*** /home/runner/work/gewd/gewd/node_modules/xss/lib/xss.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * filter xss
- *
- * @author Zongmin Lei<leizongmin@gmail.com>
- */
-
-var FilterCSS = __webpack_require__(/*! cssfilter */ "../../node_modules/cssfilter/lib/index.js").FilterCSS;
-var DEFAULT = __webpack_require__(/*! ./default */ "../../node_modules/xss/lib/default.js");
-var parser = __webpack_require__(/*! ./parser */ "../../node_modules/xss/lib/parser.js");
-var parseTag = parser.parseTag;
-var parseAttr = parser.parseAttr;
-var _ = __webpack_require__(/*! ./util */ "../../node_modules/xss/lib/util.js");
-
-/**
- * returns `true` if the input value is `undefined` or `null`
- *
- * @param {Object} obj
- * @return {Boolean}
- */
-function isNull(obj) {
-  return obj === undefined || obj === null;
-}
-
-/**
- * get attributes for a tag
- *
- * @param {String} html
- * @return {Object}
- *   - {String} html
- *   - {Boolean} closing
- */
-function getAttrs(html) {
-  var i = _.spaceIndex(html);
-  if (i === -1) {
-    return {
-      html: "",
-      closing: html[html.length - 2] === "/"
-    };
-  }
-  html = _.trim(html.slice(i + 1, -1));
-  var isClosing = html[html.length - 1] === "/";
-  if (isClosing) html = _.trim(html.slice(0, -1));
-  return {
-    html: html,
-    closing: isClosing
-  };
-}
-
-/**
- * shallow copy
- *
- * @param {Object} obj
- * @return {Object}
- */
-function shallowCopyObject(obj) {
-  var ret = {};
-  for (var i in obj) {
-    ret[i] = obj[i];
-  }
-  return ret;
-}
-
-/**
- * FilterXSS class
- *
- * @param {Object} options
- *        whiteList, onTag, onTagAttr, onIgnoreTag,
- *        onIgnoreTagAttr, safeAttrValue, escapeHtml
- *        stripIgnoreTagBody, allowCommentTag, stripBlankChar
- *        css{whiteList, onAttr, onIgnoreAttr} `css=false` means don't use `cssfilter`
- */
-function FilterXSS(options) {
-  options = shallowCopyObject(options || {});
-
-  if (options.stripIgnoreTag) {
-    if (options.onIgnoreTag) {
-      console.error(
-        'Notes: cannot use these two options "stripIgnoreTag" and "onIgnoreTag" at the same time'
-      );
-    }
-    options.onIgnoreTag = DEFAULT.onIgnoreTagStripAll;
-  }
-
-  options.whiteList = options.whiteList || DEFAULT.whiteList;
-  options.onTag = options.onTag || DEFAULT.onTag;
-  options.onTagAttr = options.onTagAttr || DEFAULT.onTagAttr;
-  options.onIgnoreTag = options.onIgnoreTag || DEFAULT.onIgnoreTag;
-  options.onIgnoreTagAttr = options.onIgnoreTagAttr || DEFAULT.onIgnoreTagAttr;
-  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
-  options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
-  this.options = options;
-
-  if (options.css === false) {
-    this.cssFilter = false;
-  } else {
-    options.css = options.css || {};
-    this.cssFilter = new FilterCSS(options.css);
-  }
-}
-
-/**
- * start process and returns result
- *
- * @param {String} html
- * @return {String}
- */
-FilterXSS.prototype.process = function(html) {
-  // compatible with the input
-  html = html || "";
-  html = html.toString();
-  if (!html) return "";
-
-  var me = this;
-  var options = me.options;
-  var whiteList = options.whiteList;
-  var onTag = options.onTag;
-  var onIgnoreTag = options.onIgnoreTag;
-  var onTagAttr = options.onTagAttr;
-  var onIgnoreTagAttr = options.onIgnoreTagAttr;
-  var safeAttrValue = options.safeAttrValue;
-  var escapeHtml = options.escapeHtml;
-  var cssFilter = me.cssFilter;
-
-  // remove invisible characters
-  if (options.stripBlankChar) {
-    html = DEFAULT.stripBlankChar(html);
-  }
-
-  // remove html comments
-  if (!options.allowCommentTag) {
-    html = DEFAULT.stripCommentTag(html);
-  }
-
-  // if enable stripIgnoreTagBody
-  var stripIgnoreTagBody = false;
-  if (options.stripIgnoreTagBody) {
-    var stripIgnoreTagBody = DEFAULT.StripTagBody(
-      options.stripIgnoreTagBody,
-      onIgnoreTag
-    );
-    onIgnoreTag = stripIgnoreTagBody.onIgnoreTag;
-  }
-
-  var retHtml = parseTag(
-    html,
-    function(sourcePosition, position, tag, html, isClosing) {
-      var info = {
-        sourcePosition: sourcePosition,
-        position: position,
-        isClosing: isClosing,
-        isWhite: whiteList.hasOwnProperty(tag)
-      };
-
-      // call `onTag()`
-      var ret = onTag(tag, html, info);
-      if (!isNull(ret)) return ret;
-
-      if (info.isWhite) {
-        if (info.isClosing) {
-          return "</" + tag + ">";
-        }
-
-        var attrs = getAttrs(html);
-        var whiteAttrList = whiteList[tag];
-        var attrsHtml = parseAttr(attrs.html, function(name, value) {
-          // call `onTagAttr()`
-          var isWhiteAttr = _.indexOf(whiteAttrList, name) !== -1;
-          var ret = onTagAttr(tag, name, value, isWhiteAttr);
-          if (!isNull(ret)) return ret;
-
-          if (isWhiteAttr) {
-            // call `safeAttrValue()`
-            value = safeAttrValue(tag, name, value, cssFilter);
-            if (value) {
-              return name + '="' + value + '"';
-            } else {
-              return name;
-            }
-          } else {
-            // call `onIgnoreTagAttr()`
-            var ret = onIgnoreTagAttr(tag, name, value, isWhiteAttr);
-            if (!isNull(ret)) return ret;
-            return;
-          }
-        });
-
-        // build new tag html
-        var html = "<" + tag;
-        if (attrsHtml) html += " " + attrsHtml;
-        if (attrs.closing) html += " /";
-        html += ">";
-        return html;
-      } else {
-        // call `onIgnoreTag()`
-        var ret = onIgnoreTag(tag, html, info);
-        if (!isNull(ret)) return ret;
-        return escapeHtml(html);
-      }
-    },
-    escapeHtml
-  );
-
-  // if enable stripIgnoreTagBody
-  if (stripIgnoreTagBody) {
-    retHtml = stripIgnoreTagBody.remove(retHtml);
-  }
-
-  return retHtml;
-};
-
-module.exports = FilterXSS;
 
 
 /***/ })
