@@ -23,16 +23,20 @@ import { environment } from '../environments/environment';
 import { HighlightEditorModule } from '@gewd/components/highlight-editor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import {RegisterIconsModule} from "../../../../libs/mat-utils/material-icons";
-import {MatIconModule} from "@angular/material/icon";
+import { RegisterIconsModule } from '../../../../libs/mat-utils/material-icons';
+import { MatIconModule } from '@angular/material/icon';
 import { ExamplePanelComponent } from './example-panel/example-panel.component';
-import {CustomFormControlModule} from "@gewd/mat-utils/custom-form-control";
-import {Lazy} from "@gewd/lazy/utils";
+import { CustomFormControlModule } from '@gewd/mat-utils/custom-form-control';
+import { Lazy } from '@gewd/lazy/utils';
 
 const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
 
 const markdownExampleLazy =new Lazy(() => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
   .then(({MarkdownExampleModule}) => MarkdownExampleModule));
+
+const codeMirrorExampleLazy =new Lazy(() => import(/* webpackChunkName: "codemirror-example-module" */ './examples/codemirror-example/codemirror-example.module')
+  .then(({CodemirrorExampleModule}) => CodemirrorExampleModule));
+
 
 const lazyLoadExampleLazy =new Lazy(
   () => import(/* webpackChunkName: "lazyload-example-module" */ './examples/lazyload-example/lazyload-example.module')
@@ -64,6 +68,12 @@ const portalLazy = new Lazy(
         moduleName: 'markdown-example',
         moduleConfig: {
           load: markdownExampleLazy
+        }
+      },
+      {
+        moduleName: 'codemirror-example',
+        moduleConfig: {
+          load: codeMirrorExampleLazy
         }
       },
       {
