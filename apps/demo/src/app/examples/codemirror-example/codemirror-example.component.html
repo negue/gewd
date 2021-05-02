@@ -1,0 +1,17 @@
+<mat-tab-group>
+  <mat-tab label="Default Setting">
+    Codemirror:
+    <gewd-codemirror [codemirrorExtensions]="normalExtensions"
+                     (changed)="textarea.value = $event"
+
+                     #codemirror></gewd-codemirror>
+
+    Twoway Binding to normal Textarea
+    <textarea #textarea (keyup)="updateCodemirror(codemirror, textarea)"></textarea>
+
+    {{codemirror.value}}
+  </mat-tab>
+  <mat-tab label="Enable CodeMirror Features">
+    <gewd-codemirror [codemirrorExtensions]="extensions"></gewd-codemirror>
+  </mat-tab>
+</mat-tab-group>
