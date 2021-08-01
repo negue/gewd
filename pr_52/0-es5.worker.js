@@ -6545,7 +6545,7 @@
       "mrSG");
 
       var emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
-      var mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
+      var mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|stateDiagram-v2|pie|git|erDiagram|journey|requirementDiagram|gitGraph)/);
       var emojiCache = {};
 
       function checkAndReplaceToUnicodeChar(rawMarkdown, EMOJI_MAP, convertKeyToUnicode) {

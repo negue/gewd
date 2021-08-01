@@ -5288,7 +5288,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
-const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
+const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|stateDiagram-v2|pie|git|erDiagram|journey|requirementDiagram|gitGraph)/);
 const emojiCache = {};
 function checkAndReplaceToUnicodeChar(rawMarkdown, EMOJI_MAP, convertKeyToUnicode, cache = false) {
     return rawMarkdown.replace(emojiRegex, (source, colonValue) => {
