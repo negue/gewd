@@ -1,5 +1,5 @@
 export const emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
-export const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
+export const mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|stateDiagram-v2|pie|git|erDiagram|journey|requirementDiagram|gitGraph)/);
 
 interface EmojiMapType {
   [key: string]: string;

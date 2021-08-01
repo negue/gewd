@@ -1,0 +1,9 @@
+:host ::ng-deep {
+  .cm-wrap {
+    border: 1px solid lightgray !important;
+  }
+
+  .cm-focused {
+    outline-color: gray !important;
+  }
+}

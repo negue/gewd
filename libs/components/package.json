@@ -1,12 +1,16 @@
 {
   "name": "@gewd/components",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.5",
     "@angular/core": "^9.0.0-rc.5",
     "@gewd/ng-utils": "^0.4.1",
     "@gewd/markdown": "^0.4.1",
-    "comlink": "4.2.0"
+    "comlink": "4.2.0",
+    "@codemirror/commands": "^0.18.3",
+    "@codemirror/language": "^0.18.2",
+    "@codemirror/state": "^0.18.7",
+    "@codemirror/view": "^0.18.19"
   },
   "repository": {
     "type" : "git",

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.0]
+
+Added `<gewd-codemirror>`
+
 ## [0.2.0]
 
 CustomFormControl moved to `@gewd/mat-utils`
