@@ -21,15 +21,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-example-module"], {
     /***/
-    "/PFe":
-    /*!*************************************************************!*\
-      !*** ./libs/components/auto-scale/value-or-default.pipe.ts ***!
-      \*************************************************************/
-
-    /*! exports provided: ValueOrDefaultPipe */
-
-    /***/
-    function PFe(module, __webpack_exports__, __webpack_require__) {
+    "/PFe": function PFe(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -78,15 +70,7 @@
     },
 
     /***/
-    "3pE5":
-    /*!*******************************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/examples/components-example/components-example.component.html ***!
-      \*******************************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function pE5(module, __webpack_exports__, __webpack_require__) {
+    "3pE5": function pE5(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -98,15 +82,7 @@
     },
 
     /***/
-    "5RNC":
-    /*!************************************************************************!*\
-      !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js ***!
-      \************************************************************************/
-
-    /*! exports provided: MAT_SLIDER_VALUE_ACCESSOR, MatSlider, MatSliderChange, MatSliderModule */
-
-    /***/
-    function RNC(module, __webpack_exports__, __webpack_require__) {
+    "5RNC": function RNC(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1559,15 +1535,7 @@
     },
 
     /***/
-    "5kGt":
-    /*!****************************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/components-example/components-example.component.css ***!
-      \****************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function kGt(module, __webpack_exports__, __webpack_require__) {
+    "5kGt": function kGt(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1579,15 +1547,7 @@
     },
 
     /***/
-    "6RHk":
-    /*!************************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/components-example/components-example.module.ts ***!
-      \************************************************************************************/
-
-    /*! exports provided: ComponentsExampleModule */
-
-    /***/
-    function RHk(module, __webpack_exports__, __webpack_require__) {
+    "6RHk": function RHk(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1666,15 +1626,7 @@
     },
 
     /***/
-    "YZfy":
-    /*!****************************************************************!*\
-      !*** ./libs/components/auto-scale/auto-scale-img.directive.ts ***!
-      \****************************************************************/
-
-    /*! exports provided: AutoScaleImgDirective */
-
-    /***/
-    function YZfy(module, __webpack_exports__, __webpack_require__) {
+    "YZfy": function YZfy(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1750,15 +1702,7 @@
     },
 
     /***/
-    "cA1M":
-    /*!************************************************************!*\
-      !*** ./libs/components/auto-scale/auto-scale.component.ts ***!
-      \************************************************************/
-
-    /*! exports provided: AutoScaleComponent */
-
-    /***/
-    function cA1M(module, __webpack_exports__, __webpack_require__) {
+    "cA1M": function cA1M(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1841,15 +1785,7 @@
     },
 
     /***/
-    "dy/h":
-    /*!**************************************************************!*\
-      !*** ./libs/components/auto-scale/auto-scale.component.scss ***!
-      \**************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function dyH(module, __webpack_exports__, __webpack_require__) {
+    "dy/h": function dyH(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1861,15 +1797,7 @@
     },
 
     /***/
-    "e6fE":
-    /*!*********************************************!*\
-      !*** ./libs/components/auto-scale/index.ts ***!
-      \*********************************************/
-
-    /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
-
-    /***/
-    function e6fE(module, __webpack_exports__, __webpack_require__) {
+    "e6fE": function e6fE(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1908,15 +1836,7 @@
     },
 
     /***/
-    "j+rG":
-    /*!****************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/components/auto-scale/auto-scale.component.html ***!
-      \****************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function jRG(module, __webpack_exports__, __webpack_require__) {
+    "j+rG": function jRG(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1928,15 +1848,7 @@
     },
 
     /***/
-    "xFkL":
-    /*!***************************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/components-example/components-example.component.ts ***!
-      \***************************************************************************************/
-
-    /*! exports provided: ComponentsExampleComponent */
-
-    /***/
-    function xFkL(module, __webpack_exports__, __webpack_require__) {
+    "xFkL": function xFkL(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2007,15 +1919,7 @@
     },
 
     /***/
-    "yjiX":
-    /*!*********************************************************!*\
-      !*** ./libs/components/auto-scale/auto-scale.module.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: AutoScaleModule */
-
-    /***/
-    function yjiX(module, __webpack_exports__, __webpack_require__) {
+    "yjiX": function yjiX(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2075,15 +1979,7 @@
     },
 
     /***/
-    "zSBd":
-    /*!**************************************************!*\
-      !*** ./libs/components/auto-scale/public_api.ts ***!
-      \**************************************************/
-
-    /*! exports provided: AutoScaleModule, AutoScaleComponent, ValueOrDefaultPipe, AutoScaleImgDirective */
-
-    /***/
-    function zSBd(module, __webpack_exports__, __webpack_require__) {
+    "zSBd": function zSBd(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

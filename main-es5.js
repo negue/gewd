@@ -17,7 +17,7 @@
 
   function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-  function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
   function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -43,15 +43,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
     /***/
-    "+7VV":
-    /*!**********************************************************!*\
-      !*** ./libs/mat-utils/custom-form-control/public_api.ts ***!
-      \**********************************************************/
-
-    /*! exports provided: CustomFormControlModule, CustomFormControlComponent */
-
-    /***/
-    function VV(module, __webpack_exports__, __webpack_require__) {
+    "+7VV": function VV(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -84,15 +76,7 @@
     },
 
     /***/
-    "+DCT":
-    /*!*****************************************************!*\
-      !*** ./libs/ng-utils/css-props/css-props.module.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: CssPropsModule */
-
-    /***/
-    function DCT(module, __webpack_exports__, __webpack_require__) {
+    "+DCT": function DCT(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -141,15 +125,7 @@
     },
 
     /***/
-    "+fz5":
-    /*!***************************************************!*\
-      !*** ./apps/demo/src/environments/environment.ts ***!
-      \***************************************************/
-
-    /*! exports provided: environment */
-
-    /***/
-    function fz5(module, __webpack_exports__, __webpack_require__) {
+    "+fz5": function fz5(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -158,20 +134,15 @@
 
       __webpack_require__.d(__webpack_exports__, "environment", function () {
         return environment;
-      });
-      /* harmony import */
-
-
-      var _gewd_ng_utils_ng_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @gewd/ng-utils/ng-inspect */
-      "ovnV"); // This file can be replaced during build by using the `fileReplacements` array.
+      }); // This file can be replaced during build by using the `fileReplacements` array.
       // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
       // The list of file replacements can be found in `angular.json`.
 
 
       var environment = {
         production: false,
-        modules: [_gewd_ng_utils_ng_inspect__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"]]
+        modules: [// NgInspectModule
+        ]
       };
       /*
        * For easier debugging in development mode, you can import the following file
@@ -186,35 +157,7 @@
     },
 
     /***/
-    "+pPf":
-    /*!***********************************************************************!*\
-      !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.scss ***!
-      \***********************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function pPf(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = ".debug-panel {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  max-height: 500px;\n  overflow: auto;\n  z-index: 10;\n  color: white;\n}\n.debug-panel .panel-background {\n  background: #4f4f4f;\n  border: 2px dashed #4f8cc9;\n  border-radius: 10px;\n  padding: 10px;\n  margin-bottom: 10px;\n  min-width: 150px;\n  max-width: 400px;\n}\n.debug-panel h4 {\n  margin-top: 0;\n}\n.debug-panel .icon {\n  cursor: pointer;\n  height: 20px;\n  width: 20px;\n  margin-left: 2px;\n  margin-right: 2px;\n}\n.debug-panel .svg-color {\n  fill: white;\n}\n.debug-panel .mat-hint {\n  font-size: 12px;\n  color: white;\n}\n.debug-panel .center-text {\n  text-align: center;\n}\n.debug-panel .item-row {\n  display: flex;\n  align-items: flex-end;\n}\n.debug-panel .item-row .prop-value {\n  background: #595959;\n}\n.debug-panel .item-row.odd .prop-value {\n  background: #7d7d7d;\n}\n.debug-panel .prop-value {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 3;\n  overflow: hidden;\n  width: 250px;\n}\n.debug-panel ::ng-deep mat-form-field {\n  margin-bottom: -1.15em;\n  width: 100%;\n}\n.debug-panel .color-box {\n  --bg-color: grey;\n  width: 16px;\n  height: 16px;\n  background: var(--bg-color);\n  margin-right: 2px;\n  display: inline-block;\n  border: 1px solid white;\n}\n.debug-panel kbd {\n  background-color: #eee;\n  border-radius: 3px;\n  border: 1px solid #b4b4b4;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;\n  color: #333;\n  display: inline-block;\n  font-size: 0.85em;\n  font-weight: 700;\n  line-height: 1;\n  padding: 2px 4px;\n  white-space: nowrap;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL25nLWluc3BlY3QuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxlQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFFQSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQURGO0FBR0U7RUFDRSxtQkFBQTtFQUNBLDBCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FBREo7QUFJRTtFQUNFLGFBQUE7QUFGSjtBQU1FO0VBQ0UsZUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtBQUpKO0FBUUU7RUFDRSxXQUFBO0FBTko7QUFTRTtFQUNFLGVBQUE7RUFDQSxZQUFBO0FBUEo7QUFVRTtFQUNFLGtCQUFBO0FBUko7QUFVRTtFQUNFLGFBQUE7RUFNQSxxQkFBQTtBQWJKO0FBU0k7RUFDRSxtQkFBQTtBQVBOO0FBYU07RUFDRSxtQkFBQTtBQVhSO0FBZ0JFO0VBQ0Usb0JBQUE7RUFDQSw0QkFBQTtFQUNBLHFCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FBZEo7QUFpQkU7RUFDRSxzQkFBQTtFQUNBLFdBQUE7QUFmSjtBQWtCRTtFQUNFLGdCQUFBO0VBRUEsV0FBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtFQUVBLGlCQUFBO0VBQ0EscUJBQUE7RUFDQSx1QkFBQTtBQWxCSjtBQXFCRTtFQUNFLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtFQUNBLGtGQUFBO0VBQ0EsV0FBQTtFQUNBLHFCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0FBbkJKIiwiZmlsZSI6Im5nLWluc3BlY3QuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5kZWJ1Zy1wYW5lbCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAxMHB4O1xuICByaWdodDogMTBweDtcblxuICBtYXgtaGVpZ2h0OiA1MDBweDtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIHotaW5kZXg6IDEwO1xuICBjb2xvcjogd2hpdGU7XG5cbiAgLnBhbmVsLWJhY2tncm91bmQge1xuICAgIGJhY2tncm91bmQ6ICM0ZjRmNGY7XG4gICAgYm9yZGVyOiAycHggZGFzaGVkICM0ZjhjYzk7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gICAgbWluLXdpZHRoOiAxNTBweDtcbiAgICBtYXgtd2lkdGg6IDQwMHB4O1xuICB9XG5cbiAgaDQge1xuICAgIG1hcmdpbi10b3A6IDA7XG4gIH1cblxuXG4gIC5pY29uIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgaGVpZ2h0OiAyMHB4O1xuICAgIHdpZHRoOiAyMHB4O1xuICAgIG1hcmdpbi1sZWZ0OiAycHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAycHg7XG4gIH1cblxuXG4gIC5zdmctY29sb3Ige1xuICAgIGZpbGw6IHdoaXRlO1xuICB9XG5cbiAgLm1hdC1oaW50IHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgY29sb3I6IHdoaXRlO1xuICB9XG5cbiAgLmNlbnRlci10ZXh0IHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIH1cbiAgLml0ZW0tcm93IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuXG4gICAgLnByb3AtdmFsdWUge1xuICAgICAgYmFja2dyb3VuZDogIzU5NTk1OTtcbiAgICB9XG5cbiAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG5cbiAgICAmLm9kZCB7XG4gICAgICAucHJvcC12YWx1ZSB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM3ZDdkN2Q7XG4gICAgICB9XG4gICAgfVxuICB9XG5cbiAgLnByb3AtdmFsdWUge1xuICAgIGRpc3BsYXk6IC13ZWJraXQtYm94O1xuICAgIC13ZWJraXQtYm94LW9yaWVudDogdmVydGljYWw7XG4gICAgLXdlYmtpdC1saW5lLWNsYW1wOiAzO1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgd2lkdGg6IDI1MHB4O1xuICB9XG5cbiAgOjpuZy1kZWVwIG1hdC1mb3JtLWZpZWxkIHtcbiAgICBtYXJnaW4tYm90dG9tOiAtMS4xNWVtO1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG5cbiAgLmNvbG9yLWJveCB7XG4gICAgLS1iZy1jb2xvcjogZ3JleTtcblxuICAgIHdpZHRoOiAxNnB4O1xuICAgIGhlaWdodDogMTZweDtcbiAgICBiYWNrZ3JvdW5kOiB2YXIoLS1iZy1jb2xvcik7XG5cbiAgICBtYXJnaW4tcmlnaHQ6IDJweDtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG4gIH1cblxuICBrYmQge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNiNGI0YjQ7XG4gICAgYm94LXNoYWRvdzogMCAxcHggMXB4IHJnYmEoMCwgMCwgMCwgLjIpLCAwIDJweCAwIDAgcmdiYSgyNTUsIDI1NSwgMjU1LCAuNykgaW5zZXQ7XG4gICAgY29sb3I6ICMzMzM7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgIGZvbnQtc2l6ZTogLjg1ZW07XG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICBsaW5lLWhlaWdodDogMTtcbiAgICBwYWRkaW5nOiAycHggNHB4O1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIH1cbn1cbiJdfQ== */";
-      /***/
-    },
-
-    /***/
-    "+qdE":
-    /*!********************************************************************!*\
-      !*** ./apps/demo/src/app/example-panel/example-panel.component.ts ***!
-      \********************************************************************/
-
-    /*! exports provided: ExamplePanelComponent */
-
-    /***/
-    function qdE(module, __webpack_exports__, __webpack_require__) {
+    "+qdE": function qdE(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -301,15 +244,7 @@
     },
 
     /***/
-    "+vhj":
-    /*!**********************************************!*\
-      !*** ./apps/demo/src/app/app.component.scss ***!
-      \**********************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function vhj(module, __webpack_exports__, __webpack_require__) {
+    "+vhj": function vhj(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -321,15 +256,7 @@
     },
 
     /***/
-    "/EEl":
-    /*!********************************************!*\
-      !*** ./libs/markdown/module/public_api.ts ***!
-      \********************************************/
-
-    /*! exports provided: MarkdownModule, RenderMarkdownComponent */
-
-    /***/
-    function EEl(module, __webpack_exports__, __webpack_require__) {
+    "/EEl": function EEl(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -362,15 +289,7 @@
     },
 
     /***/
-    "/xyV":
-    /*!********************************************************!*\
-      !*** ./libs/ng-utils/css-props/css-props.directive.ts ***!
-      \********************************************************/
-
-    /*! exports provided: CSSPropsDirective */
-
-    /***/
-    function xyV(module, __webpack_exports__, __webpack_require__) {
+    "/xyV": function xyV(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -445,15 +364,7 @@
     },
 
     /***/
-    0:
-    /*!*************************************!*\
-      !*** multi ./apps/demo/src/main.ts ***!
-      \*************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function _(module, exports, __webpack_require__) {
+    0: function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
       /*! /home/runner/work/gewd/gewd/apps/demo/src/main.ts */
       "Hasg");
@@ -461,15 +372,7 @@
     },
 
     /***/
-    "0/xO":
-    /*!****************************************************!*\
-      !*** ./libs/markdown/contracts/default-options.ts ***!
-      \****************************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function xO(module, __webpack_exports__, __webpack_require__) {
+    "0/xO": function xO(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -507,15 +410,7 @@
     },
 
     /***/
-    "0LWQ":
-    /*!********************************************************!*\
-      !*** ./libs/components/highlight-editor/public_api.ts ***!
-      \********************************************************/
-
-    /*! exports provided: PrismOptionsInjectorToken, HighlightService, HighlightEditorComponent, handleTab, KEY_BACKSPACE, KEY_DELETE, KEY_ENTER, KEY_ESCAPE, KEY_TAB, KEY_ARROW_UP, KEY_ARROW_DOWN, KEY_ARROW_LEFT, KEY_ARROW_RIGHT, KEY_SHIFT, KEY_ALT, KEY_CTRL, KEY_META, KEY_CAPS_LOCK, ALL_CHARS_REGEX, IGNORE_KEY_EVENTS, HighlightEditorModule */
-
-    /***/
-    function LWQ(module, __webpack_exports__, __webpack_require__) {
+    "0LWQ": function LWQ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -680,15 +575,7 @@
     },
 
     /***/
-    "0QHq":
-    /*!****************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/public_api.ts ***!
-      \****************************************************/
-
-    /*! exports provided: DynamicPortalModule, DynamicPortalComponent, PortalSourceAction, PortalHubService, PortalSourceDirective */
-
-    /***/
-    function QHq(module, __webpack_exports__, __webpack_require__) {
+    "0QHq": function QHq(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -751,15 +638,7 @@
     },
 
     /***/
-    "1dfk":
-    /*!****************************************************************!*\
-      !*** ./libs/mat-utils/material-icons/register_icons.module.ts ***!
-      \****************************************************************/
-
-    /*! exports provided: REGISTORY_ICONS_PAIR_TOKEN, RegisterIconsModule */
-
-    /***/
-    function dfk(module, __webpack_exports__, __webpack_require__) {
+    "1dfk": function dfk(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -873,15 +752,7 @@
     },
 
     /***/
-    "1qV8":
-    /*!***********************************************!*\
-      !*** ./libs/markdown/contracts/public_api.ts ***!
-      \***********************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function qV8(module, __webpack_exports__, __webpack_require__) {
+    "1qV8": function qV8(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -916,15 +787,7 @@
     },
 
     /***/
-    "2wmh":
-    /*!*****************************************!*\
-      !*** ./libs/ng-utils/morphdom/index.ts ***!
-      \*****************************************/
-
-    /*! exports provided: MorphdomModule, MorphdomDirective, MorphdomService */
-
-    /***/
-    function wmh(module, __webpack_exports__, __webpack_require__) {
+    "2wmh": function wmh(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -957,15 +820,7 @@
     },
 
     /***/
-    "3Dq0":
-    /*!*********************************************************!*\
-      !*** ./apps/demo/src/app/markdown-toolbar.component.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: MarkdownToolbarComponent */
-
-    /***/
-    function Dq0(module, __webpack_exports__, __webpack_require__) {
+    "3Dq0": function Dq0(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1014,15 +869,7 @@
     },
 
     /***/
-    "4jei":
-    /*!*********************************************!*\
-      !*** ./libs/markdown/service/public_api.ts ***!
-      \*********************************************/
-
-    /*! exports provided: MarkdownService, MarkdownCacheService, MarkdownOptionsInjectorToken */
-
-    /***/
-    function jei(module, __webpack_exports__, __webpack_require__) {
+    "4jei": function jei(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1067,15 +914,7 @@
     },
 
     /***/
-    "4pbO":
-    /*!************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/example-panel/example-panel.component.html ***!
-      \************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function pbO(module, __webpack_exports__, __webpack_require__) {
+    "4pbO": function pbO(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1087,15 +926,7 @@
     },
 
     /***/
-    "51S8":
-    /*!***********************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/ng-error.component.ts ***!
-      \***********************************************************************/
-
-    /*! exports provided: NgErrorComponent */
-
-    /***/
-    function S8(module, __webpack_exports__, __webpack_require__) {
+    "51S8": function S8(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1228,15 +1059,7 @@
     },
 
     /***/
-    "5G9P":
-    /*!*********************************************************!*\
-      !*** ./libs/ng-utils/css-props/update-dynamic-style.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: updateDynamicStyle, getStyleElement, replaceCss */
-
-    /***/
-    function G9P(module, __webpack_exports__, __webpack_require__) {
+    "5G9P": function G9P(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1303,15 +1126,7 @@
     },
 
     /***/
-    "5NOK":
-    /*!************************************************!*\
-      !*** ./libs/ng-utils/components/public_api.ts ***!
-      \************************************************/
-
-    /*! exports provided: SimplePagerModule, SimplePagerComponent */
-
-    /***/
-    function NOK(module, __webpack_exports__, __webpack_require__) {
+    "5NOK": function NOK(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1344,35 +1159,19 @@
     },
 
     /***/
-    "5aeG":
-    /*!************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/app.component.html ***!
-      \************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function aeG(module, __webpack_exports__, __webpack_require__) {
+    "5aeG": function aeG(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<h2>Open Dev-Tools to see the network calls.</h2>\n\n<gewd-example-panel packageName=\"@gewd/markdown\"\n                    packageTitle=\"Markdown\"\n                    moduleName=\"markdown-example\"\n                    componentName=\"MarkdownExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/lazy\"\n                    packageTitle=\"Lazy Components\"\n                    moduleName=\"lazyload-example\"\n                    componentName=\"LazyLoadExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"Components\"\n                    moduleName=\"components-example\"\n                    componentName=\"ComponentsExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- Dynamic Portal Component\n  </mat-expansion-panel-header>\n\n  <dynamic-portal key=\"portalKey\" class=\"dynamic-portal-border\">\n    Dynamic Portal Placeholder\n  </dynamic-portal>\n\n  <br/>\n\n  <gewd-lazy-module-component\n    #lazyPortalModuleComponent\n    [componentInputs]=\"{ testProp: 'Binding value', portalKey: 'portalKey' }\"\n  >\n    <button mat-raised-button color=\"primary\"\n            (click)=\"setLazyPortalModuleComp(lazyPortalModuleComponent)\">\n      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)\n    </button>\n  </gewd-lazy-module-component>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- NgErrorOverlay\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"ngErrorOverlay$ | async\">\n\n  </gewd-markdown>\n\n  <button (click)=\"makeError()\">Trigger an error</button>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/mat-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/mat-utils.svg?\"\n           alt=\"Gewd Mat-Utils NPM Version\">\n    </a>\n    &nbsp;- Material Utils\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"matUtilsReadmeMD$ | async\">\n\n  </gewd-markdown>\n\n  <mat-icon svgIcon=\"add\"></mat-icon>\n</mat-expansion-panel>\n\n\n<br/>\n\n<mat-expansion-panel (opened)=\"openedEditorPanel()\">\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/components\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/components.svg?\"\n           alt=\"Gewd Components NPM Version\">\n    </a>\n    &nbsp;- PrismEditor\n  </mat-expansion-panel-header>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Examples\" [value]=\"currentPrismExample\"\n                (valueChange)=\"updateValueChanged($event)\">\n      <mat-option value=\"empty\">Empty</mat-option>\n      <mat-option value=\"readme_md\">Markdown Readme</mat-option>\n      <mat-option value=\"ts_example\">TypeScript</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Render debounce-time\"\n           value=\"200\" type=\"number\"\n           #renderDebounce>\n  </mat-form-field>\n\n\n  <mat-form-field>\n    <input matInput placeholder=\"Editor Height (px)\"\n           value=\"100\" type=\"number\"\n           #editorHeight>\n  </mat-form-field>\n\n  <gewd-prism-editor [value]=\"editorExample$ | async\"\n                     [language]=\"editorLanguage$ | async\"\n                     [debounceTime]=\"+renderDebounce.value\"\n                     [style.--editor-min-height.px]=\"editorHeight.value\"\n                     #prismEditor>\n  </gewd-prism-editor>\n\n  <br/>\n\n  <h4>Mat-Form-Field Example</h4>\n\n  <form [formGroup]=\"aForm\">\n\n    <mat-form-field style=\"width: 100%\">\n\n      <gewd-custom-form-control placeholder=\"test\"\n                                formControlName=\"editor\"\n                                #customFormControl\n      >\n        <gewd-prism-editor [value]=\"editorExample$ | async\"\n                           [language]=\"editorLanguage$ | async\"\n                           [debounceTime]=\"+renderDebounce.value\"\n                           [style.--editor-min-height.px]=\"editorHeight.value\"\n                           (value$)=\"customFormControl.value = $event\"\n                           (focussed$)=\"customFormControl.focused = $event\" #editoe>\n        </gewd-prism-editor>\n      </gewd-custom-form-control>\n    </mat-form-field>\n  </form>\n\n\n  Form Field Data:\n  <hr>\n  {{ aForm.value | json }}\n</mat-expansion-panel>\n";
+      __webpack_exports__["default"] = "<h2>Open Dev-Tools to see the network calls.</h2>\n\n<gewd-example-panel packageName=\"@gewd/markdown\"\n                    packageTitle=\"Markdown\"\n                    moduleName=\"markdown-example\"\n                    componentName=\"MarkdownExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"CodeMirror\"\n                    moduleName=\"codemirror-example\"\n                    componentName=\"CodeMirrorExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<gewd-example-panel packageName=\"@gewd/lazy\"\n                    packageTitle=\"Lazy Components\"\n                    moduleName=\"lazyload-example\"\n                    componentName=\"LazyLoadExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"Components\"\n                    moduleName=\"components-example\"\n                    componentName=\"ComponentsExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- Dynamic Portal Component\n  </mat-expansion-panel-header>\n\n  <dynamic-portal key=\"portalKey\" class=\"dynamic-portal-border\">\n    Dynamic Portal Placeholder\n  </dynamic-portal>\n\n  <br/>\n\n  <gewd-lazy-module-component\n    #lazyPortalModuleComponent\n    [componentInputs]=\"{ testProp: 'Binding value', portalKey: 'portalKey' }\"\n  >\n    <button mat-raised-button color=\"primary\"\n            (click)=\"setLazyPortalModuleComp(lazyPortalModuleComponent)\">\n      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)\n    </button>\n  </gewd-lazy-module-component>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- NgErrorOverlay\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"ngErrorOverlay$ | async\">\n\n  </gewd-markdown>\n\n  <button (click)=\"makeError()\">Trigger an error</button>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/mat-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/mat-utils.svg?\"\n           alt=\"Gewd Mat-Utils NPM Version\">\n    </a>\n    &nbsp;- Material Utils\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"matUtilsReadmeMD$ | async\">\n\n  </gewd-markdown>\n\n  <mat-icon svgIcon=\"add\"></mat-icon>\n</mat-expansion-panel>\n\n\n<br/>\n\n<mat-expansion-panel (opened)=\"openedEditorPanel()\">\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/components\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/components.svg?\"\n           alt=\"Gewd Components NPM Version\">\n    </a>\n    &nbsp;- PrismEditor\n  </mat-expansion-panel-header>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Examples\" [value]=\"currentPrismExample\"\n                (valueChange)=\"updateValueChanged($event)\">\n      <mat-option value=\"empty\">Empty</mat-option>\n      <mat-option value=\"readme_md\">Markdown Readme</mat-option>\n      <mat-option value=\"ts_example\">TypeScript</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Render debounce-time\"\n           value=\"200\" type=\"number\"\n           #renderDebounce>\n  </mat-form-field>\n\n\n  <mat-form-field>\n    <input matInput placeholder=\"Editor Height (px)\"\n           value=\"100\" type=\"number\"\n           #editorHeight>\n  </mat-form-field>\n\n  <gewd-prism-editor [value]=\"editorExample$ | async\"\n                     [language]=\"editorLanguage$ | async\"\n                     [debounceTime]=\"+renderDebounce.value\"\n                     [style.--editor-min-height.px]=\"editorHeight.value\"\n                     #prismEditor>\n  </gewd-prism-editor>\n\n  <br/>\n\n  <h4>Mat-Form-Field Example</h4>\n\n  <form [formGroup]=\"aForm\">\n\n    <mat-form-field style=\"width: 100%\">\n\n      <gewd-custom-form-control placeholder=\"test\"\n                                formControlName=\"editor\"\n                                #customFormControl\n      >\n        <gewd-prism-editor [value]=\"editorExample$ | async\"\n                           [language]=\"editorLanguage$ | async\"\n                           [debounceTime]=\"+renderDebounce.value\"\n                           [style.--editor-min-height.px]=\"editorHeight.value\"\n                           (value$)=\"customFormControl.value = $event\"\n                           (focussed$)=\"customFormControl.focused = $event\" #editoe>\n        </gewd-prism-editor>\n      </gewd-custom-form-control>\n    </mat-form-field>\n  </form>\n\n\n  Form Field Data:\n  <hr>\n  {{ aForm.value | json }}\n</mat-expansion-panel>\n";
       /***/
     },
 
     /***/
-    "64y6":
-    /*!******************************************!*\
-      !*** ./libs/lazy/registry/public_api.ts ***!
-      \******************************************/
-
-    /*! exports provided: DynamicLoaderRegistry */
-
-    /***/
-    function y6(module, __webpack_exports__, __webpack_require__) {
+    "64y6": function y6(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1393,15 +1192,7 @@
     },
 
     /***/
-    "6L+t":
-    /*!***********************************************!*\
-      !*** ./libs/ng-utils/css-props/public_api.ts ***!
-      \***********************************************/
-
-    /*! exports provided: CssPropsModule, CSSPropsDirective, CssPropsService, updateCssProps, updateDynamicStyle, getStyleElement, replaceCss, ElementCssService */
-
-    /***/
-    function LT(module, __webpack_exports__, __webpack_require__) {
+    "6L+t": function LT(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1494,15 +1285,7 @@
     },
 
     /***/
-    "7DNQ":
-    /*!******************************************!*\
-      !*** ./libs/markdown/contracts/index.ts ***!
-      \******************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function DNQ(module, __webpack_exports__, __webpack_require__) {
+    "7DNQ": function DNQ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1529,15 +1312,7 @@
     },
 
     /***/
-    "B+Hh":
-    /*!********************************************!*\
-      !*** ./libs/markdown/utils/simple-hash.ts ***!
-      \********************************************/
-
-    /*! exports provided: simpleHash */
-
-    /***/
-    function BHh(module, __webpack_exports__, __webpack_require__) {
+    "B+Hh": function BHh(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1569,15 +1344,7 @@
     },
 
     /***/
-    "BBkK":
-    /*!******************************************************!*\
-      !*** ./libs/ng-utils/morphdom/morphdom.directive.ts ***!
-      \******************************************************/
-
-    /*! exports provided: MorphdomDirective */
-
-    /***/
-    function BBkK(module, __webpack_exports__, __webpack_require__) {
+    "BBkK": function BBkK(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1662,15 +1429,7 @@
     },
 
     /***/
-    "BKhR":
-    /*!****************************************************!*\
-      !*** ./libs/ng-utils/morphdom/morphdom.service.ts ***!
-      \****************************************************/
-
-    /*! exports provided: MorphdomService */
-
-    /***/
-    function BKhR(module, __webpack_exports__, __webpack_require__) {
+    "BKhR": function BKhR(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1731,15 +1490,7 @@
     },
 
     /***/
-    "BLap":
-    /*!*************************************!*\
-      !*** ./libs/lazy/registry/index.ts ***!
-      \*************************************/
-
-    /*! exports provided: DynamicLoaderRegistry */
-
-    /***/
-    function BLap(module, __webpack_exports__, __webpack_require__) {
+    "BLap": function BLap(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1760,93 +1511,7 @@
     },
 
     /***/
-    "CTQz":
-    /*!******************************************************************!*\
-      !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.module.ts ***!
-      \******************************************************************/
-
-    /*! exports provided: NgInspectModule */
-
-    /***/
-    function CTQz(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectModule", function () {
-        return NgInspectModule;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "mrSG");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "fXoL");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/common */
-      "ofXK");
-      /* harmony import */
-
-
-      var _ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ./ng-inspect.component */
-      "NDUi");
-      /* harmony import */
-
-
-      var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @angular/material/checkbox */
-      "bSwM");
-      /* harmony import */
-
-
-      var _angular_material_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @angular/material/input */
-      "qFsG");
-      /* harmony import */
-
-
-      var _gewd_ng_utils_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! @gewd/ng-utils/bootstrap-component */
-      "RB7p");
-
-      var NgInspectModule = function NgInspectModule() {
-        _classCallCheck(this, NgInspectModule);
-      };
-
-      NgInspectModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]],
-        entryComponents: [_ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"], _gewd_ng_utils_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__["BootstrapComponentModule"].component({
-          elementName: 'ng-inspect',
-          component: _ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]
-        })],
-        exports: [_ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]]
-      })], NgInspectModule);
-      /***/
-    },
-
-    /***/
-    "DCkP":
-    /*!*****************************************!*\
-      !*** ./apps/demo/src/app/app.module.ts ***!
-      \*****************************************/
-
-    /*! exports provided: AppModule */
-
-    /***/
-    function DCkP(module, __webpack_exports__, __webpack_require__) {
+    "DCkP": function DCkP(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2038,13 +1703,23 @@
         };
 
         var markdownExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](function () {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | markdown-example-module */
-          "markdown-example-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~codemirror-example-module~markdown-example-module"), __webpack_require__.e("markdown-example-module")]).then(__webpack_require__.bind(null,
           /*! ./examples/markdown-example/markdown-example.module */
           "B/di")).then(function (_ref3) {
             var MarkdownExampleModule = _ref3.MarkdownExampleModule;
             return MarkdownExampleModule;
+          });
+        });
+        var codeMirrorExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](function () {
+          return Promise.all(
+          /*! import() | codemirror-example-module */
+          [__webpack_require__.e("default~codemirror-example-module~markdown-example-module"), __webpack_require__.e("codemirror-example-module")]).then(__webpack_require__.bind(null,
+          /*! ./examples/codemirror-example/codemirror-example.module */
+          "u4Pf")).then(function (_ref4) {
+            var CodemirrorExampleModule = _ref4.CodemirrorExampleModule;
+            return CodemirrorExampleModule;
           });
         });
         var lazyLoadExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](function () {
@@ -2052,8 +1727,8 @@
           /*! import() | lazyload-example-module */
           "lazyload-example-module").then(__webpack_require__.bind(null,
           /*! ./examples/lazyload-example/lazyload-example.module */
-          "j0+E")).then(function (_ref4) {
-            var LazyloadExampleModule = _ref4.LazyloadExampleModule;
+          "j0+E")).then(function (_ref5) {
+            var LazyloadExampleModule = _ref5.LazyloadExampleModule;
             return LazyloadExampleModule;
           });
         });
@@ -2062,8 +1737,8 @@
           /*! import() | components-example-module */
           "components-example-module").then(__webpack_require__.bind(null,
           /*! ./examples/components-example/components-example.module */
-          "6RHk")).then(function (_ref5) {
-            var ComponentsExampleModule = _ref5.ComponentsExampleModule;
+          "6RHk")).then(function (_ref6) {
+            var ComponentsExampleModule = _ref6.ComponentsExampleModule;
             return ComponentsExampleModule;
           });
         });
@@ -2072,8 +1747,8 @@
           /*! import() | lazy-portal-module */
           "lazy-portal-module").then(__webpack_require__.bind(null,
           /*! ./examples/lazyload-example/lazy-wrapper/lazy-portal-source */
-          "uy6E")).then(function (_ref6) {
-            var PortalModule = _ref6.PortalModule;
+          "uy6E")).then(function (_ref7) {
+            var PortalModule = _ref7.PortalModule;
             return PortalModule;
           });
         });
@@ -2092,6 +1767,11 @@
             moduleName: 'markdown-example',
             moduleConfig: {
               load: markdownExampleLazy
+            }
+          }, {
+            moduleName: 'codemirror-example',
+            moduleConfig: {
+              load: codeMirrorExampleLazy
             }
           }, {
             moduleName: 'lazyload-example',
@@ -2148,15 +1828,7 @@
     },
 
     /***/
-    "DQPP":
-    /*!****************************************!*\
-      !*** ./libs/lazy/loader/public_api.ts ***!
-      \****************************************/
-
-    /*! exports provided: LazyComponent, REGISTORY_LAZY_LOADED_MODULE_TOKEN, GewdLazyLoaderModule, LazyModuleComponent */
-
-    /***/
-    function DQPP(module, __webpack_exports__, __webpack_require__) {
+    "DQPP": function DQPP(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2207,15 +1879,7 @@
     },
 
     /***/
-    "DVXd":
-    /*!*******************************************!*\
-      !*** ./libs/ng-utils/components/index.ts ***!
-      \*******************************************/
-
-    /*! exports provided: SimplePagerModule, SimplePagerComponent */
-
-    /***/
-    function DVXd(module, __webpack_exports__, __webpack_require__) {
+    "DVXd": function DVXd(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2242,15 +1906,7 @@
     },
 
     /***/
-    "E8Ja":
-    /*!*************************************!*\
-      !*** ./libs/markdown/utils/lazy.ts ***!
-      \*************************************/
-
-    /*! exports provided: Lazy */
-
-    /***/
-    function E8Ja(module, __webpack_exports__, __webpack_require__) {
+    "E8Ja": function E8Ja(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2291,15 +1947,7 @@
     },
 
     /***/
-    "EIVg":
-    /*!**********************************************************************!*\
-      !*** ./libs/ng-utils/components/simple-pager/simple-pager.module.ts ***!
-      \**********************************************************************/
-
-    /*! exports provided: SimplePagerModule */
-
-    /***/
-    function EIVg(module, __webpack_exports__, __webpack_require__) {
+    "EIVg": function EIVg(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2347,15 +1995,7 @@
     },
 
     /***/
-    "FYco":
-    /*!*****************************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/portal-source.directive.ts ***!
-      \*****************************************************************/
-
-    /*! exports provided: PortalSourceDirective */
-
-    /***/
-    function FYco(module, __webpack_exports__, __webpack_require__) {
+    "FYco": function FYco(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2455,15 +2095,7 @@
     },
 
     /***/
-    "GRi0":
-    /*!******************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/public_api.ts ***!
-      \******************************************************/
-
-    /*! exports provided: NgErrorComponent, NgErrorOverlayModule */
-
-    /***/
-    function GRi0(module, __webpack_exports__, __webpack_require__) {
+    "GRi0": function GRi0(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2496,15 +2128,7 @@
     },
 
     /***/
-    "Gdju":
-    /*!*********************************************************!*\
-      !*** ./libs/components/highlight-editor/editor.keys.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: KEY_BACKSPACE, KEY_DELETE, KEY_ENTER, KEY_ESCAPE, KEY_TAB, KEY_ARROW_UP, KEY_ARROW_DOWN, KEY_ARROW_LEFT, KEY_ARROW_RIGHT, KEY_SHIFT, KEY_ALT, KEY_CTRL, KEY_META, KEY_CAPS_LOCK, ALL_CHARS_REGEX, IGNORE_KEY_EVENTS */
-
-    /***/
-    function Gdju(module, __webpack_exports__, __webpack_require__) {
+    "Gdju": function Gdju(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2625,15 +2249,7 @@
     },
 
     /***/
-    "HFY2":
-    /*!******************************************!*\
-      !*** ./libs/ng-utils/css-props/index.ts ***!
-      \******************************************/
-
-    /*! exports provided: CssPropsModule, CSSPropsDirective, CssPropsService, updateCssProps, updateDynamicStyle, getStyleElement, replaceCss, ElementCssService */
-
-    /***/
-    function HFY2(module, __webpack_exports__, __webpack_require__) {
+    "HFY2": function HFY2(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2696,15 +2312,7 @@
     },
 
     /***/
-    "Hasg":
-    /*!*******************************!*\
-      !*** ./apps/demo/src/main.ts ***!
-      \*******************************/
-
-    /*! no exports provided */
-
-    /***/
-    function Hasg(module, __webpack_exports__, __webpack_require__) {
+    "Hasg": function Hasg(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2757,15 +2365,7 @@
     },
 
     /***/
-    "HeaY":
-    /*!*************************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/ng-error.component.scss ***!
-      \*************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function HeaY(module, __webpack_exports__, __webpack_require__) {
+    "HeaY": function HeaY(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2777,35 +2377,7 @@
     },
 
     /***/
-    "Htkt":
-    /*!*************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.html ***!
-      \*************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function Htkt(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony default export */
-
-
-      __webpack_exports__["default"] = "<ng-template  #itemEdit let-item=\"item\" let-context=\"context\">\n  <div [ngSwitch]=\"item.propInfo.type\">\n    <ng-container *ngSwitchCase=\"'boolean'\">\n      <mat-checkbox [checked]=\"context.instance[item.key]\"\n                    (change)=\"onChangeGeneric($event.checked, context, item.key)\">\n        {{ item.key }}\n      </mat-checkbox>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'number'\">\n      <mat-form-field>\n        <input type=\"number\" [value]=\"context.instance[item.key]\" #number\n               matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(number.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'string'\">\n      <mat-form-field>\n        <input type=\"text\" [value]=\"context.instance[item.key]\" #text\n                matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(text.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'color'\">\n      <mat-form-field>\n        <input type=\"color\"\n               [value]=\"context.instance[item.key]\" #text\n               matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(text.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n  </div>\n</ng-template>\n\n<ng-template #itemsListTemplate let-items=\"items\" let-context=\"context\">\n  <div *ngFor=\"let item of items; let odd = odd; trackBy: trackByEntry\"\n       class=\"item-row\"\n       [class.odd]=\"odd\"\n  >\n    <div [ngSwitch]=\"item.propInfo.type\" style=\"flex: 1\">\n      <ng-container *ngSwitchDefault>\n        <div *ngIf=\"item.propInfo.canEdit && item.editMode; else readOnly\">\n\n          <ng-template *ngTemplateOutlet=\"itemEdit; context: {\n          item: item,\n          context: context\n        }\">\n          </ng-template>\n        </div>\n\n        <ng-template #readOnly>\n          <span class=\"mat-hint\">{{item.key}}:</span>\n          <br />\n          <span class=\"prop-value\">\n            <span *ngIf=\"item.propInfo.type === 'color'\"\n                 [style]=\"byPassAttr('--bg-color:'+context.instance[item.key])\"\n                  class=\"color-box\">\n\n            </span>\n            {{context.instance[item.key]}}</span>\n        </ng-template>\n      </ng-container>\n      <ng-container *ngSwitchCase=\"'observable'\">\n        <span class=\"mat-hint\">{{item.key}}</span>:\n        <br />\n        <span class=\"prop-value\">{{context.instance[item.key] | async | json}}</span>\n      </ng-container>\n    </div>\n    <div class=\"icon\" *ngIf=\"item.propInfo.canEdit\"\n         (click)=\"toggleEdit(item)\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path class=\"svg-color\" d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z\"/></svg>\n    </div>\n    <div class=\"icon\">\n      <div *ngIf=\"isPinned(context, item.key), else unpinned\"\n           (click)=\"onPinOp(context, item.key, false)\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\"\n             enable-background=\"new 0 0 24 24\"\n             height=\"24\" viewBox=\"0 0 24 24\" width=\"24\">\n          <g><path d=\"M0,0h24v24H0V0z\" fill=\"none\"/>\n            <path d=\"M0,0h24v24H0V0z\" fill=\"none\"/></g>\n          <g><path  class=\"svg-color\" d=\"M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z\"/></g></svg>\n      </div>\n      <ng-template #unpinned>\n        <div (click)=\"onPinOp(context, item.key, true)\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\"\n               height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path class=\"svg-color\" d=\"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\"/></svg>\n        </div>\n      </ng-template>\n    </div>\n\n  </div>\n</ng-template>\n\n<div class=\"debug-panel\" ignore-inspect>\n  <ng-container *ngIf=\"pinnedItems$ | async as pinnedItems\">\n    <div class=\"panel-background\" *ngFor=\"let pinnedItem of pinnedItems\">\n      <h4>{{pinnedItem.name}}</h4>\n\n      <ng-template *ngTemplateOutlet=\"itemsListTemplate; context: {\n          items: pinnedItem.entries,\n          context: pinnedItem.context\n        }\">\n      </ng-template>\n    </div>\n  </ng-container>\n\n  <div class=\"panel-background\" *ngIf=\"component$ | async as component; else nothing\">\n    <h4>{{component.name}}</h4>\n\n    <ng-template *ngTemplateOutlet=\"itemsListTemplate; context: {\n          items: component.entries,\n          context: component.context\n        }\">\n    </ng-template>\n  </div>\n  <ng-template #nothing>\n    <div class=\"panel-background center-text\">\n      Press/hold <kbd>ctrl</kbd> to select <br/>\n      your component to inspect\n    </div>\n  </ng-template>\n</div>\n";
-      /***/
-    },
-
-    /***/
-    "I0mV":
-    /*!**************************************************************************!*\
-      !*** ./libs/components/highlight-editor/highlight-editor.component.scss ***!
-      \**************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function I0mV(module, __webpack_exports__, __webpack_require__) {
+    "I0mV": function I0mV(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2817,15 +2389,7 @@
     },
 
     /***/
-    "IAcx":
-    /*!************************************************************************!*\
-      !*** ./libs/components/highlight-editor/highlight-editor.component.ts ***!
-      \************************************************************************/
-
-    /*! exports provided: HighlightEditorComponent */
-
-    /***/
-    function IAcx(module, __webpack_exports__, __webpack_require__) {
+    "IAcx": function IAcx(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -2937,11 +2501,11 @@
 
             this.debounce$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (debounceTimeInterval) {
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["combineLatest"])([_this2.value$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])()), _this2.language$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])()), _this2.lastKeyTriggered$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])())]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["debounceTime"])(debounceTimeInterval));
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed$)).subscribe(function (_ref7) {
-              var _ref8 = _slicedToArray(_ref7, 3),
-                  code = _ref8[0],
-                  language = _ref8[1],
-                  lastKeyEvent = _ref8[2];
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed$)).subscribe(function (_ref8) {
+              var _ref9 = _slicedToArray(_ref8, 3),
+                  code = _ref9[0],
+                  language = _ref9[1],
+                  lastKeyEvent = _ref9[2];
 
               return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
                 return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -2998,10 +2562,10 @@
           }
         }, {
           key: "ngOnChanges",
-          value: function ngOnChanges(_ref9) {
-            var value = _ref9.value,
-                language = _ref9.language,
-                debounceTime = _ref9.debounceTime;
+          value: function ngOnChanges(_ref10) {
+            var value = _ref10.value,
+                language = _ref10.language,
+                debounceTime = _ref10.debounceTime;
 
             if (value) {
               this.value$.next(value.currentValue);
@@ -3170,15 +2734,7 @@
     },
 
     /***/
-    "IRXU":
-    /*!***********************************************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/dynamic-portal/dynamic-portal.component.scss ***!
-      \***********************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function IRXU(module, __webpack_exports__, __webpack_require__) {
+    "IRXU": function IRXU(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3190,15 +2746,7 @@
     },
 
     /***/
-    "K9I7":
-    /*!***************************************************************!*\
-      !*** ./libs/components/highlight-editor/highlight.service.ts ***!
-      \***************************************************************/
-
-    /*! exports provided: PrismOptionsInjectorToken, HighlightService */
-
-    /***/
-    function K9I7(module, __webpack_exports__, __webpack_require__) {
+    "K9I7": function K9I7(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3339,15 +2887,7 @@
     },
 
     /***/
-    "KB+A":
-    /*!*************************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/dynamic-portal/dynamic-portal/dynamic-portal.component.html ***!
-      \*************************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function KBA(module, __webpack_exports__, __webpack_require__) {
+    "KB+A": function KBA(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3359,15 +2899,7 @@
     },
 
     /***/
-    "KRRg":
-    /*!********************************************************!*\
-      !*** ./libs/ng-utils/css-props/element-css.service.ts ***!
-      \********************************************************/
-
-    /*! exports provided: ElementCssService */
-
-    /***/
-    function KRRg(module, __webpack_exports__, __webpack_require__) {
+    "KRRg": function KRRg(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3427,15 +2959,7 @@
     },
 
     /***/
-    "L4a7":
-    /*!************************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/portal-hub.service.ts ***!
-      \************************************************************/
-
-    /*! exports provided: PortalSourceAction, PortalHubService */
-
-    /***/
-    function L4a7(module, __webpack_exports__, __webpack_require__) {
+    "L4a7": function L4a7(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3556,15 +3080,7 @@
     },
 
     /***/
-    "LTcb":
-    /*!***************************************************!*\
-      !*** ./libs/lazy/loader/lazy-module.component.ts ***!
-      \***************************************************/
-
-    /*! exports provided: LazyModuleComponent */
-
-    /***/
-    function LTcb(module, __webpack_exports__, __webpack_require__) {
+    "LTcb": function LTcb(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3850,15 +3366,7 @@
     },
 
     /***/
-    "MBLM":
-    /*!****************************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/ng-error-overlay.module.ts ***!
-      \****************************************************************************/
-
-    /*! exports provided: NgErrorOverlayModule */
-
-    /***/
-    function MBLM(module, __webpack_exports__, __webpack_require__) {
+    "MBLM": function MBLM(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3962,437 +3470,7 @@
     },
 
     /***/
-    "NDUi":
-    /*!*********************************************************************!*\
-      !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.ts ***!
-      \*********************************************************************/
-
-    /*! exports provided: NgInspectComponent */
-
-    /***/
-    function NDUi(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function () {
-        return NgInspectComponent;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "mrSG");
-      /* harmony import */
-
-
-      var _raw_loader_ng_inspect_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! raw-loader!./ng-inspect.component.html */
-      "Htkt");
-      /* harmony import */
-
-
-      var _ng_inspect_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./ng-inspect.component.scss */
-      "+pPf");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @angular/core */
-      "fXoL");
-      /* harmony import */
-
-
-      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! rxjs */
-      "qCKp");
-      /* harmony import */
-
-
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! rxjs/operators */
-      "kU1M");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! @angular/common */
-      "ofXK");
-      /* harmony import */
-
-
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! @angular/platform-browser */
-      "jhN1");
-
-      var NgInspectComponent_1;
-      var highlightClass = 'highlight-item';
-      /** @dynamic - allows Document in ngc build */
-
-      var NgInspectComponent = NgInspectComponent_1 = /*#__PURE__*/function () {
-        function NgInspectComponent(cd, sanitizer, document) {
-          var _this6 = this;
-
-          _classCallCheck(this, NgInspectComponent);
-
-          this.cd = cd;
-          this.sanitizer = sanitizer;
-          this.document = document;
-          this.component$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
-          this.pinnedItems$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
-          this.pinnedMap = new WeakMap();
-          this.pinnedAr = [];
-          this.ng = window && window.ng;
-          this.IVY_MODE = this.ng && !!this.ng.getComponent;
-          this.destroy$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
-
-          this.trackByEntry = function (index, item) {
-            return item.key;
-          };
-
-          if (!NgInspectComponent_1._addedStyle) {
-            NgInspectComponent_1._addedStyle = true;
-            var style = document.createElement('style'); // WebKit hack :(
-
-            style.appendChild(document.createTextNode('')); // Add the <style> element to the page
-
-            document.head.appendChild(style);
-            style.sheet.addRule(".".concat(highlightClass), 'border: 2px dotted lightblue !important;');
-          }
-
-          var weakMap = new WeakMap();
-          var highlightItem$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
-          highlightItem$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$), //filter(item => !!item),
-          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["pairwise"])()).subscribe(function (_ref10) {
-            var _ref11 = _slicedToArray(_ref10, 2),
-                oldItem = _ref11[0],
-                current = _ref11[1];
-
-            if (current) {
-              current.classList.add(highlightClass);
-            }
-
-            if (oldItem) {
-              oldItem.classList.remove(highlightClass);
-            }
-          });
-          var keyDown$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'keydown').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function (e) {
-            return e.ctrlKey;
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["mapTo"])(true));
-          var keyUp$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'keyup').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (e) {
-            return e.ctrlKey;
-          }));
-          var isActive$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(keyDown$, keyUp$);
-          isActive$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (value) {
-            return value ? Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'mousemove').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["startWith"])(_this6.getCurrentElement()), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (x) {
-              return console.info({
-                x: x
-              });
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function (e) {
-              return !!e && !_this6.isChildOfIgnoredElement(e.target);
-            })) : rxjs__WEBPACK_IMPORTED_MODULE_4__["NEVER"];
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["distinctUntilChanged"])(function (x, y) {
-            return x.target === y.target;
-          })).subscribe(function (event) {
-            var target = event.target;
-
-            var elementWithContext = _this6.findNextContext(target);
-
-            if (elementWithContext) {
-              var cached = weakMap.has(elementWithContext);
-              var context = cached ? weakMap.get(elementWithContext) : _this6.getComponent(elementWithContext);
-
-              if (!cached && context) {
-                weakMap.set(elementWithContext, context);
-              }
-
-              if (context) {
-                highlightItem$.next(elementWithContext);
-                var instance = context.instance;
-                var entries = Object.entries(instance).map(function (_ref12) {
-                  var _ref13 = _slicedToArray(_ref12, 2),
-                      key = _ref13[0],
-                      value = _ref13[1];
-
-                  return {
-                    key: key,
-                    propInfo: _this6.getPropInfo(value)
-                  };
-                }).filter(function (e) {
-                  return !!e.propInfo;
-                });
-                var found = {
-                  context: context,
-                  keys: Object.keys(instance),
-                  entries: entries,
-                  name: instance.__proto__.constructor.name
-                };
-
-                _this6.component$.next(found);
-              } else {
-                highlightItem$.next(null);
-
-                _this6.component$.next(null);
-              }
-            } else {
-              highlightItem$.next(null);
-
-              _this6.component$.next(null);
-            }
-          });
-        }
-
-        _createClass(NgInspectComponent, [{
-          key: "ngOnInit",
-          value: function ngOnInit() {}
-        }, {
-          key: "ngOnDestroy",
-          value: function ngOnDestroy() {
-            this.destroy$.next(true);
-            this.destroy$.complete();
-          }
-        }, {
-          key: "onChangeGeneric",
-          value: function onChangeGeneric(value, context, key) {
-            context.instance[key] = value;
-            context.cd.markForCheck();
-            this.cd.markForCheck();
-          }
-        }, {
-          key: "onPinOp",
-          value: function onPinOp(context, prop, pin) {
-            var pinnedEntry = null;
-
-            if (this.pinnedMap.has(context)) {
-              pinnedEntry = this.pinnedMap.get(context);
-            } else {
-              pinnedEntry = {
-                pinned: []
-              };
-              this.pinnedMap.set(context, pinnedEntry);
-            }
-
-            if (pin) {
-              pinnedEntry.pinned.push(prop);
-
-              if (!this.pinnedAr.includes(context)) {
-                this.pinnedAr.push(context);
-              }
-            } else {
-              var indexOf = pinnedEntry.pinned.indexOf(prop);
-              pinnedEntry.pinned.splice(indexOf, 1);
-
-              if (pinnedEntry.pinned.length === 0) {
-                var indexOfInstance = this.pinnedAr.indexOf(context);
-                this.pinnedAr.splice(indexOfInstance, 1);
-              }
-            }
-
-            this.cd.markForCheck();
-            this.fillPinnedArray();
-          }
-        }, {
-          key: "isPinned",
-          value: function isPinned(context, prop) {
-            if (this.pinnedMap.has(context)) {
-              return this.pinnedMap.get(context).pinned.includes(prop);
-            } else {
-              return false;
-            }
-          }
-        }, {
-          key: "getPropInfo",
-          value: function getPropInfo(value) {
-            var type = typeof value;
-
-            switch (type) {
-              case 'boolean':
-              case 'number':
-                return {
-                  canEdit: true,
-                  type: type
-                };
-
-              case 'string':
-                var str = value.toString();
-                var isColor = str.includes('#') && str.length === 7;
-                return {
-                  canEdit: true,
-                  type: isColor ? 'color' : 'string'
-                };
-
-              case 'object':
-                if (Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["isObservable"])(value)) {
-                  return {
-                    canEdit: false,
-                    type: 'observable'
-                  };
-                }
-
-                return null;
-
-              default:
-                return null;
-            }
-          }
-        }, {
-          key: "toggleEdit",
-          value: function toggleEdit(item) {
-            item.editMode = !item.editMode;
-          }
-        }, {
-          key: "byPassAttr",
-          value: function byPassAttr(value) {
-            return this.sanitizer.bypassSecurityTrustStyle(value);
-          }
-        }, {
-          key: "getCurrentElement",
-          value: function getCurrentElement() {
-            var hovering = this.document.querySelectorAll(':hover');
-
-            if (hovering.length > 0) {
-              return {
-                target: hovering.item(hovering.length - 1)
-              };
-            }
-
-            return null;
-          }
-        }, {
-          key: "isChildOfIgnoredElement",
-          value: function isChildOfIgnoredElement(element) {
-            while (element) {
-              var containsAttr = element.hasAttribute('ignore-inspect');
-
-              if (containsAttr) {
-                return true;
-              }
-
-              element = element.parentElement;
-            }
-
-            return false;
-          }
-        }, {
-          key: "getComponent",
-          value: function getComponent(element) {
-            if (this.IVY_MODE) {
-              var component = this.ng.getComponent(element) || this.ng.getContext(element);
-              return {
-                instance: component,
-                cd: this.cd
-              };
-            } else {
-              var probe = this.ng.probe(element);
-
-              if (probe) {
-                return {
-                  instance: probe.context,
-                  cd: probe.injector.get(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"])
-                };
-              }
-
-              return null;
-            }
-          }
-        }, {
-          key: "fillPinnedArray",
-          value: function fillPinnedArray() {
-            var _this7 = this;
-
-            var pinnedItems = [];
-
-            var _iterator2 = _createForOfIteratorHelper(this.pinnedAr),
-                _step2;
-
-            try {
-              var _loop = function _loop() {
-                var context = _step2.value;
-                var instance = context.instance;
-                pinnedItems.push({
-                  name: instance.__proto__.constructor.name,
-                  context: context,
-                  entries: _this7.pinnedMap.get(context).pinned.map(function (key) {
-                    return {
-                      key: key,
-                      propInfo: _this7.getPropInfo(instance[key])
-                    };
-                  })
-                });
-              };
-
-              for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                _loop();
-              }
-            } catch (err) {
-              _iterator2.e(err);
-            } finally {
-              _iterator2.f();
-            }
-
-            this.pinnedItems$.next(pinnedItems);
-          }
-        }, {
-          key: "findNextContext",
-          value: function findNextContext(element) {
-            if (!this.IVY_MODE) {
-              return element;
-            }
-
-            while (element && !this.getContext(element)) {
-              element = element.parentElement;
-            }
-
-            return element;
-          }
-        }, {
-          key: "getContext",
-          value: function getContext(element) {
-            return element.__ngContext__;
-          }
-        }]);
-
-        return NgInspectComponent;
-      }();
-
-      NgInspectComponent._addedStyle = false;
-
-      NgInspectComponent.ctorParameters = function () {
-        return [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]
-        }, {
-          type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["DomSanitizer"]
-        }, {
-          type: Document,
-          decorators: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
-            args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]]
-          }]
-        }];
-      };
-
-      NgInspectComponent = NgInspectComponent_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'ng-inspect',
-        template: _raw_loader_ng_inspect_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_ng_inspect_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
-      }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["DomSanitizer"], Document])], NgInspectComponent);
-      /***/
-    },
-
-    /***/
-    "PbxA":
-    /*!***************************************!*\
-      !*** ./libs/markdown/module/index.ts ***!
-      \***************************************/
-
-    /*! exports provided: MarkdownModule, RenderMarkdownComponent */
-
-    /***/
-    function PbxA(module, __webpack_exports__, __webpack_require__) {
+    "PbxA": function PbxA(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4419,15 +3497,7 @@
     },
 
     /***/
-    "QhBr":
-    /*!***********************************!*\
-      !*** ./libs/lazy/loader/index.ts ***!
-      \***********************************/
-
-    /*! exports provided: LazyComponent, REGISTORY_LAZY_LOADED_MODULE_TOKEN, GewdLazyLoaderModule, LazyModuleComponent */
-
-    /***/
-    function QhBr(module, __webpack_exports__, __webpack_require__) {
+    "QhBr": function QhBr(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4466,15 +3536,7 @@
     },
 
     /***/
-    "RB7p":
-    /*!****************************************************!*\
-      !*** ./libs/ng-utils/bootstrap-component/index.ts ***!
-      \****************************************************/
-
-    /*! exports provided: BOOTSTRAP_COMPONENT_TOKEN, bootstrapComponent, BootstrapComponentModule */
-
-    /***/
-    function RB7p(module, __webpack_exports__, __webpack_require__) {
+    "RB7p": function RB7p(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4507,15 +3569,7 @@
     },
 
     /***/
-    "RrM0":
-    /*!*********************************************************!*\
-      !*** ./libs/ng-utils/bootstrap-component/public_api.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: BOOTSTRAP_COMPONENT_TOKEN, bootstrapComponent, BootstrapComponentModule */
-
-    /***/
-    function RrM0(module, __webpack_exports__, __webpack_require__) {
+    "RrM0": function RrM0(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4548,15 +3602,7 @@
     },
 
     /***/
-    "S0EJ":
-    /*!**************************************************************!*\
-      !*** ./libs/components/highlight-editor/editor.functions.ts ***!
-      \**************************************************************/
-
-    /*! exports provided: handleTab */
-
-    /***/
-    function S0EJ(module, __webpack_exports__, __webpack_require__) {
+    "S0EJ": function S0EJ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4606,15 +3652,7 @@
     },
 
     /***/
-    "S32t":
-    /*!********************************************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/error-overlay/error-overlay.component.scss ***!
-      \********************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function S32t(module, __webpack_exports__, __webpack_require__) {
+    "S32t": function S32t(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4626,15 +3664,7 @@
     },
 
     /***/
-    "T9O9":
-    /*!******************************************************!*\
-      !*** ./libs/ng-utils/css-props/css-props.service.ts ***!
-      \******************************************************/
-
-    /*! exports provided: CssPropsService */
-
-    /***/
-    function T9O9(module, __webpack_exports__, __webpack_require__) {
+    "T9O9": function T9O9(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4688,19 +3718,19 @@
         _createClass(CssPropsService, [{
           key: "updateCustomCss",
           value: function updateCustomCss(styleId, customCss) {
-            var _this8 = this;
+            var _this6 = this;
 
             this.ngZone.runOutsideAngular(function () {
-              Object(_update_dynamic_style__WEBPACK_IMPORTED_MODULE_4__["updateDynamicStyle"])(_this8.document, styleId, customCss);
+              Object(_update_dynamic_style__WEBPACK_IMPORTED_MODULE_4__["updateDynamicStyle"])(_this6.document, styleId, customCss);
             });
           }
         }, {
           key: "updateDocumentVars",
           value: function updateDocumentVars(cssProps) {
-            var _this9 = this;
+            var _this7 = this;
 
             this.ngZone.runOutsideAngular(function () {
-              Object(_update_css_props__WEBPACK_IMPORTED_MODULE_3__["updateCssProps"])(_this9.document.body, cssProps);
+              Object(_update_css_props__WEBPACK_IMPORTED_MODULE_3__["updateCssProps"])(_this7.document.body, cssProps);
             });
           }
         }, {
@@ -4734,15 +3764,7 @@
     },
 
     /***/
-    "TRDi":
-    /*!*******************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/markdown/module/render-markdown/render-markdown.component.html ***!
-      \*******************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function TRDi(module, __webpack_exports__, __webpack_require__) {
+    "TRDi": function TRDi(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4754,15 +3776,7 @@
     },
 
     /***/
-    "UItG":
-    /*!***************************************************!*\
-      !*** ./libs/markdown/service/markdown.service.ts ***!
-      \***************************************************/
-
-    /*! exports provided: MarkdownService */
-
-    /***/
-    function UItG(module, __webpack_exports__, __webpack_require__) {
+    "UItG": function UItG(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4856,7 +3870,7 @@
           value: function compileMarkdown(str) {
             var triggerMermaid = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-              var parsedMarkdown, mermaidInstance, matched, _iterator3, _step3, mermaid, innerContent, rendered, cached, errorStr;
+              var parsedMarkdown, mermaidInstance, matched, _iterator2, _step2, mermaid, innerContent, rendered, cached, errorStr;
 
               return regeneratorRuntime.wrap(function _callee5$(_context5) {
                 while (1) {
@@ -4893,18 +3907,18 @@
                       }
 
                       matched = parsedMarkdown.match(compiledRegex);
-                      _iterator3 = _createForOfIteratorHelper(matched);
+                      _iterator2 = _createForOfIteratorHelper(matched);
                       _context5.prev = 12;
 
-                      _iterator3.s();
+                      _iterator2.s();
 
                     case 14:
-                      if ((_step3 = _iterator3.n()).done) {
+                      if ((_step2 = _iterator2.n()).done) {
                         _context5.next = 25;
                         break;
                       }
 
-                      mermaid = _step3.value;
+                      mermaid = _step2.value;
                       innerContent = this.cleanUpMermaidRaw(mermaid);
                       rendered = '';
                       _context5.next = 20;
@@ -4946,12 +3960,12 @@
                       _context5.prev = 27;
                       _context5.t0 = _context5["catch"](12);
 
-                      _iterator3.e(_context5.t0);
+                      _iterator2.e(_context5.t0);
 
                     case 30:
                       _context5.prev = 30;
 
-                      _iterator3.f();
+                      _iterator2.f();
 
                       return _context5.finish(30);
 
@@ -4974,7 +3988,7 @@
         }, {
           key: "triggerMermaidLoadScript",
           value: function triggerMermaidLoadScript() {
-            var _this10 = this;
+            var _this8 = this;
 
             if (!this.canTriggerMermaidLoad) {
               return Promise.resolve();
@@ -4988,13 +4002,13 @@
               _mermaidNode.hidden = true;
               this.document.body.appendChild(_mermaidNode);
               return new Promise(function (resolve, reject) {
-                var scriptTag = _this10.document.createElement('script');
+                var scriptTag = _this8.document.createElement('script');
 
-                scriptTag.src = _this10.markdownOptions.mermaidPath; // trigger mermaid init
+                scriptTag.src = _this8.markdownOptions.mermaidPath; // trigger mermaid init
 
                 scriptTag.onload = function () {
                   var mermaid = window.mermaid;
-                  mermaid.initialize(_this10.mermaidConfig);
+                  mermaid.initialize(_this8.mermaidConfig);
                   resolve();
 
                   mermaid.parseError = function (err) {
@@ -5002,7 +4016,7 @@
                   };
                 };
 
-                _this10.document.body.appendChild(scriptTag);
+                _this8.document.body.appendChild(scriptTag);
               });
             }
 
@@ -5052,15 +4066,7 @@
     },
 
     /***/
-    "VvhZ":
-    /*!*****************************************************!*\
-      !*** ./libs/mat-utils/material-icons/public_api.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: registerIcons, REGISTORY_ICONS_PAIR_TOKEN, RegisterIconsModule */
-
-    /***/
-    function VvhZ(module, __webpack_exports__, __webpack_require__) {
+    "VvhZ": function VvhZ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5099,15 +4105,7 @@
     },
 
     /***/
-    "W81V":
-    /*!***************************************************!*\
-      !*** ./libs/components/highlight-editor/index.ts ***!
-      \***************************************************/
-
-    /*! exports provided: PrismOptionsInjectorToken, HighlightService, HighlightEditorComponent, handleTab, KEY_BACKSPACE, KEY_DELETE, KEY_ENTER, KEY_ESCAPE, KEY_TAB, KEY_ARROW_UP, KEY_ARROW_DOWN, KEY_ARROW_LEFT, KEY_ARROW_RIGHT, KEY_SHIFT, KEY_ALT, KEY_CTRL, KEY_META, KEY_CAPS_LOCK, ALL_CHARS_REGEX, IGNORE_KEY_EVENTS, HighlightEditorModule */
-
-    /***/
-    function W81V(module, __webpack_exports__, __webpack_require__) {
+    "W81V": function W81V(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5248,15 +4246,7 @@
     },
 
     /***/
-    "WKfP":
-    /*!******************************************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/error-overlay/error-overlay.component.ts ***!
-      \******************************************************************************************/
-
-    /*! exports provided: ErrorOverlayComponent */
-
-    /***/
-    function WKfP(module, __webpack_exports__, __webpack_require__) {
+    "WKfP": function WKfP(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5334,15 +4324,7 @@
     },
 
     /***/
-    "WvKa":
-    /*!**********************************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/ng-error-overlay/ng-error/error-overlay/error-overlay.component.html ***!
-      \**********************************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function WvKa(module, __webpack_exports__, __webpack_require__) {
+    "WvKa": function WvKa(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5354,15 +4336,7 @@
     },
 
     /***/
-    "WxOa":
-    /*!****************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/components/highlight-editor/highlight-editor.component.html ***!
-      \****************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function WxOa(module, __webpack_exports__, __webpack_require__) {
+    "WxOa": function WxOa(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5374,15 +4348,7 @@
     },
 
     /***/
-    "XLiS":
-    /*!*****************************************************!*\
-      !*** ./libs/ng-utils/css-props/update-css-props.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: updateCssProps */
-
-    /***/
-    function XLiS(module, __webpack_exports__, __webpack_require__) {
+    "XLiS": function XLiS(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5409,15 +4375,7 @@
     },
 
     /***/
-    "aPzk":
-    /*!**********************************************!*\
-      !*** ./libs/ng-utils/morphdom/public_api.ts ***!
-      \**********************************************/
-
-    /*! exports provided: MorphdomModule, MorphdomDirective, MorphdomService */
-
-    /***/
-    function aPzk(module, __webpack_exports__, __webpack_require__) {
+    "aPzk": function aPzk(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5462,15 +4420,7 @@
     },
 
     /***/
-    "bgcH":
-    /*!*****************************************************!*\
-      !*** ./libs/lazy/loader/gewd-lazy-loader.module.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: REGISTORY_LAZY_LOADED_MODULE_TOKEN, GewdLazyLoaderModule */
-
-    /***/
-    function bgcH(module, __webpack_exports__, __webpack_require__) {
+    "bgcH": function bgcH(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5530,19 +4480,19 @@
         function GewdLazyLoaderModule(registerLazyLoads) {
           _classCallCheck(this, GewdLazyLoaderModule);
 
-          var _iterator4 = _createForOfIteratorHelper(registerLazyLoads),
-              _step4;
+          var _iterator3 = _createForOfIteratorHelper(registerLazyLoads),
+              _step3;
 
           try {
-            for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-              var lazyInfo = _step4.value;
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var lazyInfo = _step3.value;
 
               _gewd_lazy_registry__WEBPACK_IMPORTED_MODULE_5__["DynamicLoaderRegistry"].RegisterLazyModuleComponent(lazyInfo.moduleName, lazyInfo.moduleConfig);
             }
           } catch (err) {
-            _iterator4.e(err);
+            _iterator3.e(err);
           } finally {
-            _iterator4.f();
+            _iterator3.f();
           }
         }
 
@@ -5585,15 +4535,7 @@
     },
 
     /***/
-    "cFVl":
-    /*!*********************************************************************!*\
-      !*** ./apps/demo/src/app/example-panel/example-panel.component.css ***!
-      \*********************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function cFVl(module, __webpack_exports__, __webpack_require__) {
+    "cFVl": function cFVl(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5605,29 +4547,13 @@
     },
 
     /***/
-    "dTHw":
-    /*!*************************************************************************************************!*\
-      !*** ./node_modules/worker-plugin/dist/loader.js?name=0!./apps/demo/src/app/markdown.worker.ts ***!
-      \*************************************************************************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function dTHw(module, exports, __webpack_require__) {
+    "dTHw": function dTHw(module, exports, __webpack_require__) {
       module.exports = __webpack_require__.p + "0-es5.worker.js";
       /***/
     },
 
     /***/
-    "dk2Z":
-    /*!*************************************************************************!*\
-      !*** ./libs/ng-utils/components/simple-pager/simple-pager.component.ts ***!
-      \*************************************************************************/
-
-    /*! exports provided: SimplePagerComponent */
-
-    /***/
-    function dk2Z(module, __webpack_exports__, __webpack_require__) {
+    "dk2Z": function dk2Z(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5717,15 +4643,7 @@
     },
 
     /***/
-    "esWc":
-    /*!*********************************************************!*\
-      !*** ./libs/mat-utils/material-icons/register_icons.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: registerIcons */
-
-    /***/
-    function esWc(module, __webpack_exports__, __webpack_require__) {
+    "esWc": function esWc(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5737,18 +4655,18 @@
       });
 
       function registerIcons(iconRegistry, sanitizer, iconPair) {
-        var _iterator5 = _createForOfIteratorHelper(iconPair.iconArray),
-            _step5;
+        var _iterator4 = _createForOfIteratorHelper(iconPair.iconArray),
+            _step4;
 
         try {
-          for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-            var icon = _step5.value;
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var icon = _step4.value;
             iconRegistry.addSvgIcon(icon, sanitizer.bypassSecurityTrustResourceUrl("".concat(iconPair.pathToIcons, "/").concat(icon, ".svg")));
           }
         } catch (err) {
-          _iterator5.e(err);
+          _iterator4.e(err);
         } finally {
-          _iterator5.f();
+          _iterator4.f();
         }
       }
       /***/
@@ -5756,15 +4674,7 @@
     },
 
     /***/
-    "fFIP":
-    /*!*****************************************************************************!*\
-      !*** ./libs/markdown/module/render-markdown/render-markdown.component.scss ***!
-      \*****************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function fFIP(module, __webpack_exports__, __webpack_require__) {
+    "fFIP": function fFIP(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5776,15 +4686,7 @@
     },
 
     /***/
-    "gICU":
-    /*!*****************************************************!*\
-      !*** ./libs/mat-utils/custom-form-control/index.ts ***!
-      \*****************************************************/
-
-    /*! exports provided: CustomFormControlModule, CustomFormControlComponent */
-
-    /***/
-    function gICU(module, __webpack_exports__, __webpack_require__) {
+    "gICU": function gICU(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5811,15 +4713,7 @@
     },
 
     /***/
-    "hB53":
-    /*!*****************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/components/simple-pager/simple-pager.component.html ***!
-      \*****************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function hB53(module, __webpack_exports__, __webpack_require__) {
+    "hB53": function hB53(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5831,15 +4725,7 @@
     },
 
     /***/
-    "hR9A":
-    /*!*****************************************************!*\
-      !*** ./libs/markdown/contracts/worker.interface.ts ***!
-      \*****************************************************/
-
-    /*! no exports provided */
-
-    /***/
-    function hR9A(module, __webpack_exports__, __webpack_require__) {
+    "hR9A": function hR9A(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5848,15 +4734,7 @@
     },
 
     /***/
-    "iv+R":
-    /*!***************************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/dynamic-portal.module.ts ***!
-      \***************************************************************/
-
-    /*! exports provided: DynamicPortalModule */
-
-    /***/
-    function ivR(module, __webpack_exports__, __webpack_require__) {
+    "iv+R": function ivR(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5911,15 +4789,7 @@
     },
 
     /***/
-    "kWME":
-    /*!**************************************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/ng-error/error-handler.service.ts ***!
-      \**************************************************************************/
-
-    /*! exports provided: NG_ERROR_CONFIG_TOKEN, ErrorHandlerService */
-
-    /***/
-    function kWME(module, __webpack_exports__, __webpack_require__) {
+    "kWME": function kWME(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5962,7 +4832,7 @@
 
       var ErrorHandlerService = /*#__PURE__*/function () {
         function ErrorHandlerService(config) {
-          var _this11 = this;
+          var _this9 = this;
 
           _classCallCheck(this, ErrorHandlerService);
 
@@ -5970,7 +4840,7 @@
           this.error$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](null);
           this.config = Object.assign({}, DEFAULT_CONFIG, config);
           window.addEventListener('error', function (ev) {
-            _this11.handleError(ev.error);
+            _this9.handleError(ev.error);
           });
         }
 
@@ -6011,56 +4881,7 @@
     },
 
     /***/
-    "kflc":
-    /*!************************************************!*\
-      !*** ./libs/ng-utils/ng-inspect/public_api.ts ***!
-      \************************************************/
-
-    /*! exports provided: NgInspectModule, NgInspectComponent */
-
-    /***/
-    function kflc(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony import */
-
-
-      var _ng_inspect_ng_inspect_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./ng-inspect/ng-inspect.module */
-      "CTQz");
-      /* harmony reexport (safe) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectModule", function () {
-        return _ng_inspect_ng_inspect_module__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"];
-      });
-      /* harmony import */
-
-
-      var _ng_inspect_ng_inspect_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./ng-inspect/ng-inspect.component */
-      "NDUi");
-      /* harmony reexport (safe) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function () {
-        return _ng_inspect_ng_inspect_component__WEBPACK_IMPORTED_MODULE_1__["NgInspectComponent"];
-      });
-      /***/
-
-    },
-
-    /***/
-    "lgUy":
-    /*!**************************************************!*\
-      !*** ./libs/markdown/service/injection-token.ts ***!
-      \**************************************************/
-
-    /*! exports provided: MarkdownOptionsInjectorToken */
-
-    /***/
-    function lgUy(module, __webpack_exports__, __webpack_require__) {
+    "lgUy": function lgUy(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6082,15 +4903,7 @@
     },
 
     /***/
-    "mMUf":
-    /*!****************************************!*\
-      !*** ./libs/markdown/service/index.ts ***!
-      \****************************************/
-
-    /*! exports provided: MarkdownService, MarkdownCacheService, MarkdownOptionsInjectorToken */
-
-    /***/
-    function mMUf(module, __webpack_exports__, __webpack_require__) {
+    "mMUf": function mMUf(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6123,15 +4936,7 @@
     },
 
     /***/
-    "mRMK":
-    /*!************************************************!*\
-      !*** ./libs/mat-utils/material-icons/index.ts ***!
-      \************************************************/
-
-    /*! exports provided: registerIcons, REGISTORY_ICONS_PAIR_TOKEN, RegisterIconsModule */
-
-    /***/
-    function mRMK(module, __webpack_exports__, __webpack_require__) {
+    "mRMK": function mRMK(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6164,15 +4969,7 @@
     },
 
     /***/
-    "mcRc":
-    /*!********************************************!*\
-      !*** ./apps/demo/src/app/app.component.ts ***!
-      \********************************************/
-
-    /*! exports provided: AppComponent */
-
-    /***/
-    function mcRc(module, __webpack_exports__, __webpack_require__) {
+    "mcRc": function mcRc(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6270,7 +5067,7 @@
         }, {
           key: "updateValueChanged",
           value: function updateValueChanged($event) {
-            var _this12 = this;
+            var _this10 = this;
 
             this.currentPrismExample = $event;
 
@@ -6286,7 +5083,7 @@
                 {
                   this.editorLanguage$.next('markdown');
                   this.markDownReadmeMD$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (value) {
-                    _this12.editorExample$.next(value);
+                    _this10.editorExample$.next(value);
                   });
                   break;
                 }
@@ -6327,15 +5124,7 @@
     },
 
     /***/
-    "mdMz":
-    /*!*********************************************************!*\
-      !*** ./libs/markdown/service/markdown-cache.service.ts ***!
-      \*********************************************************/
-
-    /*! exports provided: MarkdownCacheService */
-
-    /***/
-    function mdMz(module, __webpack_exports__, __webpack_require__) {
+    "mdMz": function mdMz(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6391,15 +5180,7 @@
     },
 
     /***/
-    "mkVm":
-    /*!**************************************************************************!*\
-      !*** ./libs/mat-utils/custom-form-control/custom-form-control.module.ts ***!
-      \**************************************************************************/
-
-    /*! exports provided: CustomFormControlModule */
-
-    /***/
-    function mkVm(module, __webpack_exports__, __webpack_require__) {
+    "mkVm": function mkVm(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6453,15 +5234,7 @@
     },
 
     /***/
-    "n65z":
-    /*!**********************************!*\
-      !*** ./libs/lazy/utils/index.ts ***!
-      \**********************************/
-
-    /*! exports provided: Lazy */
-
-    /***/
-    function n65z(module, __webpack_exports__, __webpack_require__) {
+    "n65z": function n65z(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6482,15 +5255,7 @@
     },
 
     /***/
-    "nnzV":
-    /*!*****************************************************************************!*\
-      !*** ./libs/mat-utils/custom-form-control/custom-form-control.component.ts ***!
-      \*****************************************************************************/
-
-    /*! exports provided: CustomFormControlComponent */
-
-    /***/
-    function nnzV(module, __webpack_exports__, __webpack_require__) {
+    "nnzV": function nnzV(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6627,8 +5392,8 @@
           }
         }, {
           key: "ngOnChanges",
-          value: function ngOnChanges(_ref14) {
-            var value = _ref14.value;
+          value: function ngOnChanges(_ref11) {
+            var value = _ref11.value;
 
             if (value && this.onChange) {
               this.onChange(value.currentValue);
@@ -6695,15 +5460,7 @@
     },
 
     /***/
-    "o4qD":
-    /*!*******************************************!*\
-      !*** ./libs/markdown/utils/public_api.ts ***!
-      \*******************************************/
-
-    /*! exports provided: Lazy, simpleHash */
-
-    /***/
-    function o4qD(module, __webpack_exports__, __webpack_require__) {
+    "o4qD": function o4qD(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6736,15 +5493,7 @@
     },
 
     /***/
-    "ofWX":
-    /*!***************************************************************************!*\
-      !*** ./libs/ng-utils/components/simple-pager/simple-pager.component.scss ***!
-      \***************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function ofWX(module, __webpack_exports__, __webpack_require__) {
+    "ofWX": function ofWX(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6756,50 +5505,7 @@
     },
 
     /***/
-    "ovnV":
-    /*!*******************************************!*\
-      !*** ./libs/ng-utils/ng-inspect/index.ts ***!
-      \*******************************************/
-
-    /*! exports provided: NgInspectModule, NgInspectComponent */
-
-    /***/
-    function ovnV(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony import */
-
-
-      var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./public_api */
-      "kflc");
-      /* harmony reexport (safe) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectModule", function () {
-        return _public_api__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"];
-      });
-      /* harmony reexport (safe) */
-
-
-      __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function () {
-        return _public_api__WEBPACK_IMPORTED_MODULE_0__["NgInspectComponent"];
-      });
-      /***/
-
-    },
-
-    /***/
-    "p+SD":
-    /*!***************************************************!*\
-      !*** ./libs/ng-utils/morphdom/morphdom.module.ts ***!
-      \***************************************************/
-
-    /*! exports provided: MorphdomModule */
-
-    /***/
-    function pSD(module, __webpack_exports__, __webpack_require__) {
+    "p+SD": function pSD(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6847,15 +5553,7 @@
     },
 
     /***/
-    "p1Yq":
-    /*!*********************************************************************!*\
-      !*** ./libs/components/highlight-editor/highlight-editor.module.ts ***!
-      \*********************************************************************/
-
-    /*! exports provided: HighlightEditorModule */
-
-    /***/
-    function p1Yq(module, __webpack_exports__, __webpack_require__) {
+    "p1Yq": function p1Yq(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6915,15 +5613,7 @@
     },
 
     /***/
-    "p22G":
-    /*!*********************************!*\
-      !*** ./libs/lazy/utils/lazy.ts ***!
-      \*********************************/
-
-    /*! exports provided: Lazy */
-
-    /***/
-    function p22G(module, __webpack_exports__, __webpack_require__) {
+    "p22G": function p22G(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6969,15 +5659,7 @@
     },
 
     /***/
-    "r77W":
-    /*!*************************************************!*\
-      !*** ./libs/markdown/module/markdown.module.ts ***!
-      \*************************************************/
-
-    /*! exports provided: MarkdownModule */
-
-    /***/
-    function r77W(module, __webpack_exports__, __webpack_require__) {
+    "r77W": function r77W(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7026,15 +5708,7 @@
     },
 
     /***/
-    "rZxZ":
-    /*!*************************************************!*\
-      !*** ./libs/ng-utils/ng-error-overlay/index.ts ***!
-      \*************************************************/
-
-    /*! exports provided: NgErrorComponent, NgErrorOverlayModule */
-
-    /***/
-    function rZxZ(module, __webpack_exports__, __webpack_require__) {
+    "rZxZ": function rZxZ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7061,15 +5735,7 @@
     },
 
     /***/
-    "sd5n":
-    /*!*******************************************************!*\
-      !*** ./apps/demo/src/app/md-cache-example.service.ts ***!
-      \*******************************************************/
-
-    /*! exports provided: MdCacheExampleService */
-
-    /***/
-    function sd5n(module, __webpack_exports__, __webpack_require__) {
+    "sd5n": function sd5n(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7126,20 +5792,20 @@
         var _super = _createSuper(MdCacheExampleService);
 
         function MdCacheExampleService(platformId) {
-          var _this13;
+          var _this11;
 
           _classCallCheck(this, MdCacheExampleService);
 
-          _this13 = _super.call(this);
-          _this13.enabled = true; // skip localforage calls during pre-render step
+          _this11 = _super.call(this);
+          _this11.enabled = true; // skip localforage calls during pre-render step
 
-          _this13.enabled = Object(_angular_common__WEBPACK_IMPORTED_MODULE_5__["isPlatformBrowser"])(platformId);
+          _this11.enabled = Object(_angular_common__WEBPACK_IMPORTED_MODULE_5__["isPlatformBrowser"])(platformId);
 
-          if (_this13.enabled) {
-            _this13.createInstance();
+          if (_this11.enabled) {
+            _this11.createInstance();
           }
 
-          return _this13;
+          return _this11;
         }
 
         _createClass(MdCacheExampleService, [{
@@ -7320,15 +5986,7 @@
     },
 
     /***/
-    "slkw":
-    /*!*********************************************************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/dynamic-portal/dynamic-portal.component.ts ***!
-      \*********************************************************************************/
-
-    /*! exports provided: DynamicPortalComponent */
-
-    /***/
-    function slkw(module, __webpack_exports__, __webpack_require__) {
+    "slkw": function slkw(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7383,14 +6041,14 @@
 
       var DynamicPortalComponent = /*#__PURE__*/function () {
         function DynamicPortalComponent(hub) {
-          var _this14 = this;
+          var _this12 = this;
 
           _classCallCheck(this, DynamicPortalComponent);
 
           this.hub = hub;
           this.key$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]('');
           this.templateToShow$ = this.key$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["switchMap"])(function (key) {
-            return _this14.hub.getTemplate$(key);
+            return _this12.hub.getTemplate$(key);
           }));
         }
 
@@ -7440,15 +6098,7 @@
     },
 
     /***/
-    "sxoG":
-    /*!***************************************!*\
-      !*** ./libs/lazy/utils/public_api.ts ***!
-      \***************************************/
-
-    /*! exports provided: Lazy */
-
-    /***/
-    function sxoG(module, __webpack_exports__, __webpack_require__) {
+    "sxoG": function sxoG(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7469,15 +6119,7 @@
     },
 
     /***/
-    "v0Je":
-    /*!********************************************!*\
-      !*** ./libs/lazy/loader/lazy.component.ts ***!
-      \********************************************/
-
-    /*! exports provided: LazyComponent */
-
-    /***/
-    function v0Je(module, __webpack_exports__, __webpack_require__) {
+    "v0Je": function v0Je(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7690,15 +6332,7 @@
     },
 
     /***/
-    "vZJb":
-    /*!*************************************************************************!*\
-      !*** ./libs/ng-utils/bootstrap-component/bootstrap-component.module.ts ***!
-      \*************************************************************************/
-
-    /*! exports provided: BOOTSTRAP_COMPONENT_TOKEN, bootstrapComponent, BootstrapComponentModule */
-
-    /***/
-    function vZJb(module, __webpack_exports__, __webpack_require__) {
+    "vZJb": function vZJb(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7756,18 +6390,18 @@
         function BootstrapComponentModule(document, resolver, injector, appRef, bootstrapConfigs) {
           _classCallCheck(this, BootstrapComponentModule);
 
-          var _iterator6 = _createForOfIteratorHelper(bootstrapConfigs),
-              _step6;
+          var _iterator5 = _createForOfIteratorHelper(bootstrapConfigs),
+              _step5;
 
           try {
-            for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-              var bootstrapConfig = _step6.value;
+            for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+              var bootstrapConfig = _step5.value;
               bootstrapComponent(document, resolver, injector, appRef, bootstrapConfig);
             }
           } catch (err) {
-            _iterator6.e(err);
+            _iterator5.e(err);
           } finally {
-            _iterator6.f();
+            _iterator5.f();
           }
         }
 
@@ -7818,15 +6452,7 @@
     },
 
     /***/
-    "wfeF":
-    /*!***************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/ng-error-overlay/ng-error/ng-error.component.html ***!
-      \***************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function wfeF(module, __webpack_exports__, __webpack_require__) {
+    "wfeF": function wfeF(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7838,15 +6464,7 @@
     },
 
     /***/
-    "xqI3":
-    /*!****************************************!*\
-      !*** ./libs/lazy/registry/registry.ts ***!
-      \****************************************/
-
-    /*! exports provided: DynamicLoaderRegistry */
-
-    /***/
-    function xqI3(module, __webpack_exports__, __webpack_require__) {
+    "xqI3": function xqI3(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -7885,15 +6503,7 @@
     },
 
     /***/
-    "zJp2":
-    /*!***************************************************************************!*\
-      !*** ./libs/markdown/module/render-markdown/render-markdown.component.ts ***!
-      \***************************************************************************/
-
-    /*! exports provided: RenderMarkdownComponent */
-
-    /***/
-    function zJp2(module, __webpack_exports__, __webpack_require__) {
+    "zJp2": function zJp2(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -8130,15 +6740,7 @@
     },
 
     /***/
-    "zOTi":
-    /*!**************************************!*\
-      !*** ./libs/markdown/utils/index.ts ***!
-      \**************************************/
-
-    /*! exports provided: Lazy, simpleHash */
-
-    /***/
-    function zOTi(module, __webpack_exports__, __webpack_require__) {
+    "zOTi": function zOTi(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -8165,15 +6767,7 @@
     },
 
     /***/
-    "zn8P":
-    /*!******************************************************!*\
-      !*** ./$$_lazy_route_resource lazy namespace object ***!
-      \******************************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function zn8P(module, exports) {
+    "zn8P": function zn8P(module, exports) {
       function webpackEmptyAsyncContext(req) {
         // Here Promise.resolve().then() is used instead of new Promise() to prevent
         // uncaught exception popping up in devtools
@@ -8195,15 +6789,7 @@
     },
 
     /***/
-    "zzJY":
-    /*!***********************************************!*\
-      !*** ./libs/ng-utils/dynamic-portal/index.ts ***!
-      \***********************************************/
-
-    /*! exports provided: DynamicPortalModule, DynamicPortalComponent, PortalSourceAction, PortalHubService, PortalSourceDirective */
-
-    /***/
-    function zzJY(module, __webpack_exports__, __webpack_require__) {
+    "zzJY": function zzJY(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

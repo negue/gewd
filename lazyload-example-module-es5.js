@@ -7,15 +7,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["lazyload-example-module"], {
     /***/
-    "2mkn":
-    /*!***************************************************************************************************************************!*\
-      !*** ./node_modules/raw-loader/dist/cjs.js!./apps/demo/src/app/examples/lazyload-example/lazyload-example.component.html ***!
-      \***************************************************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function mkn(module, __webpack_exports__, __webpack_require__) {
+    "2mkn": function mkn(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -27,15 +19,7 @@
     },
 
     /***/
-    "6NfR":
-    /*!************************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/lazyload-example/lazyload-example.component.css ***!
-      \************************************************************************************/
-
-    /*! exports provided: default */
-
-    /***/
-    function NfR(module, __webpack_exports__, __webpack_require__) {
+    "6NfR": function NfR(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -47,15 +31,7 @@
     },
 
     /***/
-    "j0+E":
-    /*!********************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/lazyload-example/lazyload-example.module.ts ***!
-      \********************************************************************************/
-
-    /*! exports provided: LazyloadExampleModule */
-
-    /***/
-    function j0E(module, __webpack_exports__, __webpack_require__) {
+    "j0+E": function j0E(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -183,15 +159,7 @@
     },
 
     /***/
-    "z+YT":
-    /*!***********************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/lazyload-example/lazyload-example.component.ts ***!
-      \***********************************************************************************/
-
-    /*! exports provided: LazyloadExampleComponent */
-
-    /***/
-    function zYT(module, __webpack_exports__, __webpack_require__) {
+    "z+YT": function zYT(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

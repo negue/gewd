@@ -7,15 +7,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["lazy-wrapper-test-comp"], {
     /***/
-    "cZVC":
-    /*!*******************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/lazyload-example/lazy-wrapper/test-comp.ts ***!
-      \*******************************************************************************/
-
-    /*! exports provided: MyComp */
-
-    /***/
-    function cZVC(module, __webpack_exports__, __webpack_require__) {
+    "cZVC": function cZVC(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

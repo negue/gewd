@@ -7,15 +7,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["lazy-portal-module"], {
     /***/
-    "uy6E":
-    /*!****************************************************************************************!*\
-      !*** ./apps/demo/src/app/examples/lazyload-example/lazy-wrapper/lazy-portal-source.ts ***!
-      \****************************************************************************************/
-
-    /*! exports provided: PortalModuleComp, PortalModule */
-
-    /***/
-    function uy6E(module, __webpack_exports__, __webpack_require__) {
+    "uy6E": function uy6E(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

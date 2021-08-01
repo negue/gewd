@@ -5,7 +5,7 @@
 
   function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-  function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
   function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -357,21 +357,9 @@
 
     return __webpack_require__(__webpack_require__.s = "nIOu");
     /******/
-  })(
-  /************************************************************************/
-
-  /******/
-  {
+  })({
     /***/
-    "0/xO":
-    /*!****************************************************!*\
-      !*** ./libs/markdown/contracts/default-options.ts ***!
-      \****************************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function xO(module, __webpack_exports__, __webpack_require__) {
+    "0/xO": function xO(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -409,15 +397,7 @@
     },
 
     /***/
-    "1qV8":
-    /*!***********************************************!*\
-      !*** ./libs/markdown/contracts/public_api.ts ***!
-      \***********************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function qV8(module, __webpack_exports__, __webpack_require__) {
+    "1qV8": function qV8(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -452,15 +432,7 @@
     },
 
     /***/
-    "63Hc":
-    /*!**************************************!*\
-      !*** ./node_modules/xss/lib/util.js ***!
-      \**************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function Hc(module, exports) {
+    "63Hc": function Hc(module, exports) {
       module.exports = {
         indexOf: function indexOf(arr, item) {
           var i, j;
@@ -505,15 +477,7 @@
     },
 
     /***/
-    "7DNQ":
-    /*!******************************************!*\
-      !*** ./libs/markdown/contracts/index.ts ***!
-      \******************************************/
-
-    /*! exports provided: DEFAULT_PRISM_OPTIONS, DEFAULT_MERMAID_OPTIONS */
-
-    /***/
-    function DNQ(module, __webpack_exports__, __webpack_require__) {
+    "7DNQ": function DNQ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -540,15 +504,7 @@
     },
 
     /***/
-    "AzHr":
-    /*!***********************************************************!*\
-      !*** ./libs/markdown/worker-functions/prism.functions.ts ***!
-      \***********************************************************/
-
-    /*! exports provided: highlightCode */
-
-    /***/
-    function AzHr(module, __webpack_exports__, __webpack_require__) {
+    "AzHr": function AzHr(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -680,15 +636,7 @@
     },
 
     /***/
-    "B+Hh":
-    /*!********************************************!*\
-      !*** ./libs/markdown/utils/simple-hash.ts ***!
-      \********************************************/
-
-    /*! exports provided: simpleHash */
-
-    /***/
-    function BHh(module, __webpack_exports__, __webpack_require__) {
+    "B+Hh": function BHh(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -720,15 +668,7 @@
     },
 
     /***/
-    "DlQD":
-    /*!*******************************************!*\
-      !*** ./node_modules/marked/lib/marked.js ***!
-      \*******************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function DlQD(module, exports, __webpack_require__) {
+    "DlQD": function DlQD(module, exports, __webpack_require__) {
       /**
        * marked - a markdown parser
        * Copyright (c) 2011-2020, Christopher Jeffrey. (MIT Licensed)
@@ -3333,15 +3273,7 @@
     },
 
     /***/
-    "E8Ja":
-    /*!*************************************!*\
-      !*** ./libs/markdown/utils/lazy.ts ***!
-      \*************************************/
-
-    /*! exports provided: Lazy */
-
-    /***/
-    function E8Ja(module, __webpack_exports__, __webpack_require__) {
+    "E8Ja": function E8Ja(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3382,15 +3314,7 @@
     },
 
     /***/
-    "GrKN":
-    /*!*********************************************!*\
-      !*** ./node_modules/cssfilter/lib/index.js ***!
-      \*********************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function GrKN(module, exports, __webpack_require__) {
+    "GrKN": function GrKN(module, exports, __webpack_require__) {
       /**
        * cssfilter
        *
@@ -3434,15 +3358,7 @@
     },
 
     /***/
-    "LSeC":
-    /*!******************************************************!*\
-      !*** ./libs/markdown/worker-functions/public_api.ts ***!
-      \******************************************************/
-
-    /*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
-
-    /***/
-    function LSeC(module, __webpack_exports__, __webpack_require__) {
+    "LSeC": function LSeC(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3511,15 +3427,7 @@
     },
 
     /***/
-    "OxZn":
-    /*!*************************************!*\
-      !*** ./node_modules/xss/lib/xss.js ***!
-      \*************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function OxZn(module, exports, __webpack_require__) {
+    "OxZn": function OxZn(module, exports, __webpack_require__) {
       /**
        * filter xss
        *
@@ -3744,15 +3652,7 @@
     },
 
     /***/
-    "PRU4":
-    /*!***************************************************!*\
-      !*** ./node_modules/comlink/dist/esm/comlink.mjs ***!
-      \***************************************************/
-
-    /*! exports provided: createEndpoint, expose, proxy, proxyMarker, releaseProxy, transfer, transferHandlers, windowEndpoint, wrap */
-
-    /***/
-    function PRU4(__webpack_module__, __webpack_exports__, __webpack_require__) {
+    "PRU4": function PRU4(__webpack_module__, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -3974,10 +3874,10 @@
             if (type === 5
             /* RELEASE */
             ) {
-                // detach and deactive after sending release response above.
-                ep.removeEventListener("message", callback);
-                closeEndPoint(ep);
-              }
+              // detach and deactive after sending release response above.
+              ep.removeEventListener("message", callback);
+              closeEndPoint(ep);
+            }
           });
         });
 
@@ -4245,15 +4145,7 @@
     },
 
     /***/
-    "Qqpq":
-    /*!***********************************************************!*\
-      !*** ./libs/markdown/worker-functions/emoji.functions.ts ***!
-      \***********************************************************/
-
-    /*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar */
-
-    /***/
-    function Qqpq(module, __webpack_exports__, __webpack_require__) {
+    "Qqpq": function Qqpq(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4277,7 +4169,7 @@
       });
 
       var emojiRegex = new RegExp(/:([a-zA-Z0-9+\-_]+):/g);
-      var mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|pie|git)/);
+      var mermaidRegex = new RegExp(/^(sequenceDiagram|graph|gantt|classDiagram|stateDiagram|stateDiagram-v2|pie|git|erDiagram|journey|requirementDiagram|gitGraph)/);
       var emojiCache = {};
 
       function checkAndReplaceToUnicodeChar(rawMarkdown, EMOJI_MAP, convertKeyToUnicode) {
@@ -4307,15 +4199,7 @@
     },
 
     /***/
-    "UOFQ":
-    /*!****************************************!*\
-      !*** ./node_modules/xss/lib/parser.js ***!
-      \****************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function UOFQ(module, exports, __webpack_require__) {
+    "UOFQ": function UOFQ(module, exports, __webpack_require__) {
       /**
        * Simple HTML Parser
        *
@@ -4410,7 +4294,7 @@
                 var i = 1;
                 var ic = html.charAt(currentPos - i);
 
-                while (ic === " " || ic === "=") {
+                while (ic.trim() === "" || ic === "=") {
                   if (ic === "=") {
                     quoteStart = c;
                     continue chariterator;
@@ -4572,15 +4456,7 @@
     },
 
     /***/
-    "VJhy":
-    /*!*************************************************!*\
-      !*** ./libs/markdown/worker-functions/index.ts ***!
-      \*************************************************/
-
-    /*! exports provided: emojiRegex, mermaidRegex, checkAndReplaceToUnicodeChar, highlightCode, linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
-
-    /***/
-    function VJhy(module, __webpack_exports__, __webpack_require__) {
+    "VJhy": function VJhy(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4637,15 +4513,7 @@
     },
 
     /***/
-    "Xjjk":
-    /*!***************************************!*\
-      !*** ./node_modules/xss/lib/index.js ***!
-      \***************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function Xjjk(module, exports, __webpack_require__) {
+    "Xjjk": function Xjjk(module, exports, __webpack_require__) {
       /**
        * xss
        *
@@ -4695,7 +4563,7 @@
 
 
       function isWorkerEnv() {
-        return typeof self !== 'undefined' && typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
+        return typeof self !== "undefined" && typeof DedicatedWorkerGlobalScope !== "undefined" && self instanceof DedicatedWorkerGlobalScope;
       }
 
       if (isWorkerEnv()) {
@@ -4706,15 +4574,7 @@
     },
 
     /***/
-    "dDB8":
-    /*!************************************************************!*\
-      !*** ./libs/markdown/worker-functions/marked.functions.ts ***!
-      \************************************************************/
-
-    /*! exports provided: linkRendererTargetBlank, get_favicon, linkRendererWithFavIcon */
-
-    /***/
-    function dDB8(module, __webpack_exports__, __webpack_require__) {
+    "dDB8": function dDB8(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -4793,15 +4653,7 @@
     },
 
     /***/
-    "e8zy":
-    /*!***********************************************!*\
-      !*** ./node_modules/cssfilter/lib/default.js ***!
-      \***********************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function e8zy(module, exports) {
+    "e8zy": function e8zy(module, exports) {
       /**
        * cssfilter
        *
@@ -5534,15 +5386,7 @@
     },
 
     /***/
-    "h1NE":
-    /*!********************************************!*\
-      !*** ./node_modules/cssfilter/lib/util.js ***!
-      \********************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function h1NE(module, exports) {
+    "h1NE": function h1NE(module, exports) {
       module.exports = {
         indexOf: function indexOf(arr, item) {
           var i, j;
@@ -5589,15 +5433,7 @@
     },
 
     /***/
-    "hR9A":
-    /*!*****************************************************!*\
-      !*** ./libs/markdown/contracts/worker.interface.ts ***!
-      \*****************************************************/
-
-    /*! no exports provided */
-
-    /***/
-    function hR9A(module, __webpack_exports__, __webpack_require__) {
+    "hR9A": function hR9A(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -5606,15 +5442,7 @@
     },
 
     /***/
-    "mrSG":
-    /*!*****************************************!*\
-      !*** ./node_modules/tslib/tslib.es6.js ***!
-      \*****************************************/
-
-    /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
-
-    /***/
-    function mrSG(module, __webpack_exports__, __webpack_require__) {
+    "mrSG": function mrSG(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6087,12 +5915,14 @@
         return r;
       }
 
-      function __spreadArray(to, from) {
-        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) {
-          to[j] = from[i];
+      function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+          if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+          }
         }
-
-        return to;
+        return to.concat(ar || from);
       }
 
       function __await(v) {
@@ -6243,15 +6073,7 @@
     },
 
     /***/
-    "nIOu":
-    /*!*************************************************************************************************************************************************************************!*\
-      !*** ./node_modules/@angular-devkit/build-angular/src/babel/webpack-loader.js??ref--7-0!./node_modules/@ngtools/webpack/src/ivy!./apps/demo/src/app/markdown.worker.ts ***!
-      \*************************************************************************************************************************************************************************/
-
-    /*! no exports provided */
-
-    /***/
-    function nIOu(module, __webpack_exports__, __webpack_require__) {
+    "nIOu": function nIOu(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6267,15 +6089,7 @@
     },
 
     /***/
-    "o4qD":
-    /*!*******************************************!*\
-      !*** ./libs/markdown/utils/public_api.ts ***!
-      \*******************************************/
-
-    /*! exports provided: Lazy, simpleHash */
-
-    /***/
-    function o4qD(module, __webpack_exports__, __webpack_require__) {
+    "o4qD": function o4qD(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6308,15 +6122,7 @@
     },
 
     /***/
-    "pyUn":
-    /*!**********************************************!*\
-      !*** ./libs/markdown/marked.prism.worker.ts ***!
-      \**********************************************/
-
-    /*! no exports provided */
-
-    /***/
-    function pyUn(module, __webpack_exports__, __webpack_require__) {
+    "pyUn": function pyUn(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -6540,15 +6346,7 @@
     },
 
     /***/
-    "rjQ/":
-    /*!**********************************************!*\
-      !*** ./node_modules/cssfilter/lib/parser.js ***!
-      \**********************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function rjQ(module, exports, __webpack_require__) {
+    "rjQ/": function rjQ(module, exports, __webpack_require__) {
       /**
        * cssfilter
        *
@@ -6633,15 +6431,7 @@
     },
 
     /***/
-    "vGzR":
-    /*!*******************************************!*\
-      !*** ./node_modules/cssfilter/lib/css.js ***!
-      \*******************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function vGzR(module, exports, __webpack_require__) {
+    "vGzR": function vGzR(module, exports, __webpack_require__) {
       /**
        * cssfilter
        *
@@ -6756,15 +6546,7 @@
     },
 
     /***/
-    "vaBj":
-    /*!*****************************************!*\
-      !*** ./node_modules/xss/lib/default.js ***!
-      \*****************************************/
-
-    /*! no static exports found */
-
-    /***/
-    function vaBj(module, exports, __webpack_require__) {
+    "vaBj": function vaBj(module, exports, __webpack_require__) {
       /**
        * default settings
        *
@@ -6790,7 +6572,7 @@
           area: ["shape", "coords", "href", "alt"],
           article: [],
           aside: [],
-          audio: ["autoplay", "controls", "loop", "preload", "src"],
+          audio: ["autoplay", "controls", "crossorigin", "loop", "muted", "preload", "src"],
           b: [],
           bdi: ["dir"],
           bdo: ["dir"],
@@ -6810,6 +6592,8 @@
           dl: [],
           dt: [],
           em: [],
+          figcaption: [],
+          figure: [],
           font: ["color", "size", "face"],
           footer: [],
           h1: [],
@@ -6834,8 +6618,10 @@
           small: [],
           span: [],
           sub: [],
+          summary: [],
           sup: [],
           strong: [],
+          strike: [],
           table: ["width", "border", "align", "valign"],
           tbody: ["align", "valign"],
           td: ["width", "rowspan", "colspan", "align", "valign"],
@@ -6846,7 +6632,7 @@
           tt: [],
           u: [],
           ul: [],
-          video: ["autoplay", "controls", "loop", "preload", "src", "height", "width"]
+          video: ["autoplay", "controls", "crossorigin", "loop", "muted", "playsinline", "poster", "preload", "src", "height", "width"]
         };
       }
 
@@ -6985,7 +6771,7 @@
       var REGEXP_DEFAULT_ON_TAG_ATTR_7 = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi;
       var REGEXP_DEFAULT_ON_TAG_ATTR_8 = /u\s*r\s*l\s*\(.*/gi;
       /**
-       * escape doube quote
+       * escape double quote
        *
        * @param {String} str
        * @return {String} str
@@ -7201,15 +6987,7 @@
     },
 
     /***/
-    "zOTi":
-    /*!**************************************!*\
-      !*** ./libs/markdown/utils/index.ts ***!
-      \**************************************/
-
-    /*! exports provided: Lazy, simpleHash */
-
-    /***/
-    function zOTi(module, __webpack_exports__, __webpack_require__) {
+    "zOTi": function zOTi(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

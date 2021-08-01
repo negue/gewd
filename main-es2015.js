@@ -65,15 +65,13 @@ CssPropsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
-/* harmony import */ var _gewd_ng_utils_ng_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @gewd/ng-utils/ng-inspect */ "ovnV");
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
 const environment = {
     production: false,
     modules: [
-        _gewd_ng_utils_ng_inspect__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"]
+    // NgInspectModule
     ]
 };
 /*
@@ -85,19 +83,6 @@ const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
-
-/***/ }),
-
-/***/ "+pPf":
-/*!***********************************************************************!*\
-  !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.scss ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".debug-panel {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  max-height: 500px;\n  overflow: auto;\n  z-index: 10;\n  color: white;\n}\n.debug-panel .panel-background {\n  background: #4f4f4f;\n  border: 2px dashed #4f8cc9;\n  border-radius: 10px;\n  padding: 10px;\n  margin-bottom: 10px;\n  min-width: 150px;\n  max-width: 400px;\n}\n.debug-panel h4 {\n  margin-top: 0;\n}\n.debug-panel .icon {\n  cursor: pointer;\n  height: 20px;\n  width: 20px;\n  margin-left: 2px;\n  margin-right: 2px;\n}\n.debug-panel .svg-color {\n  fill: white;\n}\n.debug-panel .mat-hint {\n  font-size: 12px;\n  color: white;\n}\n.debug-panel .center-text {\n  text-align: center;\n}\n.debug-panel .item-row {\n  display: flex;\n  align-items: flex-end;\n}\n.debug-panel .item-row .prop-value {\n  background: #595959;\n}\n.debug-panel .item-row.odd .prop-value {\n  background: #7d7d7d;\n}\n.debug-panel .prop-value {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 3;\n  overflow: hidden;\n  width: 250px;\n}\n.debug-panel ::ng-deep mat-form-field {\n  margin-bottom: -1.15em;\n  width: 100%;\n}\n.debug-panel .color-box {\n  --bg-color: grey;\n  width: 16px;\n  height: 16px;\n  background: var(--bg-color);\n  margin-right: 2px;\n  display: inline-block;\n  border: 1px solid white;\n}\n.debug-panel kbd {\n  background-color: #eee;\n  border-radius: 3px;\n  border: 1px solid #b4b4b4;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;\n  color: #333;\n  display: inline-block;\n  font-size: 0.85em;\n  font-weight: 700;\n  line-height: 1;\n  padding: 2px 4px;\n  white-space: nowrap;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL25nLWluc3BlY3QuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRSxlQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFFQSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQURGO0FBR0U7RUFDRSxtQkFBQTtFQUNBLDBCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FBREo7QUFJRTtFQUNFLGFBQUE7QUFGSjtBQU1FO0VBQ0UsZUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtBQUpKO0FBUUU7RUFDRSxXQUFBO0FBTko7QUFTRTtFQUNFLGVBQUE7RUFDQSxZQUFBO0FBUEo7QUFVRTtFQUNFLGtCQUFBO0FBUko7QUFVRTtFQUNFLGFBQUE7RUFNQSxxQkFBQTtBQWJKO0FBU0k7RUFDRSxtQkFBQTtBQVBOO0FBYU07RUFDRSxtQkFBQTtBQVhSO0FBZ0JFO0VBQ0Usb0JBQUE7RUFDQSw0QkFBQTtFQUNBLHFCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FBZEo7QUFpQkU7RUFDRSxzQkFBQTtFQUNBLFdBQUE7QUFmSjtBQWtCRTtFQUNFLGdCQUFBO0VBRUEsV0FBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtFQUVBLGlCQUFBO0VBQ0EscUJBQUE7RUFDQSx1QkFBQTtBQWxCSjtBQXFCRTtFQUNFLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtFQUNBLGtGQUFBO0VBQ0EsV0FBQTtFQUNBLHFCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0FBbkJKIiwiZmlsZSI6Im5nLWluc3BlY3QuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5kZWJ1Zy1wYW5lbCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAxMHB4O1xuICByaWdodDogMTBweDtcblxuICBtYXgtaGVpZ2h0OiA1MDBweDtcbiAgb3ZlcmZsb3c6IGF1dG87XG4gIHotaW5kZXg6IDEwO1xuICBjb2xvcjogd2hpdGU7XG5cbiAgLnBhbmVsLWJhY2tncm91bmQge1xuICAgIGJhY2tncm91bmQ6ICM0ZjRmNGY7XG4gICAgYm9yZGVyOiAycHggZGFzaGVkICM0ZjhjYzk7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gICAgbWluLXdpZHRoOiAxNTBweDtcbiAgICBtYXgtd2lkdGg6IDQwMHB4O1xuICB9XG5cbiAgaDQge1xuICAgIG1hcmdpbi10b3A6IDA7XG4gIH1cblxuXG4gIC5pY29uIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgaGVpZ2h0OiAyMHB4O1xuICAgIHdpZHRoOiAyMHB4O1xuICAgIG1hcmdpbi1sZWZ0OiAycHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAycHg7XG4gIH1cblxuXG4gIC5zdmctY29sb3Ige1xuICAgIGZpbGw6IHdoaXRlO1xuICB9XG5cbiAgLm1hdC1oaW50IHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgY29sb3I6IHdoaXRlO1xuICB9XG5cbiAgLmNlbnRlci10ZXh0IHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIH1cbiAgLml0ZW0tcm93IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuXG4gICAgLnByb3AtdmFsdWUge1xuICAgICAgYmFja2dyb3VuZDogIzU5NTk1OTtcbiAgICB9XG5cbiAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG5cbiAgICAmLm9kZCB7XG4gICAgICAucHJvcC12YWx1ZSB7XG4gICAgICAgIGJhY2tncm91bmQ6ICM3ZDdkN2Q7XG4gICAgICB9XG4gICAgfVxuICB9XG5cbiAgLnByb3AtdmFsdWUge1xuICAgIGRpc3BsYXk6IC13ZWJraXQtYm94O1xuICAgIC13ZWJraXQtYm94LW9yaWVudDogdmVydGljYWw7XG4gICAgLXdlYmtpdC1saW5lLWNsYW1wOiAzO1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgd2lkdGg6IDI1MHB4O1xuICB9XG5cbiAgOjpuZy1kZWVwIG1hdC1mb3JtLWZpZWxkIHtcbiAgICBtYXJnaW4tYm90dG9tOiAtMS4xNWVtO1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG5cbiAgLmNvbG9yLWJveCB7XG4gICAgLS1iZy1jb2xvcjogZ3JleTtcblxuICAgIHdpZHRoOiAxNnB4O1xuICAgIGhlaWdodDogMTZweDtcbiAgICBiYWNrZ3JvdW5kOiB2YXIoLS1iZy1jb2xvcik7XG5cbiAgICBtYXJnaW4tcmlnaHQ6IDJweDtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG4gIH1cblxuICBrYmQge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNiNGI0YjQ7XG4gICAgYm94LXNoYWRvdzogMCAxcHggMXB4IHJnYmEoMCwgMCwgMCwgLjIpLCAwIDJweCAwIDAgcmdiYSgyNTUsIDI1NSwgMjU1LCAuNykgaW5zZXQ7XG4gICAgY29sb3I6ICMzMzM7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgIGZvbnQtc2l6ZTogLjg1ZW07XG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICBsaW5lLWhlaWdodDogMTtcbiAgICBwYWRkaW5nOiAycHggNHB4O1xuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIH1cbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -711,7 +696,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>Open Dev-Tools to see the network calls.</h2>\n\n<gewd-example-panel packageName=\"@gewd/markdown\"\n                    packageTitle=\"Markdown\"\n                    moduleName=\"markdown-example\"\n                    componentName=\"MarkdownExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/lazy\"\n                    packageTitle=\"Lazy Components\"\n                    moduleName=\"lazyload-example\"\n                    componentName=\"LazyLoadExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"Components\"\n                    moduleName=\"components-example\"\n                    componentName=\"ComponentsExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- Dynamic Portal Component\n  </mat-expansion-panel-header>\n\n  <dynamic-portal key=\"portalKey\" class=\"dynamic-portal-border\">\n    Dynamic Portal Placeholder\n  </dynamic-portal>\n\n  <br/>\n\n  <gewd-lazy-module-component\n    #lazyPortalModuleComponent\n    [componentInputs]=\"{ testProp: 'Binding value', portalKey: 'portalKey' }\"\n  >\n    <button mat-raised-button color=\"primary\"\n            (click)=\"setLazyPortalModuleComp(lazyPortalModuleComponent)\">\n      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)\n    </button>\n  </gewd-lazy-module-component>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- NgErrorOverlay\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"ngErrorOverlay$ | async\">\n\n  </gewd-markdown>\n\n  <button (click)=\"makeError()\">Trigger an error</button>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/mat-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/mat-utils.svg?\"\n           alt=\"Gewd Mat-Utils NPM Version\">\n    </a>\n    &nbsp;- Material Utils\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"matUtilsReadmeMD$ | async\">\n\n  </gewd-markdown>\n\n  <mat-icon svgIcon=\"add\"></mat-icon>\n</mat-expansion-panel>\n\n\n<br/>\n\n<mat-expansion-panel (opened)=\"openedEditorPanel()\">\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/components\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/components.svg?\"\n           alt=\"Gewd Components NPM Version\">\n    </a>\n    &nbsp;- PrismEditor\n  </mat-expansion-panel-header>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Examples\" [value]=\"currentPrismExample\"\n                (valueChange)=\"updateValueChanged($event)\">\n      <mat-option value=\"empty\">Empty</mat-option>\n      <mat-option value=\"readme_md\">Markdown Readme</mat-option>\n      <mat-option value=\"ts_example\">TypeScript</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Render debounce-time\"\n           value=\"200\" type=\"number\"\n           #renderDebounce>\n  </mat-form-field>\n\n\n  <mat-form-field>\n    <input matInput placeholder=\"Editor Height (px)\"\n           value=\"100\" type=\"number\"\n           #editorHeight>\n  </mat-form-field>\n\n  <gewd-prism-editor [value]=\"editorExample$ | async\"\n                     [language]=\"editorLanguage$ | async\"\n                     [debounceTime]=\"+renderDebounce.value\"\n                     [style.--editor-min-height.px]=\"editorHeight.value\"\n                     #prismEditor>\n  </gewd-prism-editor>\n\n  <br/>\n\n  <h4>Mat-Form-Field Example</h4>\n\n  <form [formGroup]=\"aForm\">\n\n    <mat-form-field style=\"width: 100%\">\n\n      <gewd-custom-form-control placeholder=\"test\"\n                                formControlName=\"editor\"\n                                #customFormControl\n      >\n        <gewd-prism-editor [value]=\"editorExample$ | async\"\n                           [language]=\"editorLanguage$ | async\"\n                           [debounceTime]=\"+renderDebounce.value\"\n                           [style.--editor-min-height.px]=\"editorHeight.value\"\n                           (value$)=\"customFormControl.value = $event\"\n                           (focussed$)=\"customFormControl.focused = $event\" #editoe>\n        </gewd-prism-editor>\n      </gewd-custom-form-control>\n    </mat-form-field>\n  </form>\n\n\n  Form Field Data:\n  <hr>\n  {{ aForm.value | json }}\n</mat-expansion-panel>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2>Open Dev-Tools to see the network calls.</h2>\n\n<gewd-example-panel packageName=\"@gewd/markdown\"\n                    packageTitle=\"Markdown\"\n                    moduleName=\"markdown-example\"\n                    componentName=\"MarkdownExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"CodeMirror\"\n                    moduleName=\"codemirror-example\"\n                    componentName=\"CodeMirrorExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<gewd-example-panel packageName=\"@gewd/lazy\"\n                    packageTitle=\"Lazy Components\"\n                    moduleName=\"lazyload-example\"\n                    componentName=\"LazyLoadExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n\n<gewd-example-panel packageName=\"@gewd/components\"\n                    packageTitle=\"Components\"\n                    moduleName=\"components-example\"\n                    componentName=\"ComponentsExample\">\n\n</gewd-example-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- Dynamic Portal Component\n  </mat-expansion-panel-header>\n\n  <dynamic-portal key=\"portalKey\" class=\"dynamic-portal-border\">\n    Dynamic Portal Placeholder\n  </dynamic-portal>\n\n  <br/>\n\n  <gewd-lazy-module-component\n    #lazyPortalModuleComponent\n    [componentInputs]=\"{ testProp: 'Binding value', portalKey: 'portalKey' }\"\n  >\n    <button mat-raised-button color=\"primary\"\n            (click)=\"setLazyPortalModuleComp(lazyPortalModuleComponent)\">\n      Load Lazy Module-Component: Test Module-Comp <br/> (this button as content will be replaced)\n    </button>\n  </gewd-lazy-module-component>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/ng-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/ng-utils.svg?\"\n           alt=\"Gewd NG-Utils NPM Version\">\n    </a>\n    &nbsp;- NgErrorOverlay\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"ngErrorOverlay$ | async\">\n\n  </gewd-markdown>\n\n  <button (click)=\"makeError()\">Trigger an error</button>\n</mat-expansion-panel>\n\n<br/>\n\n<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/mat-utils\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/mat-utils.svg?\"\n           alt=\"Gewd Mat-Utils NPM Version\">\n    </a>\n    &nbsp;- Material Utils\n  </mat-expansion-panel-header>\n\n  <gewd-markdown [markdown]=\"matUtilsReadmeMD$ | async\">\n\n  </gewd-markdown>\n\n  <mat-icon svgIcon=\"add\"></mat-icon>\n</mat-expansion-panel>\n\n\n<br/>\n\n<mat-expansion-panel (opened)=\"openedEditorPanel()\">\n  <mat-expansion-panel-header>\n    <a href=\"https://www.npmjs.com/package/@gewd/components\" rel=\"nofollow\"\n       class=\"npm-link\">\n      <img src=\"https://img.shields.io/npm/v/@gewd/components.svg?\"\n           alt=\"Gewd Components NPM Version\">\n    </a>\n    &nbsp;- PrismEditor\n  </mat-expansion-panel-header>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Examples\" [value]=\"currentPrismExample\"\n                (valueChange)=\"updateValueChanged($event)\">\n      <mat-option value=\"empty\">Empty</mat-option>\n      <mat-option value=\"readme_md\">Markdown Readme</mat-option>\n      <mat-option value=\"ts_example\">TypeScript</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput placeholder=\"Render debounce-time\"\n           value=\"200\" type=\"number\"\n           #renderDebounce>\n  </mat-form-field>\n\n\n  <mat-form-field>\n    <input matInput placeholder=\"Editor Height (px)\"\n           value=\"100\" type=\"number\"\n           #editorHeight>\n  </mat-form-field>\n\n  <gewd-prism-editor [value]=\"editorExample$ | async\"\n                     [language]=\"editorLanguage$ | async\"\n                     [debounceTime]=\"+renderDebounce.value\"\n                     [style.--editor-min-height.px]=\"editorHeight.value\"\n                     #prismEditor>\n  </gewd-prism-editor>\n\n  <br/>\n\n  <h4>Mat-Form-Field Example</h4>\n\n  <form [formGroup]=\"aForm\">\n\n    <mat-form-field style=\"width: 100%\">\n\n      <gewd-custom-form-control placeholder=\"test\"\n                                formControlName=\"editor\"\n                                #customFormControl\n      >\n        <gewd-prism-editor [value]=\"editorExample$ | async\"\n                           [language]=\"editorLanguage$ | async\"\n                           [debounceTime]=\"+renderDebounce.value\"\n                           [style.--editor-min-height.px]=\"editorHeight.value\"\n                           (value$)=\"customFormControl.value = $event\"\n                           (focussed$)=\"customFormControl.focused = $event\" #editoe>\n        </gewd-prism-editor>\n      </gewd-custom-form-control>\n    </mat-form-field>\n  </form>\n\n\n  Form Field Data:\n  <hr>\n  {{ aForm.value | json }}\n</mat-expansion-panel>\n");
 
 /***/ }),
 
@@ -929,55 +914,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "CTQz":
-/*!******************************************************************!*\
-  !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.module.ts ***!
-  \******************************************************************/
-/*! exports provided: NgInspectModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgInspectModule", function() { return NgInspectModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ng-inspect.component */ "NDUi");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/checkbox */ "bSwM");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
-/* harmony import */ var _gewd_ng_utils_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @gewd/ng-utils/bootstrap-component */ "RB7p");
-
-
-
-
-
-
-
-let NgInspectModule = class NgInspectModule {
-};
-NgInspectModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]],
-        entryComponents: [_ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]],
-        imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-            _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"],
-            _angular_material_input__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
-            _gewd_ng_utils_bootstrap_component__WEBPACK_IMPORTED_MODULE_6__["BootstrapComponentModule"].component({
-                elementName: 'ng-inspect',
-                component: _ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]
-            })
-        ],
-        exports: [
-            _ng_inspect_component__WEBPACK_IMPORTED_MODULE_3__["NgInspectComponent"]
-        ]
-    })
-], NgInspectModule);
-
-
-
-/***/ }),
-
 /***/ "DCkP":
 /*!*****************************************!*\
   !*** ./apps/demo/src/app/app.module.ts ***!
@@ -1047,8 +983,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const marked = () => new Worker(__webpack__worker__0, undefined);
-const markdownExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](() => __webpack_require__.e(/*! import() | markdown-example-module */ "markdown-example-module").then(__webpack_require__.bind(null, /*! ./examples/markdown-example/markdown-example.module */ "B/di"))
+const markdownExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](() => Promise.all(/*! import() | markdown-example-module */[__webpack_require__.e("default~codemirror-example-module~markdown-example-module"), __webpack_require__.e("markdown-example-module")]).then(__webpack_require__.bind(null, /*! ./examples/markdown-example/markdown-example.module */ "B/di"))
     .then(({ MarkdownExampleModule }) => MarkdownExampleModule));
+const codeMirrorExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](() => Promise.all(/*! import() | codemirror-example-module */[__webpack_require__.e("default~codemirror-example-module~markdown-example-module"), __webpack_require__.e("codemirror-example-module")]).then(__webpack_require__.bind(null, /*! ./examples/codemirror-example/codemirror-example.module */ "u4Pf"))
+    .then(({ CodemirrorExampleModule }) => CodemirrorExampleModule));
 const lazyLoadExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](() => __webpack_require__.e(/*! import() | lazyload-example-module */ "lazyload-example-module").then(__webpack_require__.bind(null, /*! ./examples/lazyload-example/lazyload-example.module */ "j0+E"))
     .then(({ LazyloadExampleModule }) => LazyloadExampleModule));
 const componentsExampleLazy = new _gewd_lazy_utils__WEBPACK_IMPORTED_MODULE_28__["Lazy"](() => __webpack_require__.e(/*! import() | components-example-module */ "components-example-module").then(__webpack_require__.bind(null, /*! ./examples/components-example/components-example.module */ "6RHk"))
@@ -1073,6 +1011,12 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
                     moduleName: 'markdown-example',
                     moduleConfig: {
                         load: markdownExampleLazy
+                    }
+                },
+                {
+                    moduleName: 'codemirror-example',
+                    moduleConfig: {
+                        load: codeMirrorExampleLazy
                     }
                 },
                 {
@@ -1473,19 +1417,6 @@ document.addEventListener('DOMContentLoaded', () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (".fullscreen {\n  position: fixed;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background: #454545DD;\n  overflow: auto;\n  z-index: var(--overlay-zindex);\n}\n.fullscreen simple-pager {\n  height: calc(100% - 2rem);\n  padding: 1rem;\n}\n.fullscreen simple-pager ::ng-deep .navigation-row-panel.only-one {\n  opacity: 0;\n}\n.fullscreen ::ng-deep .error-name {\n  display: none;\n}\n.close-button {\n  position: fixed;\n  top: 2rem;\n  right: 2rem;\n}\n.error-next-to-navigation {\n  color: red;\n  font-family: Menlo, Consolas, monospace;\n  font-size: large;\n  line-height: 1.2;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL25nLWVycm9yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsYUFBQTtFQUNBLFlBQUE7RUFFQSxxQkFBQTtFQUNBLGNBQUE7RUFDQSw4QkFBQTtBQUFGO0FBRUU7RUFDRSx5QkFBQTtFQUNBLGFBQUE7QUFBSjtBQUdNO0VBQ0UsVUFBQTtBQURSO0FBTUU7RUFDRSxhQUFBO0FBSko7QUFTQTtFQUNFLGVBQUE7RUFDQSxTQUFBO0VBQ0EsV0FBQTtBQU5GO0FBU0E7RUFDRSxVQUFBO0VBQ0EsdUNBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FBTkYiLCJmaWxlIjoibmctZXJyb3IuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZnVsbHNjcmVlbiB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBoZWlnaHQ6IDEwMHZoO1xuICB3aWR0aDogMTAwdnc7XG5cbiAgYmFja2dyb3VuZDogIzQ1NDU0NUREO1xuICBvdmVyZmxvdzogYXV0bztcbiAgei1pbmRleDogdmFyKC0tb3ZlcmxheS16aW5kZXgpO1xuXG4gIHNpbXBsZS1wYWdlciB7XG4gICAgaGVpZ2h0OiBjYWxjKDEwMCUgLSAycmVtKTtcbiAgICBwYWRkaW5nOiAxcmVtO1xuXG4gICAgOjpuZy1kZWVwIHtcbiAgICAgIC5uYXZpZ2F0aW9uLXJvdy1wYW5lbC5vbmx5LW9uZSB7XG4gICAgICAgIG9wYWNpdHk6IDA7XG4gICAgICB9XG4gICAgfVxuICB9XG5cbiAgOjpuZy1kZWVwIC5lcnJvci1uYW1lIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG59XG5cblxuLmNsb3NlLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAycmVtO1xuICByaWdodDogMnJlbTtcbn1cblxuLmVycm9yLW5leHQtdG8tbmF2aWdhdGlvbiB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtZmFtaWx5OiBNZW5sbywgQ29uc29sYXMsIG1vbm9zcGFjZTtcbiAgZm9udC1zaXplOiBsYXJnZTtcbiAgbGluZS1oZWlnaHQ6IDEuMjtcbn1cbiJdfQ== */");
-
-/***/ }),
-
-/***/ "Htkt":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.html ***!
-  \*************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-template  #itemEdit let-item=\"item\" let-context=\"context\">\n  <div [ngSwitch]=\"item.propInfo.type\">\n    <ng-container *ngSwitchCase=\"'boolean'\">\n      <mat-checkbox [checked]=\"context.instance[item.key]\"\n                    (change)=\"onChangeGeneric($event.checked, context, item.key)\">\n        {{ item.key }}\n      </mat-checkbox>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'number'\">\n      <mat-form-field>\n        <input type=\"number\" [value]=\"context.instance[item.key]\" #number\n               matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(number.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'string'\">\n      <mat-form-field>\n        <input type=\"text\" [value]=\"context.instance[item.key]\" #text\n                matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(text.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'color'\">\n      <mat-form-field>\n        <input type=\"color\"\n               [value]=\"context.instance[item.key]\" #text\n               matInput [placeholder]=\"item.key\"\n               (change)=\"onChangeGeneric(text.value, context, item.key)\">\n      </mat-form-field>\n    </ng-container>\n  </div>\n</ng-template>\n\n<ng-template #itemsListTemplate let-items=\"items\" let-context=\"context\">\n  <div *ngFor=\"let item of items; let odd = odd; trackBy: trackByEntry\"\n       class=\"item-row\"\n       [class.odd]=\"odd\"\n  >\n    <div [ngSwitch]=\"item.propInfo.type\" style=\"flex: 1\">\n      <ng-container *ngSwitchDefault>\n        <div *ngIf=\"item.propInfo.canEdit && item.editMode; else readOnly\">\n\n          <ng-template *ngTemplateOutlet=\"itemEdit; context: {\n          item: item,\n          context: context\n        }\">\n          </ng-template>\n        </div>\n\n        <ng-template #readOnly>\n          <span class=\"mat-hint\">{{item.key}}:</span>\n          <br />\n          <span class=\"prop-value\">\n            <span *ngIf=\"item.propInfo.type === 'color'\"\n                 [style]=\"byPassAttr('--bg-color:'+context.instance[item.key])\"\n                  class=\"color-box\">\n\n            </span>\n            {{context.instance[item.key]}}</span>\n        </ng-template>\n      </ng-container>\n      <ng-container *ngSwitchCase=\"'observable'\">\n        <span class=\"mat-hint\">{{item.key}}</span>:\n        <br />\n        <span class=\"prop-value\">{{context.instance[item.key] | async | json}}</span>\n      </ng-container>\n    </div>\n    <div class=\"icon\" *ngIf=\"item.propInfo.canEdit\"\n         (click)=\"toggleEdit(item)\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path class=\"svg-color\" d=\"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z\"/></svg>\n    </div>\n    <div class=\"icon\">\n      <div *ngIf=\"isPinned(context, item.key), else unpinned\"\n           (click)=\"onPinOp(context, item.key, false)\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\"\n             enable-background=\"new 0 0 24 24\"\n             height=\"24\" viewBox=\"0 0 24 24\" width=\"24\">\n          <g><path d=\"M0,0h24v24H0V0z\" fill=\"none\"/>\n            <path d=\"M0,0h24v24H0V0z\" fill=\"none\"/></g>\n          <g><path  class=\"svg-color\" d=\"M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z\"/></g></svg>\n      </div>\n      <ng-template #unpinned>\n        <div (click)=\"onPinOp(context, item.key, true)\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\"\n               height=\"24\" viewBox=\"0 0 24 24\" width=\"24\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path class=\"svg-color\" d=\"M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z\"/></svg>\n        </div>\n      </ng-template>\n    </div>\n\n  </div>\n</ng-template>\n\n<div class=\"debug-panel\" ignore-inspect>\n  <ng-container *ngIf=\"pinnedItems$ | async as pinnedItems\">\n    <div class=\"panel-background\" *ngFor=\"let pinnedItem of pinnedItems\">\n      <h4>{{pinnedItem.name}}</h4>\n\n      <ng-template *ngTemplateOutlet=\"itemsListTemplate; context: {\n          items: pinnedItem.entries,\n          context: pinnedItem.context\n        }\">\n      </ng-template>\n    </div>\n  </ng-container>\n\n  <div class=\"panel-background\" *ngIf=\"component$ | async as component; else nothing\">\n    <h4>{{component.name}}</h4>\n\n    <ng-template *ngTemplateOutlet=\"itemsListTemplate; context: {\n          items: component.entries,\n          context: component.context\n        }\">\n    </ng-template>\n  </div>\n  <ng-template #nothing>\n    <div class=\"panel-background center-text\">\n      Press/hold <kbd>ctrl</kbd> to select <br/>\n      your component to inspect\n    </div>\n  </ng-template>\n</div>\n");
 
 /***/ }),
 
@@ -2136,277 +2067,6 @@ NgErrorOverlayModule = NgErrorOverlayModule_1 = Object(tslib__WEBPACK_IMPORTED_M
         ]
     })
 ], NgErrorOverlayModule);
-
-
-
-/***/ }),
-
-/***/ "NDUi":
-/*!*********************************************************************!*\
-  !*** ./libs/ng-utils/ng-inspect/ng-inspect/ng-inspect.component.ts ***!
-  \*********************************************************************/
-/*! exports provided: NgInspectComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function() { return NgInspectComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
-/* harmony import */ var _raw_loader_ng_inspect_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./ng-inspect.component.html */ "Htkt");
-/* harmony import */ var _ng_inspect_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ng-inspect.component.scss */ "+pPf");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
-var NgInspectComponent_1;
-
-
-
-
-
-
-
-
-const highlightClass = 'highlight-item';
-/** @dynamic - allows Document in ngc build */
-let NgInspectComponent = NgInspectComponent_1 = class NgInspectComponent {
-    constructor(cd, sanitizer, document) {
-        this.cd = cd;
-        this.sanitizer = sanitizer;
-        this.document = document;
-        this.component$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
-        this.pinnedItems$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]([]);
-        this.pinnedMap = new WeakMap();
-        this.pinnedAr = [];
-        this.ng = window && window.ng;
-        this.IVY_MODE = this.ng && !!this.ng.getComponent;
-        this.destroy$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
-        this.trackByEntry = (index, item) => item.key;
-        if (!NgInspectComponent_1._addedStyle) {
-            NgInspectComponent_1._addedStyle = true;
-            const style = document.createElement('style');
-            // WebKit hack :(
-            style.appendChild(document.createTextNode(''));
-            // Add the <style> element to the page
-            document.head.appendChild(style);
-            style.sheet.addRule(`.${highlightClass}`, 'border: 2px dotted lightblue !important;');
-        }
-        const weakMap = new WeakMap();
-        const highlightItem$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
-        highlightItem$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$), 
-        //filter(item => !!item),
-        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["pairwise"])()).subscribe(([oldItem, current]) => {
-            if (current) {
-                current.classList.add(highlightClass);
-            }
-            if (oldItem) {
-                oldItem.classList.remove(highlightClass);
-            }
-        });
-        const keyDown$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'keydown').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(e => e.ctrlKey), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["mapTo"])(true));
-        const keyUp$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'keyup').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(e => e.ctrlKey));
-        const isActive$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(keyDown$, keyUp$);
-        isActive$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(value => value
-            ? Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(document, 'mousemove').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["startWith"])(this.getCurrentElement()), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(x => console.info({ x })), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(e => !!e && !this.isChildOfIgnoredElement(e.target)))
-            : rxjs__WEBPACK_IMPORTED_MODULE_4__["NEVER"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["distinctUntilChanged"])((x, y) => x.target === y.target)).subscribe(event => {
-            const { target } = event;
-            const elementWithContext = this.findNextContext(target);
-            if (elementWithContext) {
-                const cached = weakMap.has(elementWithContext);
-                const context = cached
-                    ? weakMap.get(elementWithContext)
-                    : (this.getComponent(elementWithContext));
-                if (!cached && context) {
-                    weakMap.set(elementWithContext, context);
-                }
-                if (context) {
-                    highlightItem$.next(elementWithContext);
-                    const instance = context.instance;
-                    const entries = Object.entries(instance)
-                        .map(([key, value]) => ({ key, propInfo: this.getPropInfo(value) }))
-                        .filter(e => !!e.propInfo);
-                    const found = {
-                        context,
-                        keys: Object.keys(instance),
-                        entries,
-                        name: instance.__proto__.constructor.name
-                    };
-                    this.component$.next(found);
-                }
-                else {
-                    highlightItem$.next(null);
-                    this.component$.next(null);
-                }
-            }
-            else {
-                highlightItem$.next(null);
-                this.component$.next(null);
-            }
-        });
-    }
-    ngOnInit() {
-    }
-    ngOnDestroy() {
-        this.destroy$.next(true);
-        this.destroy$.complete();
-    }
-    onChangeGeneric(value, context, key) {
-        context.instance[key] = value;
-        context.cd.markForCheck();
-        this.cd.markForCheck();
-    }
-    onPinOp(context, prop, pin) {
-        let pinnedEntry = null;
-        if (this.pinnedMap.has(context)) {
-            pinnedEntry = this.pinnedMap.get(context);
-        }
-        else {
-            pinnedEntry = { pinned: [] };
-            this.pinnedMap.set(context, pinnedEntry);
-        }
-        if (pin) {
-            pinnedEntry.pinned.push(prop);
-            if (!this.pinnedAr.includes(context)) {
-                this.pinnedAr.push(context);
-            }
-        }
-        else {
-            const indexOf = pinnedEntry.pinned.indexOf(prop);
-            pinnedEntry.pinned.splice(indexOf, 1);
-            if (pinnedEntry.pinned.length === 0) {
-                const indexOfInstance = this.pinnedAr.indexOf(context);
-                this.pinnedAr.splice(indexOfInstance, 1);
-            }
-        }
-        this.cd.markForCheck();
-        this.fillPinnedArray();
-    }
-    isPinned(context, prop) {
-        if (this.pinnedMap.has(context)) {
-            return this.pinnedMap.get(context).pinned.includes(prop);
-        }
-        else {
-            return false;
-        }
-    }
-    getPropInfo(value) {
-        const type = typeof value;
-        switch (type) {
-            case 'boolean':
-            case 'number':
-                return {
-                    canEdit: true,
-                    type
-                };
-            case 'string':
-                const str = value.toString();
-                const isColor = str.includes('#') && str.length === 7;
-                return {
-                    canEdit: true,
-                    type: isColor ? 'color' : 'string'
-                };
-            case 'object':
-                if (Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["isObservable"])(value)) {
-                    return {
-                        canEdit: false,
-                        type: 'observable'
-                    };
-                }
-                return null;
-            default:
-                return null;
-        }
-    }
-    toggleEdit(item) {
-        item.editMode = !item.editMode;
-    }
-    byPassAttr(value) {
-        return this.sanitizer.bypassSecurityTrustStyle(value);
-    }
-    getCurrentElement() {
-        const hovering = this.document.querySelectorAll(':hover');
-        if (hovering.length > 0) {
-            return {
-                target: hovering.item(hovering.length - 1)
-            };
-        }
-        return null;
-    }
-    isChildOfIgnoredElement(element) {
-        while (element) {
-            const containsAttr = element.hasAttribute('ignore-inspect');
-            if (containsAttr) {
-                return true;
-            }
-            element = element.parentElement;
-        }
-        return false;
-    }
-    getComponent(element) {
-        if (this.IVY_MODE) {
-            const component = this.ng.getComponent(element)
-                || this.ng.getContext(element);
-            return {
-                instance: component,
-                cd: this.cd
-            };
-        }
-        else {
-            const probe = this.ng.probe(element);
-            if (probe) {
-                return {
-                    instance: probe.context,
-                    cd: probe.injector.get(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"])
-                };
-            }
-            return null;
-        }
-    }
-    fillPinnedArray() {
-        const pinnedItems = [];
-        for (const context of this.pinnedAr) {
-            const { instance } = context;
-            pinnedItems.push({
-                name: instance.__proto__.constructor.name,
-                context,
-                entries: this.pinnedMap.get(context).pinned.map(key => ({
-                    key,
-                    propInfo: this.getPropInfo(instance[key])
-                }))
-            });
-        }
-        this.pinnedItems$.next(pinnedItems);
-    }
-    findNextContext(element) {
-        if (!this.IVY_MODE) {
-            return element;
-        }
-        while (element && !this.getContext(element)) {
-            element = element.parentElement;
-        }
-        return element;
-    }
-    getContext(element) {
-        return element.__ngContext__;
-    }
-};
-NgInspectComponent._addedStyle = false;
-NgInspectComponent.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"] },
-    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["DomSanitizer"] },
-    { type: Document, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"],] }] }
-];
-NgInspectComponent = NgInspectComponent_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'ng-inspect',
-        template: _raw_loader_ng_inspect_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_ng_inspect_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"],
-        _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["DomSanitizer"],
-        Document])
-], NgInspectComponent);
 
 
 
@@ -3292,27 +2952,6 @@ ErrorHandlerService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
-/***/ "kflc":
-/*!************************************************!*\
-  !*** ./libs/ng-utils/ng-inspect/public_api.ts ***!
-  \************************************************/
-/*! exports provided: NgInspectModule, NgInspectComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ng_inspect_ng_inspect_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ng-inspect/ng-inspect.module */ "CTQz");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NgInspectModule", function() { return _ng_inspect_ng_inspect_module__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"]; });
-
-/* harmony import */ var _ng_inspect_ng_inspect_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ng-inspect/ng-inspect.component */ "NDUi");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function() { return _ng_inspect_ng_inspect_component__WEBPACK_IMPORTED_MODULE_1__["NgInspectComponent"]; });
-
-
-
-
-
-/***/ }),
-
 /***/ "lgUy":
 /*!**************************************************!*\
   !*** ./libs/markdown/service/injection-token.ts ***!
@@ -3740,25 +3379,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: flex;\n  flex-direction: column;\n}\n\n.left-arrow, .right-arrow {\n  --arrow-color: white;\n}\n\n.left-arrow svg path, .right-arrow svg path {\n  fill: var(--arrow-color);\n}\n\n.left-arrow:hover:not(.disabled), .right-arrow:hover:not(.disabled) {\n  cursor: pointer;\n}\n\n.left-arrow.disabled, .right-arrow.disabled {\n  --arrow-color: gray;\n}\n\n.slot {\n  position: relative;\n  flex: 1;\n  overflow-y: auto;\n}\n\n.flex {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\n.position-label {\n  margin-left: 1rem;\n  margin-right: 1rem;\n}\n\n.navigation-row-panel {\n  flex: 1;\n  justify-content: flex-end;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS1wYWdlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUVBO0VBQ0Usb0JBQUE7QUFDRjs7QUFDRTtFQUNFLHdCQUFBO0FBQ0o7O0FBRUU7RUFDRSxlQUFBO0FBQUo7O0FBR0U7RUFDRSxtQkFBQTtBQURKOztBQUtBO0VBQ0Usa0JBQUE7RUFDQSxPQUFBO0VBQ0EsZ0JBQUE7QUFGRjs7QUFLQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FBRkY7O0FBS0E7RUFDRSxpQkFBQTtFQUNBLGtCQUFBO0FBRkY7O0FBS0E7RUFDRSxPQUFBO0VBQ0EseUJBQUE7QUFGRiIsImZpbGUiOiJzaW1wbGUtcGFnZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5sZWZ0LWFycm93LCAucmlnaHQtYXJyb3cge1xuICAtLWFycm93LWNvbG9yOiB3aGl0ZTtcblxuICBzdmcgcGF0aCB7XG4gICAgZmlsbDogdmFyKC0tYXJyb3ctY29sb3IpO1xuICB9XG5cbiAgJjpob3Zlcjpub3QoLmRpc2FibGVkKSB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG5cbiAgJi5kaXNhYmxlZCB7XG4gICAgLS1hcnJvdy1jb2xvcjogZ3JheTtcbiAgfVxufVxuXG4uc2xvdCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZmxleDogMTtcbiAgb3ZlcmZsb3cteTogYXV0bztcbn1cblxuLmZsZXgge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4ucG9zaXRpb24tbGFiZWwge1xuICBtYXJnaW4tbGVmdDogMXJlbTtcbiAgbWFyZ2luLXJpZ2h0OiAxcmVtO1xufVxuXG4ubmF2aWdhdGlvbi1yb3ctcGFuZWwge1xuICBmbGV4OiAxO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xufVxuIl19 */");
-
-/***/ }),
-
-/***/ "ovnV":
-/*!*******************************************!*\
-  !*** ./libs/ng-utils/ng-inspect/index.ts ***!
-  \*******************************************/
-/*! exports provided: NgInspectModule, NgInspectComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _public_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./public_api */ "kflc");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NgInspectModule", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["NgInspectModule"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NgInspectComponent", function() { return _public_api__WEBPACK_IMPORTED_MODULE_0__["NgInspectComponent"]; });
-
-
-
 
 /***/ }),
 

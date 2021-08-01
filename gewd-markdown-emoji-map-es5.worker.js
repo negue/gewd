@@ -1,15 +1,7 @@
 (function () {
   self["webpackChunk"](["gewd-markdown-emoji-map"], {
     /***/
-    "LyO7":
-    /*!******************************************!*\
-      !*** ./libs/markdown/emoji-map/index.ts ***!
-      \******************************************/
-
-    /*! exports provided: EMOJI_MAP, colonToUnicode */
-
-    /***/
-    function LyO7(module, __webpack_exports__, __webpack_require__) {
+    "LyO7": function LyO7(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -36,15 +28,7 @@
     },
 
     /***/
-    "WbJ9":
-    /*!**********************************************!*\
-      !*** ./libs/markdown/emoji-map/emoji.map.ts ***!
-      \**********************************************/
-
-    /*! exports provided: EMOJI_MAP */
-
-    /***/
-    function WbJ9(module, __webpack_exports__, __webpack_require__) {
+    "WbJ9": function WbJ9(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1552,15 +1536,7 @@
     },
 
     /***/
-    "c8Vy":
-    /*!***************************************************!*\
-      !*** ./libs/markdown/emoji-map/colonToUnicode.ts ***!
-      \***************************************************/
-
-    /*! exports provided: colonToUnicode */
-
-    /***/
-    function c8Vy(module, __webpack_exports__, __webpack_require__) {
+    "c8Vy": function c8Vy(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1608,15 +1584,7 @@
     },
 
     /***/
-    "uHIA":
-    /*!***********************************************!*\
-      !*** ./libs/markdown/emoji-map/public_api.ts ***!
-      \***********************************************/
-
-    /*! exports provided: EMOJI_MAP, colonToUnicode */
-
-    /***/
-    function uHIA(module, __webpack_exports__, __webpack_require__) {
+    "uHIA": function uHIA(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
