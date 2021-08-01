@@ -1,4 +1,15 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { EditorView, keymap } from '@codemirror/view';
 import { EditorState, Extension } from '@codemirror/state';
 import { indentOnInput } from '@codemirror/language';
@@ -7,12 +18,14 @@ import { defaultKeymap, indentLess, indentMore } from '@codemirror/commands';
 @Component({
   selector: 'gewd-codemirror',
   template: '',
-  styleUrls: ['./codemirror.component.scss']
+  styleUrls: ['./codemirror.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodemirrorComponent implements OnInit, OnChanges {
 
   private _changedByValue = false;
-  private codeMirrorView: EditorView | null = null;
+
+  // current value of the codemirror-editor
   private _value = '';
 
   get value () {
@@ -21,8 +34,6 @@ export class CodemirrorComponent implements OnInit, OnChanges {
 
   @Input()
   set value (_val) {
-    // the usual ngChanges weren't called...
-    this._value = _val;
     this._updateValue(_val);
   }
 
@@ -35,13 +46,29 @@ export class CodemirrorComponent implements OnInit, OnChanges {
   @Input()
   public editorState: EditorState;
 
-  constructor(private element: ElementRef<HTMLElement>) { }
+  @Output()
+  public codemirrorCreated = new EventEmitter();
+
+  public codeMirrorView: EditorView | null = null;
+
+  public selectedRange: {from: number, to: number} | null = null;
+
+  constructor(
+    private element: ElementRef<HTMLElement>,
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
+    if (!this.editorState) {
+      this.editorState = this.createEditorState();
+    }
+
     this.codeMirrorView = new EditorView({
-      state: this.editorState ?? this.createEditorState(),
+      state: this.editorState,
       parent: this.element.nativeElement
     });
+
+    this.codemirrorCreated.emit();
   }
 
   ngOnChanges({value, codemirrorExtensions, editorState}: SimpleChanges): void {
@@ -58,22 +85,37 @@ export class CodemirrorComponent implements OnInit, OnChanges {
     }
   }
 
+  public insertText(from: number, to: number, text: string) {
+    const transaction = this.codeMirrorView?.state.update({
+      changes: {
+        from,
+        to,
+        insert: text
+      },
+      selection: {anchor: from + text.length},
+      scrollIntoView: true
+    });
+
+    if (transaction) {
+      this.codeMirrorView?.dispatch(transaction);
+    }
+  }
+
+  public replaceSelection(text: string) {
+    const selectionTransaction = this.codeMirrorView.state.replaceSelection(text);
+
+    this.codeMirrorView.dispatch(selectionTransaction);
+  }
+
   private _updateValue(value: string) {
     this._changedByValue = true;
-    const currentEditorValue = this.codeMirrorView?.state.doc.toJSON().join('\n');
 
-    if (currentEditorValue !== value) {
-      const transaction = this.codeMirrorView?.state.update({
-        changes: {
-          from: 0,
-          to: this.codeMirrorView?.state.doc.length,
-          insert: value
-        }
-      });
-
-      if (transaction) {
-        this.codeMirrorView?.dispatch(transaction);
-      }
+    if (this._value !== value) {
+      this.insertText(
+        0,
+        this.codeMirrorView?.state.doc.length,
+        value
+      );
     }
 
     this._changedByValue = false;
@@ -107,6 +149,20 @@ export class CodemirrorComponent implements OnInit, OnChanges {
         // The basic setup needs to be at the end DUH
         // basicSetup,
         EditorState.changeFilter.of((tr) => {
+          if (tr.newSelection) {
+            const ranges = tr.newSelection.ranges;
+
+            if (ranges.length > 0) {
+              const range = ranges[0];
+
+              this.selectedRange = {
+                from: range.from,
+                to: range.to,
+              };
+              this.cd.markForCheck();
+            }
+          }
+
           if (tr.docChanged && !this._changedByValue) {
             this._value = tr.newDoc.toJSON().join('\n');
 
