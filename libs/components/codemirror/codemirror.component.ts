@@ -34,6 +34,7 @@ export class CodemirrorComponent implements OnInit, OnChanges {
 
   @Input()
   set value (_val) {
+    this._value = _val;
     this._updateValue(_val);
   }
 

@@ -1,13 +1,21 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { emojiExampleList } from '../../example-emoji-list';
-import { oneDarkTheme } from '@codemirror/theme-one-dark';
+import { oneDark } from '@codemirror/theme-one-dark';
 import { javascript, javascriptLanguage } from '@codemirror/lang-javascript';
 import { autocompletion, completionKeymap } from '@codemirror/autocomplete';
 import { keymap } from '@codemirror/view';
 import { Extension } from '@codemirror/state';
 import { basicSetup } from '@codemirror/basic-setup';
 import { CodemirrorComponent } from '@gewd/components/codemirror';
+
+const sharedExtensions: Extension[] = [
+     oneDark,
+
+    javascriptLanguage, //.data.of({autocomplete:jsCompletion}),
+
+    javascript(),
+];
 
 @Component({
   selector: 'gewd-codemirror-example',
@@ -19,17 +27,50 @@ export class CodemirrorExampleComponent implements OnInit {
 
   emojiList = emojiExampleList;
 
+  exampleJsText = `
+export const some = 'string';
+
+export function test() {
+   return 42;
+}
+  `.trim();
+
+  longExampleText =`
+// long code example
+export const some = 'string';
+
+export function test() {
+   return 42;
+}
+
+export const some = 'string';
+
+export function test() {
+   return 42;
+}
+
+export const some = 'string';
+
+export function test() {
+   return 42;
+}
+
+export const some = 'string';
+
+export function test() {
+   return 42;
+}
+  `.trim();
+
   normalExtensions: Extension[] = [
-    oneDarkTheme,
+    ...sharedExtensions
   ]
 
   extensions: Extension = [
     basicSetup,
      // overrides first..
-    oneDarkTheme,
 
-    javascript(),
-    javascriptLanguage, //.data.of({autocomplete:jsCompletion}),
+    ...sharedExtensions,
 
     autocompletion(),
     keymap.of([
