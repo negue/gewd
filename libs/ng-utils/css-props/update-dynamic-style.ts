@@ -27,7 +27,7 @@ export function getStyleElement(
     }
   }
 
-  if (style == null) {
+  if (style === null) {
     style = document.createElement('style');
     style.id = styleId;
     style.type = 'text/css';
