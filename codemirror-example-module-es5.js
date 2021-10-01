@@ -9,7 +9,7 @@
 
   function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
@@ -5769,12 +5769,11 @@
               endCol = Math.max(a.col, b.col);
 
           for (var _i35 = startLine; _i35 <= endLine; _i35++) {
-            var _line = state.doc.line(_i35),
-                str = _line.length > MaxOff ? _line.text.slice(0, 2 * endCol) : _line.text;
+            var _line = state.doc.line(_i35);
 
-            var start = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(str, 0, startCol, state.tabSize),
-                end = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(str, 0, endCol, state.tabSize);
-            if (!start.leftOver) ranges.push(_codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].range(_line.from + start.offset, _line.from + end.offset));
+            var start = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(_line.text, startCol, state.tabSize),
+                end = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(_line.text, endCol, state.tabSize);
+            if (start < end) ranges.push(_codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].range(_line.from + start, _line.from + end));
           }
         }
 
@@ -5790,8 +5789,7 @@
         var offset = view.posAtCoords({
           x: event.clientX,
           y: event.clientY
-        });
-        if (offset == null) return null;
+        }, false);
         var line = view.state.doc.lineAt(offset),
             off = offset - line.from;
         var col = off > MaxOff ? -1 : off == line.length ? absoluteColumn(view, event.clientX) : Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["countColumn"])(line.text.slice(0, offset - line.from), 0, view.state.tabSize);
@@ -5829,11 +5827,14 @@
             if (multiple) return _codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].create(ranges.concat(startSel.ranges));else return _codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].create(ranges);
           }
         };
-      } /// Create an extension that enables rectangular selections. By
-      /// default, it will react to left mouse drag with the Alt key held
-      /// down. When such a selection occurs, the text within the rectangle
-      /// that was dragged over will be selected, as one selection
-      /// [range](#state.SelectionRange) per line.
+      }
+      /**
+      Create an extension that enables rectangular selections. By
+      default, it will react to left mouse drag with the Alt key held
+      down. When such a selection occurs, the text within the rectangle
+      that was dragged over will be selected, as one selection
+      [range](https://codemirror.net/6/docs/ref/#state.SelectionRange) per line.
+      */
 
 
       function rectangularSelection(options) {
@@ -19082,6 +19083,12 @@
       /* harmony export (binding) */
 
 
+      __webpack_require__.d(__webpack_exports__, "forceLinting", function () {
+        return forceLinting;
+      });
+      /* harmony export (binding) */
+
+
       __webpack_require__.d(__webpack_exports__, "lintKeymap", function () {
         return lintKeymap;
       });
@@ -19192,10 +19199,8 @@
         return found;
       }
 
-      function maybeEnableLint(state, effects, diagnostics) {
-        return state.field(lintState, false) ? effects : effects.concat(_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["StateEffect"].appendConfig.of([diagnostics ? lintState.init(function () {
-          return LintState.init(diagnostics, null);
-        }) : lintState, _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["EditorView"].decorations.compute([lintState], function (state) {
+      function maybeEnableLint(state, effects, getState) {
+        return state.field(lintState, false) ? effects : effects.concat(_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["StateEffect"].appendConfig.of([lintState.init(getState), _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["EditorView"].decorations.compute([lintState], function (state) {
           var _state$field = state.field(lintState),
               selected = _state$field.selected,
               panel = _state$field.panel;
@@ -19211,7 +19216,9 @@
 
       function setDiagnostics(state, diagnostics) {
         return {
-          effects: maybeEnableLint(state, [setDiagnosticsEffect.of(diagnostics)], diagnostics)
+          effects: maybeEnableLint(state, [setDiagnosticsEffect.of(diagnostics)], function () {
+            return LintState.init(diagnostics, null);
+          })
         };
       }
 
@@ -19314,7 +19321,9 @@
       var openLintPanel = function openLintPanel(view) {
         var field = view.state.field(lintState, false);
         if (!field || !field.panel) view.dispatch({
-          effects: maybeEnableLint(view.state, [togglePanel.of(true)])
+          effects: maybeEnableLint(view.state, [togglePanel.of(true)], function () {
+            return LintState.init([], LintPanel.open);
+          })
         });
         var panel = Object(_codemirror_panel__WEBPACK_IMPORTED_MODULE_3__["getPanel"])(view, LintPanel.open);
         if (panel) panel.dom.querySelector(".cm-panel-lint ul").focus();
@@ -19436,6 +19445,14 @@
             }
           }
         }, {
+          key: "force",
+          value: function force() {
+            if (this.set) {
+              this.lintTime = Date.now();
+              this.run();
+            }
+          }
+        }, {
           key: "destroy",
           value: function destroy() {
             clearTimeout(this.timeout);
@@ -19474,6 +19491,16 @@
           source: source,
           delay: (_a = config.delay) !== null && _a !== void 0 ? _a : 750
         });
+      }
+      /**
+      Forces any linters [configured](https://codemirror.net/6/docs/ref/#lint.linter) to run when the
+      editor is idle to run right away.
+      */
+
+
+      function forceLinting(view) {
+        var plugin = view.plugin(lintPlugin);
+        if (plugin) plugin.force();
       }
 
       function assignKeys(actions) {
@@ -19617,7 +19644,7 @@
             } else if (event.keyCode == 13) {
               // Enter
               _this62.view.focus();
-            } else if (event.keyCode >= 65 && event.keyCode <= 90 && _this62.items.length) {
+            } else if (event.keyCode >= 65 && event.keyCode <= 90 && _this62.selectedIndex >= 0) {
               // A-Z
               var diagnostic = _this62.items[_this62.selectedIndex].diagnostic,
                   keys = assignKeys(diagnostic.actions);
@@ -19755,7 +19782,7 @@
                   if (sel.top < panel.top) _this63.list.scrollTop -= panel.top - sel.top;else if (sel.bottom > panel.bottom) _this63.list.scrollTop += sel.bottom - panel.bottom;
                 }
               });
-            } else if (!this.items.length) {
+            } else if (this.selectedIndex < 0) {
               this.list.removeAttribute("aria-activedescendant");
             }
 
@@ -19802,7 +19829,7 @@
         }, {
           key: "moveSelection",
           value: function moveSelection(selectedIndex) {
-            if (this.items.length == 0) return;
+            if (this.selectedIndex < 0) return;
             var field = this.view.state.field(lintState);
             var selection = findDiagnostic(field.diagnostics, this.items[selectedIndex].diagnostic);
             if (!selection) return;
@@ -22071,9 +22098,7 @@
           return folded;
         },
         provide: function provide(f) {
-          return _codemirror_view__WEBPACK_IMPORTED_MODULE_1__["EditorView"].decorations.compute([f], function (s) {
-            return s.field(f);
-          });
+          return _codemirror_view__WEBPACK_IMPORTED_MODULE_1__["EditorView"].decorations.from(f);
         }
       });
       /**
@@ -22310,7 +22335,8 @@
 
       var foldGutterDefaults = {
         openText: "⌄",
-        closedText: "›"
+        closedText: "›",
+        markerDOM: null
       };
 
       var FoldMarker = /*#__PURE__*/function (_codemirror_gutter__W) {
@@ -22337,6 +22363,7 @@
         }, {
           key: "toDOM",
           value: function toDOM(view) {
+            if (this.config.markerDOM) return this.config.markerDOM(this.open);
             var span = document.createElement("span");
             span.textContent = this.open ? this.config.openText : this.config.closedText;
             span.title = view.state.phrase(this.open ? "Fold line" : "Unfold line");
@@ -33887,7 +33914,7 @@
 
             for (var _i159 = this.active.length - 1; _i159 >= 0; _i159--) {
               if (this.activeRank[_i159] < this.pointRank) break;
-              if (this.activeTo[_i159] > to || this.activeTo[_i159] == to && this.active[_i159].endSide > this.point.endSide) active.push(this.active[_i159]);
+              if (this.activeTo[_i159] > to || this.activeTo[_i159] == to && this.active[_i159].endSide >= this.point.endSide) active.push(this.active[_i159]);
             }
 
             return active.reverse();
@@ -33921,7 +33948,7 @@
               clipEnd = Math.min(end, endB);
 
           if (a.point || b.point) {
-            if (!(a.point && b.point && (a.point == b.point || a.point.eq(b.point)))) comparator.comparePoint(pos, clipEnd, a.point, b.point);
+            if (!(a.point && b.point && (a.point == b.point || a.point.eq(b.point)) && sameValues(a.activeForPoint(a.to + dPos), b.activeForPoint(b.to)))) comparator.comparePoint(pos, clipEnd, a.point, b.point);
           } else {
             if (clipEnd > pos && !sameValues(a.active, b.active)) comparator.compareRange(pos, clipEnd, a.active, b.active);
           }

@@ -3639,10 +3639,10 @@ function rectangleFor(state, a, b) {
     else {
         let startCol = Math.min(a.col, b.col), endCol = Math.max(a.col, b.col);
         for (let i = startLine; i <= endLine; i++) {
-            let line = state.doc.line(i), str = line.length > MaxOff ? line.text.slice(0, 2 * endCol) : line.text;
-            let start = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(str, 0, startCol, state.tabSize), end = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(str, 0, endCol, state.tabSize);
-            if (!start.leftOver)
-                ranges.push(_codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].range(line.from + start.offset, line.from + end.offset));
+            let line = state.doc.line(i);
+            let start = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(line.text, startCol, state.tabSize), end = Object(_codemirror_text__WEBPACK_IMPORTED_MODULE_2__["findColumn"])(line.text, endCol, state.tabSize);
+            if (start < end)
+                ranges.push(_codemirror_state__WEBPACK_IMPORTED_MODULE_0__["EditorSelection"].range(line.from + start, line.from + end));
         }
     }
     return ranges;
@@ -3652,9 +3652,7 @@ function absoluteColumn(view, x) {
     return ref ? Math.round(Math.abs((ref.left - x) / view.defaultCharacterWidth)) : -1;
 }
 function getPos(view, event) {
-    let offset = view.posAtCoords({ x: event.clientX, y: event.clientY });
-    if (offset == null)
-        return null;
+    let offset = view.posAtCoords({ x: event.clientX, y: event.clientY }, false);
     let line = view.state.doc.lineAt(offset), off = offset - line.from;
     let col = off > MaxOff ? -1
         : off == line.length ? absoluteColumn(view, event.clientX)
@@ -3688,11 +3686,13 @@ function rectangleSelectionStyle(view, event) {
         }
     };
 }
-/// Create an extension that enables rectangular selections. By
-/// default, it will react to left mouse drag with the Alt key held
-/// down. When such a selection occurs, the text within the rectangle
-/// that was dragged over will be selected, as one selection
-/// [range](#state.SelectionRange) per line.
+/**
+Create an extension that enables rectangular selections. By
+default, it will react to left mouse drag with the Alt key held
+down. When such a selection occurs, the text within the rectangle
+that was dragged over will be selected, as one selection
+[range](https://codemirror.net/6/docs/ref/#state.SelectionRange) per line.
+*/
 function rectangularSelection(options) {
     let filter = (options === null || options === void 0 ? void 0 : options.eventFilter) || (e => e.altKey && e.button == 0);
     return _codemirror_view__WEBPACK_IMPORTED_MODULE_1__["EditorView"].mouseSelectionStyle.of((view, event) => filter(event) ? rectangleSelectionStyle(view, event) : null);
@@ -12057,12 +12057,13 @@ const oneDark = [oneDarkTheme, oneDarkHighlightStyle];
 /*!*****************************************************!*\
   !*** ./node_modules/@codemirror/lint/dist/index.js ***!
   \*****************************************************/
-/*! exports provided: closeLintPanel, lintKeymap, linter, nextDiagnostic, openLintPanel, setDiagnostics */
+/*! exports provided: closeLintPanel, forceLinting, lintKeymap, linter, nextDiagnostic, openLintPanel, setDiagnostics */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeLintPanel", function() { return closeLintPanel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forceLinting", function() { return forceLinting; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lintKeymap", function() { return lintKeymap; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linter", function() { return linter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nextDiagnostic", function() { return nextDiagnostic; });
@@ -12117,9 +12118,9 @@ function findDiagnostic(diagnostics, diagnostic = null, after = 0) {
     });
     return found;
 }
-function maybeEnableLint(state, effects, diagnostics) {
+function maybeEnableLint(state, effects, getState) {
     return state.field(lintState, false) ? effects : effects.concat(_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["StateEffect"].appendConfig.of([
-        diagnostics ? lintState.init(() => LintState.init(diagnostics, null)) : lintState,
+        lintState.init(getState),
         _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["EditorView"].decorations.compute([lintState], state => {
             let { selected, panel } = state.field(lintState);
             return !selected || !panel || selected.from == selected.to ? _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["Decoration"].none : _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["Decoration"].set([
@@ -12136,7 +12137,7 @@ diagnostics.
 */
 function setDiagnostics(state, diagnostics) {
     return {
-        effects: maybeEnableLint(state, [setDiagnosticsEffect.of(diagnostics)], diagnostics)
+        effects: maybeEnableLint(state, [setDiagnosticsEffect.of(diagnostics)], () => LintState.init(diagnostics, null))
     };
 }
 const setDiagnosticsEffect = /*@__PURE__*/_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["StateEffect"].define();
@@ -12200,7 +12201,7 @@ Command to open and focus the lint panel.
 const openLintPanel = (view) => {
     let field = view.state.field(lintState, false);
     if (!field || !field.panel)
-        view.dispatch({ effects: maybeEnableLint(view.state, [togglePanel.of(true)]) });
+        view.dispatch({ effects: maybeEnableLint(view.state, [togglePanel.of(true)], () => LintState.init([], LintPanel.open)) });
     let panel = Object(_codemirror_panel__WEBPACK_IMPORTED_MODULE_3__["getPanel"])(view, LintPanel.open);
     if (panel)
         panel.dom.querySelector(".cm-panel-lint ul").focus();
@@ -12279,6 +12280,12 @@ const lintPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__["V
             }
         }
     }
+    force() {
+        if (this.set) {
+            this.lintTime = Date.now();
+            this.run();
+        }
+    }
     destroy() {
         clearTimeout(this.timeout);
     }
@@ -12297,6 +12304,15 @@ editor is idle (after its content changed).
 function linter(source, config = {}) {
     var _a;
     return lintSource.of({ source, delay: (_a = config.delay) !== null && _a !== void 0 ? _a : 750 });
+}
+/**
+Forces any linters [configured](https://codemirror.net/6/docs/ref/#lint.linter) to run when the
+editor is idle to run right away.
+*/
+function forceLinting(view) {
+    let plugin = view.plugin(lintPlugin);
+    if (plugin)
+        plugin.force();
 }
 function assignKeys(actions) {
     let assigned = [];
@@ -12378,7 +12394,7 @@ class LintPanel {
             else if (event.keyCode == 13) { // Enter
                 this.view.focus();
             }
-            else if (event.keyCode >= 65 && event.keyCode <= 90 && this.items.length) { // A-Z
+            else if (event.keyCode >= 65 && event.keyCode <= 90 && this.selectedIndex >= 0) { // A-Z
                 let { diagnostic } = this.items[this.selectedIndex], keys = assignKeys(diagnostic.actions);
                 for (let i = 0; i < keys.length; i++)
                     if (keys[i].toUpperCase().charCodeAt(0) == event.keyCode) {
@@ -12479,7 +12495,7 @@ class LintPanel {
                 }
             });
         }
-        else if (!this.items.length) {
+        else if (this.selectedIndex < 0) {
             this.list.removeAttribute("aria-activedescendant");
         }
         if (needsSync)
@@ -12506,7 +12522,7 @@ class LintPanel {
             rm();
     }
     moveSelection(selectedIndex) {
-        if (this.items.length == 0)
+        if (this.selectedIndex < 0)
             return;
         let field = this.view.state.field(lintState);
         let selection = findDiagnostic(field.diagnostics, this.items[selectedIndex].diagnostic);
@@ -13881,7 +13897,7 @@ const foldState = /*@__PURE__*/_codemirror_state__WEBPACK_IMPORTED_MODULE_0__["S
         }
         return folded;
     },
-    provide: f => _codemirror_view__WEBPACK_IMPORTED_MODULE_1__["EditorView"].decorations.compute([f], s => s.field(f))
+    provide: f => _codemirror_view__WEBPACK_IMPORTED_MODULE_1__["EditorView"].decorations.from(f)
 });
 /**
 Get a [range set](https://codemirror.net/6/docs/ref/#rangeset.RangeSet) containing the folded ranges
@@ -14021,7 +14037,8 @@ const foldWidget = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_1__["D
     } });
 const foldGutterDefaults = {
     openText: "⌄",
-    closedText: "›"
+    closedText: "›",
+    markerDOM: null,
 };
 class FoldMarker extends _codemirror_gutter__WEBPACK_IMPORTED_MODULE_3__["GutterMarker"] {
     constructor(config, open) {
@@ -14031,6 +14048,8 @@ class FoldMarker extends _codemirror_gutter__WEBPACK_IMPORTED_MODULE_3__["Gutter
     }
     eq(other) { return this.config == other.config && this.open == other.open; }
     toDOM(view) {
+        if (this.config.markerDOM)
+            return this.config.markerDOM(this.open);
         let span = document.createElement("span");
         span.textContent = this.open ? this.config.openText : this.config.closedText;
         span.title = view.state.phrase(this.open ? "Fold line" : "Unfold line");
@@ -21701,7 +21720,7 @@ class SpanCursor {
         for (let i = this.active.length - 1; i >= 0; i--) {
             if (this.activeRank[i] < this.pointRank)
                 break;
-            if (this.activeTo[i] > to || this.activeTo[i] == to && this.active[i].endSide > this.point.endSide)
+            if (this.activeTo[i] > to || this.activeTo[i] == to && this.active[i].endSide >= this.point.endSide)
                 active.push(this.active[i]);
         }
         return active.reverse();
@@ -21722,7 +21741,8 @@ function compare(a, startA, b, startB, length, comparator) {
         let diff = (a.to + dPos) - b.to || a.endSide - b.endSide;
         let end = diff < 0 ? a.to + dPos : b.to, clipEnd = Math.min(end, endB);
         if (a.point || b.point) {
-            if (!(a.point && b.point && (a.point == b.point || a.point.eq(b.point))))
+            if (!(a.point && b.point && (a.point == b.point || a.point.eq(b.point)) &&
+                sameValues(a.activeForPoint(a.to + dPos), b.activeForPoint(b.to))))
                 comparator.comparePoint(pos, clipEnd, a.point, b.point);
         }
         else {
