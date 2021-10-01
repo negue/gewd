@@ -23,7 +23,7 @@ export function bootstrapComponent(
   injector: Injector,
   appRef: ApplicationRef,
   bootstrapConfig: BootstrapComponentConfig
-) {
+): void  {
     const domElement = document.createElement(bootstrapConfig.elementName);
 
     document.body.append(domElement);

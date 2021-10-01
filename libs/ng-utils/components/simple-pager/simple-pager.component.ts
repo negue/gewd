@@ -20,7 +20,7 @@ export class SimplePagerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectPrev () {
+  selectPrev (): void  {
     if (this.position === 0) {
       return;
     }
@@ -28,7 +28,7 @@ export class SimplePagerComponent implements OnInit {
     this.position--;
   }
 
-  selectNext () {
+  selectNext (): void  {
     if (this.position === (this.items.length - 1)) {
       return;
     }

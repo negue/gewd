@@ -1,16 +1,16 @@
-export function linkRendererTargetBlank (href, title, text ) {
+export function linkRendererTargetBlank (href, title, text ): string  {
   return `<a target="_blank" href="${href}" title="${title}">${text}</a>`;
 }
 
 // original code from https://stackoverflow.com/a/46838553
 // changed to use href/text separately
 
-export function get_favicon (href: string, text: string) {
+export function get_favicon (href: string, text: string): string  {
   // return replacement text here...
   return `<img src="https://www.google.com/s2/favicons?domain=${href}">${text}`;
 }
 
-export function linkRendererWithFavIcon (href: string, title: string | null, text: string) {
+export function linkRendererWithFavIcon (href: string, title: string | null, text: string): string  {
   try {
     var prot = decodeURIComponent(unescape(href))
       .replace(/[^\w:]/g, '')

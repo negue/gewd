@@ -61,7 +61,7 @@ export class RenderMarkdownComponent implements OnInit {
   }
 
   @HostListener('click', ['$event'])
-  onClick(e: Event) {
+  onClick(e: Event): void  {
     let target = e.target as HTMLElement;
 
     let aHref: HTMLLinkElement = null;

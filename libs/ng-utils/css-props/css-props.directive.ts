@@ -18,7 +18,7 @@ export class CSSPropsDirective implements OnChanges {
               private cssPropsService: CssPropsService) {
   }
 
-  ngOnChanges({cssProps}: SimpleChanges) {
+  ngOnChanges({cssProps}: SimpleChanges): void  {
     this.cssPropsService.updateElementVars(
       this.element.nativeElement,
       cssProps.currentValue

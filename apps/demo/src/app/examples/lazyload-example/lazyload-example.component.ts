@@ -11,7 +11,7 @@ export class LazyloadExampleComponent implements OnInit {
 
   public outputLog = [];
   public outputBinding = {
-    outputTest: (e) => this.addLogEntry(e)
+    outputTest: (e): void  => this.addLogEntry(e)
   };
 
   lazyLoadReadmeMD$ = this.http.get('./assets/readme/lazy/README.md', {
@@ -23,19 +23,19 @@ export class LazyloadExampleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setLazyComp (lazyComponent: LazyComponent) {
+  setLazyComp (lazyComponent: LazyComponent): void  {
     lazyComponent.component = 'test-comp';
     lazyComponent.setComponent();
     // this.cd.markForCheck();
   }
 
-  setLazyModuleComp (lazyModuleComponent: LazyModuleComponent) {
+  setLazyModuleComp (lazyModuleComponent: LazyModuleComponent): void  {
     lazyModuleComponent.moduleAlias = 'test-module';
     lazyModuleComponent.component = 'MyModuleComp';
     lazyModuleComponent.setComponent();
   }
 
-  addLogEntry (e) {
+  addLogEntry (e): void  {
     this.outputLog.push(e);
   }
 

@@ -8,7 +8,7 @@ export class ElementCssService {
     private elementRef: ElementRef<HTMLElement>
   ) { }
 
-  public updateElementVars(cssProps: any) {
+  public updateElementVars(cssProps: any): void  {
     this.cssPropsService.updateElementVars(this.elementRef.nativeElement, cssProps);
   }
 }

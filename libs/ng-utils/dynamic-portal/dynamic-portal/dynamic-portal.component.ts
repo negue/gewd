@@ -32,7 +32,7 @@ export class DynamicPortalComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
 
-  ngOnInit () {
+  ngOnInit (): void  {
     this.checkKeyAndPushTemplate();
   }
 

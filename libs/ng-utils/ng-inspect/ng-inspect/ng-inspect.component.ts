@@ -155,13 +155,13 @@ export class NgInspectComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  onChangeGeneric (value: any, context: ContextWithCd, key: string) {
+  onChangeGeneric (value: any, context: ContextWithCd, key: string): void  {
     context.instance[key] = value;
     context.cd.markForCheck();
     this.cd.markForCheck();
   }
 
-  onPinOp (context: ContextWithCd, prop: string, pin: boolean) {
+  onPinOp (context: ContextWithCd, prop: string, pin: boolean): void  {
     let pinnedEntry: PinnedPayload = null;
 
     if (this.pinnedMap.has(context)) {
@@ -191,7 +191,7 @@ export class NgInspectComponent implements OnInit, OnDestroy {
     this.fillPinnedArray();
   }
 
-  isPinned (context: ContextWithCd, prop: string) {
+  isPinned (context: ContextWithCd, prop: string): boolean  {
     if (this.pinnedMap.has(context)) {
       return this.pinnedMap.get(context).pinned.includes(prop);
     } else {
@@ -230,7 +230,7 @@ export class NgInspectComponent implements OnInit, OnDestroy {
     }
   }
 
-  toggleEdit (item: InstanceProp) {
+  toggleEdit (item: InstanceProp): void  {
     item.editMode = !item.editMode;
   }
 

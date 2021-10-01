@@ -39,7 +39,7 @@ export class PortalHubService {
     );
   }
 
-  public registerTemplate (key: string, templateRef: TemplateRef<any>) {
+  public registerTemplate (key: string, templateRef: TemplateRef<any>): void  {
     if (this.templateSourceHub[key]) {
       return;
     }
@@ -49,7 +49,7 @@ export class PortalHubService {
   }
 
 
-  public unregisterTemplate (key: string) {
+  public unregisterTemplate (key: string): void  {
     if (!this.templateSourceHub[key]) {
       return;
     }

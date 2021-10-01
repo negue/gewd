@@ -47,7 +47,7 @@ export class NgErrorComponent implements OnInit, OnDestroy {
     this._destroy$.complete();
   }
 
-  hide () {
+  hide (): void  {
     this.visible$.next(false);
   }
 }

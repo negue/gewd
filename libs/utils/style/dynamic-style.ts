@@ -2,7 +2,7 @@ export function updateDynamicStyle(
   document: Document,
   styleId: string,
   customCss: string
-) {
+): void  {
   const style = getStyleElement(document, styleId);
 
   replaceCss(document, style, customCss);
@@ -39,7 +39,7 @@ export function replaceCss(
   document: Document,
   styleTag: HTMLStyleElement,
   customCss: string
-) {
+): void  {
   if (styleTag.childNodes.length > 0) {
     styleTag.childNodes.forEach(child => {
       styleTag.removeChild(child);
