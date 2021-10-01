@@ -1102,7 +1102,7 @@
           }
         }
 
-        if (style == null) {
+        if (style === null) {
           style = document.createElement('style');
           style.id = styleId;
           style.type = 'text/css';
@@ -6613,7 +6613,7 @@
             var target = e.target;
             var aHref = null;
 
-            while (aHref == null && target != null) {
+            while (aHref === null && target !== null) {
               if (target.tagName === 'A') {
                 aHref = target;
               }

@@ -646,7 +646,7 @@ function getStyleElement(document, styleId) {
             break;
         }
     }
-    if (style == null) {
+    if (style === null) {
         style = document.createElement('style');
         style.id = styleId;
         style.type = 'text/css';
@@ -4018,7 +4018,7 @@ let RenderMarkdownComponent = class RenderMarkdownComponent {
     onClick(e) {
         let target = e.target;
         let aHref = null;
-        while (aHref == null && target != null) {
+        while (aHref === null && target !== null) {
             if (target.tagName === 'A') {
                 aHref = target;
             }
