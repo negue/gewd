@@ -26,7 +26,7 @@ export class MorphdomService {
 
   public morphElement(element: ElementRef<Element>,
                       newElementContent: string,
-                      options: MorphDomOptions) {
+                      options: MorphDomOptions): void  {
      this.ngZone.runOutsideAngular(() => {
         morphdom(element.nativeElement,
           newElementContent,

@@ -8,7 +8,7 @@ export class MarkdownCacheService {
     return Promise.resolve('');
   }
 
-  public saveCached(rawMarkdown: string, renderedMarkdown: string) {
+  public saveCached(rawMarkdown: string, renderedMarkdown: string): void  {
 
   }
 
@@ -16,7 +16,7 @@ export class MarkdownCacheService {
     return Promise.resolve('');
   }
 
-  public saveCachedPart(type: string, raw: string, rendered: string) {
+  public saveCachedPart(type: string, raw: string, rendered: string): void  {
 
   }
 }

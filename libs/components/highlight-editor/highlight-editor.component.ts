@@ -128,7 +128,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     this._destroyed$.complete();
   }
 
-  onChange(value: string) {
+  onChange(value: string): void  {
     this.value$.next(value);
 
     this.cd.markForCheck();
@@ -160,7 +160,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  onKeyDown (event: KeyboardEvent, textarea: HTMLTextAreaElement) {
+  onKeyDown (event: KeyboardEvent, textarea: HTMLTextAreaElement): void  {
     if (event.key.match(this.allCharsRegex) && !IGNORE_KEY_EVENTS.includes(event.key)) {
       this.showHighlighedCode$.next(false);
     }
@@ -187,7 +187,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   }
 
-  onKeyUp (event: KeyboardEvent, value: string) {
+  onKeyUp (event: KeyboardEvent, value: string): void  {
     this.value$.next(value);
     this.lastKeyTriggered$.next(event);
   }

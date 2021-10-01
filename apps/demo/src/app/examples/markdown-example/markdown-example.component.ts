@@ -43,11 +43,11 @@ export class MarkdownExampleComponent implements OnInit {
       })
   }
 
-  changeIt (newMarkdown: string, markdown: any) {
+  changeIt (newMarkdown: string, markdown: any): void  {
     this.markdown$.next(newMarkdown);
   }
 
-  handleLinkClick ($event: MarkdownLinkClicked) {
+  handleLinkClick ($event: MarkdownLinkClicked): void  {
     $event.event.preventDefault();
 
     alert('Link Click Handled by Markdown: ' + $event.link.href);

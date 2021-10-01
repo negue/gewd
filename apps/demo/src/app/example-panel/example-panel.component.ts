@@ -25,7 +25,7 @@ export class ExamplePanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  applyLazyModuleInputs(lazyModuleComponent: LazyModuleComponent) {
+  applyLazyModuleInputs(lazyModuleComponent: LazyModuleComponent): void  {
     lazyModuleComponent.moduleAlias = this.moduleName;
     lazyModuleComponent.component = this.componentName;
     lazyModuleComponent.setComponent();

@@ -48,12 +48,12 @@ export class CodemirrorExampleComponent implements OnInit {
   }
 
 
-  updateCodemirror (codemirror: CodemirrorComponent, textarea: HTMLTextAreaElement) {
+  updateCodemirror (codemirror: CodemirrorComponent, textarea: HTMLTextAreaElement): void  {
     codemirror.value = textarea.value;
     this.cd.detectChanges();
   }
 
-  insertText (codemirror: CodemirrorComponent) {
+  insertText (codemirror: CodemirrorComponent): void  {
     codemirror.insertText(
       codemirror.selectedRange.from,
       codemirror.selectedRange.to,

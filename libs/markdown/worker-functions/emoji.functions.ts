@@ -10,7 +10,7 @@ const emojiCache: EmojiMapType = {};
 export function checkAndReplaceToUnicodeChar(rawMarkdown: string,
                                              EMOJI_MAP: EmojiMapType,
                                              convertKeyToUnicode: (str: string) => string,
-                                             cache = false) {
+                                             cache = false): string  {
   return rawMarkdown.replace(emojiRegex, (source, colonValue) =>  {
     // not exists, just return it
     if (!EMOJI_MAP[colonValue]) {

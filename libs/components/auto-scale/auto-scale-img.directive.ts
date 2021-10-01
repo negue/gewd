@@ -7,7 +7,7 @@ import { AutoScaleComponent } from './auto-scale.component';
 export class AutoScaleImgDirective {
 
   @HostListener('load')
-  public onLoad() {
+  public onLoad(): void  {
     this._autoScale.forceUpdate();
   }
 

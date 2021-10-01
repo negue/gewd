@@ -16,7 +16,7 @@ export class ComponentsExampleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleImgSource() {
+  toggleImgSource(): void  {
     this.imgSource = this.imgSource === img1 ? img2 : img1;
   }
 }

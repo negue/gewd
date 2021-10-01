@@ -13,19 +13,19 @@ export class CssPropsService {
     private ngZone: NgZone
   ) { }
 
-  public updateCustomCss(styleId: string, customCss: string) {
+  public updateCustomCss(styleId: string, customCss: string): void  {
     this.ngZone.runOutsideAngular(() => {
       updateDynamicStyle(this.document, styleId, customCss);
     });
   }
 
-  public updateDocumentVars(cssProps: any) {
+  public updateDocumentVars(cssProps: any): void  {
     this.ngZone.runOutsideAngular(() => {
       updateCssProps(this.document.body, cssProps);
     });
   }
 
-  public updateElementVars(element: HTMLElement, cssProps: any) {
+  public updateElementVars(element: HTMLElement, cssProps: any): void  {
     this.ngZone.runOutsideAngular(() => {
       updateCssProps(element, cssProps);
     });

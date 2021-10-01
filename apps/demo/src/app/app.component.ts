@@ -38,19 +38,19 @@ export class AppComponent {
                private http: HttpClient) {
   }
 
-  setLazyPortalModuleComp (lazyModuleComponent: LazyModuleComponent) {
+  setLazyPortalModuleComp (lazyModuleComponent: LazyModuleComponent): void  {
     lazyModuleComponent.moduleAlias = 'portal-module';
     lazyModuleComponent.component = 'PortalModuleComp';
     lazyModuleComponent.setComponent();
   }
 
-  makeError () {
+  makeError (): void  {
     let errorSource: any;
 
     errorSource.subString();
   }
 
-  updateValueChanged ($event: string) {
+  updateValueChanged ($event: string): void  {
     this.currentPrismExample = $event;
     switch($event ) {
       case 'ts_example':
@@ -102,7 +102,7 @@ DynamicLoaderRegistry.LazyModuleComponents = {
     }
   }
 
-  openedEditorPanel () {
+  openedEditorPanel (): void  {
     if (!this.currentPrismExample) {
       this.updateValueChanged('empty');
     }

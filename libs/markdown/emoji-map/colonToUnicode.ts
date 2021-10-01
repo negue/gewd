@@ -11,7 +11,7 @@ function fixedFromCharCode (codeStr: string) {
   }
 }
 
-export function colonToUnicode(unicodeStringValue: string) {
+export function colonToUnicode(unicodeStringValue: string): string  {
   const colonLength = unicodeStringValue.length;
 
   switch(colonLength) {
