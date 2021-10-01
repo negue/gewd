@@ -66,7 +66,7 @@ export class RenderMarkdownComponent implements OnInit {
 
     let aHref: HTMLLinkElement = null;
 
-    while (aHref == null && target != null) {
+    while (aHref === null && target !== null) {
       if (target.tagName === 'A') {
         aHref = target as any;
       }
