@@ -9,6 +9,7 @@ A collection of useful npm packages
 | [`@gewd/markdown`][markdown-gh-url] | [![Markdown NPM Version][markdown-npm-img]][markdown-npm-url] |
 | [`@gewd/lazy`][lazy-gh-url] | [![Lazy NPM Version][lazy-npm-img]][lazy-npm-url] |
 | [`@gewd/ng-utils`][ng-utils-gh-url] | [![Ng Utils NPM Version][ng-utils-npm-img]][ng-utils-npm-url] |
+| [`@gewd/components`][components-gh-url] | [![Components NPM Version][components-npm-img]][components-npm-url] |
 | [`@gewd/mat-utils`][mat-utils-gh-url] | [![Mat Utils NPM Version][mat-utils-npm-img]][mat-utils-npm-url] |
 | [`@gewd/utils`][utils-gh-url] | [![Utils NPM Version][utils-npm-img]][utils-npm-url] |
 
@@ -24,6 +25,11 @@ A collection of useful npm packages
 [ng-utils-npm-img]: https://img.shields.io/npm/v/@gewd/ng-utils.svg?
 [ng-utils-npm-url]: https://www.npmjs.com/package/@gewd/ng-utils
 [ng-utils-gh-url]: ./libs/ng-utils/README.md
+
+[components-npm-img]: https://img.shields.io/npm/v/@gewd/components.svg?
+[components-npm-url]: https://www.npmjs.com/package/@gewd/components
+[components-gh-url]: ./libs/components
+
 
 [mat-utils-npm-img]: https://img.shields.io/npm/v/@gewd/mat-utils.svg?
 [mat-utils-npm-url]: https://www.npmjs.com/package/@gewd/mat-utils
