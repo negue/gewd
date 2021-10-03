@@ -34,7 +34,6 @@ export class CodemirrorComponent implements OnInit, OnChanges {
 
   @Input()
   set value (_val) {
-    this._value = _val;
     this._updateValue(_val);
   }
 
@@ -118,6 +117,8 @@ export class CodemirrorComponent implements OnInit, OnChanges {
         value
       );
     }
+
+    this._value = value;
 
     this._changedByValue = false;
   }

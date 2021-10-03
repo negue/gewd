@@ -35,6 +35,8 @@ export function test() {
 }
   `.trim();
 
+  visibleJsCode = this.exampleJsText;
+
   longExampleText =`
 // long code example
 export const some = 'string';
@@ -102,5 +104,13 @@ export function test() {
     );
 
     codemirror.codeMirrorView.focus();
+  }
+
+  replaceCode () {
+    this.visibleJsCode = `
+      function thisIs() {
+        areplacedText.shouldWork();
+      }
+    `;
   }
 }
