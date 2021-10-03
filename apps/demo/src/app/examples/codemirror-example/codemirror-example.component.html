@@ -3,11 +3,17 @@
     Codemirror:
     <gewd-codemirror [codemirrorExtensions]="normalExtensions"
                      (changed)="textarea.value = $event"
-
+                     [value]="visibleJsCode"
                      #codemirror></gewd-codemirror>
 
     Twoway Binding to normal Textarea <br/>
-    <textarea #textarea (keyup)="updateCodemirror(codemirror, textarea)"></textarea>
+    <textarea #textarea
+              (keyup)="updateCodemirror(codemirror, textarea)"
+              [value]="visibleJsCode"
+
+              [cols]="60"
+              [rows]="6"
+               ></textarea>
 
     <br/>
 
@@ -16,8 +22,14 @@
     <br>
 
     <button (click)="insertText(codemirror)">insert text at position</button>
+
+    <button (click)="replaceCode()">
+      replace completely
+    </button>
   </mat-tab>
   <mat-tab label="Enable CodeMirror Features">
-    <gewd-codemirror [codemirrorExtensions]="extensions"></gewd-codemirror>
+    <gewd-codemirror [codemirrorExtensions]="extensions"
+       [value]="longExampleText"
+></gewd-codemirror>
   </mat-tab>
 </mat-tab-group>

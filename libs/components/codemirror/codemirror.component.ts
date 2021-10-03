@@ -118,6 +118,8 @@ export class CodemirrorComponent implements OnInit, OnChanges {
       );
     }
 
+    this._value = value;
+
     this._changedByValue = false;
   }
 
