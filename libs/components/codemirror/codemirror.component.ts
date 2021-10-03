@@ -85,7 +85,7 @@ export class CodemirrorComponent implements OnInit, OnChanges {
     }
   }
 
-  public insertText(from: number, to: number, text: string) {
+  public insertText(from: number, to: number, text: string): void  {
     const transaction = this.codeMirrorView?.state.update({
       changes: {
         from,
@@ -101,7 +101,7 @@ export class CodemirrorComponent implements OnInit, OnChanges {
     }
   }
 
-  public replaceSelection(text: string) {
+  public replaceSelection(text: string): void  {
     const selectionTransaction = this.codeMirrorView.state.replaceSelection(text);
 
     this.codeMirrorView.dispatch(selectionTransaction);
