@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {LazyComponent, LazyModuleComponent} from "@gewd/lazy/loader";
 import {HttpClient} from "@angular/common/http";
 
@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './lazyload-example.component.html',
   styleUrls: ['./lazyload-example.component.css']
 })
-export class LazyloadExampleComponent implements OnInit {
+export class LazyloadExampleComponent {
 
   public outputLog = [];
   public outputBinding = {
@@ -19,9 +19,6 @@ export class LazyloadExampleComponent implements OnInit {
   });
 
   constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-  }
 
   setLazyComp (lazyComponent: LazyComponent): void  {
     lazyComponent.component = 'test-comp';

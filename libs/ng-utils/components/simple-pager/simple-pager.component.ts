@@ -1,11 +1,11 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'simple-pager',
   templateUrl: './simple-pager.component.html',
   styleUrls: ['./simple-pager.component.scss']
 })
-export class SimplePagerComponent implements OnInit {
+export class SimplePagerComponent {
 
   @ContentChild(TemplateRef)
   templateRef: TemplateRef<any>;
@@ -16,9 +16,6 @@ export class SimplePagerComponent implements OnInit {
   public position = 0;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   selectPrev (): void  {
     if (this.position === 0) {

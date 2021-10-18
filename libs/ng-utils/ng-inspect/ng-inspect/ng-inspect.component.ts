@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, TrackByFunction } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnDestroy, TrackByFunction } from '@angular/core';
 import { BehaviorSubject, fromEvent, isObservable, merge, NEVER, Subject } from 'rxjs';
 import {
   distinctUntilChanged,
@@ -24,7 +24,7 @@ const highlightClass = 'highlight-item';
   templateUrl: './ng-inspect.component.html',
   styleUrls: ['./ng-inspect.component.scss']
 })
-export class NgInspectComponent implements OnInit, OnDestroy {
+export class NgInspectComponent implements OnDestroy {
   private static _addedStyle = false;
 
   component$ = new BehaviorSubject<InstanceWithProps>(null);
@@ -145,9 +145,6 @@ export class NgInspectComponent implements OnInit, OnDestroy {
         this.component$.next(null);
       }
     });
-  }
-
-  ngOnInit (): void {
   }
 
   ngOnDestroy (): void {

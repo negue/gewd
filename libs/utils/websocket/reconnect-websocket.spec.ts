@@ -10,8 +10,8 @@ describe('reconnectWebsocket', () => {
       onClose: () => {}
     };
 
-    var onOpenSpy = spyOn(connections, 'onOpen');
-    var onCloseSpy = spyOn(connections, 'onClose');
+    const onOpenSpy = spyOn(connections, 'onOpen');
+    const onCloseSpy = spyOn(connections, 'onClose');
 
     const customWebSocket: Partial<WebSocket> = {
       close (code?: number, reason?: string) {
@@ -39,9 +39,9 @@ describe('reconnectWebsocket', () => {
       onError: () => {}
     };
 
-    var onOpenSpy = spyOn(connections, 'onOpen');
-    var onCloseSpy = spyOn(connections, 'onClose');
-    var onErrorSpy = spyOn(connections, 'onError');
+    const onOpenSpy = spyOn(connections, 'onOpen');
+    const onCloseSpy = spyOn(connections, 'onClose');
+    const onErrorSpy = spyOn(connections, 'onError');
 
     const customWebSocket: Partial<WebSocket> = {
       close (code?: number, reason?: string) {
@@ -83,7 +83,7 @@ describe('reconnectWebsocket', () => {
       onMessage: message => {},
     };
 
-    var onMessageSpy = spyOn(connections, 'onMessage');
+    const onMessageSpy = spyOn(connections, 'onMessage');
 
     const customWebSocket: Partial<WebSocket> = {
     };

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { emojiExampleList } from '../../example-emoji-list';
 import { oneDark } from '@codemirror/theme-one-dark';
@@ -22,7 +22,7 @@ const sharedExtensions: Extension[] = [
   templateUrl: './codemirror-example.component.html',
   styleUrls: ['./codemirror-example.component.css']
 })
-export class CodemirrorExampleComponent implements OnInit {
+export class CodemirrorExampleComponent {
   private subscription: Subscription;
 
   emojiList = emojiExampleList;
@@ -85,11 +85,6 @@ export function test() {
   ngOnDestroy (): void {
     this.subscription.unsubscribe();
   }
-
-  ngOnInit (): void {
-
-  }
-
 
   updateCodemirror (codemirror: CodemirrorComponent, textarea: HTMLTextAreaElement): void  {
     codemirror.value = textarea.value;

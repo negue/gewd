@@ -77,7 +77,7 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
     @Optional() public _formField: MatFormField,
     @Optional() @Self() public ngControl: NgControl) {
 
-    if (this.ngControl != null) {
+    if (this.ngControl !== null) {
       this.ngControl.valueAccessor = this;
     }
   }
