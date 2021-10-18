@@ -11,7 +11,7 @@ export function get_favicon (href: string, text: string): string  {
 }
 
 export function linkRendererWithFavIcon (href: string, title: string | null, text: string): string  {
-  let prot : string;
+  let prot : string = '';
   try {
     prot = decodeURIComponent(unescape(href))
       .replace(/[^\w:]/g, '')

@@ -32,9 +32,9 @@
     // '<': 0
   }
 
-	Prism.hooks.add('wrap', function (env) {
+	Prism.hooks.add('wrap', (env) => {
 		if (env.type === 'punctuation' && bracketsToWorkWith.includes(env.content)) {
-			let depthOfType, depthClass;
+			let depthOfType = 0, depthClass = '';
 			for (const p of PAIRS) {
 				const startTag = p[0];
 				const endTag = p[1];

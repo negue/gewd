@@ -83,7 +83,7 @@ describe('reconnectWebsocket', () => {
       onMessage: message => {},
     };
 
-    let onMessageSpy = spyOn(connections, 'onMessage');
+    const onMessageSpy = spyOn(connections, 'onMessage');
 
     const customWebSocket: Partial<WebSocket> = {
     };
