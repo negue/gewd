@@ -161,7 +161,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onKeyDown (event: KeyboardEvent, textarea: HTMLTextAreaElement): void  {
-    if (event.key.match(this.allCharsRegex) && !IGNORE_KEY_EVENTS.includes(event.key)) {
+    if(this.allCharsRegex.exec(event.key) && !IGNORE_KEY_EVENTS.includes(event.key)){
       this.showHighlighedCode$.next(false);
     }
 
