@@ -103,7 +103,7 @@
 				return;
 			}
 
-			env.attributes['style']= 'background-color:' + color;
+			env.attributes.style = 'background-color:' + color;
 		}
 	});
 
