@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {LazyComponent, LazyModuleComponent} from "@gewd/lazy/loader";
 import {HttpClient} from "@angular/common/http";
 

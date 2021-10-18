@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { emojiExampleList } from '../../example-emoji-list';
 import { oneDark } from '@codemirror/theme-one-dark';
