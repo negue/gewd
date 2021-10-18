@@ -18,7 +18,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./dynamic-portal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DynamicPortalComponent implements OnInit, OnChanges, OnDestroy {
+export class DynamicPortalComponent implements OnInit, OnChanges {
   @Input()
   key: string;
 
@@ -40,10 +40,6 @@ export class DynamicPortalComponent implements OnInit, OnChanges, OnDestroy {
     if (changes['key']) {
       this.checkKeyAndPushTemplate();
     }
-  }
-
-  ngOnDestroy (): void {
-
   }
 
   private checkKeyAndPushTemplate () {
