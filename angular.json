@@ -429,7 +429,6 @@
     }
   },
   "cli": {
-    "analytics": true,
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
