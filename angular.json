@@ -429,7 +429,7 @@
     }
   },
   "cli": {
-    "analytics": false,
+    "analytics": true,
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
