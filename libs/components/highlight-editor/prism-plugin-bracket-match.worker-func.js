@@ -4,7 +4,7 @@
 		return;
 	}
 
-	var PAIRS = [
+	const PAIRS = [
 	  [
 	    '[', ']'
     ],
@@ -19,13 +19,13 @@
     ]*/
   ]
 
-	var bracketsToWorkWith = [];
+	const bracketsToWorkWith = [];
 
-	for (var p of PAIRS) {
+	for (const p of PAIRS) {
 	  bracketsToWorkWith.push(...p);
-  }
+  	}
 
-  var currentDepth = {
+  const currentDepth = {
     '[': 0,
     '{': 0,
     '(': 0,
@@ -33,32 +33,31 @@
   }
 
 	Prism.hooks.add('wrap', function (env) {
-
 		if (env.type === 'punctuation' && bracketsToWorkWith.includes(env.content)) {
+			let depthOfType, depthClass;
+			for (const p of PAIRS) {
+				const startTag = p[0];
+				const endTag = p[1];
 
-		  for (var p of PAIRS) {
-		    var startTag = p[0];
-		    var endTag = p[1];
+				if (env.content === startTag) {
+					depthOfType = ++currentDepth[startTag];
 
-		    if (env.content === startTag) {
-		      var depthOfType = ++currentDepth[startTag];
+					depthClass = `depth-${depthOfType}`;
+					env.classes.push(depthClass);
+					break;
+				}
 
-		      var depthClass = `depth-${depthOfType}`;
-		      env.classes.push(depthClass);
-		      break;
-        }
+				if (env.content === endTag) {
+					depthOfType = currentDepth[startTag];
 
-		    if (env.content === endTag) {
-		      var depthOfType = currentDepth[startTag];
+					depthClass = `depth-${depthOfType}`;
 
-		      var depthClass = `depth-${depthOfType}`;
+					env.classes.push(depthClass);
 
-		      env.classes.push(depthClass);
-
-		      currentDepth[startTag]--;
-		      break;
-        }
-      }
+					currentDepth[startTag]--;
+					break;
+				}
+			}	
 		}
 	});
 }());
