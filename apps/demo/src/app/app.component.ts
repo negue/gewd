@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 // todo fix nx enforce module boundaries
-import { LazyComponent, LazyModuleComponent } from '@gewd/lazy/loader';
+import { LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 

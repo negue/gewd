@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   TemplateRef
 } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PortalHubService } from '../portal-hub.service';
 import { switchMap } from 'rxjs/operators';
 
