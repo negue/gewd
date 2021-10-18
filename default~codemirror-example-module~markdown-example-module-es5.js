@@ -1,7 +1,15 @@
 (function () {
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~codemirror-example-module~markdown-example-module"], {
     /***/
-    "AqwI": function AqwI(module, __webpack_exports__, __webpack_require__) {
+    "AqwI":
+    /*!*************************************************!*\
+      !*** ./apps/demo/src/app/example-emoji-list.ts ***!
+      \*************************************************/
+
+    /*! exports provided: emojiExampleList */
+
+    /***/
+    function AqwI(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

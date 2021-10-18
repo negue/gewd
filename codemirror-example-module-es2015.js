@@ -13781,8 +13781,6 @@ export function test() {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-    ngOnInit() {
-    }
     updateCodemirror(codemirror, textarea) {
         codemirror.value = textarea.value;
         this.cd.detectChanges();
@@ -15866,6 +15864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _a;
 const ios = typeof navigator != "undefined" &&
     !/*@__PURE__*//Edge\/(\d+)/.exec(navigator.userAgent) && /*@__PURE__*//Apple Computer/.test(navigator.vendor) &&
     (/*@__PURE__*//Mobile\/\w+/.test(navigator.userAgent) || navigator.maxTouchPoints > 2);
@@ -15919,27 +15918,61 @@ class TooltipViewManager {
 Return an extension that configures tooltip behavior.
 */
 function tooltips(config = {}) {
-    return config.position ? tooltipPositioning.of(config.position) : [];
+    return tooltipConfig.of(config);
 }
-const tooltipPositioning = /*@__PURE__*/_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["Facet"].define({
-    combine: values => ios ? "absolute" : values.length ? values[0] : "fixed"
+const tooltipConfig = /*@__PURE__*/_codemirror_state__WEBPACK_IMPORTED_MODULE_1__["Facet"].define({
+    combine: values => {
+        var _a, _b;
+        return ({
+            position: ios ? "absolute" : ((_a = values.find(conf => conf.position)) === null || _a === void 0 ? void 0 : _a.position) || "fixed",
+            parent: ((_b = values.find(conf => conf.parent)) === null || _b === void 0 ? void 0 : _b.parent) || null
+        });
+    }
 });
 const tooltipPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__["ViewPlugin"].fromClass(class {
     constructor(view) {
         this.view = view;
         this.inView = true;
-        this.position = view.state.facet(tooltipPositioning);
+        let config = view.state.facet(tooltipConfig);
+        this.position = config.position;
+        this.parent = config.parent;
+        this.classes = view.themeClasses;
+        this.createContainer();
         this.measureReq = { read: this.readMeasure.bind(this), write: this.writeMeasure.bind(this), key: this };
         this.manager = new TooltipViewManager(view, showTooltip, t => this.createTooltip(t));
+        this.maybeMeasure();
+    }
+    createContainer() {
+        if (this.parent) {
+            this.container = document.createElement("div");
+            this.container.style.position = "relative";
+            this.container.className = this.view.themeClasses;
+            this.parent.appendChild(this.container);
+        }
+        else {
+            this.container = this.view.dom;
+        }
     }
     update(update) {
         let { shouldMeasure } = this.manager.update(update);
-        let newPosition = update.state.facet(tooltipPositioning);
-        if (newPosition != this.position) {
-            this.position = newPosition;
+        let newConfig = update.state.facet(tooltipConfig);
+        if (newConfig.position != this.position) {
+            this.position = newConfig.position;
             for (let t of this.manager.tooltipViews)
-                t.dom.style.position = newPosition;
+                t.dom.style.position = this.position;
             shouldMeasure = true;
+        }
+        if (newConfig.parent != this.parent) {
+            if (this.parent)
+                this.container.remove();
+            this.parent = newConfig.parent;
+            this.createContainer();
+            for (let t of this.manager.tooltipViews)
+                this.container.appendChild(t.dom);
+            shouldMeasure = true;
+        }
+        else if (this.parent && this.view.themeClasses != this.classes) {
+            this.classes = this.container.className = this.view.themeClasses;
         }
         if (shouldMeasure)
             this.maybeMeasure();
@@ -15947,9 +15980,11 @@ const tooltipPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__
     createTooltip(tooltip) {
         let tooltipView = tooltip.create(this.view);
         tooltipView.dom.classList.add("cm-tooltip");
+        if (tooltip.arrow)
+            tooltipView.dom.classList.add("cm-tooltip-arrow");
         tooltipView.dom.style.position = this.position;
         tooltipView.dom.style.top = Outside;
-        this.view.dom.appendChild(tooltipView.dom);
+        this.container.appendChild(tooltipView.dom);
         if (tooltipView.mount)
             tooltipView.mount(this.view);
         return tooltipView;
@@ -15959,8 +15994,10 @@ const tooltipPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__
             dom.remove();
     }
     readMeasure() {
+        let editor = this.view.dom.getBoundingClientRect();
         return {
-            editor: this.view.dom.getBoundingClientRect(),
+            editor,
+            parent: this.parent ? this.container.getBoundingClientRect() : editor,
             pos: this.manager.tooltips.map(t => this.view.coordsAtPos(t.pos)),
             size: this.manager.tooltipViews.map(({ dom }) => dom.getBoundingClientRect()),
             innerWidth: window.innerWidth,
@@ -15978,20 +16015,21 @@ const tooltipPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__
                 dom.style.top = Outside;
                 continue;
             }
-            let width = size.right - size.left, height = size.bottom - size.top;
-            let left = this.view.textDirection == _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["Direction"].LTR ? Math.min(pos.left, measured.innerWidth - width)
-                : Math.max(0, pos.left - width);
-            let above = !!tooltip.above;
+            let arrow = !!tooltip.arrow, above = !!tooltip.above;
+            let width = size.right - size.left, height = size.bottom - size.top + (arrow ? 7 /* Size */ : 0);
+            let left = this.view.textDirection == _codemirror_view__WEBPACK_IMPORTED_MODULE_0__["Direction"].LTR
+                ? Math.min(pos.left - (arrow ? 14 /* Offset */ : 0), measured.innerWidth - width)
+                : Math.max(0, pos.left - width + (arrow ? 14 /* Offset */ : 0));
             if (!tooltip.strictSide &&
                 (above ? pos.top - (size.bottom - size.top) < 0 : pos.bottom + (size.bottom - size.top) > measured.innerHeight))
                 above = !above;
-            let top = above ? pos.top - height : pos.bottom, right = left + width;
+            let top = above ? pos.top - height : pos.bottom + (arrow ? 7 /* Size */ : 0), right = left + width;
             for (let r of others)
                 if (r.left < right && r.right > left && r.top < top + height && r.bottom > top)
                     top = above ? r.top - height : r.bottom;
             if (this.position == "absolute") {
-                dom.style.top = (top - editor.top) + "px";
-                dom.style.left = (left - editor.left) + "px";
+                dom.style.top = (top - measured.parent.top) + "px";
+                dom.style.left = (left - measured.parent.left) + "px";
             }
             else {
                 dom.style.top = top + "px";
@@ -16021,20 +16059,58 @@ const tooltipPlugin = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__
         scroll() { this.maybeMeasure(); }
     }
 });
+const insetInlineStart = typeof document == 'undefined' || ((_a = document.body) === null || _a === void 0 ? void 0 : _a.style.insetInlineStart) != null
+    ? 'insetInlineStart' : 'left';
 const baseTheme = /*@__PURE__*/_codemirror_view__WEBPACK_IMPORTED_MODULE_0__["EditorView"].baseTheme({
     ".cm-tooltip": {
         zIndex: 100
     },
     "&light .cm-tooltip": {
-        border: "1px solid #ddd",
+        border: "1px solid #bbb",
         backgroundColor: "#f5f5f5"
     },
     "&light .cm-tooltip-section:not(:first-child)": {
-        borderTop: "1px solid #ddd",
+        borderTop: "1px solid #bbb",
     },
     "&dark .cm-tooltip": {
         backgroundColor: "#333338",
         color: "white"
+    },
+    ".cm-tooltip.cm-tooltip-arrow:before, .cm-tooltip.cm-tooltip-arrow:after": {
+        position: "absolute",
+        content: "''",
+        [insetInlineStart]: `${14 /* Offset */ - 7 /* Size */}px`,
+        width: 0,
+        height: 0,
+        borderLeft: `${7 /* Size */}px solid transparent`,
+        borderRight: `${7 /* Size */}px solid transparent`,
+        zIndex: -1
+    },
+    ".cm-tooltip-above.cm-tooltip-arrow:before": {
+        borderTop: `${7 /* Size */}px solid #f5f5f5`,
+        bottom: `-${7 /* Size */ - 1}px`
+    },
+    ".cm-tooltip-below.cm-tooltip-arrow:before": {
+        borderBottom: `${7 /* Size */}px solid #f5f5f5`,
+        top: `-${7 /* Size */ - 1}px`
+    },
+    ".cm-tooltip-above.cm-tooltip-arrow:after": {
+        borderTop: `${7 /* Size */}px solid #bbb`,
+        bottom: `-${7 /* Size */}px`,
+        zIndex: -2
+    },
+    ".cm-tooltip-below.cm-tooltip-arrow:after": {
+        borderBottom: `${7 /* Size */}px solid #bbb`,
+        top: `-${7 /* Size */}px`,
+        zIndex: -2
+    },
+    "&dark .cm-tooltip.cm-tooltip-arrow:before": {
+        borderTopColor: "#333338",
+        borderBottomColor: "#333338"
+    },
+    "&dark .cm-tooltip.cm-tooltip-arrow:after": {
+        borderTopColor: "transparent",
+        borderBottomColor: "transparent"
     }
 });
 /**
@@ -16089,7 +16165,8 @@ const showHoverTooltipHost = /*@__PURE__*/showTooltip.compute([showHoverTooltip]
         pos: Math.min(...tooltips.map(t => t.pos)),
         end: Math.max(...tooltips.filter(t => t.end != null).map(t => t.end)),
         create: HoverTooltipHost.create,
-        above: tooltips[0].above
+        above: tooltips[0].above,
+        arrow: tooltips.some(t => t.arrow),
     };
 });
 class HoverPlugin {
@@ -18443,7 +18520,8 @@ class MixedParse {
         let fragmentCursor = new FragmentCursor(this.fragments);
         let overlay = null;
         let covered = null;
-        scan: for (let cursor = this.baseTree.fullCursor(), nest, isCovered;;) {
+        let cursor = new TreeCursor(new TreeNode(this.baseTree, this.ranges[0].from, 0, null), 1 /* Full */);
+        scan: for (let nest, isCovered;;) {
             let enter = true, range;
             if (fragmentCursor.hasNode(cursor)) {
                 if (overlay) {

@@ -1537,7 +1537,7 @@ let HighlightEditorComponent = class HighlightEditorComponent {
         }
     }
     onKeyDown(event, textarea) {
-        if (event.key.match(this.allCharsRegex) && !_editor_keys__WEBPACK_IMPORTED_MODULE_10__["IGNORE_KEY_EVENTS"].includes(event.key)) {
+        if (this.allCharsRegex.exec(event.key) && !_editor_keys__WEBPACK_IMPORTED_MODULE_10__["IGNORE_KEY_EVENTS"].includes(event.key)) {
             this.showHighlighedCode$.next(false);
         }
         this.value$.next(textarea.value);
@@ -2745,8 +2745,6 @@ let SimplePagerComponent = class SimplePagerComponent {
     constructor() {
         this.position = 0;
     }
-    ngOnInit() {
-    }
     selectPrev() {
         if (this.position === 0) {
             return;
@@ -3261,7 +3259,7 @@ let CustomFormControlComponent = CustomFormControlComponent_1 = class CustomForm
         };
         this.stateChangeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.stateChanges = this.stateChangeSubject;
-        if (this.ngControl != null) {
+        if (this.ngControl !== null) {
             this.ngControl.valueAccessor = this;
         }
     }
@@ -3677,8 +3675,6 @@ let DynamicPortalComponent = class DynamicPortalComponent {
         if (changes['key']) {
             this.checkKeyAndPushTemplate();
         }
-    }
-    ngOnDestroy() {
     }
     checkKeyAndPushTemplate() {
         this.key$.next(this.key);

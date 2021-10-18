@@ -127,8 +127,6 @@ let LazyloadExampleComponent = class LazyloadExampleComponent {
             responseType: 'text'
         });
     }
-    ngOnInit() {
-    }
     setLazyComp(lazyComponent) {
         lazyComponent.component = 'test-comp';
         lazyComponent.setComponent();

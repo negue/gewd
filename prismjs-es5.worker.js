@@ -1,7 +1,15 @@
 (function () {
   self["webpackChunk"](["prismjs"], {
     /***/
-    "wZee": function wZee(module, exports, __webpack_require__) {
+    "wZee":
+    /*!***************************************!*\
+      !*** ./node_modules/prismjs/prism.js ***!
+      \***************************************/
+
+    /*! no static exports found */
+
+    /***/
+    function wZee(module, exports, __webpack_require__) {
       /* **********************************************
            Begin prism-core.js
       ********************************************** */
@@ -127,7 +135,9 @@
                     return visited[id];
                   }
 
-                  clone = {};
+                  clone =
+                  /** @type {Record<string, any>} */
+                  {};
                   visited[id] = clone;
 
                   for (var key in o) {
@@ -136,7 +146,10 @@
                     }
                   }
 
-                  return clone;
+                  return (
+                    /** @type {any} */
+                    clone
+                  );
 
                 case 'Array':
                   id = _.util.objId(o);
@@ -147,10 +160,17 @@
 
                   clone = [];
                   visited[id] = clone;
+
+                  /** @type {Array} */
+
+                  /** @type {any} */
                   o.forEach(function (v, i) {
                     clone[i] = deepClone(v, visited);
                   });
-                  return clone;
+                  return (
+                    /** @type {any} */
+                    clone
+                  );
 
                 default:
                   return o;
@@ -192,7 +212,10 @@
               if ('currentScript' in document && 1 < 2
               /* hack to trip TS' flow analysis */
               ) {
-                return document.currentScript;
+                return (
+                  /** @type {any} */
+                  document.currentScript
+                );
               } // IE11 workaround
               // we'll get the src of the current script by parsing IE11's error stack trace
               // this will not work for inline scripts
@@ -385,7 +408,9 @@
              * @public
              */
             insertBefore: function insertBefore(inside, before, insert, root) {
-              root = root || _.languages;
+              root = root ||
+              /** @type {any} */
+              _.languages;
               var grammar = root[inside];
               /** @type {Grammar} */
 
@@ -1565,7 +1590,9 @@
           env.selector += ', ' + SELECTOR;
         });
         Prism.hooks.add('before-sanity-check', function (env) {
-          var pre = env.element;
+          var pre =
+          /** @type {HTMLPreElement} */
+          env.element;
 
           if (pre.matches(SELECTOR)) {
             env.code = ''; // fast-path the whole thing and go to complete

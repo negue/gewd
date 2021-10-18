@@ -7,7 +7,15 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["lazy-test-module"], {
     /***/
-    "URgt": function URgt(module, __webpack_exports__, __webpack_require__) {
+    "URgt":
+    /*!**************************************************************************************!*\
+      !*** ./apps/demo/src/app/examples/lazyload-example/lazy-wrapper/test-module-comp.ts ***!
+      \**************************************************************************************/
+
+    /*! exports provided: MyModuleComp, TestModule */
+
+    /***/
+    function URgt(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
