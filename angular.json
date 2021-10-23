@@ -121,10 +121,7 @@
               "apps/demo/tsconfig.spec.json",
               "apps/demo/tsconfig.worker.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demo/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/demo/**"]
           }
         },
         "test": {
@@ -176,9 +173,7 @@
           "options": {
             "browserTarget": "demo:build:production",
             "serverTarget": "demo:server:production",
-            "routes": [
-              ""
-            ]
+            "routes": [""]
           },
           "configurations": {
             "production": {}
@@ -193,7 +188,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/markdown/tsconfig.lib.json",
             "project": "libs/markdown/ng-package.json"
@@ -206,10 +201,7 @@
               "libs/markdown/tsconfig.lib.json",
               "libs/markdown/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/markdown/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/markdown/**"]
           }
         },
         "test": {
@@ -229,7 +221,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/lazy/tsconfig.lib.json",
             "project": "libs/lazy/ng-package.json"
@@ -242,10 +234,7 @@
               "libs/lazy/tsconfig.lib.json",
               "libs/lazy/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/lazy/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/lazy/**"]
           }
         },
         "test": {
@@ -270,7 +259,7 @@
       "prefix": "",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/ng-utils/tsconfig.lib.json",
             "project": "libs/ng-utils/ng-package.json"
@@ -283,10 +272,7 @@
               "libs/ng-utils/tsconfig.lib.json",
               "libs/ng-utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-utils/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ng-utils/**"]
           }
         },
         "test": {
@@ -311,7 +297,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/components/tsconfig.lib.json",
             "project": "libs/components/ng-package.json"
@@ -324,10 +310,7 @@
               "libs/components/tsconfig.lib.json",
               "libs/components/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/components/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/components/**"]
           }
         },
         "test": {
@@ -346,7 +329,6 @@
         }
       }
     },
-
     "mat-utils": {
       "projectType": "library",
       "root": "libs/mat-utils",
@@ -354,7 +336,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/mat-utils/tsconfig.lib.json",
             "project": "libs/mat-utils/ng-package.json"
@@ -367,10 +349,7 @@
               "libs/mat-utils/tsconfig.lib.json",
               "libs/mat-utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/mat-utils/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/mat-utils/**"]
           }
         },
         "test": {
@@ -396,7 +375,7 @@
       "prefix": "gewd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/utils/tsconfig.lib.json",
             "project": "libs/utils/ng-package.json"
@@ -409,10 +388,7 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/utils/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/utils/**"]
           }
         },
         "test": {
@@ -438,12 +414,6 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
-    },
-    "@schematics/angular:component": {
-      "style": "scss"
-    },
-    "@nrwl/angular:component": {
-      "styleext": "scss"
     }
   },
   "defaultProject": "demo"
