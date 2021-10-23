@@ -33,7 +33,7 @@ jobs:
             export NX_BASE=$(git rev-parse HEAD~1)
           fi
           echo "Base => $NX_BASE"
-          npm run affected:libs -- --base=$NX_BASE
+          npm run affected:build -- --base=$NX_BASE
 
       - name: Run Tests
         shell: bash
