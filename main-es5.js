@@ -1902,8 +1902,8 @@
         /* harmony import */
 
 
-        var _libs_mat_utils_material_icons__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
-        /*! ../../../../libs/mat-utils/material-icons */
+        var _gewd_mat_utils_material_icons__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+        /*! @gewd/mat-utils/material-icons */
         "mRMK");
         /* harmony import */
 
@@ -2020,7 +2020,7 @@
             moduleConfig: {
               load: componentsExampleLazy
             }
-          }]), _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"], _gewd_ng_utils_dynamic_portal__WEBPACK_IMPORTED_MODULE_12__["DynamicPortalModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_13__["MatProgressBarModule"], _gewd_ng_utils_ng_error_overlay__WEBPACK_IMPORTED_MODULE_19__["NgErrorOverlayModule"]].concat(_toConsumableArray(_environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].modules), [_gewd_components_highlight_editor__WEBPACK_IMPORTED_MODULE_21__["HighlightEditorModule"], _angular_material_select__WEBPACK_IMPORTED_MODULE_22__["MatSelectModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_23__["MatInputModule"], _gewd_mat_utils_custom_form_control__WEBPACK_IMPORTED_MODULE_27__["CustomFormControlModule"], _libs_mat_utils_material_icons__WEBPACK_IMPORTED_MODULE_24__["RegisterIconsModule"].register({
+          }]), _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"], _gewd_ng_utils_dynamic_portal__WEBPACK_IMPORTED_MODULE_12__["DynamicPortalModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_13__["MatProgressBarModule"], _gewd_ng_utils_ng_error_overlay__WEBPACK_IMPORTED_MODULE_19__["NgErrorOverlayModule"]].concat(_toConsumableArray(_environments_environment__WEBPACK_IMPORTED_MODULE_20__["environment"].modules), [_gewd_components_highlight_editor__WEBPACK_IMPORTED_MODULE_21__["HighlightEditorModule"], _angular_material_select__WEBPACK_IMPORTED_MODULE_22__["MatSelectModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_23__["MatInputModule"], _gewd_mat_utils_custom_form_control__WEBPACK_IMPORTED_MODULE_27__["CustomFormControlModule"], _gewd_mat_utils_material_icons__WEBPACK_IMPORTED_MODULE_24__["RegisterIconsModule"].register({
             pathToIcons: './assets/material_icons',
             iconArray: ['add', 'art_track']
           }), _angular_material_icon__WEBPACK_IMPORTED_MODULE_25__["MatIconModule"]]),

@@ -4368,7 +4368,7 @@
 
 
       function parseTag(html, onTag, escapeHtml) {
-        "use strict";
+        "user strict";
 
         var rethtml = "";
         var lastPos = 0;
@@ -4379,7 +4379,7 @@
         var currentTagName = "";
         var currentHtml = "";
 
-        chariterator: for (currentPos = 0; currentPos < len; currentPos++) {
+        for (currentPos = 0; currentPos < len; currentPos++) {
           var c = html.charAt(currentPos);
 
           if (tagStart === false) {
@@ -4406,18 +4406,9 @@
                 continue;
               }
 
-              if (c === '"' || c === "'") {
-                var i = 1;
-                var ic = html.charAt(currentPos - i);
-
-                while (ic.trim() === "" || ic === "=") {
-                  if (ic === "=") {
-                    quoteStart = c;
-                    continue chariterator;
-                  }
-
-                  ic = html.charAt(currentPos - ++i);
-                }
+              if ((c === '"' || c === "'") && html.charAt(currentPos - 1) === "=") {
+                quoteStart = c;
+                continue;
               }
             } else {
               if (c === quoteStart) {
@@ -4445,7 +4436,7 @@
        */
 
       function parseAttr(html, onAttr) {
-        "use strict";
+        "user strict";
 
         var lastPos = 0;
         var retAttrs = [];
@@ -4695,7 +4686,7 @@
 
 
       function isWorkerEnv() {
-        return typeof self !== "undefined" && typeof DedicatedWorkerGlobalScope !== "undefined" && self instanceof DedicatedWorkerGlobalScope;
+        return typeof self !== 'undefined' && typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
       }
 
       if (isWorkerEnv()) {
@@ -5613,7 +5604,7 @@
       !*** ./node_modules/tslib/tslib.es6.js ***!
       \*****************************************/
 
-    /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+    /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 
     /***/
     function mrSG(module, __webpack_exports__, __webpack_require__) {
@@ -5707,12 +5698,6 @@
       /* harmony export (binding) */
 
 
-      __webpack_require__.d(__webpack_exports__, "__spreadArray", function () {
-        return __spreadArray;
-      });
-      /* harmony export (binding) */
-
-
       __webpack_require__.d(__webpack_exports__, "__await", function () {
         return __await;
       });
@@ -5789,7 +5774,7 @@
           d.__proto__ = b;
         } || function (d, b) {
           for (var p in b) {
-            if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+            if (b.hasOwnProperty(p)) d[p] = b[p];
           }
         };
 
@@ -5797,8 +5782,6 @@
       };
 
       function __extends(d, b) {
-        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-
         _extendStatics(d, b);
 
         function __() {
@@ -6013,9 +5996,9 @@
         o[k2] = m[k];
       };
 
-      function __exportStar(m, o) {
+      function __exportStar(m, exports) {
         for (var p in m) {
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+          if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
         }
       }
 
@@ -6062,8 +6045,6 @@
 
         return ar;
       }
-      /** @deprecated */
-
 
       function __spread() {
         for (var ar = [], i = 0; i < arguments.length; i++) {
@@ -6072,8 +6053,6 @@
 
         return ar;
       }
-      /** @deprecated */
-
 
       function __spreadArrays() {
         for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
@@ -6089,15 +6068,7 @@
         return r;
       }
 
-      function __spreadArray(to, from, pack) {
-        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-          if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-          }
-        }
-        return to.concat(ar || Array.prototype.slice.call(from));
-      }
+      ;
 
       function __await(v) {
         return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -6216,7 +6187,7 @@
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) for (var k in mod) {
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+          if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
 
         __setModuleDefault(result, mod);
@@ -6230,17 +6201,21 @@
         };
       }
 
-      function __classPrivateFieldGet(receiver, state, kind, f) {
-        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+      function __classPrivateFieldGet(receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+          throw new TypeError("attempted to get private field on non-instance");
+        }
+
+        return privateMap.get(receiver);
       }
 
-      function __classPrivateFieldSet(receiver, state, value, kind, f) {
-        if (kind === "m") throw new TypeError("Private method is not writable");
-        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-        return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+      function __classPrivateFieldSet(receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+          throw new TypeError("attempted to set private field on non-instance");
+        }
+
+        privateMap.set(receiver, value);
+        return value;
       }
       /***/
 
@@ -6794,7 +6769,7 @@
           area: ["shape", "coords", "href", "alt"],
           article: [],
           aside: [],
-          audio: ["autoplay", "controls", "crossorigin", "loop", "muted", "preload", "src"],
+          audio: ["autoplay", "controls", "loop", "preload", "src"],
           b: [],
           bdi: ["dir"],
           bdo: ["dir"],
@@ -6814,8 +6789,6 @@
           dl: [],
           dt: [],
           em: [],
-          figcaption: [],
-          figure: [],
           font: ["color", "size", "face"],
           footer: [],
           h1: [],
@@ -6840,10 +6813,8 @@
           small: [],
           span: [],
           sub: [],
-          summary: [],
           sup: [],
           strong: [],
-          strike: [],
           table: ["width", "border", "align", "valign"],
           tbody: ["align", "valign"],
           td: ["width", "rowspan", "colspan", "align", "valign"],
@@ -6854,7 +6825,7 @@
           tt: [],
           u: [],
           ul: [],
-          video: ["autoplay", "controls", "crossorigin", "loop", "muted", "playsinline", "poster", "preload", "src", "height", "width"]
+          video: ["autoplay", "controls", "loop", "preload", "src", "height", "width"]
         };
       }
 
@@ -6937,7 +6908,7 @@
           value = _.trim(value);
           if (value === "#") return "#";
 
-          if (!(value.substr(0, 7) === "http://" || value.substr(0, 8) === "https://" || value.substr(0, 7) === "mailto:" || value.substr(0, 4) === "tel:" || value.substr(0, 11) === "data:image/" || value.substr(0, 6) === "ftp://" || value.substr(0, 2) === "./" || value.substr(0, 3) === "../" || value[0] === "#" || value[0] === "/")) {
+          if (!(value.substr(0, 7) === "http://" || value.substr(0, 8) === "https://" || value.substr(0, 7) === "mailto:" || value.substr(0, 4) === "tel:" || value[0] === "#" || value[0] === "/")) {
             return "";
           }
         } else if (name === "background") {
@@ -6993,7 +6964,7 @@
       var REGEXP_DEFAULT_ON_TAG_ATTR_7 = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi;
       var REGEXP_DEFAULT_ON_TAG_ATTR_8 = /u\s*r\s*l\s*\(.*/gi;
       /**
-       * escape double quote
+       * escape doube quote
        *
        * @param {String} str
        * @return {String} str
@@ -7156,36 +7127,16 @@
 
 
       function stripCommentTag(html) {
-        var retHtml = "";
-        var lastPos = 0;
-
-        while (lastPos < html.length) {
-          var i = html.indexOf("<!--", lastPos);
-
-          if (i === -1) {
-            retHtml += html.slice(lastPos);
-            break;
-          }
-
-          retHtml += html.slice(lastPos, i);
-          var j = html.indexOf("-->", i);
-
-          if (j === -1) {
-            break;
-          }
-
-          lastPos = j + 3;
-        }
-
-        return retHtml;
+        return html.replace(STRIP_COMMENT_TAG_REGEXP, "");
       }
+
+      var STRIP_COMMENT_TAG_REGEXP = /<!--[\s\S]*?-->/g;
       /**
        * remove invisible characters
        *
        * @param {String} html
        * @return {String}
        */
-
 
       function stripBlankChar(html) {
         var chars = html.split("");

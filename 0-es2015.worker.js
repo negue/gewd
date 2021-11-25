@@ -173,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = {
-  indexOf: function (arr, item) {
+  indexOf: function(arr, item) {
     var i, j;
     if (Array.prototype.indexOf) {
       return arr.indexOf(item);
@@ -185,7 +185,7 @@ module.exports = {
     }
     return -1;
   },
-  forEach: function (arr, fn, scope) {
+  forEach: function(arr, fn, scope) {
     var i, j;
     if (Array.prototype.forEach) {
       return arr.forEach(fn, scope);
@@ -194,17 +194,17 @@ module.exports = {
       fn.call(scope, arr[i], i, arr);
     }
   },
-  trim: function (str) {
+  trim: function(str) {
     if (String.prototype.trim) {
       return str.trim();
     }
     return str.replace(/(^\s*)|(\s*$)/g, "");
   },
-  spaceIndex: function (str) {
+  spaceIndex: function(str) {
     var reg = /\s|\n|\t/;
     var match = reg.exec(str);
     return match ? match.index : -1;
-  },
+  }
 };
 
 
@@ -3098,7 +3098,7 @@ function getAttrs(html) {
   if (i === -1) {
     return {
       html: "",
-      closing: html[html.length - 2] === "/",
+      closing: html[html.length - 2] === "/"
     };
   }
   html = _.trim(html.slice(i + 1, -1));
@@ -3106,7 +3106,7 @@ function getAttrs(html) {
   if (isClosing) html = _.trim(html.slice(0, -1));
   return {
     html: html,
-    closing: isClosing,
+    closing: isClosing
   };
 }
 
@@ -3168,7 +3168,7 @@ function FilterXSS(options) {
  * @param {String} html
  * @return {String}
  */
-FilterXSS.prototype.process = function (html) {
+FilterXSS.prototype.process = function(html) {
   // compatible with the input
   html = html || "";
   html = html.toString();
@@ -3207,12 +3207,12 @@ FilterXSS.prototype.process = function (html) {
 
   var retHtml = parseTag(
     html,
-    function (sourcePosition, position, tag, html, isClosing) {
+    function(sourcePosition, position, tag, html, isClosing) {
       var info = {
         sourcePosition: sourcePosition,
         position: position,
         isClosing: isClosing,
-        isWhite: whiteList.hasOwnProperty(tag),
+        isWhite: whiteList.hasOwnProperty(tag)
       };
 
       // call `onTag()`
@@ -3226,7 +3226,7 @@ FilterXSS.prototype.process = function (html) {
 
         var attrs = getAttrs(html);
         var whiteAttrList = whiteList[tag];
-        var attrsHtml = parseAttr(attrs.html, function (name, value) {
+        var attrsHtml = parseAttr(attrs.html, function(name, value) {
           // call `onTagAttr()`
           var isWhiteAttr = _.indexOf(whiteAttrList, name) !== -1;
           var ret = onTagAttr(tag, name, value, isWhiteAttr);
@@ -3678,7 +3678,7 @@ function isClosing(html) {
  * @return {String}
  */
 function parseTag(html, onTag, escapeHtml) {
-  "use strict";
+  "user strict";
 
   var rethtml = "";
   var lastPos = 0;
@@ -3689,7 +3689,7 @@ function parseTag(html, onTag, escapeHtml) {
   var currentTagName = "";
   var currentHtml = "";
 
-  chariterator: for (currentPos = 0; currentPos < len; currentPos++) {
+  for (currentPos = 0; currentPos < len; currentPos++) {
     var c = html.charAt(currentPos);
     if (tagStart === false) {
       if (c === "<") {
@@ -3719,17 +3719,9 @@ function parseTag(html, onTag, escapeHtml) {
           tagStart = false;
           continue;
         }
-        if (c === '"' || c === "'") {
-          var i = 1;
-          var ic = html.charAt(currentPos - i);
-
-          while (ic.trim() === "" || ic === "=") {
-            if (ic === "=") {
-              quoteStart = c;
-              continue chariterator;
-            }
-            ic = html.charAt(currentPos - ++i);
-          }
+        if ((c === '"' || c === "'") && html.charAt(currentPos - 1) === "=") {
+          quoteStart = c;
+          continue;
         }
       } else {
         if (c === quoteStart) {
@@ -3756,7 +3748,7 @@ var REGEXP_ILLEGAL_ATTR_NAME = /[^a-zA-Z0-9_:\.\-]/gim;
  * @return {String}
  */
 function parseAttr(html, onAttr) {
-  "use strict";
+  "user strict";
 
   var lastPos = 0;
   var retAttrs = [];
@@ -3954,11 +3946,7 @@ if (typeof window !== "undefined") {
 
 // using `xss` on the WebWorker, output `filterXSS` to the globals
 function isWorkerEnv() {
-  return (
-    typeof self !== "undefined" &&
-    typeof DedicatedWorkerGlobalScope !== "undefined" &&
-    self instanceof DedicatedWorkerGlobalScope
-  );
+  return typeof self !== 'undefined' && typeof DedicatedWorkerGlobalScope !== 'undefined' && self instanceof DedicatedWorkerGlobalScope;
 }
 if (isWorkerEnv()) {
   self.filterXSS = module.exports;
@@ -4502,7 +4490,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
   \*****************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4521,7 +4509,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArray", function() { return __spreadArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -4550,13 +4537,11 @@ PERFORMANCE OF THIS SOFTWARE.
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return extendStatics(d, b);
 };
 
 function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -4646,8 +4631,8 @@ var __createBinding = Object.create ? (function(o, m, k, k2) {
     o[k2] = m[k];
 });
 
-function __exportStar(m, o) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+function __exportStar(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 }
 
 function __values(o) {
@@ -4679,31 +4664,19 @@ function __read(o, n) {
     return ar;
 }
 
-/** @deprecated */
 function __spread() {
     for (var ar = [], i = 0; i < arguments.length; i++)
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
 
-/** @deprecated */
 function __spreadArrays() {
     for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
     for (var r = Array(s), k = 0, i = 0; i < il; i++)
         for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
             r[k] = a[j];
     return r;
-}
-
-function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-}
+};
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -4749,7 +4722,7 @@ var __setModuleDefault = Object.create ? (function(o, v) {
 function __importStar(mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 }
@@ -4758,17 +4731,19 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
-function __classPrivateFieldGet(receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
 }
 
-function __classPrivateFieldSet(receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
 }
 
 
@@ -5158,15 +5133,7 @@ function getDefaultWhiteList() {
     area: ["shape", "coords", "href", "alt"],
     article: [],
     aside: [],
-    audio: [
-      "autoplay",
-      "controls",
-      "crossorigin",
-      "loop",
-      "muted",
-      "preload",
-      "src",
-    ],
+    audio: ["autoplay", "controls", "loop", "preload", "src"],
     b: [],
     bdi: ["dir"],
     bdo: ["dir"],
@@ -5186,8 +5153,6 @@ function getDefaultWhiteList() {
     dl: [],
     dt: [],
     em: [],
-    figcaption: [],
-    figure: [],
     font: ["color", "size", "face"],
     footer: [],
     h1: [],
@@ -5212,10 +5177,8 @@ function getDefaultWhiteList() {
     small: [],
     span: [],
     sub: [],
-    summary: [],
     sup: [],
     strong: [],
-    strike: [],
     table: ["width", "border", "align", "valign"],
     tbody: ["align", "valign"],
     td: ["width", "rowspan", "colspan", "align", "valign"],
@@ -5226,19 +5189,7 @@ function getDefaultWhiteList() {
     tt: [],
     u: [],
     ul: [],
-    video: [
-      "autoplay",
-      "controls",
-      "crossorigin",
-      "loop",
-      "muted",
-      "playsinline",
-      "poster",
-      "preload",
-      "src",
-      "height",
-      "width",
-    ],
+    video: ["autoplay", "controls", "loop", "preload", "src", "height", "width"]
   };
 }
 
@@ -5325,10 +5276,6 @@ function safeAttrValue(tag, name, value, cssFilter) {
         value.substr(0, 8) === "https://" ||
         value.substr(0, 7) === "mailto:" ||
         value.substr(0, 4) === "tel:" ||
-        value.substr(0, 11) === "data:image/" ||
-        value.substr(0, 6) === "ftp://" ||
-        value.substr(0, 2) === "./" ||
-        value.substr(0, 3) === "../" ||
         value[0] === "#" ||
         value[0] === "/"
       )
@@ -5376,16 +5323,14 @@ var REGEXP_ATTR_VALUE_1 = /&#([a-zA-Z0-9]*);?/gim;
 var REGEXP_ATTR_VALUE_COLON = /&colon;?/gim;
 var REGEXP_ATTR_VALUE_NEWLINE = /&newline;?/gim;
 var REGEXP_DEFAULT_ON_TAG_ATTR_3 = /\/\*|\*\//gm;
-var REGEXP_DEFAULT_ON_TAG_ATTR_4 =
-  /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi;
+var REGEXP_DEFAULT_ON_TAG_ATTR_4 = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi;
 var REGEXP_DEFAULT_ON_TAG_ATTR_5 = /^[\s"'`]*(d\s*a\s*t\s*a\s*)\:/gi;
 var REGEXP_DEFAULT_ON_TAG_ATTR_6 = /^[\s"'`]*(d\s*a\s*t\s*a\s*)\:\s*image\//gi;
-var REGEXP_DEFAULT_ON_TAG_ATTR_7 =
-  /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi;
+var REGEXP_DEFAULT_ON_TAG_ATTR_7 = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi;
 var REGEXP_DEFAULT_ON_TAG_ATTR_8 = /u\s*r\s*l\s*\(.*/gi;
 
 /**
- * escape double quote
+ * escape doube quote
  *
  * @param {String} str
  * @return {String} str
@@ -5486,7 +5431,7 @@ function onIgnoreTagStripAll() {
  */
 function StripTagBody(tags, next) {
   if (typeof next !== "function") {
-    next = function () {};
+    next = function() {};
   }
 
   var isRemoveAllTag = !Array.isArray(tags);
@@ -5499,14 +5444,14 @@ function StripTagBody(tags, next) {
   var posStart = false;
 
   return {
-    onIgnoreTag: function (tag, html, options) {
+    onIgnoreTag: function(tag, html, options) {
       if (isRemoveTag(tag)) {
         if (options.isClosing) {
           var ret = "[/removed]";
           var end = options.position + ret.length;
           removeList.push([
             posStart !== false ? posStart : options.position,
-            end,
+            end
           ]);
           posStart = false;
           return ret;
@@ -5520,16 +5465,16 @@ function StripTagBody(tags, next) {
         return next(tag, html, options);
       }
     },
-    remove: function (html) {
+    remove: function(html) {
       var rethtml = "";
       var lastPos = 0;
-      _.forEach(removeList, function (pos) {
+      _.forEach(removeList, function(pos) {
         rethtml += html.slice(lastPos, pos[0]);
         lastPos = pos[1];
       });
       rethtml += html.slice(lastPos);
       return rethtml;
-    },
+    }
   };
 }
 
@@ -5540,23 +5485,9 @@ function StripTagBody(tags, next) {
  * @return {String}
  */
 function stripCommentTag(html) {
-  var retHtml = "";
-  var lastPos = 0;
-  while (lastPos < html.length) {
-    var i = html.indexOf("<!--", lastPos);
-    if (i === -1) {
-      retHtml += html.slice(lastPos);
-      break;
-    }
-    retHtml += html.slice(lastPos, i);
-    var j = html.indexOf("-->", i);
-    if (j === -1) {
-      break;
-    }
-    lastPos = j + 3;
-  }
-  return retHtml;
+  return html.replace(STRIP_COMMENT_TAG_REGEXP, "");
 }
+var STRIP_COMMENT_TAG_REGEXP = /<!--[\s\S]*?-->/g;
 
 /**
  * remove invisible characters
@@ -5566,7 +5497,7 @@ function stripCommentTag(html) {
  */
 function stripBlankChar(html) {
   var chars = html.split("");
-  chars = chars.filter(function (char) {
+  chars = chars.filter(function(char) {
     var c = char.charCodeAt(0);
     if (c === 127) return false;
     if (c <= 31) {
