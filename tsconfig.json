@@ -42,6 +42,8 @@
       "@gewd/ng-utils/ng-inspect": ["libs/ng-utils/ng-inspect"],
       "@gewd/ng-utils/pipes": ["libs/ng-utils/pipes"],
       "@gewd/mat-utils": [ "libs/mat-utils/src"],
+      "@gewd/mat-utils/material-icons": [ "libs/mat-utils/material-icons"],
+      "@gewd/mat-utils/custom-form-control": [ "libs/mat-utils/custom-form-control"],
       "@gewd/components": ["libs/components/src"],
       "@gewd/components/auto-scale": ["libs/components/auto-scale"],
       "@gewd/components/codemirror": ["libs/components/codemirror"],

@@ -23,7 +23,7 @@ import { environment } from '../environments/environment';
 import { HighlightEditorModule } from '@gewd/components/highlight-editor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { RegisterIconsModule } from '../../../../libs/mat-utils/material-icons';
+import { RegisterIconsModule } from '@gewd/mat-utils/material-icons';
 import { MatIconModule } from '@angular/material/icon';
 import { ExamplePanelComponent } from './example-panel/example-panel.component';
 import { CustomFormControlModule } from '@gewd/mat-utils/custom-form-control';
