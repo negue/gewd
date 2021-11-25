@@ -53,9 +53,7 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "allow": [
-          "@gewd/markdown/*.worker"
-        ],
+        "allow": ["@gewd/markdown/*.worker"],
         "depConstraints": [
           {
             "sourceTag": "*",

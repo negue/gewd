@@ -25,10 +25,7 @@
     },
     "components": {
       "tags": [],
-      "implicitDependencies": [
-        "ng-utils",
-        "mat-utils"
-      ]
+      "implicitDependencies": ["ng-utils", "mat-utils"]
     },
     "utils": {
       "tags": []
