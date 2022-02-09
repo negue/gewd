@@ -86,7 +86,7 @@
     "@angular/language-service": "11.2.11",
     "@nguniversal/builders": "11.2.1",
     "@nrwl/jest": "9.2.0",
-    "@nrwl/workspace": "9.7.0",
+    "@nrwl/workspace": "10.4.8",
     "@types/express": "^4.17.0",
     "@types/jest": "24.0.9",
     "@types/marked": "0.7.3",
