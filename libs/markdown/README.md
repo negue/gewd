@@ -54,7 +54,7 @@ Angular Markdown render component, which uses a worker-process.
                }
              }
            }
-         } as GetWorkerPayload
+         } as MarkdownServiceOptions
        },
      ]
    })
