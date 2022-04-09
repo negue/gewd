@@ -41,7 +41,7 @@ Angular Markdown render component, which uses a worker-process.
        {
          provide: MarkdownOptionsInjectorToken,
          useValue: {
-           getWorker: marked,
+           getWorker: markdownWorker,
            options: {
              prism: {
                ...DEFAULT_PRISM_OPTIONS,
