@@ -25,10 +25,15 @@ Angular Markdown render component, which uses a worker-process.
 3. add `MarkdownModule` to your AppModule (or the one where you want to use it) 
 4. In your app folder `ng g webWorker markdown`
 5. ```ts
-   const markdownWorker = () => new Worker('./markdown.worker.ts', {
-     name: 'markdown',
-     type: "module"
-   });
+
+   const markdownWorker = () => new Worker(
+     new URL('./markdown.worker.ts', import.meta.url),
+     {
+       name: 'markdown',
+       type: "module"
+     }
+   );
+
 
    /* in your app module */
    @NgModule({
