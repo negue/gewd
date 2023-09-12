@@ -114,7 +114,7 @@ export class MarkdownService {
 
       this.document.body.appendChild(_mermaidNode);
 
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
 
         const scriptTag = this.document.createElement('script');
         scriptTag.src = this.markdownOptions.mermaidPath;
