@@ -3,19 +3,10 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": [
-      "jest",
-      "node",
-      "jest"
-    ],
+    "types": ["jest", "node", "jest"],
     "emitDecoratorMetadata": true,
     "allowJs": true
   },
-  "files": [
-    "test-setup.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+  "files": ["test-setup.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

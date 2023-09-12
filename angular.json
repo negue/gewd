@@ -127,9 +127,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/demo/jest.config.js",
-            "tsConfig": "apps/demo/tsconfig.spec.json",
-            "setupFile": "apps/demo/src/test-setup.ts"
+            "jestConfig": "apps/demo/jest.config.js"
           }
         },
         "server": {
@@ -395,9 +393,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
-            "tsConfig": "libs/utils/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/utils/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },

@@ -17,5 +17,6 @@
     "enableResourceInlining": true,
     "enableIvy": false
   },
-  "exclude": ["test-setup.ts", "**/*.spec.ts"]
+  "exclude": ["test-setup.ts", "**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }

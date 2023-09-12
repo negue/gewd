@@ -3,9 +3,9 @@
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "projects": {
     "demo": {
@@ -30,5 +30,8 @@
     "utils": {
       "tags": []
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }
