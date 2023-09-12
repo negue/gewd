@@ -31,10 +31,7 @@
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "ng-utils",
-        "mat-utils"
-      ]
+      "implicitDependencies": ["ng-utils", "mat-utils"]
     },
     "demo": {
       "projectType": "application",
@@ -134,9 +131,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "defaultConfiguration": ""
         },
         "serve": {
@@ -159,11 +154,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/demo/jest.config.js"
+            "jestConfig": "apps/demo/jest.config.ts"
           },
-          "outputs": [
-            "coverage/apps/demo"
-          ]
+          "outputs": ["{workspaceRoot}/coverage/apps/demo"]
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -209,9 +202,7 @@
           "options": {
             "browserTarget": "demo:build:production",
             "serverTarget": "demo:server:production",
-            "routes": [
-              ""
-            ]
+            "routes": [""]
           },
           "configurations": {
             "production": {}
@@ -353,12 +344,10 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/utils/jest.config.js",
+            "jestConfig": "libs/utils/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/utils"
-          ]
+          "outputs": ["{workspaceRoot}/coverage/libs/utils"]
         }
       },
       "schematics": {},

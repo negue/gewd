@@ -9,7 +9,7 @@ import {
   Self,
   SimpleChanges
 } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, UntypedFormBuilder } from '@angular/forms';
 import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 import { Observable, Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -71,7 +71,7 @@ export class CustomFormControlComponent implements OnInit, ControlValueAccessor,
 
 
   constructor(
-    formBuilder: FormBuilder,
+    formBuilder: UntypedFormBuilder,
     private _focusMonitor: FocusMonitor,
     private _elementRef: ElementRef<HTMLElement>,
     @Optional() public _formField: MatFormField,

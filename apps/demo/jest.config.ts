@@ -1,10 +1,11 @@
+/* eslint-disable */
 const baseConfig = require('../../jest.config');
 
-module.exports = {
+export default {
   ...baseConfig,
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/libs/utils/tsconfig.spec.json',
+      tsConfig: '<rootDir>/apps/demo/tsconfig.spec.json',
     },
   },
 };
