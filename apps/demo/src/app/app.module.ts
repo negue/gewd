@@ -29,7 +29,7 @@ import { ExamplePanelComponent } from './example-panel/example-panel.component';
 import { CustomFormControlModule } from '@gewd/mat-utils/custom-form-control';
 import { Lazy } from '@gewd/lazy/utils';
 
-const marked = () => new Worker('./markdown.worker.ts', { type: 'module' });
+const marked = () => new Worker(new URL('./markdown.worker.ts', import.meta.url), { type: 'module' });
 
 const markdownExampleLazy =new Lazy(() => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
   .then(({MarkdownExampleModule}) => MarkdownExampleModule));

@@ -7,31 +7,28 @@
     "nx.json": "*",
     "tsconfig.base.json": "*"
   },
-  "projects": {
-    "demo": {
-      "tags": []
-    },
-    "markdown": {
-      "tags": []
-    },
-    "lazy": {
-      "tags": []
-    },
-    "ng-utils": {
-      "tags": []
-    },
-    "mat-utils": {
-      "tags": []
-    },
-    "components": {
-      "tags": [],
-      "implicitDependencies": ["ng-utils", "mat-utils"]
-    },
-    "utils": {
-      "tags": []
-    }
-  },
   "affected": {
     "defaultBase": "master"
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "demo",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }
