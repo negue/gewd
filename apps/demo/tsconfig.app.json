@@ -10,5 +10,10 @@
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["**/*.ts"],
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "src/**/*.worker.ts"]
+  "exclude": [
+    "src/test-setup.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "src/**/*.worker.ts"
+  ]
 }

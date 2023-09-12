@@ -15,19 +15,6 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/components/tsconfig.lib.json",
-              "libs/components/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/components/**"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
@@ -169,20 +156,6 @@
             "browserTarget": "demo:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/demo/tsconfig.app.json",
-              "apps/demo/tsconfig.spec.json",
-              "apps/demo/tsconfig.worker.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/demo/**"
-            ]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -261,19 +234,6 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/lazy/tsconfig.lib.json",
-              "libs/lazy/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/lazy/**"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
@@ -304,19 +264,6 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/markdown/tsconfig.lib.json",
-              "libs/markdown/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/markdown/**"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
@@ -340,19 +287,6 @@
             "tsConfig": "libs/mat-utils/tsconfig.lib.json",
             "project": "libs/mat-utils/ng-package.json",
             "buildableProjectDepsInPackageJsonType": "dependencies"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/mat-utils/tsconfig.lib.json",
-              "libs/mat-utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/mat-utils/**"
-            ]
           }
         },
         "test": {
@@ -386,19 +320,6 @@
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-utils/tsconfig.lib.json",
-              "libs/ng-utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-utils/**"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
@@ -427,19 +348,6 @@
             "tsConfig": "libs/utils/tsconfig.lib.json",
             "project": "libs/utils/ng-package.json",
             "buildableProjectDepsInPackageJsonType": "dependencies"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/utils/tsconfig.lib.json",
-              "libs/utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/utils/**"
-            ]
           }
         },
         "test": {

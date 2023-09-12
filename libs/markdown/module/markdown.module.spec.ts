@@ -4,8 +4,9 @@ import { MarkdownModule } from './markdown.module';
 describe('MarkdownWorkerModule', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MarkdownModule]
-    }).compileComponents();
+    imports: [MarkdownModule],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   }));
 
   it('should create', () => {

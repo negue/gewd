@@ -4,7 +4,7 @@
   "lib": {
     "entryFile": "src/index.ts"
   },
-   "assets": [
+  "assets": [
     "./highlight-editor/prism-plugin-inline-color.worker-func.js",
     "./highlight-editor/prism-plugin-bracket-match.worker-func.js",
     "./highlight-editor/bracket-match.css",

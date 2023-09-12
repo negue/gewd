@@ -7,19 +7,18 @@ import { BootstrapComponentModule } from '@gewd/ng-utils/bootstrap-component';
 
 
 @NgModule({
-  declarations: [NgInspectComponent],
-  entryComponents: [NgInspectComponent],
-  imports: [
-    CommonModule,
-    MatCheckboxModule,
-    MatInputModule,
-     BootstrapComponentModule.component({
-      elementName: 'ng-inspect',
-      component: NgInspectComponent
-    })
-  ],
-  exports: [
-    NgInspectComponent
-  ]
+    declarations: [NgInspectComponent],
+    imports: [
+        CommonModule,
+        MatCheckboxModule,
+        MatInputModule,
+        BootstrapComponentModule.component({
+            elementName: 'ng-inspect',
+            component: NgInspectComponent
+        })
+    ],
+    exports: [
+        NgInspectComponent
+    ]
 })
 export class NgInspectModule { }

@@ -59,17 +59,14 @@ export class PortalModuleComp implements OnInit, OnChanges, OnDestroy {
 }
 
 @NgModule({
-  declarations: [
-    PortalModuleComp
-  ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    DynamicPortalModule
-  ],
-  entryComponents: [
-    PortalModuleComp
-  ]
+    declarations: [
+        PortalModuleComp
+    ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        DynamicPortalModule
+    ]
 })
 export class PortalModule implements LazyModule {
   getComponents (): LazyModuleComponentInfo[] {
