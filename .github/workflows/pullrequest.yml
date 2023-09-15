@@ -17,10 +17,11 @@ jobs:
           path: |
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('package.json') }}
-      - name: Use Node.js 12.16.2
+      - name: Use Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 12.16.2
+          node-version: 16.X
+
       - run: npm install
 
       - name: Build Libs
