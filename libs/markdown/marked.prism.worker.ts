@@ -1,7 +1,8 @@
 import { expose } from 'comlink';
-import * as marked from 'marked';
+import { marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
 import * as xss from 'xss';
-import { Lazy } from '@gewd/markdown/utils';
+import { Lazy } from '@gewd/lazy/utils';
 import {
   checkAndReplaceToUnicodeChar,
   emojiRegex,
@@ -36,22 +37,22 @@ const lazyEmoji = Lazy.create(() => import('@gewd/markdown/emoji-map'));
 // apply changes to marked
 marked.setOptions({
   // needed for mermaid
-  renderer,
-  // highlight override for prismjs
-  highlight: function(code, lang, callback): any {
+  renderer
+}).use(markedHighlight({
+  async: true,
+
+  async highlight (code, lang) {
     // if it is a mermaid tag, don't need to go through prism it
     // also for code blocks without a language
-    if (!lang ||  mermaidRegex.test(lang)) {
-      callback(undefined, code);
-      return;
+    if (!lang || mermaidRegex.test(lang)) {
+      return code;
     }
 
-    highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts)
-      .then(highlightedCode => {
-        callback(undefined, highlightedCode);
-      });
+    const highlightedCode = await highlightCode(lazyPrism, lang, code, currentConfigObject.prism, importScripts);
+
+    return highlightedCode;
   }
-});
+}));
 
 const workerMethods: MarkdownWorker = {
   name: 'marked',
@@ -73,32 +74,25 @@ const workerMethods: MarkdownWorker = {
       input = checkAndReplaceToUnicodeChar(input, EMOJI_MAP, colonToUnicode);
     }
 
-    marked(input, {
+    const result = await marked(input, {
       // aditional marked config, also enables highlight callback
-    }, (err, result) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      // extract?^^
-      function resolveCleanMarkup (generatedHTML) {
-        const sanatizedHTML = xss.filterXSS(generatedHTML, {
-          whiteList: {
-            ...xss.whiteList,
-            a: ['class', 'title', 'href'], // link with custom styles like fav-icon
-            div: ['class'],  // mermaid class
-            span: ['class', 'style']  // prism colors
-          }
-        });
-
-        resolve(sanatizedHTML);
-      }
-
-      resolveCleanMarkup(result);
     });
 
-    return;
+    // extract?^^
+    function resolveCleanMarkup (generatedHTML) {
+      const sanatizedHTML = xss.filterXSS(generatedHTML, {
+        whiteList: {
+          ...xss.whiteList,
+          a: ['class', 'title', 'href'], // link with custom styles like fav-icon
+          div: ['class'],  // mermaid class
+          span: ['class', 'style']  // prism colors
+        }
+      });
+
+      resolve(sanatizedHTML);
+    }
+
+    resolveCleanMarkup(result);
   }),
   highlight: (code, lang) => new Promise<string>(async (resolve, reject) => {
     if (!code) {

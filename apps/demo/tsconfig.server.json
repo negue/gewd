@@ -2,12 +2,10 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc-server",
-    "target": "ES2020"
+    "target": "ES2022",
+    "useDefineForClassFields": false
   },
-  "files": [
-    "src/main.server.ts",
-    "server.ts"
-  ],
+  "files": ["src/main.server.ts", "server.ts"],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.server.module#AppServerModule"
   }

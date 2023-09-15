@@ -1,15 +1,20 @@
 import {
-  Component,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Compiler,
+  Component,
+  EventEmitter,
+  Injector,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
   ViewChild,
-  ViewContainerRef,
-  ComponentFactoryResolver,
-  Injector, Input, OnChanges,
-  SimpleChanges, EventEmitter, OnDestroy,
-  Compiler, Output, ChangeDetectorRef
+  ViewContainerRef
 } from '@angular/core';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { DynamicLoaderRegistry } from '@gewd/lazy/registry';
 import { InputMap, OutputMap } from '@gewd/lazy/contracts';
 
@@ -58,11 +63,10 @@ export class LazyModuleComponent implements OnChanges, OnDestroy {
   public error: string;
   private componentInstance = null;
 
-  private unsubForOutputs$ = new Subject();
+  private unsubForOutputs$ = new Subject<void>();
   private alreadySettingComponent = false;
 
-  constructor (private resolver: ComponentFactoryResolver,
-               private angularCompiler: Compiler,
+  constructor (private angularCompiler: Compiler,
                private injector: Injector,
                private cd: ChangeDetectorRef) {
 

@@ -22,7 +22,7 @@ export class NgErrorComponent implements OnInit, OnDestroy {
     map(value => value.filter(v => !!v))
   );
 
-  private _destroy$ = new Subject();
+  private _destroy$ = new Subject<void>();
 
   constructor(private errorService: ErrorHandlerService,
               private cd: ChangeDetectorRef,

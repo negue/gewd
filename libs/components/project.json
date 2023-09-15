@@ -1,0 +1,34 @@
+{
+  "name": "components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/components/src",
+  "prefix": "gewd",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/components/tsconfig.lib.json",
+        "project": "libs/components/ng-package.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "test": {
+      "executor": "@angular-builders/jest:run",
+      "options": {
+        "jestConfig": "libs/components/jest.config.js",
+        "tsConfig": "libs/components/tsconfig.spec.json",
+        "passWithNoTests": true,
+        "setupFile": "libs/components/src/test-setup.ts"
+      }
+    }
+  },
+  "generators": {
+    "@nx/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["ng-utils", "mat-utils"]
+}

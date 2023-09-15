@@ -1,0 +1,194 @@
+{
+  "name": "demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@nx/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/demo/src",
+  "prefix": "gewd",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/demo",
+        "index": "apps/demo/src/index.html",
+        "main": "apps/demo/src/main.ts",
+        "polyfills": "apps/demo/src/polyfills.ts",
+        "tsConfig": "apps/demo/tsconfig.app.json",
+        "aot": false,
+        "assets": [
+          "apps/demo/src/favicon.ico",
+          "apps/demo/src/assets",
+          {
+            "glob": "mermaid.min.js",
+            "input": "node_modules/mermaid/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "prism-@(c|csharp|css-extras|json|typescript|markdown).min.js",
+            "input": "./node_modules/prismjs/components",
+            "output": "/assets/prism/"
+          },
+          {
+            "glob": "prism-plugin-(inline-color|bracket-match).worker-func.js",
+            "input": "libs/components/highlight-editor",
+            "output": "/assets/prism/"
+          },
+          {
+            "glob": "**/*.md",
+            "input": "./libs",
+            "output": "./assets/readme"
+          },
+          {
+            "glob": "README.md",
+            "input": "./",
+            "output": "./"
+          },
+          {
+            "glob": "example_md.png",
+            "input": "example-images",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/demo/src/styles.scss",
+          "node_modules/prismjs/themes/prism-okaidia.css",
+          "node_modules/prismjs/plugins/inline-color/prism-inline-color.css",
+          "libs/components/highlight-editor/bracket-match.css"
+        ],
+        "scripts": [],
+        "webWorkerTsConfig": "apps/demo/tsconfig.worker.json",
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/demo/src/environments/environment.ts",
+              "with": "apps/demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "aot": true,
+          "statsJson": true,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": ""
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "demo:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "demo:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "demo:build"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/demo/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/coverage/apps/demo"]
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/demo-server",
+        "main": "apps/demo/server.ts",
+        "tsConfig": "apps/demo/tsconfig.server.json",
+        "sourceMap": true,
+        "optimization": false,
+        "buildOptimizer": false
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/demo/src/environments/environment.ts",
+              "with": "apps/demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "sourceMap": false,
+          "optimization": {
+            "scripts": false,
+            "styles": true
+          },
+          "buildOptimizer": true
+        }
+      },
+      "defaultConfiguration": "",
+      "production": {
+        "fileReplacements": [
+          {
+            "replace": "apps/demo/src/environments/environment.ts",
+            "with": "apps/demo/src/environments/environment.prod.ts"
+          }
+        ],
+        "sourceMap": false,
+        "optimization": {
+          "scripts": false,
+          "styles": true
+        }
+      }
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "options": {
+        "browserTarget": "demo:build",
+        "serverTarget": "demo:server"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "demo:build:production",
+          "serverTarget": "demo:server:production"
+        }
+      }
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "browserTarget": "demo:build:production",
+        "serverTarget": "demo:server:production",
+        "routes": [""]
+      },
+      "configurations": {
+        "production": {}
+      }
+    }
+  },
+  "tags": []
+}

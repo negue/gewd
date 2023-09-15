@@ -1,5 +1,5 @@
 import { PrismOptions } from '@gewd/markdown/contracts';
-import { Lazy } from '@gewd/markdown/utils';
+import { Lazy } from '@gewd/lazy/utils';
 
 const markdownCodeRegex = /```([a-z].*)\n([\s\S]*?)```/g;
 

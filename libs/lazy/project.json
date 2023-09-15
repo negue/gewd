@@ -1,0 +1,32 @@
+{
+  "name": "lazy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/lazy",
+  "prefix": "gewd",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/lazy/tsconfig.lib.json",
+        "project": "libs/lazy/ng-package.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "test": {
+      "executor": "@angular-builders/jest:run",
+      "options": {
+        "jestConfig": "libs/lazy/jest.config.js",
+        "tsConfig": "libs/lazy/tsconfig.spec.json",
+        "setupFile": "libs/lazy/test-setup.ts"
+      }
+    }
+  },
+  "generators": {
+    "@nx/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": []
+}

@@ -1,7 +1,6 @@
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { updateCssProps } from './update-css-props';
-import { updateDynamicStyle } from './update-dynamic-style';
+import { updateCssProps, updateDynamicStyle } from '@gewd/utils/style';
 
 /** @dynamic - allows Document in ngc build */
 @Injectable({

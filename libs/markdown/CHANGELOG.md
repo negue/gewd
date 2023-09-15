@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.4.3] - TBA
+## [1.0.0] - 2023.09.16
 
+Upgraded Package to use newer Angular Version (^16.2.5)
 
 
 ## [0.4.2] - 2020-12-15

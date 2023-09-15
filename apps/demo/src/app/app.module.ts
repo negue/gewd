@@ -57,7 +57,9 @@ const portalLazy = new Lazy(
   declarations: [AppComponent, MarkdownToolbarComponent, ExamplePanelComponent],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
-    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot([], {
+
+    }),
     HttpClientModule,
     MarkdownModule, FormsModule,
     ReactiveFormsModule,

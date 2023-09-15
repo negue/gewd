@@ -1,0 +1,32 @@
+{
+  "name": "ng-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ng-utils/src",
+  "prefix": "",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/ng-utils/tsconfig.lib.json",
+        "project": "libs/ng-utils/ng-package.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "test": {
+      "executor": "@angular-builders/jest:run",
+      "options": {
+        "jestConfig": "libs/ng-utils/jest.config.js",
+        "tsConfig": "libs/ng-utils/tsconfig.spec.json",
+        "setupFile": "libs/ng-utils/src/test-setup.ts"
+      }
+    }
+  },
+  "generators": {
+    "@nx/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": []
+}

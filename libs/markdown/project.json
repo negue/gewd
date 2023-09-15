@@ -1,0 +1,27 @@
+{
+  "name": "markdown",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/markdown",
+  "prefix": "gewd",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/markdown/tsconfig.lib.json",
+        "project": "libs/markdown/ng-package.json",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "test": {
+      "executor": "@angular-builders/jest:run",
+      "options": {
+        "jestConfig": "libs/markdown/jest.config.js",
+        "tsConfig": "libs/markdown/tsconfig.spec.json",
+        "setupFile": "libs/markdown/test-setup.ts"
+      }
+    }
+  },
+  "tags": []
+}
