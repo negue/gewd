@@ -141,6 +141,6 @@
   ],
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true,
-    "enableIvy": false
+    "enableIvy": true
   }
 }

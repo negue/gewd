@@ -15,13 +15,12 @@
       }
     },
     "test": {
-      "executor": "@angular-builders/jest:run",
+      "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/components/jest.config.js",
-        "tsConfig": "libs/components/tsconfig.spec.json",
-        "passWithNoTests": true,
-        "setupFile": "libs/components/src/test-setup.ts"
-      }
+        "jestConfig": "libs/components/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/coverage/libs/components"]
     }
   },
   "generators": {

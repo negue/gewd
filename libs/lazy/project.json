@@ -15,12 +15,12 @@
       }
     },
     "test": {
-      "executor": "@angular-builders/jest:run",
+      "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/lazy/jest.config.js",
-        "tsConfig": "libs/lazy/tsconfig.spec.json",
-        "setupFile": "libs/lazy/test-setup.ts"
-      }
+        "jestConfig": "libs/lazy/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/coverage/libs/lazy"]
     }
   },
   "generators": {

@@ -16,8 +16,8 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true,
-    "enableIvy": false
+    "enableIvy": true
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "exclude": ["src/test-setup.ts", "jest.config.ts", "**/*.spec.ts"],
   "include": ["**/*.ts"]
 }

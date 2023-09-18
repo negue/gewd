@@ -120,7 +120,8 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "apps/demo/jest.config.ts"
+        "jestConfig": "apps/demo/jest.config.ts",
+        "passWithNoTests": true
       },
       "outputs": ["{workspaceRoot}/coverage/apps/demo"]
     },
