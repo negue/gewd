@@ -31,7 +31,7 @@
     "serve:ssr": "node dist/demo-server/main.js",
     "build:ssr": "ng build --configuration production && ng run demo:server:production",
     "prerender": "ng run demo:prerender",
-    "build:libs": "nx build ng-utils && nx build markdown && nx build lazy && nx build components && nx build utils",
+    "build:libs": "nx run-many -t build",
     "workspace-generator": "nx workspace-generator"
   },
   "private": true,
