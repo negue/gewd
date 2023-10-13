@@ -29,10 +29,13 @@ based on the same idea's as:
 4. > Note: if you already have a markdown worker / module added, you don't need to use another worker, then you can skip this step
 
 ```ts
-   const prismWorker = () => new Worker('./prism.worker.ts', {
-     name: 'markdown',
-     type: "module"
-   });
+   const prismWorker = () => new Worker(
+     new URL('./prism.worker.ts', import.meta.url), 
+     {
+       name: 'markdown',
+       type: "module"
+     }
+   );
 
    /* in your app module */
    @NgModule({
