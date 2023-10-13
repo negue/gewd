@@ -6,9 +6,9 @@ patch:
   SNYK-JS-TREEKILL-536781:
     - '@angular-devkit/build-angular > tree-kill':
         patched: '2019-12-24T00:02:57.439Z'
-    - '@nrwl/cypress > tree-kill':
+    - '@nx/cypress > tree-kill':
         patched: '2019-12-24T00:02:57.439Z'
-    - '@nrwl/angular > @nrwl/cypress > tree-kill':
+    - '@nx/angular > @nx/cypress > tree-kill':
         patched: '2019-12-24T00:02:57.439Z'
   SNYK-JS-LODASH-567746:
     - '@angular-devkit/build-angular > @jsdevtools/coverage-istanbul-loader > istanbul-lib-instrument > @babel/core > lodash':

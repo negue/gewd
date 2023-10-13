@@ -71,7 +71,7 @@ export class HighlightEditorComponent implements OnInit, OnChanges, OnDestroy {
   focussed$ = new EventEmitter();
 
   private lastKeyTriggered$ = new BehaviorSubject<KeyboardEvent>(null);
-  private _destroyed$ = new Subject();
+  private _destroyed$ = new Subject<void>();
 
   constructor(private cd: ChangeDetectorRef,
               private cssProps: ElementCssService,

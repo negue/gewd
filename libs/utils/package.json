@@ -1,18 +1,18 @@
 {
   "name": "@gewd/utils",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "peerDependencies": {
-    "rxjs": "^6.5.4"
+    "rxjs": "^7.8.1"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/negue/gewd.git"
+    "type": "git",
+    "url": "https://github.com/negue/gewd.git"
   },
   "keywords": [],
   "author": "Eugen Bolz",
   "license": "MIT",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"

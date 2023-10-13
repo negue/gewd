@@ -2,19 +2,21 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { emojiExampleList } from '../../example-emoji-list';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { javascript, javascriptLanguage } from '@codemirror/lang-javascript';
+import { javascript } from '@codemirror/lang-javascript';
 import { autocompletion, completionKeymap } from '@codemirror/autocomplete';
 import { keymap } from '@codemirror/view';
-import { Extension } from '@codemirror/state';
-import { basicSetup } from '@codemirror/basic-setup';
+import { Compartment, Extension } from '@codemirror/state';
+import { basicSetup } from 'codemirror';
 import { CodemirrorComponent } from '@gewd/components/codemirror';
 
+const language = new Compartment();
+
 const sharedExtensions: Extension[] = [
-     oneDark,
+  oneDark,
 
-    javascriptLanguage, //.data.of({autocomplete:jsCompletion}),
-
-    javascript(),
+  language.of(javascript({
+    typescript: true
+  }))
 ];
 
 @Component({
@@ -37,7 +39,7 @@ export function test() {
 
   visibleJsCode = this.exampleJsText;
 
-  longExampleText =`
+  longExampleText = `
 // long code example
 export const some = 'string';
 
@@ -66,32 +68,33 @@ export function test() {
 
   normalExtensions: Extension[] = [
     ...sharedExtensions
-  ]
+  ];
 
-  extensions: Extension = [
+  extensions: Extension[] = [
     basicSetup,
-     // overrides first..
+    // overrides first..
 
     ...sharedExtensions,
 
     autocompletion(),
     keymap.of([
-      ...completionKeymap,
-    ]),
+      ...completionKeymap
+    ])
   ];
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor (private cd: ChangeDetectorRef) {
+  }
 
   ngOnDestroy (): void {
     this.subscription.unsubscribe();
   }
 
-  updateCodemirror (codemirror: CodemirrorComponent, textarea: HTMLTextAreaElement): void  {
+  updateCodemirror (codemirror: CodemirrorComponent, textarea: HTMLTextAreaElement): void {
     codemirror.value = textarea.value;
     this.cd.detectChanges();
   }
 
-  insertText (codemirror: CodemirrorComponent): void  {
+  insertText (codemirror: CodemirrorComponent): void {
     codemirror.insertText(
       codemirror.selectedRange.from,
       codemirror.selectedRange.to,
@@ -101,7 +104,7 @@ export function test() {
     codemirror.codeMirrorView.focus();
   }
 
-  replaceCode (): void  {
+  replaceCode (): void {
     this.visibleJsCode = `
       function thisIs() {
         areplacedText.shouldWork();

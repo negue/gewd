@@ -1,3 +1,5 @@
+// copy to browser console
+
 fetch('https://api.github.com/emojis')
   .then(r => r.json())
   .then(val => Object.keys(val).map(key => ({ key, value: val[key] })))
@@ -11,7 +13,7 @@ fetch('https://api.github.com/emojis')
       }
     } );
 
-    console.info(JSON.stringify(emojiMap));
+    console.info(JSON.stringify(emojiMap, null, '  '));
 
     return emojiMap;
   })

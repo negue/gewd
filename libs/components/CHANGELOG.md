@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.0] - 2023.09.16
+
+Upgraded Package to use newer Angular Version (^16.2.5)
+
 ## [0.3.0]
 
 Added `<gewd-codemirror>`

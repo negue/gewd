@@ -1,26 +1,27 @@
 {
   "name": "@gewd/components",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^9.0.0-rc.5",
-    "@angular/core": "^9.0.0-rc.5",
-    "@gewd/ng-utils": "^0.4.1",
-    "@gewd/markdown": "^0.4.1",
-    "comlink": "4.2.0",
-    "@codemirror/commands": "^0.18.3",
-    "@codemirror/language": "^0.18.2",
-    "@codemirror/state": "^0.18.7",
-    "@codemirror/view": "^0.18.19"
+    "@angular/common": "^16.2.5",
+    "@angular/core": "^16.2.5",
+    "@gewd/ng-utils": "^1.0.0",
+    "@gewd/markdown": "^1.0.0",
+    "@gewd/mat-utils": "^1.0.0",
+    "comlink": "^4.4.1",
+    "@codemirror/commands": "^6.2.5",
+    "@codemirror/language": "^6.9.0",
+    "@codemirror/state": "^6.2.1",
+    "@codemirror/view": "^6.19.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/negue/gewd.git"
+    "type": "git",
+    "url": "https://github.com/negue/gewd.git"
   },
   "keywords": [],
   "author": "Eugen Bolz",
   "license": "MIT",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"

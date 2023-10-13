@@ -2,11 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "target": "es2015",
+    "target": "ES2022",
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "ES2022"],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
@@ -15,7 +16,14 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true,
-    "enableIvy": false
+    "enableIvy": true,
+    "compilationMode": "partial"
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
+  "exclude": [
+    "src/test-setup.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "jest.config.ts"
+  ],
+  "include": ["**/*.ts", "**/*.js"]
 }

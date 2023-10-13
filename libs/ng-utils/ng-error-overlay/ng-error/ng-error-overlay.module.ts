@@ -8,21 +8,20 @@ import { SimplePagerModule } from '@gewd/ng-utils/components';
 import { DynamicPortalModule } from '@gewd/ng-utils/dynamic-portal';
 
 @NgModule({
-  declarations: [NgErrorComponent, ErrorOverlayComponent],
-  entryComponents: [NgErrorComponent],
-  imports: [
-    CommonModule,
-    BootstrapComponentModule.component({
-      elementName: 'ng-error',
-      component: NgErrorComponent
-    }),
-    SimplePagerModule,
-    DynamicPortalModule
-  ],
-  providers: [
-    ErrorHandlerService,
-    {provide: ErrorHandler, useExisting: ErrorHandlerService},
-  ]
+    declarations: [NgErrorComponent, ErrorOverlayComponent],
+    imports: [
+        CommonModule,
+        BootstrapComponentModule.component({
+            elementName: 'ng-error',
+            component: NgErrorComponent
+        }),
+        SimplePagerModule,
+        DynamicPortalModule
+    ],
+    providers: [
+        ErrorHandlerService,
+        { provide: ErrorHandler, useExisting: ErrorHandlerService },
+    ]
 })
 export class NgErrorOverlayModule {
   static config (useValue: BootstrapComponentConfig): ModuleWithProviders<BootstrapComponentModule> {

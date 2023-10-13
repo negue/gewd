@@ -1,20 +1,24 @@
 {
   "name": "@gewd/markdown",
-  "version": "0.4.3",
+  "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^9.0.0-rc.5",
-    "@angular/core": "^9.0.0-rc.5",
-    "comlink": "^4.2.0"
+    "@angular/common": "^16.2.5",
+    "@angular/core": "^16.2.5",
+    "comlink": "^4.4.1"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/negue/gewd.git"
+    "type": "git",
+    "url": "https://github.com/negue/gewd.git"
   },
-  "keywords": ["markdown", "angular", "worker"],
+  "keywords": [
+    "markdown",
+    "angular",
+    "worker"
+  ],
   "author": "Eugen Bolz",
   "license": "MIT",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"

@@ -2,7 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": []
+    "types": [],
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true,
@@ -10,5 +13,11 @@
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["**/*.ts"],
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "src/**/*.worker.ts"]
+  "exclude": [
+    "src/test-setup.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "src/**/*.worker.ts",
+    "jest.config.ts"
+  ]
 }

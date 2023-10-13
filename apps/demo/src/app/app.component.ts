@@ -4,7 +4,7 @@ import { take } from 'rxjs/operators';
 // todo fix nx enforce module boundaries
 import { LazyModuleComponent } from '@gewd/lazy/loader';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 // TODO Splitup each panel functions/vars into its own component
 
@@ -32,7 +32,7 @@ export class AppComponent {
   public editorLanguage$ = new BehaviorSubject('');
   public editorExample$ = new BehaviorSubject('');
 
-  aForm =  new FormBuilder().group({'editor': ''});
+  aForm =  new UntypedFormBuilder().group({'editor': ''});
 
   constructor (private cd: ChangeDetectorRef,
                private http: HttpClient) {

@@ -5,17 +5,15 @@
     "module": "commonjs",
     "types": [
       "jest",
-      "node",
-      "jest"
+      "node"
     ],
     "emitDecoratorMetadata": true,
     "allowJs": true
   },
-  "files": [
-    "src/test-setup.ts"
-  ],
   "include": [
     "**/*.spec.ts",
+    "jest.config.ts",
+    "src/test-setup.ts",
     "**/*.d.ts"
   ]
 }
