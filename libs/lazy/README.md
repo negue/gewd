@@ -67,10 +67,6 @@ Useful for components that don't need any other module's or using 3rd party web-
 Register the GewdLazyModule to use the Components
 
 ```ts
-GewdLazyLoaderModule 
-
-// or with .withLazy
-
 // outside of the Angular Module
 const lazyModule = new Lazy(
             () => import(/* webpackChunkName: "markdown-example-module" */ './examples/markdown-example/markdown-example.module')
