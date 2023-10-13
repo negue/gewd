@@ -20,14 +20,20 @@ Angular Markdown render component, which uses a worker-process.
 
 ## Install
 
-1. `npm install @gewd/markdown --save`
-2. add `MarkdownModule` to your AppModule (or the one where you want to use it) 
-3. In your app folder `ng g webWorker markdown`
-4. ```ts
-   const markdownWorker = () => new Worker('./markdown.worker.ts', {
-     name: 'markdown',
-     type: "module"
-   });
+1. `npm i comlink marked xss prismjs @gewd/markdown --save`
+2. `npm i --save-dev @types/marked @types/prismjs`
+3. add `MarkdownModule` to your AppModule (or the one where you want to use it) 
+4. In your app folder `ng g webWorker markdown`
+5. ```ts
+
+   const markdownWorker = () => new Worker(
+     new URL('./markdown.worker.ts', import.meta.url),
+     {
+       name: 'markdown',
+       type: "module"
+     }
+   );
+
 
    /* in your app module */
    @NgModule({
@@ -40,7 +46,7 @@ Angular Markdown render component, which uses a worker-process.
        {
          provide: MarkdownOptionsInjectorToken,
          useValue: {
-           getWorker: marked,
+           getWorker: markdownWorker,
            options: {
              prism: {
                ...DEFAULT_PRISM_OPTIONS,
@@ -53,12 +59,12 @@ Angular Markdown render component, which uses a worker-process.
                }
              }
            }
-         } as GetWorkerPayload
+         } as MarkdownServiceOptions
        },
      ]
    })
    ```
-5. copy the content of one the included workers into your created one
+6. copy the content of one the included workers into your created one
 
 ## Usage
 
