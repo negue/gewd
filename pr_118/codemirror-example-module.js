@@ -8989,7 +8989,7 @@ class SearchCursor {
         to: pos + 1
       };else this.matches.push(1, pos);
     }
-    if (match && this.test && !this.test(match.from, match.to, this.buffer, this.bufferPos)) match = null;
+    if (match && this.test && !this.test(match.from, match.to, this.buffer, this.bufferStart)) match = null;
     return match;
   }
 }
@@ -24471,8 +24471,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TreeFragment: () => (/* binding */ TreeFragment),
 /* harmony export */   parseMixed: () => (/* binding */ parseMixed)
 /* harmony export */ });
-// FIXME profile adding a per-Tree TreeNode cache, validating it by
-// parent pointer
 /**
 The default maximum length of a `TreeBuffer` node.
 */
@@ -24596,6 +24594,12 @@ class MountedTree {
     this.tree = tree;
     this.overlay = overlay;
     this.parser = parser;
+  }
+  /**
+  @internal
+  */
+  static get(tree) {
+    return tree && tree.props && tree.props[NodeProp.mounted.id];
   }
 }
 const noProps = Object.create(null);
@@ -24851,7 +24855,7 @@ class Tree {
   @internal
   */
   toString() {
-    let mounted = this.prop(NodeProp.mounted);
+    let mounted = MountedTree.get(this);
     if (mounted && !mounted.overlay) return mounted.tree.toString();
     let children = "";
     for (let ch of this.children) {
@@ -24917,6 +24921,16 @@ class Tree {
     let node = resolveNode(CachedInnerNode.get(this) || this.topNode, pos, side, true);
     CachedInnerNode.set(this, node);
     return node;
+  }
+  /**
+  In some situations, it can be useful to iterate through all
+  nodes around a position, including those in overlays that don't
+  directly cover the position. This method gives you an iterator
+  that will produce all nodes, from small to big, around the given
+  position.
+  */
+  resolveStack(pos, side = 0) {
+    return stackIterator(this, pos, side);
   }
   /**
   Iterate over the tree and its children, calling `enter` for any
@@ -25123,20 +25137,6 @@ function checkSide(side, pos, from, to) {
       return true;
   }
 }
-function enterUnfinishedNodesBefore(node, pos) {
-  let scan = node.childBefore(pos);
-  while (scan) {
-    let last = scan.lastChild;
-    if (!last || last.to != scan.to) break;
-    if (last.type.isError && last.from == last.to) {
-      node = scan;
-      scan = last.prevSibling;
-    } else {
-      scan = last;
-    }
-  }
-  return node;
-}
 function resolveNode(node, pos, side, overlays) {
   var _a;
   // Move up to a node that actually holds the position, if possible
@@ -25156,10 +25156,53 @@ function resolveNode(node, pos, side, overlays) {
     node = inner;
   }
 }
-class TreeNode {
+class BaseNode {
+  cursor(mode = 0) {
+    return new TreeCursor(this, mode);
+  }
+  getChild(type, before = null, after = null) {
+    let r = getChildren(this, type, before, after);
+    return r.length ? r[0] : null;
+  }
+  getChildren(type, before = null, after = null) {
+    return getChildren(this, type, before, after);
+  }
+  resolve(pos, side = 0) {
+    return resolveNode(this, pos, side, false);
+  }
+  resolveInner(pos, side = 0) {
+    return resolveNode(this, pos, side, true);
+  }
+  matchContext(context) {
+    return matchNodeContext(this, context);
+  }
+  enterUnfinishedNodesBefore(pos) {
+    let scan = this.childBefore(pos),
+      node = this;
+    while (scan) {
+      let last = scan.lastChild;
+      if (!last || last.to != scan.to) break;
+      if (last.type.isError && last.from == last.to) {
+        node = scan;
+        scan = last.prevSibling;
+      } else {
+        scan = last;
+      }
+    }
+    return node;
+  }
+  get node() {
+    return this;
+  }
+  get next() {
+    return this.parent;
+  }
+}
+class TreeNode extends BaseNode {
   constructor(_tree, from,
   // Index in parent node, set to -1 if the node is not a direct child of _parent.node (overlay)
   index, _parent) {
+    super();
     this._tree = _tree;
     this.from = from;
     this.index = index;
@@ -25189,7 +25232,7 @@ class TreeNode {
           if (index > -1) return new BufferNode(new BufferContext(parent, next, i, start), null, index);
         } else if (mode & IterMode.IncludeAnonymous || !next.type.isAnonymous || hasChild(next)) {
           let mounted;
-          if (!(mode & IterMode.IgnoreMounts) && next.props && (mounted = next.prop(NodeProp.mounted)) && !mounted.overlay) return new TreeNode(mounted.tree, start, i, parent);
+          if (!(mode & IterMode.IgnoreMounts) && (mounted = MountedTree.get(next)) && !mounted.overlay) return new TreeNode(mounted.tree, start, i, parent);
           let inner = new TreeNode(next, start, i, parent);
           return mode & IterMode.IncludeAnonymous || !inner.type.isAnonymous ? inner : inner.nextChild(dir < 0 ? next.children.length - 1 : 0, dir, pos, side);
         }
@@ -25214,7 +25257,7 @@ class TreeNode {
   }
   enter(pos, side, mode = 0) {
     let mounted;
-    if (!(mode & IterMode.IgnoreOverlays) && (mounted = this._tree.prop(NodeProp.mounted)) && mounted.overlay) {
+    if (!(mode & IterMode.IgnoreOverlays) && (mounted = MountedTree.get(this._tree)) && mounted.overlay) {
       let rPos = pos - this.from;
       for (let {
         from,
@@ -25239,42 +25282,17 @@ class TreeNode {
   get prevSibling() {
     return this._parent && this.index >= 0 ? this._parent.nextChild(this.index - 1, -1, 0, 4 /* Side.DontCare */) : null;
   }
-  cursor(mode = 0) {
-    return new TreeCursor(this, mode);
-  }
   get tree() {
     return this._tree;
   }
   toTree() {
     return this._tree;
   }
-  resolve(pos, side = 0) {
-    return resolveNode(this, pos, side, false);
-  }
-  resolveInner(pos, side = 0) {
-    return resolveNode(this, pos, side, true);
-  }
-  enterUnfinishedNodesBefore(pos) {
-    return enterUnfinishedNodesBefore(this, pos);
-  }
-  getChild(type, before = null, after = null) {
-    let r = getChildren(this, type, before, after);
-    return r.length ? r[0] : null;
-  }
-  getChildren(type, before = null, after = null) {
-    return getChildren(this, type, before, after);
-  }
   /**
   @internal
   */
   toString() {
     return this._tree.toString();
-  }
-  get node() {
-    return this;
-  }
-  matchContext(context) {
-    return matchNodeContext(this, context);
   }
 }
 function getChildren(node, type, before, after) {
@@ -25306,7 +25324,7 @@ class BufferContext {
     this.start = start;
   }
 }
-class BufferNode {
+class BufferNode extends BaseNode {
   get name() {
     return this.type.name;
   }
@@ -25317,6 +25335,7 @@ class BufferNode {
     return this.context.start + this.context.buffer.buffer[this.index + 2];
   }
   constructor(context, _parent, index) {
+    super();
     this.context = context;
     this._parent = _parent;
     this.index = index;
@@ -25373,9 +25392,6 @@ class BufferNode {
     return new BufferNode(this.context, this._parent, buffer.findChild(parentStart, this.index, -1, 0, 4 /* Side.DontCare */));
   }
 
-  cursor(mode = 0) {
-    return new TreeCursor(this, mode);
-  }
   get tree() {
     return null;
   }
@@ -25394,34 +25410,58 @@ class BufferNode {
     }
     return new Tree(this.type, children, positions, this.to - this.from);
   }
-  resolve(pos, side = 0) {
-    return resolveNode(this, pos, side, false);
-  }
-  resolveInner(pos, side = 0) {
-    return resolveNode(this, pos, side, true);
-  }
-  enterUnfinishedNodesBefore(pos) {
-    return enterUnfinishedNodesBefore(this, pos);
-  }
   /**
   @internal
   */
   toString() {
     return this.context.buffer.childString(this.index);
   }
-  getChild(type, before = null, after = null) {
-    let r = getChildren(this, type, before, after);
-    return r.length ? r[0] : null;
+}
+function iterStack(heads) {
+  if (!heads.length) return null;
+  if (heads.length == 1) return heads[0];
+  let pick = 0,
+    picked = heads[0];
+  for (let i = 1; i < heads.length; i++) {
+    let node = heads[i];
+    if (node.from > picked.from || node.to < picked.to) {
+      picked = node;
+      pick = i;
+    }
   }
-  getChildren(type, before = null, after = null) {
-    return getChildren(this, type, before, after);
+  let next = picked instanceof TreeNode && picked.index < 0 ? null : picked.parent;
+  let newHeads = heads.slice();
+  if (next) newHeads[pick] = next;else newHeads.splice(pick, 1);
+  return new StackIterator(newHeads, picked);
+}
+class StackIterator {
+  constructor(heads, node) {
+    this.heads = heads;
+    this.node = node;
   }
-  get node() {
-    return this;
+  get next() {
+    return iterStack(this.heads);
   }
-  matchContext(context) {
-    return matchNodeContext(this, context);
+}
+function stackIterator(tree, pos, side) {
+  let inner = tree.resolveInner(pos, side),
+    layers = null;
+  for (let scan = inner instanceof TreeNode ? inner : inner.context.parent; scan; scan = scan.parent) {
+    if (scan.index < 0) {
+      // This is an overlay root
+      let parent = scan.parent;
+      (layers || (layers = [inner])).push(parent.resolve(pos, side));
+      scan = parent;
+    } else {
+      let mount = MountedTree.get(scan.tree);
+      // Relevant overlay branching off
+      if (mount && mount.overlay && mount.overlay[0].from <= pos && mount.overlay[mount.overlay.length - 1].to >= pos) {
+        let root = new TreeNode(mount.tree, mount.overlay[0].from + scan.from, 0, null);
+        (layers || (layers = [inner])).push(resolveNode(root, pos, side, false));
+      }
+    }
   }
+  return layers ? iterStack(layers) : inner;
 }
 /**
 A tree cursor object focuses on a given node in a syntax tree, and
@@ -27600,7 +27640,7 @@ const jsHighlight = (0,_lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.styleTags)(
   "get set async static": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.modifier,
   "for while do if else switch try catch finally return throw break continue default case": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.controlKeyword,
   "in of await yield void typeof delete instanceof": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.operatorKeyword,
-  "let var const function class extends": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.definitionKeyword,
+  "let var const using function class extends": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.definitionKeyword,
   "import export from": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.moduleKeyword,
   "with debugger as new": _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.keyword,
   TemplateString: _lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.special(_lezer_highlight__WEBPACK_IMPORTED_MODULE_1__.tags.string),
@@ -28026,8 +28066,7 @@ class Stack {
   /**
   @internal
   */
-  shift(action, next, nextEnd) {
-    let start = this.pos;
+  shift(action, type, start, end) {
     if (action & 131072 /* Action.GotoFlag */) {
       this.pushState(action & 65535 /* Action.ValueMask */, this.pos);
     } else if ((action & 262144 /* Action.StayFlag */) == 0) {
@@ -28036,26 +28075,26 @@ class Stack {
         {
           parser
         } = this.p;
-      if (nextEnd > this.pos || next <= parser.maxNode) {
-        this.pos = nextEnd;
-        if (!parser.stateFlag(nextState, 1 /* StateFlag.Skipped */)) this.reducePos = nextEnd;
+      if (end > this.pos || type <= parser.maxNode) {
+        this.pos = end;
+        if (!parser.stateFlag(nextState, 1 /* StateFlag.Skipped */)) this.reducePos = end;
       }
       this.pushState(nextState, start);
-      this.shiftContext(next, start);
-      if (next <= parser.maxNode) this.buffer.push(next, start, nextEnd, 4);
+      this.shiftContext(type, start);
+      if (type <= parser.maxNode) this.buffer.push(type, start, end, 4);
     } else {
       // Shift-and-stay, which means this is a skipped token
-      this.pos = nextEnd;
-      this.shiftContext(next, start);
-      if (next <= this.p.parser.maxNode) this.buffer.push(next, start, nextEnd, 4);
+      this.pos = end;
+      this.shiftContext(type, start);
+      if (type <= this.p.parser.maxNode) this.buffer.push(type, start, end, 4);
     }
   }
   // Apply an action
   /**
   @internal
   */
-  apply(action, next, nextEnd) {
-    if (action & 65536 /* Action.ReduceFlag */) this.reduce(action);else this.shift(action, next, nextEnd);
+  apply(action, next, nextStart, nextEnd) {
+    if (action & 65536 /* Action.ReduceFlag */) this.reduce(action);else this.shift(action, next, nextStart, nextEnd);
   }
   // Add a prebuilt (reused) node into the buffer.
   /**
@@ -28145,6 +28184,7 @@ class Stack {
       stack.pushState(s, this.pos);
       stack.storeNode(0 /* Term.Err */, stack.pos, stack.pos, 4, true);
       stack.shiftContext(nextStates[i], this.pos);
+      stack.reducePos = this.pos;
       stack.score -= 200 /* Recover.Insert */;
       result.push(stack);
     }
@@ -28237,6 +28277,7 @@ class Stack {
   state). @internal
   */
   restart() {
+    this.storeNode(0 /* Term.Err */, this.pos, this.pos, 4, true);
     this.state = this.stack[0];
     this.stack.length = 0;
   }
@@ -29150,8 +29191,8 @@ class Parse {
       if (verbose) console.log(base + this.stackID(stack) + ` (via always-reduce ${parser.getName(defaultReduce & 65535 /* Action.ValueMask */)})`);
       return true;
     }
-    if (stack.stack.length >= 15000 /* Rec.CutDepth */) {
-      while (stack.stack.length > 9000 /* Rec.CutTo */ && stack.forceReduce()) {}
+    if (stack.stack.length >= 9000 /* Rec.CutDepth */) {
+      while (stack.stack.length > 6000 /* Rec.CutTo */ && stack.forceReduce()) {}
     }
     let actions = this.tokens.getActions(stack);
     for (let i = 0; i < actions.length;) {
@@ -29160,7 +29201,8 @@ class Parse {
         end = actions[i++];
       let last = i == actions.length || !split;
       let localStack = last ? stack : stack.split();
-      localStack.apply(action, term, end);
+      let main = this.tokens.mainToken;
+      localStack.apply(action, term, main ? main.start : localStack.pos, end);
       if (verbose) console.log(base + this.stackID(localStack) + ` (via ${(action & 65536 /* Action.ReduceFlag */) == 0 ? "shift" : `reduce of ${parser.getName(action & 65535 /* Action.ValueMask */)}`} for ${parser.getName(term)} @ ${start}${localStack == stack ? "" : ", split"})`);
       if (last) return true;else if (localStack.pos > start) stacks.push(localStack);else split.push(localStack);
     }
