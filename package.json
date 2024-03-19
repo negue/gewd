@@ -56,7 +56,7 @@
     "@codemirror/theme-one-dark": "6.1.2",
     "@codemirror/view": "6.19.0",
     "@nguniversal/express-engine": "16.2.0",
-    "@nx/angular": "16.8.1",
+    "@nx/angular": "18.1.1",
     "@types/localforage": "0.0.34",
     "@types/markdown-it": "0.0.9",
     "comlink": "4.4.1",
