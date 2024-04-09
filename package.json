@@ -96,7 +96,7 @@
     "codelyzer": "6.0.2",
     "core-js": "3.32.2",
     "cypress": "4.1.0",
-    "eslint": "8.49.0",
+    "eslint": "9.0.0",
     "eslint-plugin-cypress": "2.14.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
