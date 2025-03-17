@@ -69,7 +69,7 @@
     "marked-highlight": "^2.0.6",
     "mermaid": "10.4.0",
     "morphdom": "2.7.0",
-    "prismjs": "1.29.0",
+    "prismjs": "1.30.0",
     "rxjs": "7.8.1",
     "snyk": "1.1064.0",
     "tslib": "2.6.2",
