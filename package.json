@@ -45,7 +45,7 @@
     "@angular/material": "16.2.4",
     "@angular/platform-browser": "16.2.5",
     "@angular/platform-browser-dynamic": "16.2.5",
-    "@angular/platform-server": "16.2.5",
+    "@angular/platform-server": "18.2.14",
     "@angular/router": "16.2.5",
     "@codemirror/autocomplete": "6.9.1",
     "codemirror": "6.0.1",
@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "@angular-builders/jest": "16.0.1",
-    "@angular-devkit/build-angular": "16.2.2",
+    "@angular-devkit/build-angular": "17.3.16",
     "@angular-devkit/core": "16.2.2",
     "@angular-devkit/schematics": "16.2.2",
     "@angular/cli": "16.2.2",
